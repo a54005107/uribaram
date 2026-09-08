@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500">
+  <g id="janggu-minimal" fill="none" stroke="#2B241F" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M150 150 C245 110 310 155 350 210 C370 235 430 235 450 210 C490 155 555 110 650 150 M150 350 C245 390 310 345 350 290 C370 265 430 265 450 290 C490 345 555 390 650 350" stroke-width="10"/>
+    <ellipse cx="150" cy="250" rx="85" ry="145" stroke-width="10"/><ellipse cx="650" cy="250" rx="85" ry="145" stroke-width="10"/>
+    <g stroke-width="8"><path d="M265 150 L265 350"/><path d="M300 168 L300 332"/><path d="M335 195 L335 305"/><path d="M370 220 L370 280"/><path d="M430 220 L430 280"/><path d="M465 195 L465 305"/><path d="M500 168 L500 332"/><path d="M535 150 L535 350"/></g>
+  </g>
+</svg>

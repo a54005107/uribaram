@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" role="img" aria-labelledby="title desc">
+  <title id="title">우리바람 테스트용 장구 파동 SVG</title>
+  <desc id="desc">장구 본체와 세로 파동 라인을 개별 id로 분리한 테스트용 SVG</desc>
+  <defs>
+    <linearGradient id="bodyGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#C9854A"/><stop offset="50%" stop-color="#9C5A2E"/><stop offset="100%" stop-color="#6E3B20"/></linearGradient>
+    <radialGradient id="skinGrad" cx="50%" cy="45%" r="65%"><stop offset="0%" stop-color="#FFF7E8"/><stop offset="100%" stop-color="#E9CFA6"/></radialGradient>
+    <filter id="softShadow" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="12" stdDeviation="14" flood-opacity="0.18"/></filter>
+  </defs>
+  <g id="janggu" filter="url(#softShadow)"><g id="body">
+    <path d="M165 165 C245 132 305 150 350 205 C370 228 430 228 450 205 C495 150 555 132 635 165 L635 335 C555 368 495 350 450 295 C430 272 370 272 350 295 C305 350 245 368 165 335 Z" fill="url(#bodyGrad)" stroke="#4B2A18" stroke-width="10"/>
+    <ellipse cx="165" cy="250" rx="88" ry="150" fill="url(#skinGrad)" stroke="#5B321C" stroke-width="12"/><ellipse cx="635" cy="250" rx="88" ry="150" fill="url(#skinGrad)" stroke="#5B321C" stroke-width="12"/>
+    <ellipse cx="165" cy="250" rx="64" ry="118" fill="none" stroke="#C89F68" stroke-width="6" opacity="0.75"/><ellipse cx="635" cy="250" rx="64" ry="118" fill="none" stroke="#C89F68" stroke-width="6" opacity="0.75"/>
+  </g><g id="wave-lines" fill="none" stroke="#F7E9D2" stroke-width="7" stroke-linecap="round" opacity="0.96">
+    <path d="M270 155 C260 205 260 295 270 345"/><path d="M305 170 C295 215 295 285 305 330"/><path d="M340 195 C330 225 330 275 340 305"/><path d="M375 220 C365 240 365 260 375 280"/><path d="M425 220 C435 240 435 260 425 280"/><path d="M460 195 C470 225 470 275 460 305"/><path d="M495 170 C505 215 505 285 495 330"/><path d="M530 155 C540 205 540 295 530 345"/>
+  </g><g id="rim-details" fill="none" stroke="#6E3B20" stroke-width="5" opacity="0.9"><path d="M155 110 C250 92 325 118 380 185"/><path d="M645 110 C550 92 475 118 420 185"/><path d="M155 390 C250 408 325 382 380 315"/><path d="M645 390 C550 408 475 382 420 315"/></g></g>
+</svg>

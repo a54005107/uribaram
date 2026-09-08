@@ -1,0 +1,48 @@
+{
+  "left": {
+    "weak": [
+      "left_weak_idle.svg",
+      "left_weak_impact.svg",
+      "left_weak_spread.svg",
+      "left_weak_peak.svg",
+      "left_weak_return.svg"
+    ],
+    "normal": [
+      "left_normal_idle.svg",
+      "left_normal_impact.svg",
+      "left_normal_spread.svg",
+      "left_normal_peak.svg",
+      "left_normal_return.svg"
+    ],
+    "strong": [
+      "left_strong_idle.svg",
+      "left_strong_impact.svg",
+      "left_strong_spread.svg",
+      "left_strong_peak.svg",
+      "left_strong_return.svg"
+    ]
+  },
+  "right": {
+    "weak": [
+      "right_weak_idle.svg",
+      "right_weak_impact.svg",
+      "right_weak_spread.svg",
+      "right_weak_peak.svg",
+      "right_weak_return.svg"
+    ],
+    "normal": [
+      "right_normal_idle.svg",
+      "right_normal_impact.svg",
+      "right_normal_spread.svg",
+      "right_normal_peak.svg",
+      "right_normal_return.svg"
+    ],
+    "strong": [
+      "right_strong_idle.svg",
+      "right_strong_impact.svg",
+      "right_strong_spread.svg",
+      "right_strong_peak.svg",
+      "right_strong_return.svg"
+    ]
+  }
+}
