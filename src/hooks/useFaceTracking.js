@@ -1,16 +1,18 @@
-import {useEffect, useState} from 'react';
+import {useEffect, useRef, useState} from 'react';
+import {motionConfig} from '../motion/motionConfig';
 import {FilesetResolver, PoseLandmarker} from '@mediapipe/tasks-vision';
 
 const FACE_POINTS = [0, 2, 5, 7, 8];
 const mix = (oldValue, newValue, amount = .32) => oldValue == null ? newValue : oldValue + (newValue - oldValue) * amount;
 const initialState = {status: 'idle', face: null, instrument: null, sticks: null, confidence: 0, detail: ''};
 
-export default function useFaceTracking(videoRef, enabled) {
+export default function useFaceTracking(videoRef, enabled, onDetection, streamKey) {
+  const callbackRef = useRef(onDetection); callbackRef.current = onDetection;
   const [tracking, setTracking] = useState(initialState);
 
   useEffect(() => {
     if (!enabled) { setTracking(initialState); return undefined; }
-    let disposed = false, landmarker, frameId = 0, lastVideoTime = -1, stableFrames = 0, missedFrames = 0;
+    let disposed = false, landmarker, frameId = 0, lastVideoTime = -1, stableFrames = 0, missedFrames = 0, lastInference = -Infinity, lastUi = -Infinity;
     let smoothFace, smoothInstrument, smoothLeftStick, smoothRightStick;
     setTracking({...initialState, status: 'loading', detail: 'MediaPipe 모델 불러오는 중'});
 
@@ -30,11 +32,12 @@ export default function useFaceTracking(videoRef, enabled) {
 
     const loop = () => {
       if (disposed) return;
-      const video = videoRef.current;
-      if (landmarker && video?.readyState >= HTMLMediaElement.HAVE_CURRENT_DATA && video.currentTime !== lastVideoTime) {
-        lastVideoTime = video.currentTime;
+      const video = videoRef.current, now = performance.now();
+      if (!document.hidden && !video?.paused && now - lastInference >= motionConfig.inferenceIntervalMs && landmarker && video?.readyState >= HTMLMediaElement.HAVE_CURRENT_DATA && video.currentTime !== lastVideoTime) {
+        lastVideoTime = video.currentTime; lastInference = now;
         try {
-          const result = landmarker.detectForVideo(video, performance.now());
+          const result = landmarker.detectForVideo(video, now);
+          callbackRef.current?.(result, now, video.videoWidth / video.videoHeight);
           const pose = result.landmarks?.[0];
           const worldPose = result.worldLandmarks?.[0];
           const confidence = pose ? FACE_POINTS.reduce((sum, index) => sum + pointScore(pose[index]), 0) / FACE_POINTS.length : 0;
@@ -63,10 +66,13 @@ export default function useFaceTracking(videoRef, enabled) {
             const rightDrumTarget = {x: screenChestX + instrumentWidth * .24, y: chestY};
             smoothLeftStick = leftArmVisible ? makeStick('left', leftWrist, rightDrumTarget, stickLength, smoothLeftStick) : undefined;
             smoothRightStick = rightArmVisible ? makeStick('right', rightWrist, leftDrumTarget, stickLength, smoothRightStick) : undefined;
-            setTracking({status: stableFrames >= 3 ? 'detected' : 'detecting', face: smoothFace, instrument: smoothInstrument, sticks: {left: smoothLeftStick, right: smoothRightStick}, confidence: Math.round(confidence * 100), detail: '얼굴·어깨·손목 랜드마크 감지됨'});
+            if (now - lastUi >= motionConfig.uiIntervalMs) {
+              lastUi = now;
+              setTracking({status: stableFrames >= 3 ? 'detected' : 'detecting', face: smoothFace, instrument: smoothInstrument, sticks: {left: smoothLeftStick, right: smoothRightStick}, confidence: Math.round(confidence * 100), detail: '얼굴·어깨·손목 랜드마크 감지됨'});
+            }
           } else {
             missedFrames += 1;
-            if (missedFrames >= 4) { stableFrames = 0; smoothFace = undefined; smoothInstrument = undefined; smoothLeftStick = undefined; smoothRightStick = undefined; setTracking({...initialState, status: 'searching', detail: pose ? '얼굴 신뢰도가 낮음' : '신체 랜드마크 없음'}); }
+            if (missedFrames >= 4 && now - lastUi >= motionConfig.uiIntervalMs) { lastUi = now; stableFrames = 0; smoothFace = undefined; smoothInstrument = undefined; smoothLeftStick = undefined; smoothRightStick = undefined; setTracking({...initialState, status: 'searching', detail: pose ? '얼굴 신뢰도가 낮음' : '신체 랜드마크 없음'}); }
           }
         } catch (error) {
           console.error('MediaPipe inference failed:', error);
@@ -86,6 +92,7 @@ export default function useFaceTracking(videoRef, enabled) {
           runningMode: 'VIDEO', numPoses: 1,
           minPoseDetectionConfidence: .35, minPosePresenceConfidence: .35, minTrackingConfidence: .35,
         });
+        if (disposed) { landmarker.close(); return; }
         if (!disposed) { setTracking({...initialState, status: 'searching', detail: '모델 준비 완료'}); loop(); }
       } catch (error) {
         console.error('MediaPipe load failed:', error);
@@ -94,7 +101,7 @@ export default function useFaceTracking(videoRef, enabled) {
     })();
 
     return () => { disposed = true; cancelAnimationFrame(frameId); landmarker?.close(); };
-  }, [videoRef, enabled]);
+  }, [videoRef, enabled, streamKey]);
 
   return tracking;
 }

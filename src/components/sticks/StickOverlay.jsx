@@ -1,8 +1,8 @@
-import React from 'react';
+import React, {forwardRef} from 'react';
 
-export default function StickOverlay({side, style}) {
+const StickOverlay = forwardRef(function StickOverlay({side, style}, ref) {
   const isLeft = side === 'left';
-  return <div className={`stick-overlay ${isLeft ? 'gungulchae' : 'yeolchae'}`} style={style} aria-label={isLeft ? '왼손 궁굴채' : '오른손 열채'}>
+  return <div ref={ref} className={`stick-overlay live-stick ${isLeft ? 'gungulchae' : 'yeolchae'}`} style={{...style, display: 'none'}} aria-label={isLeft ? '왼손 궁굴채' : '오른손 열채'}>
     <div className="stick-shadow"/>
     <div className="stick-shaft shaft-rear"><i/></div>
     <div className="stick-shaft shaft-front"><i/></div>
@@ -12,4 +12,5 @@ export default function StickOverlay({side, style}) {
     {!isLeft && <div className="stick-flat-tip"/>}
     <span>{isLeft ? '궁굴채' : '열채'}</span>
   </div>;
-}
+});
+export default StickOverlay;
