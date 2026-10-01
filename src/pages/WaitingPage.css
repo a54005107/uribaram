@@ -40,7 +40,11 @@
   color: inherit;
   -webkit-tap-highlight-color: transparent;
 }
-.waiting-flag img { display: block; }
+.waiting-flag img {
+  display: block;
+  transform-origin: 35% 4%;
+  pointer-events: none;
+}
 .waiting-flag:focus-visible { outline: 6px dashed var(--uribaram-color-brown); outline-offset: 12px; }
 .waiting-sr-only {
   position: absolute;
