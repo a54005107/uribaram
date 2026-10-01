@@ -87,7 +87,7 @@ export default function Home() {
     <p className="waiting-instruction">마우스를 움직여 바람을 일으켜 보세요</p>
     <div className="waiting-artwork" style={{top: layout.top, transform: `translateX(-50%) scale(${layout.scale})`}}>
       <img className="waiting-pole" src="/assets/figma/flag/pole/waiting-screen/original.svg" width="390" height="1768" alt="" draggable="false"/>
-      <button className="waiting-flag" aria-label="우리바람 체험 시작하기" title="깃발을 눌러 시작하기" onClick={() => navigate('/trumpet')}>
+      <button className="waiting-flag" aria-label="우리바람 제목 화면으로 이동" title="깃발을 눌러 시작하기" onClick={() => navigate('/title')}>
         <img ref={flagRef} src="/assets/figma/flag/logo/screen/original.svg" width="615" height="1226" alt="" draggable="false"/>
       </button>
     </div>

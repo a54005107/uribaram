@@ -1,6 +1,7 @@
 import React from 'react';
 import {Navigate, Route, Routes} from 'react-router-dom';
 import Home from './pages/Home';
+import TitlePage from './pages/TitlePage';
 import TrumpetPage from './pages/TrumpetPage';
 import FlagPage from './pages/FlagPage';
 import EndingPage from './pages/EndingPage';
@@ -12,6 +13,7 @@ import FullscreenButton from './components/FullscreenButton';
 export default function App() {
   return <CameraProvider><FullscreenButton/><Routes>
     <Route path="/" element={<Home/>}/>
+    <Route path="/title" element={<TitlePage/>}/>
     <Route path="/trumpet" element={<TrumpetPage/>}/>
     <Route path="/flag" element={<FlagPage/>}/>
     <Route path="/camera" element={<CameraSetup/>}/>
