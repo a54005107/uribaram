@@ -40,6 +40,39 @@
   -webkit-tap-highlight-color: transparent;
 }
 .trumpet-instrument img { display: block; }
+.trumpet-instrument[aria-disabled="true"] { cursor: default; }
+.trumpet-progress {
+  position: absolute;
+  z-index: 2;
+  left: 5.714286%;
+  bottom: 4%;
+  margin: 0;
+  font-size: clamp(14px, 1.5vw, 22px);
+}
+.trumpet-sparkles {
+  position: absolute;
+  left: 1374px;
+  top: 510px;
+  pointer-events: none;
+}
+.trumpet-sparkle {
+  position: absolute;
+  clip-path: polygon(50% 0%, 62% 36%, 100% 50%, 62% 64%, 50% 100%, 38% 64%, 0% 50%, 38% 36%);
+  animation: trumpet-sparkle-fall 1.4s both;
+}
+@keyframes trumpet-sparkle-fall {
+  0% { opacity: 0; transform: translate(-50%, -50%) scale(.2); animation-timing-function: ease-out; }
+  12% { opacity: 1; }
+  40% { opacity: 1; transform: translate(var(--burst-x), var(--burst-y)) rotate(var(--spin)) scale(1); animation-timing-function: ease-in; }
+  100% { opacity: 0; transform: translate(var(--burst-x), var(--fall-y)) rotate(420deg) scale(.5); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .trumpet-sparkle { animation-name: trumpet-sparkle-fade; }
+}
+@keyframes trumpet-sparkle-fade {
+  0%, 100% { opacity: 0; transform: translate(var(--burst-x), var(--burst-y)); }
+  20%, 70% { opacity: 1; transform: translate(var(--burst-x), var(--burst-y)); }
+}
 .trumpet-instrument:focus-visible {
   outline: none;
   filter: drop-shadow(0 0 8px var(--uribaram-color-brown));
