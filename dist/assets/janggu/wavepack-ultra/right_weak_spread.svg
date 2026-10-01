@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1200">
+<defs>
+  <linearGradient id="metalOuter" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#fff8dc"/><stop offset=".14" stop-color="#f0cc79"/>
+    <stop offset=".34" stop-color="#84521a"/><stop offset=".52" stop-color="#f7dfa2"/>
+    <stop offset=".72" stop-color="#654015"/><stop offset="1" stop-color="#fff1b8"/>
+  </linearGradient>
+  <linearGradient id="metalInner" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#353a46"/><stop offset=".45" stop-color="#10131a"/><stop offset="1" stop-color="#06070b"/>
+  </linearGradient>
+  <linearGradient id="lightLine" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#fffef8"/><stop offset=".18" stop-color="#fff0bd"/>
+    <stop offset=".5" stop-color="#efb74b"/><stop offset=".78" stop-color="#ffd972"/><stop offset="1" stop-color="#fffdf4"/>
+  </linearGradient>
+  <filter id="glow" x="-100%" y="-100%" width="300%" height="300%">
+    <feGaussianBlur stdDeviation="13" result="b"/>
+    <feColorMatrix in="b" type="matrix" values="1 0 0 0 .95 0 .68 0 0 .48 0 0 .08 0 .05 0 0 0 1 0" result="gold"/>
+    <feMerge><feMergeNode in="gold"/><feMergeNode in="SourceGraphic"/></feMerge>
+  </filter>
+  <filter id="coreGlow" x="-100%" y="-100%" width="300%" height="300%">
+    <feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+  </filter>
+  <filter id="shadow" x="-50%" y="-50%" width="200%" height="200%">
+    <feDropShadow dx="0" dy="18" stdDeviation="22" flood-color="#000" flood-opacity=".55"/>
+  </filter>
+</defs>
+
+<g id="janggu-root">
+  <g id="top-rim" filter="url(#shadow)">
+    <ellipse cx="500" cy="196" rx="356" ry="104" fill="url(#metalInner)" stroke="url(#metalOuter)" stroke-width="16"/>
+    <ellipse cx="500" cy="187" rx="315" ry="74" fill="#12151c" stroke="#efd18e" stroke-width="4"/>
+    <ellipse cx="500" cy="184" rx="272" ry="46" fill="#07090d" stroke="#5c421f" stroke-width="3"/>
+    <path d="M215 182 C305 124 695 124 785 182" fill="none" stroke="#fff0b6" stroke-opacity=".28" stroke-width="7"/>
+  </g>
+
+  <g id="wave-halos" fill="none" stroke="#e8a93f" stroke-width="18" stroke-linecap="round" opacity=".18" filter="url(#glow)">
+    <path d="M204 260 C204.0 410 204.0 520 204.0 595 C204.0 675 204.0 790 204 928"/><path d="M250 260 C250.0 410 250.1 520 250.0 595 C250.0 675 250.0 790 250 928"/><path d="M298 260 C298.1 410 298.2 520 298.0 595 C297.9 675 298.0 790 298 928"/><path d="M348 260 C348.2 410 348.4 520 348.1 595 C347.8 675 347.9 790 348 928"/><path d="M400 260 C400.4 410 401.0 520 400.3 595 C399.4 675 399.8 790 400 928"/><path d="M452 260 C452.8 410 454.2 520 452.5 595 C450.8 675 451.6 790 452 928"/><path d="M484 260 C485.4 410 488.1 520 485.0 595 C481.8 675 483.3 790 484 928"/><path d="M516 260 C518.4 410 522.8 520 517.7 595 C512.3 675 514.8 790 516 928"/><path d="M548 260 C551.5 410 558.1 520 550.5 595 C542.4 675 546.2 790 548 928"/><path d="M600 260 C604.7 410 613.4 520 603.4 595 C592.6 675 597.6 790 600 928"/><path d="M652 260 C657.6 410 667.9 520 656.0 595 C643.3 675 649.1 790 652 928"/><path d="M702 260 C707.9 410 718.8 520 706.2 595 C692.7 675 699.0 790 702 928"/><path d="M750 260 C755.6 410 765.9 520 754.0 595 C741.3 675 747.1 790 750 928"/><path d="M796 260 C800.7 410 809.4 520 799.4 595 C788.6 675 793.6 790 796 928"/>
+  </g>
+
+  <g id="wave-lines" fill="none" stroke="url(#lightLine)" stroke-width="9" stroke-linecap="round" filter="url(#glow)">
+    <path id="line-01" d="M204 260 C204.0 410 204.0 520 204.0 595 C204.0 675 204.0 790 204 928"/><path id="line-02" d="M250 260 C250.0 410 250.1 520 250.0 595 C250.0 675 250.0 790 250 928"/><path id="line-03" d="M298 260 C298.1 410 298.2 520 298.0 595 C297.9 675 298.0 790 298 928"/><path id="line-04" d="M348 260 C348.2 410 348.4 520 348.1 595 C347.8 675 347.9 790 348 928"/><path id="line-05" d="M400 260 C400.4 410 401.0 520 400.3 595 C399.4 675 399.8 790 400 928"/><path id="line-06" d="M452 260 C452.8 410 454.2 520 452.5 595 C450.8 675 451.6 790 452 928"/><path id="line-07" d="M484 260 C485.4 410 488.1 520 485.0 595 C481.8 675 483.3 790 484 928"/><path id="line-08" d="M516 260 C518.4 410 522.8 520 517.7 595 C512.3 675 514.8 790 516 928"/><path id="line-09" d="M548 260 C551.5 410 558.1 520 550.5 595 C542.4 675 546.2 790 548 928"/><path id="line-10" d="M600 260 C604.7 410 613.4 520 603.4 595 C592.6 675 597.6 790 600 928"/><path id="line-11" d="M652 260 C657.6 410 667.9 520 656.0 595 C643.3 675 649.1 790 652 928"/><path id="line-12" d="M702 260 C707.9 410 718.8 520 706.2 595 C692.7 675 699.0 790 702 928"/><path id="line-13" d="M750 260 C755.6 410 765.9 520 754.0 595 C741.3 675 747.1 790 750 928"/><path id="line-14" d="M796 260 C800.7 410 809.4 520 799.4 595 C788.6 675 793.6 790 796 928"/>
+  </g>
+
+  <g id="line-cores" fill="none" stroke="#fffdf8" stroke-width="2.8" stroke-linecap="round" opacity=".94" filter="url(#coreGlow)">
+    <path d="M204 260 C204.0 410 204.0 520 204.0 595 C204.0 675 204.0 790 204 928"/><path d="M250 260 C250.0 410 250.1 520 250.0 595 C250.0 675 250.0 790 250 928"/><path d="M298 260 C298.1 410 298.2 520 298.0 595 C297.9 675 298.0 790 298 928"/><path d="M348 260 C348.2 410 348.4 520 348.1 595 C347.8 675 347.9 790 348 928"/><path d="M400 260 C400.4 410 401.0 520 400.3 595 C399.4 675 399.8 790 400 928"/><path d="M452 260 C452.8 410 454.2 520 452.5 595 C450.8 675 451.6 790 452 928"/><path d="M484 260 C485.4 410 488.1 520 485.0 595 C481.8 675 483.3 790 484 928"/><path d="M516 260 C518.4 410 522.8 520 517.7 595 C512.3 675 514.8 790 516 928"/><path d="M548 260 C551.5 410 558.1 520 550.5 595 C542.4 675 546.2 790 548 928"/><path d="M600 260 C604.7 410 613.4 520 603.4 595 C592.6 675 597.6 790 600 928"/><path d="M652 260 C657.6 410 667.9 520 656.0 595 C643.3 675 649.1 790 652 928"/><path d="M702 260 C707.9 410 718.8 520 706.2 595 C692.7 675 699.0 790 702 928"/><path d="M750 260 C755.6 410 765.9 520 754.0 595 C741.3 675 747.1 790 750 928"/><path d="M796 260 C800.7 410 809.4 520 799.4 595 C788.6 675 793.6 790 796 928"/>
+  </g>
+
+  <g id="bottom-rim" filter="url(#shadow)">
+    <ellipse cx="500" cy="996" rx="356" ry="104" fill="url(#metalInner)" stroke="url(#metalOuter)" stroke-width="16"/>
+    <ellipse cx="500" cy="1005" rx="315" ry="74" fill="#12151c" stroke="#efd18e" stroke-width="4"/>
+    <ellipse cx="500" cy="1008" rx="272" ry="46" fill="#07090d" stroke="#5c421f" stroke-width="3"/>
+    <path d="M215 1010 C305 1068 695 1068 785 1010" fill="none" stroke="#fff0b6" stroke-opacity=".22" stroke-width="7"/>
+  </g>
+
+  <g id="hit-feedback" opacity="0.55">
+    <circle cx="780" cy="595" r="29.7" fill="none" stroke="#ff5a67" stroke-width="6"/>
+    <circle cx="780" cy="595" r="16.3" fill="#ff5a67" fill-opacity=".08" stroke="#ff5a67" stroke-opacity=".35" stroke-width="3"/>
+  </g>
+
+  <circle id="center-anchor" cx="500" cy="595" r="12" fill="#ff477e" opacity="0"/>
+  <circle id="left-hit-anchor" cx="220" cy="595" r="12" fill="#5aa9ff" opacity="0"/>
+  <circle id="right-hit-anchor" cx="780" cy="595" r="12" fill="#ff5a67" opacity="0"/>
+</g>
+</svg>

@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>우리바람 네온 장구 파동 데모</title>
+<style>
+  body{margin:0;background:#090b10;color:#f7f0dc;font-family:system-ui,sans-serif;display:grid;place-items:center;min-height:100vh}
+  .wrap{width:min(920px,94vw)}
+  .toolbar{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px}
+  button,select{background:#171a22;color:#fff;border:1px solid #3d4250;border-radius:10px;padding:10px 14px}
+  img{width:100%;display:block;border-radius:18px;background:radial-gradient(circle at 50% 45%,#171c27 0,#0b0d12 55%,#050609 100%)}
+  .hint{opacity:.72;font-size:14px;margin-top:10px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="toolbar">
+    <select id="side"><option value="left">왼쪽 타격</option><option value="right">오른쪽 타격</option></select>
+    <select id="strength"><option value="weak">약하게</option><option value="normal" selected>보통</option><option value="strong">강하게</option></select>
+    <button id="hit">타격 재생</button>
+  </div>
+  <img id="frame" src="left_normal_idle.svg" alt="네온 장구 파동 데모"/>
+  <div class="hint">idle → impact → spread → peak → return → idle 순서로 재생됩니다.</div>
+</div>
+<script>
+const frame=document.getElementById('frame');
+const side=document.getElementById('side');
+const strength=document.getElementById('strength');
+const hit=document.getElementById('hit');
+const seq=[['impact',70],['spread',95],['peak',120],['return',140],['idle',150]];
+let playing=false;
+hit.addEventListener('click', async()=>{
+  if(playing)return;
+  playing=true;
+  const s=side.value, p=strength.value;
+  for(const [stage,ms] of seq){
+    frame.src=`${s}_${p}_${stage}.svg`;
+    await new Promise(r=>setTimeout(r,ms));
+  }
+  playing=false;
+});
+</script>
+</body>
+</html>
