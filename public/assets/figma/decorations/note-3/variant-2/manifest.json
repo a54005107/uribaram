@@ -1,0 +1,73 @@
+{
+  "source": "decorations/note-3/variant-2/original.svg",
+  "sourceNodeId": "2028:456",
+  "sourcePageId": "1878:783",
+  "sourceName": "Property 1=Variant2",
+  "sourceSha256": "2ef70da66fc250562c1ec4fa57e25aa7636542dda0392f9c9deb5836e90ef82b",
+  "viewBox": "0 0 99 188",
+  "parts": [
+    {
+      "id": "decoration-001-cyan",
+      "file": "parts/decoration-001-cyan.svg",
+      "category": "decoration",
+      "zIndex": 0,
+      "svgElementIndex": 0,
+      "fill": null,
+      "stroke": "#50E6FF",
+      "transform": null,
+      "viewBox": "0 0 99 188",
+      "bounds": {
+        "x": 29.32131576538086,
+        "y": 5.850009918212891,
+        "width": 28.188682556152344,
+        "height": 118.7699966430664
+      },
+      "pivot": {
+        "x": 43.41565704345703,
+        "y": 65.2350082397461
+      }
+    },
+    {
+      "id": "decoration-002-green",
+      "file": "parts/decoration-002-green.svg",
+      "category": "decoration",
+      "zIndex": 1,
+      "svgElementIndex": 1,
+      "fill": "#13BA14",
+      "stroke": null,
+      "transform": null,
+      "viewBox": "0 0 99 188",
+      "bounds": {
+        "x": 0,
+        "y": 88.93000030517578,
+        "width": 98.56999969482422,
+        "height": 98.57999420166016
+      },
+      "pivot": {
+        "x": 49.28499984741211,
+        "y": 138.21999740600586
+      }
+    },
+    {
+      "id": "decoration-003-green",
+      "file": "parts/decoration-003-green.svg",
+      "category": "decoration",
+      "zIndex": 2,
+      "svgElementIndex": 2,
+      "fill": "#13BA14",
+      "stroke": null,
+      "transform": null,
+      "viewBox": "0 0 99 188",
+      "bounds": {
+        "x": 0,
+        "y": 88.93000030517578,
+        "width": 98.56999969482422,
+        "height": 98.57999420166016
+      },
+      "pivot": {
+        "x": 49.28499984741211,
+        "y": 138.21999740600586
+      }
+    }
+  ]
+}

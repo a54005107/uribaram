@@ -1,0 +1,37 @@
+/* Figma style page 0:1. Opt-in tokens; no font files or global typography applied. */
+:root {
+  --uribaram-font-family: "Chai Hwaljjak", sans-serif;
+  --uribaram-color-cyan: #50E6FF;
+  --uribaram-color-pink: #FF6CF1;
+  --uribaram-color-yellow: #FFEB36;
+  --uribaram-color-green: #13BA14;
+  --uribaram-color-blue: #3373ED;
+  --uribaram-color-red: #FF3364;
+  --uribaram-color-charcoal: #2C2C2E;
+  --uribaram-color-off-white: #F9F9F9;
+  --uribaram-color-brown: #481100;
+  --uribaram-type-t-size: 64px;
+  --uribaram-type-t-weight: 800;
+  --uribaram-type-t-line-height: 1.1;
+  --uribaram-type-t-letter-spacing: -0.02em;
+  --uribaram-type-h1-size: 48px;
+  --uribaram-type-h1-weight: 700;
+  --uribaram-type-h1-line-height: 1.2;
+  --uribaram-type-h1-letter-spacing: -0.01em;
+  --uribaram-type-h2-size: 36px;
+  --uribaram-type-h2-weight: 700;
+  --uribaram-type-h2-line-height: 1.3;
+  --uribaram-type-h2-letter-spacing: 0em;
+  --uribaram-type-b1-size: 28px;
+  --uribaram-type-b1-weight: 500;
+  --uribaram-type-b1-line-height: 1.5;
+  --uribaram-type-b1-letter-spacing: 0em;
+  --uribaram-type-b2-size: 22px;
+  --uribaram-type-b2-weight: 400;
+  --uribaram-type-b2-line-height: 1.5;
+  --uribaram-type-b2-letter-spacing: 0em;
+  --uribaram-type-caption-size: 18px;
+  --uribaram-type-caption-weight: 400;
+  --uribaram-type-caption-line-height: 1.4;
+  --uribaram-type-caption-letter-spacing: 0em;
+}

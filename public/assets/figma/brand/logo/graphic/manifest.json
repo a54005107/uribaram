@@ -1,0 +1,178 @@
+{
+  "source": "brand/logo/graphic/original.svg",
+  "sourceNodeId": "2271:3228",
+  "sourcePageId": "1878:783",
+  "sourceName": "로고_스트록",
+  "sourceSha256": "c3c122442c05307f48d3bab380fa2025186c46ea0b37a58ae1902e19e308a3fc",
+  "viewBox": "0 0 737 274",
+  "parts": [
+    {
+      "id": "lettering-001-f9f9f9",
+      "file": "parts/lettering-001-f9f9f9.svg",
+      "category": "lettering",
+      "zIndex": 0,
+      "svgElementIndex": 0,
+      "fill": "#F9F9F9",
+      "stroke": null,
+      "transform": null,
+      "viewBox": "0 0 737 274",
+      "bounds": {
+        "x": -1.3113021850585938e-06,
+        "y": 0,
+        "width": 736.9998779296875,
+        "height": 274
+      },
+      "pivot": {
+        "x": 368.49993765354156,
+        "y": 137
+      }
+    },
+    {
+      "id": "lettering-002-yellow",
+      "file": "parts/lettering-002-yellow.svg",
+      "category": "lettering",
+      "zIndex": 1,
+      "svgElementIndex": 1,
+      "fill": "#FFEB36",
+      "stroke": null,
+      "transform": null,
+      "viewBox": "0 0 737 274",
+      "bounds": {
+        "x": 9.000003814697266,
+        "y": 12,
+        "width": 717,
+        "height": 250
+      },
+      "pivot": {
+        "x": 367.50000381469727,
+        "y": 137
+      }
+    },
+    {
+      "id": "lettering-003-brown",
+      "file": "parts/lettering-003-brown.svg",
+      "category": "lettering",
+      "zIndex": 2,
+      "svgElementIndex": 2,
+      "fill": "#481100",
+      "stroke": null,
+      "transform": null,
+      "viewBox": "0 0 737 274",
+      "bounds": {
+        "x": 533,
+        "y": 23.00002098083496,
+        "width": 187.00006103515625,
+        "height": 227.00001525878906
+      },
+      "pivot": {
+        "x": 626.5000305175781,
+        "y": 136.5000286102295
+      }
+    },
+    {
+      "id": "lettering-004-brown",
+      "file": "parts/lettering-004-brown.svg",
+      "category": "lettering",
+      "zIndex": 3,
+      "svgElementIndex": 3,
+      "fill": "#481100",
+      "stroke": null,
+      "transform": null,
+      "viewBox": "0 0 737 274",
+      "bounds": {
+        "x": 44.99999237060547,
+        "y": 18.999984741210938,
+        "width": 132.99993896484375,
+        "height": 103.00003051757812
+      },
+      "pivot": {
+        "x": 111.49996185302734,
+        "y": 70.5
+      }
+    },
+    {
+      "id": "lettering-005-brown",
+      "file": "parts/lettering-005-brown.svg",
+      "category": "lettering",
+      "zIndex": 4,
+      "svgElementIndex": 4,
+      "fill": "#481100",
+      "stroke": null,
+      "transform": null,
+      "viewBox": "0 0 737 274",
+      "bounds": {
+        "x": 16.999998092651367,
+        "y": 111.99991607666016,
+        "width": 180.0001983642578,
+        "height": 142.00039672851562
+      },
+      "pivot": {
+        "x": 107.00009727478027,
+        "y": 183.00011444091797
+      }
+    },
+    {
+      "id": "lettering-006-brown",
+      "file": "parts/lettering-006-brown.svg",
+      "category": "lettering",
+      "zIndex": 5,
+      "svgElementIndex": 5,
+      "fill": "#481100",
+      "stroke": null,
+      "transform": null,
+      "viewBox": "0 0 737 274",
+      "bounds": {
+        "x": 172.99961853027344,
+        "y": 22.999996185302734,
+        "width": 206.00038146972656,
+        "height": 226.9999542236328
+      },
+      "pivot": {
+        "x": 275.9998092651367,
+        "y": 136.49997329711914
+      }
+    },
+    {
+      "id": "lettering-007-brown",
+      "file": "parts/lettering-007-brown.svg",
+      "category": "lettering",
+      "zIndex": 6,
+      "svgElementIndex": 6,
+      "fill": "#481100",
+      "stroke": null,
+      "transform": null,
+      "viewBox": "0 0 737 274",
+      "bounds": {
+        "x": 444.000244140625,
+        "y": 22.999980926513672,
+        "width": 106.9993896484375,
+        "height": 227.00013732910156
+      },
+      "pivot": {
+        "x": 497.49993896484375,
+        "y": 136.50004959106445
+      }
+    },
+    {
+      "id": "lettering-008-brown",
+      "file": "parts/lettering-008-brown.svg",
+      "category": "lettering",
+      "zIndex": 7,
+      "svgElementIndex": 7,
+      "fill": "#481100",
+      "stroke": null,
+      "transform": null,
+      "viewBox": "0 0 737 274",
+      "bounds": {
+        "x": 342.9996337890625,
+        "y": 23.0000057220459,
+        "width": 139.00051879882812,
+        "height": 199.9998321533203
+      },
+      "pivot": {
+        "x": 412.49989318847656,
+        "y": 122.99992179870605
+      }
+    }
+  ]
+}

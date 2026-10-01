@@ -1,0 +1,57 @@
+/* Original Figma frame: 2240 × 1260. Assets retain their intrinsic SVG geometry. */
+.waiting-page {
+  position: relative;
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
+  background: linear-gradient(180deg, var(--uribaram-color-yellow) 60.876%, #fff 100%);
+  color: var(--uribaram-color-brown);
+}
+.waiting-instruction {
+  position: absolute;
+  z-index: 2;
+  top: 6.349206%;
+  left: 5.714286%;
+  max-width: 88.571428%;
+  margin: 0;
+  font-family: var(--uribaram-font-family);
+  font-size: clamp(12px, 2.222222svh, 28px);
+  font-weight: var(--uribaram-type-b1-weight);
+  line-height: var(--uribaram-type-b1-line-height);
+  letter-spacing: var(--uribaram-type-b1-letter-spacing);
+}
+.waiting-artwork {
+  position: absolute;
+  left: 50%;
+  width: 2240px;
+  height: 1260px;
+  transform-origin: top center;
+}
+.waiting-pole { position: absolute; left: 839px; top: -187px; pointer-events: none; }
+.waiting-flag {
+  position: absolute;
+  left: 867px;
+  top: 146px;
+  width: 615px;
+  height: 1226px;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  -webkit-tap-highlight-color: transparent;
+}
+.waiting-flag img { display: block; }
+.waiting-flag:focus-visible { outline: 6px dashed var(--uribaram-color-brown); outline-offset: 12px; }
+.waiting-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+@media (max-aspect-ratio: 3/4) {
+  .waiting-instruction { top: 24px; left: 24px; max-width: calc(100% - 48px); font-size: 14px; }
+}

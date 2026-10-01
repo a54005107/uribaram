@@ -1,0 +1,470 @@
+{
+  "typography": [
+    {
+      "label": "T",
+      "nodeId": "1971:2122",
+      "segments": [
+        {
+          "characters": "우리바람",
+          "start": 0,
+          "end": 4,
+          "fontSize": 64,
+          "fontName": {
+            "family": "Chai Hwaljjak",
+            "style": "Heavy"
+          },
+          "fontWeight": 800,
+          "textDecoration": "NONE",
+          "textCase": "ORIGINAL",
+          "lineHeight": {
+            "unit": "PERCENT",
+            "value": 110.00000238418579
+          },
+          "letterSpacing": {
+            "unit": "PERCENT",
+            "value": -2
+          },
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0,
+                "g": 0,
+                "b": 0
+              },
+              "boundVariables": {}
+            }
+          ]
+        }
+      ],
+      "paragraphSpacing": 0,
+      "textAlignHorizontal": "LEFT"
+    },
+    {
+      "label": "H1",
+      "nodeId": "1971:2123",
+      "segments": [
+        {
+          "characters": "우리바람",
+          "start": 0,
+          "end": 4,
+          "fontSize": 48,
+          "fontName": {
+            "family": "Chai Hwaljjak",
+            "style": "Bold"
+          },
+          "fontWeight": 700,
+          "textDecoration": "NONE",
+          "textCase": "ORIGINAL",
+          "lineHeight": {
+            "unit": "PERCENT",
+            "value": 120.00000476837158
+          },
+          "letterSpacing": {
+            "unit": "PERCENT",
+            "value": -1
+          },
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0,
+                "g": 0,
+                "b": 0
+              },
+              "boundVariables": {}
+            }
+          ]
+        }
+      ],
+      "paragraphSpacing": 0,
+      "textAlignHorizontal": "LEFT"
+    },
+    {
+      "label": "H2",
+      "nodeId": "1971:2124",
+      "segments": [
+        {
+          "characters": "우리바람",
+          "start": 0,
+          "end": 4,
+          "fontSize": 36,
+          "fontName": {
+            "family": "Chai Hwaljjak",
+            "style": "Bold"
+          },
+          "fontWeight": 700,
+          "textDecoration": "NONE",
+          "textCase": "ORIGINAL",
+          "lineHeight": {
+            "unit": "PERCENT",
+            "value": 129.99999523162842
+          },
+          "letterSpacing": {
+            "unit": "PERCENT",
+            "value": 0
+          },
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0,
+                "g": 0,
+                "b": 0
+              },
+              "boundVariables": {}
+            }
+          ]
+        }
+      ],
+      "paragraphSpacing": 0,
+      "textAlignHorizontal": "LEFT"
+    },
+    {
+      "label": "B1",
+      "nodeId": "1971:2125",
+      "segments": [
+        {
+          "characters": "우리바람",
+          "start": 0,
+          "end": 4,
+          "fontSize": 28,
+          "fontName": {
+            "family": "Chai Hwaljjak",
+            "style": "Medium"
+          },
+          "fontWeight": 500,
+          "textDecoration": "NONE",
+          "textCase": "ORIGINAL",
+          "lineHeight": {
+            "unit": "PERCENT",
+            "value": 150
+          },
+          "letterSpacing": {
+            "unit": "PERCENT",
+            "value": 0
+          },
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0,
+                "g": 0,
+                "b": 0
+              },
+              "boundVariables": {}
+            }
+          ]
+        }
+      ],
+      "paragraphSpacing": 0,
+      "textAlignHorizontal": "LEFT"
+    },
+    {
+      "label": "B2",
+      "nodeId": "1971:2126",
+      "segments": [
+        {
+          "characters": "우리바람",
+          "start": 0,
+          "end": 4,
+          "fontSize": 22,
+          "fontName": {
+            "family": "Chai Hwaljjak",
+            "style": "Regular"
+          },
+          "fontWeight": 400,
+          "textDecoration": "NONE",
+          "textCase": "ORIGINAL",
+          "lineHeight": {
+            "unit": "PERCENT",
+            "value": 150
+          },
+          "letterSpacing": {
+            "unit": "PERCENT",
+            "value": 0
+          },
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0,
+                "g": 0,
+                "b": 0
+              },
+              "boundVariables": {}
+            }
+          ]
+        }
+      ],
+      "paragraphSpacing": 0,
+      "textAlignHorizontal": "LEFT"
+    },
+    {
+      "label": "Caption",
+      "nodeId": "1971:2127",
+      "segments": [
+        {
+          "characters": "우리바람",
+          "start": 0,
+          "end": 4,
+          "fontSize": 18,
+          "fontName": {
+            "family": "Chai Hwaljjak",
+            "style": "Regular"
+          },
+          "fontWeight": 400,
+          "textDecoration": "NONE",
+          "textCase": "ORIGINAL",
+          "lineHeight": {
+            "unit": "PERCENT",
+            "value": 139.9999976158142
+          },
+          "letterSpacing": {
+            "unit": "PERCENT",
+            "value": 0
+          },
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0,
+                "g": 0,
+                "b": 0
+              },
+              "boundVariables": {}
+            }
+          ]
+        }
+      ],
+      "paragraphSpacing": 0,
+      "textAlignHorizontal": "LEFT"
+    }
+  ],
+  "colors": [
+    {
+      "nodeId": "5:18",
+      "label": "#50E6FF",
+      "fills": [
+        {
+          "type": "SOLID",
+          "visible": true,
+          "opacity": 1,
+          "blendMode": "NORMAL",
+          "color": {
+            "r": 0.3137255012989044,
+            "g": 0.9019607901573181,
+            "b": 1
+          },
+          "boundVariables": {}
+        }
+      ],
+      "opacity": 1
+    },
+    {
+      "nodeId": "1981:2204",
+      "label": "#FF6CF1",
+      "fills": [
+        {
+          "type": "SOLID",
+          "visible": true,
+          "opacity": 1,
+          "blendMode": "NORMAL",
+          "color": {
+            "r": 1,
+            "g": 0.42352941632270813,
+            "b": 0.9450980424880981
+          },
+          "boundVariables": {
+            "color": {
+              "type": "VARIABLE_ALIAS",
+              "id": "VariableID:46:17"
+            }
+          }
+        }
+      ],
+      "opacity": 1
+    },
+    {
+      "nodeId": "1981:2207",
+      "label": "#FFEB36",
+      "fills": [
+        {
+          "type": "SOLID",
+          "visible": true,
+          "opacity": 1,
+          "blendMode": "NORMAL",
+          "color": {
+            "r": 1,
+            "g": 0.9215686321258545,
+            "b": 0.21176470816135406
+          },
+          "boundVariables": {
+            "color": {
+              "type": "VARIABLE_ALIAS",
+              "id": "VariableID:46:15"
+            }
+          }
+        }
+      ],
+      "opacity": 1
+    },
+    {
+      "nodeId": "1981:2210",
+      "label": "#FFEB36",
+      "fills": [
+        {
+          "type": "SOLID",
+          "visible": true,
+          "opacity": 1,
+          "blendMode": "NORMAL",
+          "color": {
+            "r": 0.07450980693101883,
+            "g": 0.729411780834198,
+            "b": 0.0784313753247261
+          },
+          "boundVariables": {
+            "color": {
+              "type": "VARIABLE_ALIAS",
+              "id": "VariableID:46:18"
+            }
+          }
+        }
+      ],
+      "opacity": 1
+    },
+    {
+      "nodeId": "1981:2213",
+      "label": "#3373ED",
+      "fills": [
+        {
+          "type": "SOLID",
+          "visible": true,
+          "opacity": 1,
+          "blendMode": "NORMAL",
+          "color": {
+            "r": 0.20000000298023224,
+            "g": 0.45098039507865906,
+            "b": 0.929411768913269
+          },
+          "boundVariables": {
+            "color": {
+              "type": "VARIABLE_ALIAS",
+              "id": "VariableID:46:19"
+            }
+          }
+        }
+      ],
+      "opacity": 1
+    },
+    {
+      "nodeId": "1981:2216",
+      "label": "#FF3364",
+      "fills": [
+        {
+          "type": "SOLID",
+          "visible": true,
+          "opacity": 1,
+          "blendMode": "NORMAL",
+          "color": {
+            "r": 1,
+            "g": 0.20000000298023224,
+            "b": 0.3921568691730499
+          },
+          "boundVariables": {
+            "color": {
+              "type": "VARIABLE_ALIAS",
+              "id": "VariableID:46:20"
+            }
+          }
+        }
+      ],
+      "opacity": 1
+    },
+    {
+      "nodeId": "1981:2219",
+      "label": "#2C2C2E",
+      "fills": [
+        {
+          "type": "SOLID",
+          "visible": true,
+          "opacity": 1,
+          "blendMode": "NORMAL",
+          "color": {
+            "r": 0.1725490242242813,
+            "g": 0.1725490242242813,
+            "b": 0.18039216101169586
+          },
+          "boundVariables": {
+            "color": {
+              "type": "VARIABLE_ALIAS",
+              "id": "VariableID:46:21"
+            }
+          }
+        }
+      ],
+      "opacity": 1
+    },
+    {
+      "nodeId": "1981:2222",
+      "label": "#F9F9F9",
+      "fills": [
+        {
+          "type": "SOLID",
+          "visible": true,
+          "opacity": 1,
+          "blendMode": "NORMAL",
+          "color": {
+            "r": 0.9749473929405212,
+            "g": 0.9749473929405212,
+            "b": 0.9749473929405212
+          },
+          "boundVariables": {}
+        }
+      ],
+      "opacity": 1
+    },
+    {
+      "nodeId": "1981:2225",
+      "label": "#481100",
+      "fills": [
+        {
+          "type": "SOLID",
+          "visible": true,
+          "opacity": 1,
+          "blendMode": "NORMAL",
+          "color": {
+            "r": 0.2823529541492462,
+            "g": 0.06666667014360428,
+            "b": 0
+          },
+          "boundVariables": {
+            "color": {
+              "type": "VARIABLE_ALIAS",
+              "id": "VariableID:46:14"
+            }
+          }
+        }
+      ],
+      "opacity": 1
+    }
+  ]
+}

@@ -1,0 +1,115 @@
+{
+  "source": "headwear/gokkal/default/original.svg",
+  "sourceNodeId": "1981:2277",
+  "sourcePageId": "1878:783",
+  "sourceName": "고깔",
+  "sourceSha256": "ed6c621852fe380eb578faddfcfefac116f841eb2362b5a53767bcbfe725d263",
+  "viewBox": "0 0 302 273",
+  "parts": [
+    {
+      "id": "detail-001-pink",
+      "file": "parts/detail-001-pink.svg",
+      "category": "detail",
+      "zIndex": 0,
+      "svgElementIndex": 0,
+      "fill": "#FF6CF1",
+      "stroke": null,
+      "transform": null,
+      "viewBox": "0 0 302 273",
+      "bounds": {
+        "x": 21.680200576782227,
+        "y": 164.77999877929688,
+        "width": 255.55978393554688,
+        "height": 107.510009765625
+      },
+      "pivot": {
+        "x": 149.46009254455566,
+        "y": 218.53500366210938
+      }
+    },
+    {
+      "id": "detail-002-red",
+      "file": "parts/detail-002-red.svg",
+      "category": "detail",
+      "zIndex": 1,
+      "svgElementIndex": 1,
+      "fill": "#FF3364",
+      "stroke": null,
+      "transform": null,
+      "viewBox": "0 0 302 273",
+      "bounds": {
+        "x": 71.85009765625,
+        "y": 0,
+        "width": 155.21990966796875,
+        "height": 152.47999572753906
+      },
+      "pivot": {
+        "x": 149.46005249023438,
+        "y": 76.23999786376953
+      }
+    },
+    {
+      "id": "detail-003-yellow",
+      "file": "parts/detail-003-yellow.svg",
+      "category": "detail",
+      "zIndex": 2,
+      "svgElementIndex": 2,
+      "fill": "#FFEB36",
+      "stroke": null,
+      "transform": null,
+      "viewBox": "0 0 302 273",
+      "bounds": {
+        "x": 152.5800018310547,
+        "y": 86.69999694824219,
+        "width": 148.97999572753906,
+        "height": 150.80999755859375
+      },
+      "pivot": {
+        "x": 227.06999969482422,
+        "y": 162.10499572753906
+      }
+    },
+    {
+      "id": "detail-004-yellow",
+      "file": "parts/detail-004-yellow.svg",
+      "category": "detail",
+      "zIndex": 3,
+      "svgElementIndex": 3,
+      "fill": "#FFEB36",
+      "stroke": null,
+      "transform": null,
+      "viewBox": "0 0 302 273",
+      "bounds": {
+        "x": 0,
+        "y": 92.04000091552734,
+        "width": 143.6999969482422,
+        "height": 145.4700164794922
+      },
+      "pivot": {
+        "x": 71.8499984741211,
+        "y": 164.77500915527344
+      }
+    },
+    {
+      "id": "detail-005-white",
+      "file": "parts/detail-005-white.svg",
+      "category": "detail",
+      "zIndex": 4,
+      "svgElementIndex": 4,
+      "fill": "white",
+      "stroke": null,
+      "transform": null,
+      "viewBox": "0 0 302 273",
+      "bounds": {
+        "x": 72.64009857177734,
+        "y": 57.150001525878906,
+        "width": 153.7499237060547,
+        "height": 155.63999938964844
+      },
+      "pivot": {
+        "x": 149.5150604248047,
+        "y": 134.97000122070312
+      }
+    }
+  ]
+}

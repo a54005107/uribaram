@@ -1,0 +1,115 @@
+{
+  "source": "flag/pole/graphic/original.svg",
+  "sourceNodeId": "2007:2783",
+  "sourcePageId": "1878:783",
+  "sourceName": "장대",
+  "sourceSha256": "1225dca9f27dcdab2fecdd270a46a4348e79d5042efa52274447fc1ced1f417d",
+  "viewBox": "0 0 161 730",
+  "parts": [
+    {
+      "id": "pole-segment-001-brown",
+      "file": "parts/pole-segment-001-brown.svg",
+      "category": "pole-segment",
+      "zIndex": 0,
+      "svgElementIndex": 0,
+      "fill": null,
+      "stroke": "#481100",
+      "transform": null,
+      "viewBox": "0 0 161 730",
+      "bounds": {
+        "x": 3.1999499797821045,
+        "y": 10.179900169372559,
+        "width": 91.09004974365234,
+        "height": 718.610107421875
+      },
+      "pivot": {
+        "x": 48.744974851608276,
+        "y": 369.48495388031006
+      }
+    },
+    {
+      "id": "pole-segment-002-brown",
+      "file": "parts/pole-segment-002-brown.svg",
+      "category": "pole-segment",
+      "zIndex": 1,
+      "svgElementIndex": 1,
+      "fill": null,
+      "stroke": "#481100",
+      "transform": null,
+      "viewBox": "0 0 161 730",
+      "bounds": {
+        "x": 55.8400993347168,
+        "y": 88.90989685058594,
+        "width": 88.93989562988281,
+        "height": 74.57009887695312
+      },
+      "pivot": {
+        "x": 100.3100471496582,
+        "y": 126.1949462890625
+      }
+    },
+    {
+      "id": "pole-segment-003-brown",
+      "file": "parts/pole-segment-003-brown.svg",
+      "category": "pole-segment",
+      "zIndex": 2,
+      "svgElementIndex": 2,
+      "fill": null,
+      "stroke": "#481100",
+      "transform": null,
+      "viewBox": "0 0 161 730",
+      "bounds": {
+        "x": 43.02000045776367,
+        "y": 145.07000732421875,
+        "width": 117.1199951171875,
+        "height": 18.729995727539062
+      },
+      "pivot": {
+        "x": 101.57999801635742,
+        "y": 154.43500518798828
+      }
+    },
+    {
+      "id": "pole-segment-004-brown",
+      "file": "parts/pole-segment-004-brown.svg",
+      "category": "pole-segment",
+      "zIndex": 3,
+      "svgElementIndex": 3,
+      "fill": null,
+      "stroke": "#481100",
+      "transform": null,
+      "viewBox": "0 0 161 730",
+      "bounds": {
+        "x": 94.29000091552734,
+        "y": 1.2700200080871582,
+        "width": 22.419998168945312,
+        "height": 52.539981842041016
+      },
+      "pivot": {
+        "x": 105.5,
+        "y": 27.540010929107666
+      }
+    },
+    {
+      "id": "pole-segment-005-brown",
+      "file": "parts/pole-segment-005-brown.svg",
+      "category": "pole-segment",
+      "zIndex": 4,
+      "svgElementIndex": 4,
+      "fill": null,
+      "stroke": "#481100",
+      "transform": null,
+      "viewBox": "0 0 161 730",
+      "bounds": {
+        "x": 73.15989685058594,
+        "y": 4.959959983825684,
+        "width": 51.55010223388672,
+        "height": 48.850040435791016
+      },
+      "pivot": {
+        "x": 98.9349479675293,
+        "y": 29.38498020172119
+      }
+    }
+  ]
+}

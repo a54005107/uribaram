@@ -1,0 +1,49 @@
+/* Figma's 2240 x 1260 frame; preserve the exported SVG's geometry. */
+.trumpet-page {
+  position: relative;
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
+  background: linear-gradient(180deg, var(--uribaram-color-cyan) 60.876%, #fff 100%);
+  color: var(--uribaram-color-brown);
+}
+.trumpet-instruction {
+  position: absolute;
+  z-index: 2;
+  top: 81.269841%;
+  left: 5.714286%;
+  margin: 0;
+  font-family: var(--uribaram-font-family);
+  font-size: clamp(14px, 2.857143svh, 36px);
+  font-weight: var(--uribaram-type-h2-weight);
+  line-height: var(--uribaram-type-h2-line-height);
+  letter-spacing: var(--uribaram-type-h2-letter-spacing);
+}
+.trumpet-artwork {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 2240px;
+  height: 1260px;
+  transform-origin: bottom right;
+}
+.trumpet-instrument {
+  position: absolute;
+  left: 946px;
+  top: 256px;
+  width: 1633px;
+  height: 1572px;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  -webkit-tap-highlight-color: transparent;
+}
+.trumpet-instrument img { display: block; }
+.trumpet-instrument:focus-visible {
+  outline: none;
+  filter: drop-shadow(0 0 8px var(--uribaram-color-brown));
+}
+@media (max-aspect-ratio: 3/4) {
+  .trumpet-instruction { top: 24px; left: 24px; font-size: 18px; }
+}

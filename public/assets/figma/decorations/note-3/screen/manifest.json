@@ -1,0 +1,73 @@
+{
+  "source": "decorations/note-3/screen/original.svg",
+  "sourceNodeId": "2028:489",
+  "sourcePageId": "1823:2",
+  "sourceName": "음표3",
+  "sourceSha256": "9dc0ea7c1119e05371af71f06011324c0456f0644f42f60b96715953f80a358b",
+  "viewBox": "0 0 296 261",
+  "parts": [
+    {
+      "id": "decoration-001-pink",
+      "file": "parts/decoration-001-pink.svg",
+      "category": "decoration",
+      "zIndex": 0,
+      "svgElementIndex": 0,
+      "fill": null,
+      "stroke": "#FF6CF1",
+      "transform": null,
+      "viewBox": "0 0 296 261",
+      "bounds": {
+        "x": 40.122501373291016,
+        "y": 69.34349822998047,
+        "width": 149.75450134277344,
+        "height": 75.53897857666016
+      },
+      "pivot": {
+        "x": 114.99975204467773,
+        "y": 107.11298751831055
+      }
+    },
+    {
+      "id": "decoration-002-blue",
+      "file": "parts/decoration-002-blue.svg",
+      "category": "decoration",
+      "zIndex": 1,
+      "svgElementIndex": 1,
+      "fill": "#3373ED",
+      "stroke": null,
+      "transform": null,
+      "viewBox": "0 0 296 261",
+      "bounds": {
+        "x": 129.1540069580078,
+        "y": 94.30110168457031,
+        "width": 140.4340057373047,
+        "height": 140.42190551757812
+      },
+      "pivot": {
+        "x": 199.37100982666016,
+        "y": 164.51205444335938
+      }
+    },
+    {
+      "id": "decoration-003-blue",
+      "file": "parts/decoration-003-blue.svg",
+      "category": "decoration",
+      "zIndex": 2,
+      "svgElementIndex": 2,
+      "fill": "#3373ED",
+      "stroke": null,
+      "transform": null,
+      "viewBox": "0 0 296 261",
+      "bounds": {
+        "x": 129.1540069580078,
+        "y": 94.30110168457031,
+        "width": 140.4340057373047,
+        "height": 140.42190551757812
+      },
+      "pivot": {
+        "x": 199.37100982666016,
+        "y": 164.51205444335938
+      }
+    }
+  ]
+}

@@ -1,0 +1,543 @@
+{
+  "fileKey": "K4cBqqg0jvcXERg5vESRI9",
+  "exportSettings": {
+    "format": "SVG_STRING",
+    "contentsOnly": true,
+    "useAbsoluteBounds": true,
+    "svgOutlineText": true
+  },
+  "assets": [
+    {
+      "path": "flag/logo/screen/original.svg",
+      "nodeId": "2028:167",
+      "name": "농기_blue",
+      "viewBox": "0 0 615 1226",
+      "bytes": 11373,
+      "folder": "flag/logo/screen",
+      "pageNodeId": "1823:2",
+      "classificationKey": "flag/flag-logo.svg",
+      "partCount": 29
+    },
+    {
+      "path": "flag/pole/waiting-screen/original.svg",
+      "nodeId": "2028:161",
+      "name": "장대",
+      "viewBox": "0 0 390 1768",
+      "bytes": 847,
+      "folder": "flag/pole/waiting-screen",
+      "pageNodeId": "1823:2",
+      "classificationKey": "flag/pole-waiting.svg",
+      "partCount": 5
+    },
+    {
+      "path": "flag/pole/input-screen/original.svg",
+      "nodeId": "2177:1226",
+      "name": "깃대",
+      "viewBox": "0 0 426 1524",
+      "bytes": 982,
+      "folder": "flag/pole/input-screen",
+      "pageNodeId": "1823:2",
+      "classificationKey": "flag/pole-input.svg",
+      "partCount": 8
+    },
+    {
+      "path": "flag/input/screen/original.svg",
+      "nodeId": "2177:1384",
+      "name": "바람 입력 농기",
+      "viewBox": "0 0 580 1062",
+      "bytes": 2730,
+      "folder": "flag/input/screen",
+      "pageNodeId": "1823:2",
+      "classificationKey": "flag/flag-input.svg",
+      "partCount": 28
+    },
+    {
+      "path": "flag/lettering/screen/original.svg",
+      "nodeId": "2028:3279",
+      "name": "우리바람",
+      "viewBox": "0 0 215 706",
+      "bytes": 6520,
+      "folder": "flag/lettering/screen",
+      "pageNodeId": "1823:2",
+      "classificationKey": "flag/lettering-vertical.svg",
+      "partCount": 4
+    },
+    {
+      "path": "brand/logo/screen/original.svg",
+      "nodeId": "2028:847",
+      "name": "로고_스트록",
+      "viewBox": "0 0 877 326",
+      "bytes": 27702,
+      "folder": "brand/logo/screen",
+      "pageNodeId": "1823:2",
+      "classificationKey": "brand/logo.svg",
+      "partCount": 8
+    },
+    {
+      "path": "brand/logo-small/screen/original.svg",
+      "nodeId": "2271:3241",
+      "name": "로고_원형",
+      "viewBox": "0 0 192 65",
+      "bytes": 9004,
+      "folder": "brand/logo-small/screen",
+      "pageNodeId": "1823:2",
+      "classificationKey": "brand/logo-small.svg",
+      "partCount": 6
+    },
+    {
+      "path": "instruments/trumpet/screen/original.svg",
+      "nodeId": "2158:945",
+      "name": "나팔1",
+      "viewBox": "0 0 1633 1572",
+      "bytes": 25910,
+      "folder": "instruments/trumpet/screen",
+      "pageNodeId": "1823:2",
+      "classificationKey": "instruments/trumpet.svg",
+      "partCount": 38
+    },
+    {
+      "path": "instruments/janggu/screen/original.svg",
+      "nodeId": "2142:4914",
+      "name": "장구",
+      "viewBox": "0 0 1480 1285",
+      "bytes": 28616,
+      "folder": "instruments/janggu/screen",
+      "pageNodeId": "1823:2",
+      "classificationKey": "instruments/janggu.svg",
+      "partCount": 44
+    },
+    {
+      "path": "instruments/sogo/screen/original.svg",
+      "nodeId": "2142:5174",
+      "name": "소고",
+      "viewBox": "0 0 854 851",
+      "bytes": 9306,
+      "folder": "instruments/sogo/screen",
+      "pageNodeId": "1823:2",
+      "classificationKey": "instruments/sogo.svg",
+      "partCount": 15
+    },
+    {
+      "path": "instruments/buk/screen/original.svg",
+      "nodeId": "2142:5307",
+      "name": "북",
+      "viewBox": "0 0 1227 1193",
+      "bytes": 14236,
+      "folder": "instruments/buk/screen",
+      "pageNodeId": "1823:2",
+      "classificationKey": "instruments/buk.svg",
+      "partCount": 25
+    },
+    {
+      "path": "instruments/kkwaenggwari/screen/original.svg",
+      "nodeId": "2142:4067",
+      "name": "꽹과리",
+      "viewBox": "0 0 1047 955",
+      "bytes": 8958,
+      "folder": "instruments/kkwaenggwari/screen",
+      "pageNodeId": "1823:2",
+      "classificationKey": "instruments/kkwaenggwari.svg",
+      "partCount": 13
+    },
+    {
+      "path": "instruments/jing/screen/original.svg",
+      "nodeId": "2142:5045",
+      "name": "징",
+      "viewBox": "0 0 1156 904",
+      "bytes": 8917,
+      "folder": "instruments/jing/screen",
+      "pageNodeId": "1823:2",
+      "classificationKey": "instruments/jing.svg",
+      "partCount": 14
+    },
+    {
+      "path": "decorations/note-1/screen/original.svg",
+      "nodeId": "2028:570",
+      "name": "음표1",
+      "viewBox": "0 0 314 329",
+      "bytes": 1590,
+      "folder": "decorations/note-1/screen",
+      "pageNodeId": "1823:2",
+      "classificationKey": "decorations/note-1.svg",
+      "partCount": 2
+    },
+    {
+      "path": "decorations/note-2/screen/original.svg",
+      "nodeId": "2028:548",
+      "name": "음표2",
+      "viewBox": "0 0 228 246",
+      "bytes": 1554,
+      "folder": "decorations/note-2/screen",
+      "pageNodeId": "1823:2",
+      "classificationKey": "decorations/note-2.svg",
+      "partCount": 2
+    },
+    {
+      "path": "decorations/note-3/screen/original.svg",
+      "nodeId": "2028:489",
+      "name": "음표3",
+      "viewBox": "0 0 296 261",
+      "bytes": 2619,
+      "folder": "decorations/note-3/screen",
+      "pageNodeId": "1823:2",
+      "classificationKey": "decorations/note-3.svg",
+      "partCount": 3
+    },
+    {
+      "path": "decorations/sparkle/screen/original.svg",
+      "nodeId": "2028:449",
+      "name": "Vector",
+      "viewBox": "0 0 70 70",
+      "bytes": 1156,
+      "folder": "decorations/sparkle/screen",
+      "pageNodeId": "1823:2",
+      "classificationKey": "decorations/sparkle.svg",
+      "partCount": 1
+    },
+    {
+      "folder": "brand/eolssigu/graphic",
+      "nodeId": "2271:3230",
+      "name": "얼씨구좋다",
+      "path": "brand/eolssigu/graphic/original.svg",
+      "pageNodeId": "1878:783",
+      "partCount": 6,
+      "viewBox": "0 0 684 612",
+      "bytes": 18682
+    },
+    {
+      "folder": "headwear/sangmo/variant-2",
+      "nodeId": "1887:1034",
+      "name": "상모2",
+      "path": "headwear/sangmo/variant-2/original.svg",
+      "pageNodeId": "1878:783",
+      "partCount": 20,
+      "viewBox": "0 0 731 648",
+      "bytes": 11285
+    },
+    {
+      "folder": "headwear/sangmo/default",
+      "nodeId": "1887:1057",
+      "name": "상모1",
+      "path": "headwear/sangmo/default/original.svg",
+      "pageNodeId": "1878:783",
+      "partCount": 38,
+      "viewBox": "0 0 723 651",
+      "bytes": 9805
+    },
+    {
+      "folder": "flag/waving/graphic",
+      "nodeId": "1887:1099",
+      "name": "농기흔들림고정",
+      "path": "flag/waving/graphic/original.svg",
+      "pageNodeId": "1878:783",
+      "partCount": 31,
+      "viewBox": "0 0 597 1256",
+      "bytes": 14271
+    },
+    {
+      "folder": "brand/logo/graphic",
+      "nodeId": "2271:3228",
+      "name": "로고_스트록",
+      "path": "brand/logo/graphic/original.svg",
+      "pageNodeId": "1878:783",
+      "partCount": 8,
+      "viewBox": "0 0 737 274",
+      "bytes": 27618
+    },
+    {
+      "folder": "brand/logo-small/graphic",
+      "nodeId": "2271:3229",
+      "name": "로고_원형",
+      "path": "brand/logo-small/graphic/original.svg",
+      "pageNodeId": "1878:783",
+      "partCount": 6,
+      "viewBox": "0 0 703 235",
+      "bytes": 8974
+    },
+    {
+      "folder": "headwear/gokkal/default",
+      "nodeId": "1981:2277",
+      "name": "고깔",
+      "path": "headwear/gokkal/default/original.svg",
+      "pageNodeId": "1878:783",
+      "partCount": 5,
+      "viewBox": "0 0 302 273",
+      "bytes": 4152
+    },
+    {
+      "folder": "decorations/particle/default",
+      "nodeId": "1981:2318",
+      "name": "파티클",
+      "path": "decorations/particle/default/original.svg",
+      "pageNodeId": "1878:783",
+      "partCount": 1,
+      "viewBox": "0 0 99 99",
+      "bytes": 865
+    },
+    {
+      "folder": "flag/logo/default",
+      "nodeId": "1999:2353",
+      "name": "Property 1=Default",
+      "path": "flag/logo/default/original.svg",
+      "pageNodeId": "1878:783",
+      "partCount": 29,
+      "viewBox": "0 0 428 1149",
+      "bytes": 9678
+    },
+    {
+      "folder": "flag/logo/variant-2",
+      "nodeId": "1999:2385",
+      "name": "Property 1=Variant2",
+      "path": "flag/logo/variant-2/original.svg",
+      "pageNodeId": "1878:783",
+      "partCount": 29,
+      "viewBox": "0 0 428 1149",
+      "bytes": 9678
+    },
+    {
+      "folder": "flag/logo/variant-3",
+      "nodeId": "1999:2415",
+      "name": "Property 1=Variant3",
+      "path": "flag/logo/variant-3/original.svg",
+      "pageNodeId": "1878:783",
+      "partCount": 29,
+      "viewBox": "0 0 428 1149",
+      "bytes": 9678
+    },
+    {
+      "folder": "flag/pole/graphic",
+      "nodeId": "2007:2783",
+      "name": "장대",
+      "path": "flag/pole/graphic/original.svg",
+      "pageNodeId": "1878:783",
+      "partCount": 5,
+      "viewBox": "0 0 161 730",
+      "bytes": 836
+    },
+    {
+      "folder": "decorations/note-3/default",
+      "nodeId": "2028:454",
+      "name": "Property 1=Default",
+      "path": "decorations/note-3/default/original.svg",
+      "pageNodeId": "1878:783",
+      "partCount": 3,
+      "viewBox": "0 0 99 188",
+      "bytes": 2100
+    },
+    {
+      "folder": "decorations/note-3/variant-2",
+      "nodeId": "2028:456",
+      "name": "Property 1=Variant2",
+      "path": "decorations/note-3/variant-2/original.svg",
+      "pageNodeId": "1878:783",
+      "partCount": 3,
+      "viewBox": "0 0 99 188",
+      "bytes": 2100
+    },
+    {
+      "folder": "decorations/note-2/default",
+      "nodeId": "2028:465",
+      "name": "Property 1=Default",
+      "path": "decorations/note-2/default/original.svg",
+      "pageNodeId": "1878:783",
+      "partCount": 2,
+      "viewBox": "0 0 99 188",
+      "bytes": 1256
+    },
+    {
+      "folder": "decorations/note-2/variant-2",
+      "nodeId": "2028:469",
+      "name": "Property 1=Variant2",
+      "path": "decorations/note-2/variant-2/original.svg",
+      "pageNodeId": "1878:783",
+      "partCount": 2,
+      "viewBox": "0 0 99 188",
+      "bytes": 1256
+    },
+    {
+      "folder": "decorations/note-1/default",
+      "nodeId": "2028:473",
+      "name": "Property 1=Default",
+      "path": "decorations/note-1/default/original.svg",
+      "pageNodeId": "1878:783",
+      "partCount": 2,
+      "viewBox": "0 0 158 180",
+      "bytes": 1290
+    },
+    {
+      "folder": "decorations/note-1/variant-2",
+      "nodeId": "2028:475",
+      "name": "Property 1=Variant2",
+      "path": "decorations/note-1/variant-2/original.svg",
+      "pageNodeId": "1878:783",
+      "partCount": 2,
+      "viewBox": "0 0 158 180",
+      "bytes": 1290
+    },
+    {
+      "folder": "instruments/trumpet/graphic",
+      "nodeId": "2158:1020",
+      "name": "나팔1",
+      "path": "instruments/trumpet/graphic/original.svg",
+      "pageNodeId": "1878:783",
+      "partCount": 38,
+      "viewBox": "0 0 1633 1572",
+      "bytes": 25912
+    },
+    {
+      "folder": "flag/input/red",
+      "nodeId": "2177:1166",
+      "name": "Property 1=red",
+      "path": "flag/input/red/original.svg",
+      "pageNodeId": "1878:783",
+      "partCount": 28,
+      "viewBox": "0 0 580 1062",
+      "bytes": 2735
+    },
+    {
+      "folder": "flag/input/blue",
+      "nodeId": "2177:1168",
+      "name": "Property 1=blue",
+      "path": "flag/input/blue/original.svg",
+      "pageNodeId": "1878:783",
+      "partCount": 28,
+      "viewBox": "0 0 580 1062",
+      "bytes": 2735
+    },
+    {
+      "folder": "flag/input/yellow",
+      "nodeId": "2177:1197",
+      "name": "Property 1=yellow",
+      "path": "flag/input/yellow/original.svg",
+      "pageNodeId": "1878:783",
+      "partCount": 28,
+      "viewBox": "0 0 580 1062",
+      "bytes": 2735
+    },
+    {
+      "folder": "ui/submit/default",
+      "nodeId": "2199:2131",
+      "name": "Property 1=기본",
+      "path": "ui/submit/default/original.svg",
+      "pageNodeId": "1878:783",
+      "partCount": 1,
+      "viewBox": "0 0 194 57",
+      "bytes": 4104
+    },
+    {
+      "folder": "ui/submit/hover",
+      "nodeId": "2199:2133",
+      "name": "Property 1=호버",
+      "path": "ui/submit/hover/original.svg",
+      "pageNodeId": "1878:783",
+      "partCount": 1,
+      "viewBox": "0 0 194 58",
+      "bytes": 4104
+    },
+    {
+      "folder": "instruments/janggu/default",
+      "nodeId": "2199:2279",
+      "name": "Property 1=Default",
+      "path": "instruments/janggu/default/original.svg",
+      "pageNodeId": "1878:783",
+      "partCount": 44,
+      "viewBox": "0 0 1037 1368",
+      "bytes": 28416
+    },
+    {
+      "folder": "instruments/janggu/variant-2",
+      "nodeId": "2199:2984",
+      "name": "Property 1=Variant2",
+      "path": "instruments/janggu/variant-2/original.svg",
+      "pageNodeId": "1878:783",
+      "partCount": 44,
+      "viewBox": "0 0 1037 1368",
+      "bytes": 28436
+    },
+    {
+      "folder": "instruments/jing/default",
+      "nodeId": "2142:3760",
+      "name": "Property 1=Default",
+      "path": "instruments/jing/default/original.svg",
+      "pageNodeId": "1878:783",
+      "partCount": 14,
+      "viewBox": "0 0 1164 887",
+      "bytes": 8904
+    },
+    {
+      "folder": "instruments/jing/variant-2",
+      "nodeId": "2199:3099",
+      "name": "Property 1=Variant2",
+      "path": "instruments/jing/variant-2/original.svg",
+      "pageNodeId": "1878:783",
+      "partCount": 14,
+      "viewBox": "0 0 1164 887",
+      "bytes": 8915
+    },
+    {
+      "folder": "instruments/sogo/default",
+      "nodeId": "2142:3740",
+      "name": "Property 1=Default",
+      "path": "instruments/sogo/default/original.svg",
+      "pageNodeId": "1878:783",
+      "partCount": 15,
+      "viewBox": "0 0 949 953",
+      "bytes": 9529
+    },
+    {
+      "folder": "instruments/sogo/variant-2",
+      "nodeId": "2199:2480",
+      "name": "Property 1=Variant2",
+      "path": "instruments/sogo/variant-2/original.svg",
+      "pageNodeId": "1878:783",
+      "partCount": 15,
+      "viewBox": "0 0 948 953",
+      "bytes": 9544
+    },
+    {
+      "folder": "instruments/kkwaenggwari/default",
+      "nodeId": "2142:3826",
+      "name": "Property 1=Default",
+      "path": "instruments/kkwaenggwari/default/original.svg",
+      "pageNodeId": "1878:783",
+      "partCount": 13,
+      "viewBox": "0 0 992 894",
+      "bytes": 8893
+    },
+    {
+      "folder": "instruments/kkwaenggwari/variant-2",
+      "nodeId": "2199:2764",
+      "name": "Property 1=Variant2",
+      "path": "instruments/kkwaenggwari/variant-2/original.svg",
+      "pageNodeId": "1878:783",
+      "partCount": 13,
+      "viewBox": "0 0 992 894",
+      "bytes": 9030
+    },
+    {
+      "folder": "instruments/buk/default",
+      "nodeId": "2142:3722",
+      "name": "Property 1=Default",
+      "path": "instruments/buk/default/original.svg",
+      "pageNodeId": "1878:783",
+      "partCount": 25,
+      "viewBox": "0 0 1005 955",
+      "bytes": 14228
+    },
+    {
+      "folder": "instruments/buk/variant-2",
+      "nodeId": "2199:2831",
+      "name": "Property 1=Variant2",
+      "path": "instruments/buk/variant-2/original.svg",
+      "pageNodeId": "1878:783",
+      "partCount": 25,
+      "viewBox": "0 0 1005 955",
+      "bytes": 14234
+    }
+  ],
+  "schemaVersion": 2,
+  "pageNodeIds": [
+    "1823:2",
+    "1878:783"
+  ]
+}

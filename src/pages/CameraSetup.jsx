@@ -14,7 +14,7 @@ export default function CameraSetup() {
   return <main className="setup-page">
     <header className="minimal-bar"><button onClick={() => navigate('/')}><ArrowLeft/> 처음으로</button><b>카메라 확인</b><span/></header>
     <section className="setup-content">
-      <div className="setup-copy"><span>STEP 1</span><h1>사용할 카메라를 선택해주세요</h1><p>카메라가 여러 개라면 목록에서 내 모습이 보이는 장치를 선택할 수 있습니다.</p></div>
+      <div className="setup-copy"><span>카메라 준비</span><h1>사용할 카메라를 선택해주세요</h1><p>카메라가 여러 개라면 목록에서 내 모습이 보이는 장치를 선택할 수 있습니다.</p></div>
       <label className="camera-selector"><span>카메라 장치</span><div><select value={deviceId} onChange={changeCamera} disabled={status === 'loading'}><option value="">기본 카메라</option>{devices.map((device, index) => <option key={device.deviceId} value={device.deviceId}>{device.label || `카메라 ${index + 1}`}</option>)}</select><ChevronDown/></div></label>
       <div className={'camera-card ' + (status === 'ready' ? 'live' : '')}>
         <video ref={videoRef} autoPlay muted playsInline/>
