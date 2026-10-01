@@ -57,9 +57,9 @@
 }
 .trumpet-sparkle {
   position: absolute;
-  clip-path: polygon(50% 0%, 62% 36%, 100% 50%, 62% 64%, 50% 100%, 38% 64%, 0% 50%, 38% 36%);
   animation: trumpet-sparkle-fall 1.4s both;
 }
+.trumpet-sparkle img { display: block; max-width: none; }
 @keyframes trumpet-sparkle-fall {
   0% { opacity: 0; transform: translate(-50%, -50%) scale(.2); animation-timing-function: ease-out; }
   12% { opacity: 1; }

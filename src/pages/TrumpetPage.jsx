@@ -3,6 +3,23 @@ import {useNavigate} from 'react-router-dom';
 import '../../public/assets/figma/styles/tokens.css';
 import './TrumpetPage.css';
 
+// Figma 2028:241: center positions and intrinsic SVG dimensions on the 2240 x 1260 frame.
+const TRUMPET_DECORATIONS = [
+  ['67302', 496.5, 39.5, 177, 177],
+  ['60ecc', 39.5, 629.5, 177, 177],
+  ['34f53', 1155, 291, 70, 70],
+  ['6c84a', 787, 591, 70, 70],
+  ['4ef79', 1421, 195, 70, 70],
+  ['68a49', 310, 450, 70, 70],
+  ['8505e', 155, 879, 70, 70],
+  ['905fb', 604.51, 359.08, 138.005, 262.501, -56.42],
+  ['c5e75', 1276.87, 104.72, 101.554, 193.166, 168.6],
+  ['72c55', 154.89, 128, 155.429, 295.644, 40.3],
+  ['104f5', 1032.69, 595.8, 116, 221, 37.95],
+  ['7d4a0', 924.51, 173.47, 225.35, 258.062, -24.89],
+  ['b8b41', 470.75, 673.7, 164.236, 188.077, 38.35],
+];
+
 export default function TrumpetPage() {
   const navigate = useNavigate();
   const pageRef = useRef(null);
@@ -19,18 +36,12 @@ export default function TrumpetPage() {
     busy.current = true;
     const next = count + 1;
     setCount(next);
-    setBurst(Array.from({length: 24}, (_, index) => {
-      const angle = (-175 + Math.random() * 155) * Math.PI / 180;
-      const distance = 220 + Math.random() * 500;
-      return {
-        x: Math.cos(angle) * distance,
-        y: Math.sin(angle) * distance,
-        fall: 500 + Math.random() * 400,
-        size: 22 + Math.random() * 28,
-        color: ['#FFEB36', '#FF3364', '#3373ED', '#13BA14', '#FF6CF1'][index % 5],
-        rotation: Math.random() * 360,
-      };
-    }));
+    setBurst(TRUMPET_DECORATIONS.map(([asset, x, y, width, height, rotation = 0]) => ({
+      asset, width, height, rotation,
+      x: x - 1374 - width / 2,
+      y: y - 510 - height / 2,
+      fall: 500 + Math.random() * 400,
+    })));
     timer.current = setTimeout(() => {
       if (next === 3) {
         navigate('/flag');
@@ -66,9 +77,13 @@ export default function TrumpetPage() {
       {burst && <div className="trumpet-sparkles" key={count} aria-hidden="true">
         {burst.map((particle, index) => <i key={index} className="trumpet-sparkle" style={{
           '--burst-x': `${particle.x}px`, '--burst-y': `${particle.y}px`,
-          '--fall-y': `${particle.y + particle.fall}px`, '--spin': `${particle.rotation}deg`,
-          width: particle.size, height: particle.size, background: particle.color,
-        }}/>) }
+          '--fall-y': `${particle.y + particle.fall}px`, '--spin': '0deg',
+          width: particle.width, height: particle.height,
+        }}>
+          <img src={`/assets/figma/decorations/trumpet-burst/${particle.asset}.svg`}
+            width={particle.width} height={particle.height} alt="" draggable="false"
+            style={{transform: `rotate(${particle.rotation}deg)`}} />
+        </i>) }
       </div>}
     </div>
   </main>;
