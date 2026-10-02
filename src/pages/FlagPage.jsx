@@ -35,7 +35,7 @@ export default function FlagPage() {
     if (composing.current || event.nativeEvent.isComposing) return;
     sessionStorage.setItem('uribaram-flag-message', limitMessage(message));
     sessionStorage.setItem('uribaram-flag-color', color);
-    navigate('/camera');
+    navigate('/loading');
   };
   return <main ref={pageRef} className="page flag-page" aria-label="깃발 문구 입력">
     <form className="flag-form" onSubmit={next}>

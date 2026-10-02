@@ -1,0 +1,304 @@
+{
+  "source": "instruments/jing/screen/original.svg",
+  "sourceNodeId": "2142:5045",
+  "sourcePageId": "1823:2",
+  "sourceName": "징",
+  "sourceSha256": "c530bfb9605fd8cea8d08ecb9ec57f93556d3ae4236750d5ddca94cc6c5a1657",
+  "viewBox": "0 0 1156 904",
+  "parts": [
+    {
+      "id": "ring-001-pink",
+      "file": "parts/ring-001-pink.svg",
+      "category": "ring",
+      "zIndex": 0,
+      "svgElementIndex": 0,
+      "fill": "#FF6CF1",
+      "stroke": null,
+      "transform": null,
+      "viewBox": "0 0 1156 904",
+      "bounds": {
+        "x": 484.64520263671875,
+        "y": 118.7072982788086,
+        "width": 476.9976806640625,
+        "height": 612.2124633789062
+      },
+      "pivot": {
+        "x": 723.14404296875,
+        "y": 424.8135299682617
+      }
+    },
+    {
+      "id": "ring-002-red",
+      "file": "parts/ring-002-red.svg",
+      "category": "ring",
+      "zIndex": 1,
+      "svgElementIndex": 1,
+      "fill": "#FF3364",
+      "stroke": null,
+      "transform": null,
+      "viewBox": "0 0 1156 904",
+      "bounds": {
+        "x": 488.1633605957031,
+        "y": 129.316650390625,
+        "width": 455.5082702636719,
+        "height": 590.82470703125
+      },
+      "pivot": {
+        "x": 715.9174957275391,
+        "y": 424.72900390625
+      }
+    },
+    {
+      "id": "ring-003-cyan",
+      "file": "parts/ring-003-cyan.svg",
+      "category": "ring",
+      "zIndex": 2,
+      "svgElementIndex": 2,
+      "fill": "#50E6FF",
+      "stroke": null,
+      "transform": null,
+      "viewBox": "0 0 1156 904",
+      "bounds": {
+        "x": 457.2762451171875,
+        "y": 128.00172424316406,
+        "width": 454.56646728515625,
+        "height": 593.0115966796875
+      },
+      "pivot": {
+        "x": 684.5594787597656,
+        "y": 424.5075225830078
+      }
+    },
+    {
+      "id": "ring-004-yellow",
+      "file": "parts/ring-004-yellow.svg",
+      "category": "ring",
+      "zIndex": 3,
+      "svgElementIndex": 3,
+      "fill": "#FFEB36",
+      "stroke": null,
+      "transform": null,
+      "viewBox": "0 0 1156 904",
+      "bounds": {
+        "x": 727.7005615234375,
+        "y": 62.932498931884766,
+        "width": 333.2977294921875,
+        "height": 428.85748291015625
+      },
+      "pivot": {
+        "x": 894.3494262695312,
+        "y": 277.3612403869629
+      }
+    },
+    {
+      "id": "ring-005-blue",
+      "file": "parts/ring-005-blue.svg",
+      "category": "ring",
+      "zIndex": 4,
+      "svgElementIndex": 4,
+      "fill": "#3373ED",
+      "stroke": null,
+      "transform": null,
+      "viewBox": "0 0 1156 904",
+      "bounds": {
+        "x": 409.6097412109375,
+        "y": 110.74518585205078,
+        "width": 486.76153564453125,
+        "height": 627.0396118164062
+      },
+      "pivot": {
+        "x": 652.9905090332031,
+        "y": 424.2649917602539
+      }
+    },
+    {
+      "id": "ring-006-yellow",
+      "file": "parts/ring-006-yellow.svg",
+      "category": "ring",
+      "zIndex": 5,
+      "svgElementIndex": 5,
+      "fill": "#FFEB36",
+      "stroke": null,
+      "transform": null,
+      "viewBox": "0 0 1156 904",
+      "bounds": {
+        "x": 388.21820068359375,
+        "y": 126.09366607666016,
+        "width": 455.431640625,
+        "height": 595.7736206054688
+      },
+      "pivot": {
+        "x": 615.9340209960938,
+        "y": 423.98047637939453
+      }
+    },
+    {
+      "id": "ring-007-red",
+      "file": "parts/ring-007-red.svg",
+      "category": "ring",
+      "zIndex": 6,
+      "svgElementIndex": 6,
+      "fill": "#FF3364",
+      "stroke": null,
+      "transform": null,
+      "viewBox": "0 0 1156 904",
+      "bounds": {
+        "x": 411.436279296875,
+        "y": 155.4222412109375,
+        "width": 408.993408203125,
+        "height": 537.154541015625
+      },
+      "pivot": {
+        "x": 615.9329833984375,
+        "y": 423.99951171875
+      }
+    },
+    {
+      "id": "ring-008-cyan",
+      "file": "parts/ring-008-cyan.svg",
+      "category": "ring",
+      "zIndex": 7,
+      "svgElementIndex": 7,
+      "fill": "#50E6FF",
+      "stroke": null,
+      "transform": null,
+      "viewBox": "0 0 1156 904",
+      "bounds": {
+        "x": 434.3680114746094,
+        "y": 179.955810546875,
+        "width": 363.1319274902344,
+        "height": 488.04937744140625
+      },
+      "pivot": {
+        "x": 615.9339752197266,
+        "y": 423.9804992675781
+      }
+    },
+    {
+      "id": "ring-009-green",
+      "file": "parts/ring-009-green.svg",
+      "category": "ring",
+      "zIndex": 8,
+      "svgElementIndex": 8,
+      "fill": "#13BA14",
+      "stroke": null,
+      "transform": null,
+      "viewBox": "0 0 1156 904",
+      "bounds": {
+        "x": 474.80926513671875,
+        "y": 223.2289276123047,
+        "width": 282.23040771484375,
+        "height": 401.50311279296875
+      },
+      "pivot": {
+        "x": 615.9244689941406,
+        "y": 423.98048400878906
+      }
+    },
+    {
+      "id": "ring-010-yellow",
+      "file": "parts/ring-010-yellow.svg",
+      "category": "ring",
+      "zIndex": 9,
+      "svgElementIndex": 9,
+      "fill": "#FFEB36",
+      "stroke": null,
+      "transform": null,
+      "viewBox": "0 0 1156 904",
+      "bounds": {
+        "x": 490.6077880859375,
+        "y": 247.0823516845703,
+        "width": 243.65435791015625,
+        "height": 353.74237060546875
+      },
+      "pivot": {
+        "x": 612.4349670410156,
+        "y": 423.9535369873047
+      }
+    },
+    {
+      "id": "ring-011-pink",
+      "file": "parts/ring-011-pink.svg",
+      "category": "ring",
+      "zIndex": 10,
+      "svgElementIndex": 10,
+      "fill": "#FF6CF1",
+      "stroke": null,
+      "transform": null,
+      "viewBox": "0 0 1156 904",
+      "bounds": {
+        "x": 510.88623046875,
+        "y": 274.22479248046875,
+        "width": 203.09674072265625,
+        "height": 299.45623779296875
+      },
+      "pivot": {
+        "x": 612.4346008300781,
+        "y": 423.9529113769531
+      }
+    },
+    {
+      "id": "detail-012-red",
+      "file": "parts/detail-012-red.svg",
+      "category": "detail",
+      "zIndex": 11,
+      "svgElementIndex": 11,
+      "fill": "#FF3364",
+      "stroke": null,
+      "transform": null,
+      "viewBox": "0 0 1156 904",
+      "bounds": {
+        "x": 308.27301025390625,
+        "y": 608.0579833984375,
+        "width": 93.92620849609375,
+        "height": 252.7860107421875
+      },
+      "pivot": {
+        "x": 355.2361145019531,
+        "y": 734.4509887695312
+      }
+    },
+    {
+      "id": "detail-013-yellow",
+      "file": "parts/detail-013-yellow.svg",
+      "category": "detail",
+      "zIndex": 12,
+      "svgElementIndex": 12,
+      "fill": "#FFEB36",
+      "stroke": null,
+      "transform": null,
+      "viewBox": "0 0 1156 904",
+      "bounds": {
+        "x": 261.260009765625,
+        "y": 369.37298583984375,
+        "width": 89.74600219726562,
+        "height": 272.17901611328125
+      },
+      "pivot": {
+        "x": 306.1330108642578,
+        "y": 505.4624938964844
+      }
+    },
+    {
+      "id": "detail-014-2c2c2e",
+      "file": "parts/detail-014-2c2c2e.svg",
+      "category": "detail",
+      "zIndex": 13,
+      "svgElementIndex": 13,
+      "fill": "#2C2C2E",
+      "stroke": null,
+      "transform": null,
+      "viewBox": "0 0 1156 904",
+      "bounds": {
+        "x": 203.7233123779297,
+        "y": 262.01385498046875,
+        "width": 148.45936584472656,
+        "height": 150.42825317382812
+      },
+      "pivot": {
+        "x": 277.95299530029297,
+        "y": 337.2279815673828
+      }
+    }
+  ]
+}

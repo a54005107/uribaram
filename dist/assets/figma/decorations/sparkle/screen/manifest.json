@@ -1,0 +1,31 @@
+{
+  "source": "decorations/sparkle/screen/original.svg",
+  "sourceNodeId": "2028:449",
+  "sourcePageId": "1823:2",
+  "sourceName": "Vector",
+  "sourceSha256": "517f32c589b2f45537d515105d55411c765f081bdea0a1292f96b69d990314e6",
+  "viewBox": "0 0 70 70",
+  "parts": [
+    {
+      "id": "decoration-001-green",
+      "file": "parts/decoration-001-green.svg",
+      "category": "decoration",
+      "zIndex": 0,
+      "svgElementIndex": 0,
+      "fill": "#13BA14",
+      "stroke": null,
+      "transform": null,
+      "viewBox": "0 0 70 70",
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 70,
+        "height": 70
+      },
+      "pivot": {
+        "x": 35,
+        "y": 35
+      }
+    }
+  ]
+}

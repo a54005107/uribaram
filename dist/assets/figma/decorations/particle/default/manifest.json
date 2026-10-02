@@ -1,0 +1,31 @@
+{
+  "source": "decorations/particle/default/original.svg",
+  "sourceNodeId": "1981:2318",
+  "sourcePageId": "1878:783",
+  "sourceName": "파티클",
+  "sourceSha256": "09ba6946e4858f25dc66be80323c39a7f91489505b0d85b0c1bdb7528197fd88",
+  "viewBox": "0 0 99 99",
+  "parts": [
+    {
+      "id": "decoration-001-blue",
+      "file": "parts/decoration-001-blue.svg",
+      "category": "decoration",
+      "zIndex": 0,
+      "svgElementIndex": 0,
+      "fill": "#3373ED",
+      "stroke": null,
+      "transform": null,
+      "viewBox": "0 0 99 99",
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 98.56999969482422,
+        "height": 98.58000183105469
+      },
+      "pivot": {
+        "x": 49.28499984741211,
+        "y": 49.290000915527344
+      }
+    }
+  ]
+}

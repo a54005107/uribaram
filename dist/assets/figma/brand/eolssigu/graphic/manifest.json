@@ -1,0 +1,136 @@
+{
+  "source": "brand/eolssigu/graphic/original.svg",
+  "sourceNodeId": "2271:3230",
+  "sourcePageId": "1878:783",
+  "sourceName": "얼씨구좋다",
+  "sourceSha256": "96d57129bdca32f68cc559029308f6e9b2553f7410dbdd46c94dc34af6130dbe",
+  "viewBox": "0 0 684 612",
+  "parts": [
+    {
+      "id": "lettering-001-brown",
+      "file": "parts/lettering-001-brown.svg",
+      "category": "lettering",
+      "zIndex": 0,
+      "svgElementIndex": 0,
+      "fill": "#4F0A00",
+      "stroke": null,
+      "transform": null,
+      "viewBox": "0 0 684 612",
+      "bounds": {
+        "x": 0.021726608276367188,
+        "y": -0.010009801015257835,
+        "width": 683.8640747070312,
+        "height": 611.6199951171875
+      },
+      "pivot": {
+        "x": 341.953763961792,
+        "y": 305.7999877575785
+      }
+    },
+    {
+      "id": "lettering-002-white",
+      "file": "parts/lettering-002-white.svg",
+      "category": "lettering",
+      "zIndex": 1,
+      "svgElementIndex": 1,
+      "fill": "white",
+      "stroke": null,
+      "transform": null,
+      "viewBox": "0 0 684 612",
+      "bounds": {
+        "x": 20.008028030395508,
+        "y": 20.015573501586914,
+        "width": 266.5135803222656,
+        "height": 338.8067321777344
+      },
+      "pivot": {
+        "x": 153.26481819152832,
+        "y": 189.4189395904541
+      }
+    },
+    {
+      "id": "lettering-003-white",
+      "file": "parts/lettering-003-white.svg",
+      "category": "lettering",
+      "zIndex": 2,
+      "svgElementIndex": 2,
+      "fill": "white",
+      "stroke": null,
+      "transform": null,
+      "viewBox": "0 0 684 612",
+      "bounds": {
+        "x": 95.2973403930664,
+        "y": 310.2457580566406,
+        "width": 248.67318725585938,
+        "height": 281.3384094238281
+      },
+      "pivot": {
+        "x": 219.6339340209961,
+        "y": 450.9149627685547
+      }
+    },
+    {
+      "id": "lettering-004-white",
+      "file": "parts/lettering-004-white.svg",
+      "category": "lettering",
+      "zIndex": 3,
+      "svgElementIndex": 3,
+      "fill": "white",
+      "stroke": null,
+      "transform": null,
+      "viewBox": "0 0 684 612",
+      "bounds": {
+        "x": 206.79603576660156,
+        "y": 66.77989959716797,
+        "width": 245.6510772705078,
+        "height": 277.6563415527344
+      },
+      "pivot": {
+        "x": 329.62157440185547,
+        "y": 205.60807037353516
+      }
+    },
+    {
+      "id": "lettering-005-white",
+      "file": "parts/lettering-005-white.svg",
+      "category": "lettering",
+      "zIndex": 4,
+      "svgElementIndex": 4,
+      "fill": "white",
+      "stroke": null,
+      "transform": null,
+      "viewBox": "0 0 684 612",
+      "bounds": {
+        "x": 350.12664794921875,
+        "y": 310.26763916015625,
+        "width": 297.0411376953125,
+        "height": 269.45440673828125
+      },
+      "pivot": {
+        "x": 498.647216796875,
+        "y": 444.9948425292969
+      }
+    },
+    {
+      "id": "lettering-006-white",
+      "file": "parts/lettering-006-white.svg",
+      "category": "lettering",
+      "zIndex": 5,
+      "svgElementIndex": 5,
+      "fill": "white",
+      "stroke": null,
+      "transform": null,
+      "viewBox": "0 0 684 612",
+      "bounds": {
+        "x": 418.489013671875,
+        "y": 42.351314544677734,
+        "width": 245.4305419921875,
+        "height": 267.919189453125
+      },
+      "pivot": {
+        "x": 541.2042846679688,
+        "y": 176.31090927124023
+      }
+    }
+  ]
+}

@@ -4,6 +4,7 @@ import Home from './pages/Home';
 import TitlePage from './pages/TitlePage';
 import TrumpetPage from './pages/TrumpetPage';
 import FlagPage from './pages/FlagPage';
+import LoadingPage from './pages/LoadingPage';
 import EndingPage from './pages/EndingPage';
 import CameraSetup from './pages/CameraSetup';
 import CameraExperience from './pages/CameraExperience';
@@ -16,6 +17,7 @@ export default function App() {
     <Route path="/title" element={<TitlePage/>}/>
     <Route path="/trumpet" element={<TrumpetPage/>}/>
     <Route path="/flag" element={<FlagPage/>}/>
+    <Route path="/loading" element={<LoadingPage/>}/>
     <Route path="/camera" element={<CameraSetup/>}/>
     <Route path="/experience" element={<CameraExperience/>}/>
     <Route path="/ending" element={<EndingPage/>}/>

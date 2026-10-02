@@ -1,0 +1,94 @@
+{
+  "source": "flag/lettering/screen/original.svg",
+  "sourceNodeId": "2028:3279",
+  "sourcePageId": "1823:2",
+  "sourceName": "우리바람",
+  "sourceSha256": "2fbffaf36a0ad1611f99b96302b648d12fa8120117fcd67504e3b5ea2c91e1ac",
+  "viewBox": "0 0 215 706",
+  "parts": [
+    {
+      "id": "lettering-001-original",
+      "file": "parts/lettering-001-original.svg",
+      "category": "lettering",
+      "zIndex": 0,
+      "svgElementIndex": 0,
+      "fill": "black",
+      "stroke": null,
+      "transform": null,
+      "viewBox": "0 0 215 706",
+      "bounds": {
+        "x": 3.1510066986083984,
+        "y": 539.1317138671875,
+        "width": 194.14271545410156,
+        "height": 163.4285888671875
+      },
+      "pivot": {
+        "x": 100.22236442565918,
+        "y": 620.8460083007812
+      }
+    },
+    {
+      "id": "lettering-002-original",
+      "file": "parts/lettering-002-original.svg",
+      "category": "lettering",
+      "zIndex": 1,
+      "svgElementIndex": 1,
+      "fill": "black",
+      "stroke": null,
+      "transform": null,
+      "viewBox": "0 0 215 706",
+      "bounds": {
+        "x": 5.906192779541016,
+        "y": 362.1339111328125,
+        "width": 198.08157348632812,
+        "height": 160.93450927734375
+      },
+      "pivot": {
+        "x": 104.94697952270508,
+        "y": 442.6011657714844
+      }
+    },
+    {
+      "id": "lettering-003-original",
+      "file": "parts/lettering-003-original.svg",
+      "category": "lettering",
+      "zIndex": 2,
+      "svgElementIndex": 2,
+      "fill": "black",
+      "stroke": null,
+      "transform": null,
+      "viewBox": "0 0 215 706",
+      "bounds": {
+        "x": 21.402551651000977,
+        "y": 182.3315887451172,
+        "width": 174.5047607421875,
+        "height": 162.11643981933594
+      },
+      "pivot": {
+        "x": 108.65493202209473,
+        "y": 263.38980865478516
+      }
+    },
+    {
+      "id": "lettering-004-original",
+      "file": "parts/lettering-004-original.svg",
+      "category": "lettering",
+      "zIndex": 3,
+      "svgElementIndex": 3,
+      "fill": "black",
+      "stroke": null,
+      "transform": null,
+      "viewBox": "0 0 215 706",
+      "bounds": {
+        "x": 26.08650779724121,
+        "y": 4.091190338134766,
+        "width": 183.68771362304688,
+        "height": 161.35092163085938
+      },
+      "pivot": {
+        "x": 117.93036460876465,
+        "y": 84.76665115356445
+      }
+    }
+  ]
+}
