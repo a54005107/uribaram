@@ -5,9 +5,10 @@ import TitlePage from './pages/TitlePage';
 import TrumpetPage from './pages/TrumpetPage';
 import FlagPage from './pages/FlagPage';
 import LoadingPage from './pages/LoadingPage';
+import InstrumentsPage from './pages/InstrumentsPage';
 import EndingPage from './pages/EndingPage';
 import CameraSetup from './pages/CameraSetup';
-import CameraExperience from './pages/CameraExperience';
+import InstrumentPlayPage from './pages/InstrumentPlayPage';
 import {CameraProvider} from './camera/CameraProvider';
 import FullscreenButton from './components/FullscreenButton';
 
@@ -18,8 +19,9 @@ export default function App() {
     <Route path="/trumpet" element={<TrumpetPage/>}/>
     <Route path="/flag" element={<FlagPage/>}/>
     <Route path="/loading" element={<LoadingPage/>}/>
+    <Route path="/instruments" element={<InstrumentsPage/>}/>
     <Route path="/camera" element={<CameraSetup/>}/>
-    <Route path="/experience" element={<CameraExperience/>}/>
+    <Route path="/experience" element={<InstrumentPlayPage/>}/>
     <Route path="/ending" element={<EndingPage/>}/>
     <Route path="*" element={<Navigate to="/" replace/>}/>
   </Routes></CameraProvider>;

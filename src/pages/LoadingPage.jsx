@@ -10,7 +10,7 @@ export default function LoadingPage() {
 
   useEffect(() => {
     const timer = window.setTimeout(() => {
-      navigate('/camera', {replace: true});
+      navigate('/instruments', {replace: true});
     }, TRANSITION_DELAY_MS);
     return () => window.clearTimeout(timer);
   }, [navigate]);
