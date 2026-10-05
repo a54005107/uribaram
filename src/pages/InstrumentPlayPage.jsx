@@ -1,73 +1,81 @@
-﻿import React, {useCallback, useEffect, useRef, useState} from 'react';
+﻿import React, {useEffect, useMemo, useRef, useState} from 'react';
 import {useNavigate, useSearchParams} from 'react-router-dom';
-import CameraExperience from './CameraExperience';
-import {instruments, instrumentImage} from './InstrumentsPage';
+import {useCamera} from '../camera/CameraProvider';
+import useHandTracking from '../hooks/useHandTracking';
+import usePercussionAudio from '../hooks/usePercussionAudio';
+import CameraInstrumentStage from '../components/sticks/CameraInstrumentStage';
+import PlayScene from '../components/sticks/PlayScene';
+import {createInstrumentLayout} from '../motion/instrumentLayout';
+import geometry from '../config/playInstrumentGeometry.json';
+import {instruments} from './InstrumentsPage';
 import './InstrumentPlayPage.css';
 
 export default function InstrumentPlayPage() {
   const [params] = useSearchParams();
   const id = params.get('instrument') || sessionStorage.getItem('uribaram-instrument') || 'janggu';
   const instrument = instruments.find(item => item.id === id) || instruments[1];
-  return instrument.id === 'janggu' ? <CameraExperience/> : <PercussionPlay key={instrument.id} instrument={instrument}/>;
+  return <CameraPlay key={instrument.id} instrument={instrument}/>;
 }
 
-function PercussionPlay({instrument}) {
+function CameraPlay({instrument}) {
   const navigate = useNavigate();
-  const audio = useRef(null);
-  const timer = useRef(null);
-  const [hit, setHit] = useState(false);
-  const [error, setError] = useState('');
-  const strike = useCallback(async () => {
-    setHit(true);
-    clearTimeout(timer.current);
-    timer.current = setTimeout(() => setHit(false), 160);
-    try {
-      const AudioContext = window.AudioContext || window.webkitAudioContext;
-      if (!AudioContext) throw new Error('unsupported');
-      const context = audio.current || (audio.current = new AudioContext());
-      if (context.state === 'suspended') await context.resume();
-      if (context.state === 'closed') return;
-      // Synthesized percussion: inharmonic partials for metal, a falling pitch for drums.
-      const metal = ['jing', 'kkwaenggwari'].includes(instrument.id);
-      const base = {jing: 130, kkwaenggwari: 640, sogo: 230, buk: 95}[instrument.id];
-      const duration = {jing: 3.2, kkwaenggwari: 1, sogo: .22, buk: .65}[instrument.id];
-      const now = context.currentTime;
-      (metal ? [1, 1.47, 2.09, 2.56, 3.8] : [1, 1.6]).forEach((ratio, index) => {
-        const oscillator = context.createOscillator();
-        const gain = context.createGain();
-        oscillator.type = 'sine';
-        oscillator.frequency.setValueAtTime(base * ratio * (metal ? 1 : 1.8), now);
-        if (!metal) oscillator.frequency.exponentialRampToValueAtTime(base * ratio, now + .07);
-        gain.gain.setValueAtTime(0, now);
-        gain.gain.linearRampToValueAtTime(.18 / (index + 1), now + .004);
-        gain.gain.exponentialRampToValueAtTime(.0001, now + duration);
-        oscillator.connect(gain); gain.connect(context.destination);
-        oscillator.start(now); oscillator.stop(now + duration);
-        oscillator.onended = () => { oscillator.disconnect(); gain.disconnect(); };
-      });
-      setError('');
-    } catch { setError('소리를 재생하지 못했습니다. 악기를 다시 눌러 주세요.'); }
-  }, [instrument.id]);
+  const pageRef = useRef(null), videoRef = useRef(null);
+  const {stream, status, error, start, stop, attach} = useCamera();
+  const startRef = useRef(start); startRef.current = start;
+  const [playbackError, setPlaybackError] = useState('');
+  const [retry, setRetry] = useState(0);
+  const [viewport, setViewport] = useState({width: window.innerWidth, height: window.innerHeight});
+  const ready = status === 'ready' && Boolean(stream) && !playbackError;
+  const streamKey = useMemo(() => ({stream, retry}), [stream, retry]);
+  const hands = useHandTracking(videoRef, ready, undefined, streamKey);
+  const sound = usePercussionAudio(instrument.id);
+  const layout = useMemo(() => createInstrumentLayout(geometry[instrument.id], viewport.width, viewport.height), [instrument.id, viewport]);
+
   useEffect(() => {
-    const onKey = event => {
-      if (event.code !== 'Space' || event.repeat || event.ctrlKey || event.altKey || event.metaKey || event.target.closest('button, input, textarea, select, [contenteditable="true"]')) return;
-      event.preventDefault(); strike();
-    };
-    window.addEventListener('keydown', onKey);
-    return () => window.removeEventListener('keydown', onKey);
-  }, [strike]);
-  useEffect(() => () => {
-    clearTimeout(timer.current);
-    if (audio.current && audio.current.state !== 'closed') audio.current.close();
+    void startRef.current();
+    return () => stop();
+  }, [stop]);
+  useEffect(() => {
+    if (!stream) return;
+    let cancelled = false;
+    setPlaybackError('');
+    attach(videoRef.current).catch(() => { if (!cancelled) setPlaybackError('카메라 영상을 재생하지 못했습니다. 다시 연결해 주세요.'); });
+    return () => { cancelled = true; };
+  }, [stream, attach]);
+  useEffect(() => {
+    const observer = new ResizeObserver(([entry]) => setViewport({width: entry.contentRect.width, height: entry.contentRect.height}));
+    observer.observe(pageRef.current);
+    return () => observer.disconnect();
   }, []);
-  return <main className="page percussion-page" style={{'--instrument-color': instrument.color}}>
-    <button className="percussion-back" onClick={() => navigate('/instruments')}>← 악기 고르기</button>
-    <h1>{instrument.name}{instrument.id === 'buk' || instrument.id === 'jing' ? '을' : '를'} 연주해 보세요</h1>
-    <button className={`percussion-pad${hit ? ' is-hit' : ''}`} aria-label={`${instrument.name} 치기`} onClick={strike}>
-      <img src={instrumentImage(instrument.id)} alt={instrument.name} draggable="false" />
-    </button>
-    <p>악기를 클릭하거나 스페이스 키를 눌러 연주해 보세요</p>
-    {error && <p role="alert">{error}</p>}
-    <button className="percussion-finish" onClick={() => navigate('/ending')}>체험 완료</button>
+
+  const reconnect = () => { setPlaybackError(''); void start(); };
+  const hasGrip = Object.values(hands.sticks || {}).some(stick => stick.grip.grabbed && !stick.stale);
+  const trackingMessage = hands.status === 'loading' ? '손 움직임을 준비하고 있어요…'
+    : hasGrip ? '채 끝으로 악기를 치면 소리가 나요'
+    : hands.status === 'tracking' ? '주먹을 쥐면 채가 나타나요. 손을 펴면 놓을 수 있어요'
+    : '양손이 보이도록 한 걸음 물러서 주세요';
+  return <main ref={pageRef} className="page camera-play-page illustrated-play-page" aria-label={`${instrument.name} 카메라 연주`}>
+    <video ref={videoRef} className="camera-play-video" autoPlay muted playsInline aria-hidden="true" />
+    <PlayScene width={viewport.width} height={viewport.height}/>
+    <header className="camera-play-header">
+      <button type="button" onClick={() => navigate('/instruments')}>← 악기 고르기</button>
+      <h1>{instrument.name} 연주</h1>
+      <button type="button" onClick={() => navigate(`/camera?instrument=${instrument.id}`)}>카메라 변경</button>
+    </header>
+    <CameraInstrumentStage instrument={instrument} layout={layout} videoRef={videoRef} samplesRef={hands.samplesRef}
+      enabled={ready && hands.status === 'tracking'} onHit={sound.strike} />
+    {(!ready || hands.status === 'error') && <section className="camera-play-notice" role={status === 'error' || playbackError || hands.status === 'error' ? 'alert' : 'status'}>
+      <p>{error || playbackError || (hands.status === 'error' ? '손 움직임 인식을 시작하지 못했습니다.' : '카메라를 연결하고 있어요. 카메라 사용을 허용해 주세요.')}</p>
+      {(status === 'error' || playbackError) && <button type="button" onClick={reconnect}>카메라 다시 연결</button>}
+      {ready && hands.status === 'error' && <button type="button" onClick={() => setRetry(value => value + 1)}>손 인식 다시 시작</button>}
+    </section>}
+    <footer className="camera-play-footer">
+      {ready && hands.status !== 'error' && <p role="status">{trackingMessage}</p>}
+      <div className="camera-play-actions">
+        {!sound.enabled && <button type="button" className="camera-play-sound" onClick={sound.enable}>소리 켜기</button>}
+        <button type="button" onClick={() => navigate('/ending')}>연주 마치기</button>
+      </div>
+      {sound.error && <p role="alert">{sound.error}</p>}
+    </footer>
   </main>;
 }

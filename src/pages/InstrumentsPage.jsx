@@ -1,4 +1,4 @@
-﻿import React, {useCallback, useEffect, useRef, useState} from 'react';
+import React, {useCallback, useEffect, useRef, useState} from 'react';
 import {useNavigate} from 'react-router-dom';
 import '../../public/assets/figma/styles/tokens.css';
 import './InstrumentsPage.css';
@@ -11,24 +11,28 @@ export const instruments = [
   {id: 'buk', name: '북', role: '북잽이', lines: ['묵직한 한 방으로,', '판의 중심을 단단히 잡습니다'], color: '#0dc653'},
 ];
 export const instrumentImage = id => `/assets/figma/instruments/${id}/screen/original.svg`;
-const clamp = value => Math.max(0, Math.min(instruments.length - 1, value));
+const wrapIndex = value => ((value % instruments.length) + instruments.length) % instruments.length;
 
 export default function InstrumentsPage() {
   const navigate = useNavigate();
-  const [index, setIndex] = useState(() => Math.max(0, instruments.findIndex(item => item.id === sessionStorage.getItem('uribaram-instrument'))));
+  // Keep cumulative turns so crossing the last item continues rotating forward.
+  const [position, setPosition] = useState(() => Math.max(0, instruments.findIndex(item => item.id === sessionStorage.getItem('uribaram-instrument'))));
+  const index = wrapIndex(position);
   const [dragAngle, setDragAngle] = useState(0);
   const [dragging, setDragging] = useState(false);
   const pageRef = useRef(null);
   const gesture = useRef(null);
   const suppressClick = useRef(false);
-  const indexRef = useRef(index);
-  indexRef.current = index;
   const instrument = instruments[index];
-  const move = useCallback(step => setIndex(current => clamp(current + step)), []);
+  const move = useCallback(step => setPosition(current => current + step), []);
+  const jumpTo = target => setPosition(current => {
+    const forward = wrapIndex(target - wrapIndex(current));
+    return current + (forward > instruments.length / 2 ? forward - instruments.length : forward);
+  });
   const choose = id => {
     if (suppressClick.current) return;
     sessionStorage.setItem('uribaram-instrument', id);
-    navigate(`/experience?instrument=${id}`);
+    navigate(`/play-loading?instrument=${id}`);
   };
 
   useEffect(() => {
@@ -86,13 +90,12 @@ export default function InstrumentsPage() {
           current.moved = true;
           suppressClick.current = true;
           setDragging(true);
-          const blocked = indexRef.current === 0 && distance < 0 || indexRef.current === 4 && distance > 0;
-          setDragAngle(Math.max(-65, Math.min(65, distance * (blocked ? .04 : .22))));
+          setDragAngle(Math.max(-65, Math.min(65, distance * .22)));
         }
       }}
       onPointerUp={event => finishDrag(event)} onPointerCancel={event => finishDrag(event, true)}
       onLostPointerCapture={event => finishDrag(event, true)}>
-      <div className="instrument-wheel" style={{'--wheel-angle': `${index * 72 + dragAngle}deg`}}>
+      <div className="instrument-wheel" style={{'--wheel-angle': `${position * 72 + dragAngle}deg`}}>
         {instruments.map((item, itemIndex) => <div key={item.id} className="instrument-slot" style={{'--slot-angle': `${-itemIndex * 72}deg`}}>
           <button className="instrument-pick" type="button" aria-label={`${item.name} 선택하고 연주하기`}
             tabIndex={itemIndex === index ? 0 : -1} onClick={() => choose(item.id)}
@@ -110,7 +113,7 @@ export default function InstrumentsPage() {
     <nav className="instrument-navigation" aria-label="악기 선택">
       {instruments.map((item, itemIndex) => <button type="button" key={item.id}
         aria-label={`${item.name} · ${item.role}`} aria-current={itemIndex === index ? 'true' : undefined}
-        title={item.name} onClick={() => setIndex(itemIndex)}>
+        title={item.name} onClick={() => jumpTo(itemIndex)}>
         <span><img src="/assets/figma/instrument-selection/indicator.svg" width="38" height="36" alt="" /></span>
       </button>)}
     </nav>

@@ -18,7 +18,9 @@ export function CameraProvider({children}) {
 
   const refreshDevices = useCallback(async () => {
     if (!navigator.mediaDevices?.enumerateDevices) return [];
-    const cameras = (await navigator.mediaDevices.enumerateDevices()).filter((device) => device.kind === 'videoinput');
+    let cameras;
+    try { cameras = (await navigator.mediaDevices.enumerateDevices()).filter((device) => device.kind === 'videoinput'); }
+    catch { return []; }
     setDevices(cameras);
     setDeviceId((current) => cameras.some((camera) => camera.deviceId === current) ? current : '');
     return cameras;
@@ -81,7 +83,7 @@ export function CameraProvider({children}) {
     refreshDevices();
     const mediaDevices = navigator.mediaDevices;
     mediaDevices?.addEventListener?.('devicechange', refreshDevices);
-    return () => { mediaDevices?.removeEventListener?.('devicechange', refreshDevices); stopTracks(streamRef.current); };
+    return () => { requestRef.current += 1; mediaDevices?.removeEventListener?.('devicechange', refreshDevices); stopTracks(streamRef.current); };
   }, [refreshDevices]);
 
   const value = useMemo(() => ({stream, status, error, devices, deviceId, info, start, stop, selectDevice, refreshDevices, attach}), [stream, status, error, devices, deviceId, info, start, stop, selectDevice, refreshDevices, attach]);
