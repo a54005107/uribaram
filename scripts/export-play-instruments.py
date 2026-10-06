@@ -13,6 +13,7 @@ ET.register_namespace('', 'http://www.w3.org/2000/svg')
 REMOVE = {'janggu': [43, 44], 'jing': [12, 13, 14], 'sogo': [15], 'kkwaenggwari': [11, 12, 13], 'buk': [25]}
 SURFACES = {'janggu': [1, 16], 'jing': [1], 'sogo': [1], 'kkwaenggwari': [1], 'buk': [20]}
 metadata = {}
+layers = {}
 for name, removed in REMOVE.items():
     folder = BASE / name / 'screen'
     manifest = json.loads((folder / 'manifest.json').read_text(encoding='utf-8'))
@@ -21,6 +22,9 @@ for name, removed in REMOVE.items():
     x, y = min(b['x'] for b in bounds), min(b['y'] for b in bounds)
     width = max(b['x'] + b['width'] for b in bounds) - x
     height = max(b['y'] + b['height'] for b in bounds) - y
+    layers[name] = {'x': x, 'y': y, 'viewBox': [float(value) for value in manifest['viewBox'].split()],
+                    'parts': [{'id': p['id'], 'file': f"/assets/figma/instruments/{name}/screen/{p['file']}",
+                               'ring': p['category'] == 'ring', 'bounds': p['bounds']} for p in parts]}
     root = ET.Element('{http://www.w3.org/2000/svg}svg', {'viewBox': f'{x} {y} {width} {height}', 'width': str(width), 'height': str(height)})
     for part in parts:
         for child in ET.parse(folder / part['file']).getroot():
@@ -35,3 +39,4 @@ for name, removed in REMOVE.items():
     metadata[name] = {'width': width, 'height': height, 'zones': dict(zip(['left', 'right'] if len(zones) == 2 else ['center'], zones))}
 (ROOT / 'src/config/playInstrumentGeometry.json').write_text(json.dumps(metadata, indent=2) + '\n', encoding='utf-8')
 print('Exported', ', '.join(metadata))
+(ROOT / 'src/config/playInstrumentLayers.json').write_text(json.dumps(layers, indent=2) + '\n', encoding='utf-8')

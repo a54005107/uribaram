@@ -42,6 +42,8 @@ export function createStickHitEngine() {
           if (entries.length && speed >= HIT_CONFIG.impactVelocity && current.timestamp - state.lastHit >= HIT_CONFIG.cooldownMs) {
             state.lastHit = current.timestamp;
             onHit({side: entries[0].target, hand: side, velocity: speed, downwardVelocity: vy,
+              point: {x: previous.x + (current.x - previous.x) * entries[0].t,
+                y: previous.y + (current.y - previous.y) * entries[0].t},
               strength: speed >= HIT_CONFIG.strength.strong ? 'strong' : speed >= HIT_CONFIG.strength.normal ? 'normal' : 'weak'});
           }
         }

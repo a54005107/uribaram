@@ -6,8 +6,9 @@
 .play-scene-decoration { position: absolute; }
 .play-scene-decoration img { position: absolute; max-width: none; transform-origin: center; }
 .illustrated-play-page .camera-play-header h1 { text-shadow: none; }
-.illustrated-play-page button { background: #fff9; color: #481100; border-color: #48110055; }
-.illustrated-play-page button:hover { background: #fff; }
+.camera-play-page.illustrated-play-page button { background: #fff9; color: #481100; border-color: #48110055; }
+.camera-play-page.illustrated-play-page button:hover { background: #fff; }
+.camera-play-page.illustrated-play-page .camera-play-sound { background: #ffeb36; }
 .illustrated-play-page .camera-play-footer p { background: #ffffffc9; color: #481100; }
 .illustrated-play-page .camera-play-notice { background: #fffef2f5; color: #481100; }
 .illustrated-play-page .camera-play-instrument { filter: none; }

@@ -52,8 +52,8 @@ function CameraPlay({instrument}) {
   const hasGrip = Object.values(hands.sticks || {}).some(stick => stick.grip.grabbed && !stick.stale);
   const trackingMessage = hands.status === 'loading' ? '손 움직임을 준비하고 있어요…'
     : hasGrip ? '채 끝으로 악기를 치면 소리가 나요'
-    : hands.status === 'tracking' ? '주먹을 쥐면 채가 나타나요. 손을 펴면 놓을 수 있어요'
-    : '양손이 보이도록 한 걸음 물러서 주세요';
+    : hands.status === 'tracking' ? (instrument.id === 'janggu' ? '주먹을 쥐면 채가 나타나요. 손을 펴면 놓을 수 있어요' : '한 손을 쥐면 채가 나타나요. 손을 펴면 다른 손으로 잡을 수 있어요')
+    : instrument.id === 'janggu' ? '양손이 보이도록 한 걸음 물러서 주세요' : '연주할 손이 카메라에 보이도록 한 걸음 물러서 주세요';
   return <main ref={pageRef} className="page camera-play-page illustrated-play-page" aria-label={`${instrument.name} 카메라 연주`}>
     <video ref={videoRef} className="camera-play-video" autoPlay muted playsInline aria-hidden="true" />
     <PlayScene width={viewport.width} height={viewport.height}/>
