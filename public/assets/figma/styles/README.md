@@ -15,7 +15,7 @@
 | B2 | Regular (400) | 22px | 150% | 0% |
 | Caption | Regular (400) | 18px | 140% | 0% |
 
-폰트 바이너리(woff/woff2/ttf/otf)는 포함되어 있지 않습니다. 프로젝트에서도 해당 파일을 찾지 못했습니다. 실제 적용 시 웹에서 사용할 폰트 파일과 @font-face 정의를 준비해야 합니다. 미리보기는 로컬 설치 폰트가 없으면 sans-serif로 표시되므로 폰트 형태를 보장하지 않습니다.
+전달받은 TTF 4종을 `public/assets/fonts/`에 포함했습니다. `tokens.css`의 `@font-face`가 Regular(400), Medium(500), Bold(700), Heavy(800)를 연결하므로 로컬 설치 없이 사이트와 미리보기에서 같은 글꼴을 사용합니다. `font-display: swap`으로 다운로드 중에는 대체 글꼴을 표시합니다.
 
 ## 색상
 
@@ -34,7 +34,7 @@
 ## 저장 파일
 
 - tokens.json: 정리된 폰트·색상 규격, 노드 ID, 원본 라벨.
-- tokens.css: --uribaram-* 이름의 CSS 변수. 대기 화면에서 import하며 전역 폰트나 기존 화면 스타일을 덮어쓰지 않습니다.
+- tokens.css: --uribaram-* CSS 변수와 굵기별 @font-face 정의. 각 Figma 화면에서 import하며 기존 크기·행간·자간 토큰을 사용합니다.
 - figma-source.json: Figma에서 읽은 원본 속성. 부동소수점 색상·행간과 변수 연결 ID 포함.
 - index.html: 색상표 및 타이포그래피 규격 미리보기.
 

@@ -1,4 +1,32 @@
-/* Figma style page 0:1. Opt-in tokens; no font files or global typography applied. */
+/* Figma style page 0:1. Supplied Chai Hwaljjak fonts, mapped to Figma weights. */
+@font-face {
+  font-family: "Chai Hwaljjak";
+  src: url("/assets/fonts/ChaiHwaljjak-Regular.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Chai Hwaljjak";
+  src: url("/assets/fonts/ChaiHwaljjak-Medium.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Chai Hwaljjak";
+  src: url("/assets/fonts/ChaiHwaljjak-Bold.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Chai Hwaljjak";
+  src: url("/assets/fonts/ChaiHwaljjak-Heavy.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+}
 :root {
   --uribaram-font-family: "Chai Hwaljjak", sans-serif;
   --uribaram-color-cyan: #50E6FF;

@@ -30,15 +30,17 @@ export default function CameraInstrumentStage({instrument, layout, videoRef, sam
       } else {
         const samples = samplesRef.current.sample(now);
         const sticks = selection.select(Object.fromEntries(['left', 'right'].map(side => [side,
-          projectStick(samples[side], video.videoWidth, video.videoHeight, layout)])));
+          projectStick(samples[side], video.videoWidth, video.videoHeight, layout, instrument.id)])));
         engine.update(layout, sticks, hit => {
           callbackRef.current(hit);
           instrumentRef.current?.strike(hit);
           ripples.push({point: hit.point, start: now});
         });
         for (const stick of Object.values(sticks)) {
-          if (!stick?.grip.grabbed || stick.stale) continue;
+          if (!stick?.grip.grabbed) continue;
+          context.globalAlpha = stick.opacity ?? 1;
           drawFigmaStick(context, artwork[stick.side], images[stick.side], stick, width, height);
+          context.globalAlpha = 1;
         }
         ripples = ripples.filter(ripple => now - ripple.start < 420);
         for (const {point, start} of ripples) {

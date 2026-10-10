@@ -35,7 +35,7 @@ test('grab and release debounce with hysteresis and OPENING cancellation', () =>
   assert.equal(state.state, 'OPENING'); assert.equal(state.grabbed, true);
   state = updateGrip(state, .5, 120);
   assert.equal(state.state, 'FIST'); assert.equal(state.grabbed, true);
-  state = updateGrip(state, .1, 150); state = updateGrip(state, .1, 330);
+  state = updateGrip(state, .1, 150); state = updateGrip(state, .1, 440);
   assert.equal(state.state, 'OPEN'); assert.equal(state.grabbed, false);
 });
 test('anchor stays near palm-based grip during a fast strike and tip matches rendered rotation', () => {
@@ -61,6 +61,22 @@ test('gungulchae round tip points below the grip in neutral pose without moving 
   near(Math.cos(left.rotation), -Math.cos(right.rotation));
   near(Math.sin(left.rotation), -Math.sin(right.rotation));
 });
+test('single-beater instruments use the upper tip in either hand and preserve the grip anchor', () => {
+  const layout = createJangguLayout(1280, 720);
+  for (const instrument of ['buk', 'jing', 'kkwaenggwari', 'sogo']) {
+    for (const side of ['left', 'right']) {
+      const sample = trackStick(createStickTracker(), hand(true), side, 0, .95, 1280 / 720);
+      const stick = projectStick(sample, 1280, 720, layout, instrument);
+      const original = projectStick(sample, 1280, 720, layout);
+      assert.ok(stick.tipY < stick.gripY, `${instrument} ${side}: upper tip`);
+      near(stick.gripX, original.gripX); near(stick.gripY, original.gripY);
+      const distance = stick.width * 1280 * (1 - stick.gripOffset);
+      near(stick.tipX * 1280, stick.gripX * 1280 + Math.cos(stick.rotation) * distance);
+      near(stick.tipY * 720, stick.gripY * 720 + Math.sin(stick.rotation) * distance);
+    }
+  }
+});
+
 test('brief occlusion coasts within bounds then expires, reacquisition clears old velocity', () => {
   const tracker = createStickTracker();
   trackStick(tracker, hand(true), 'left', 0, .9, 1);
@@ -69,10 +85,55 @@ test('brief occlusion coasts within bounds then expires, reacquisition clears ol
   const sample = sampleStick(tracker, 120);
   assert.equal(sample.stale, true); assert.equal(sample.grip.grabbed, true);
   assert.ok(Math.hypot(sample.anchor.x - tracker.output.anchor.x, sample.anchor.y - tracker.output.anchor.y) <= TRACKING_CONFIG.maxCoastDistance + 1e-10);
-  assert.equal(sampleStick(tracker, 400), null);
-  const recovered = trackStick(tracker, hand(true), 'left', 450, .9, 1);
+  assert.equal(sampleStick(tracker, 60 + TRACKING_CONFIG.settleMs), null);
+  const recovered = trackStick(tracker, hand(true), 'left', 70 + TRACKING_CONFIG.settleMs, .9, 1);
   assert.equal(recovered.velocity.x, 0); assert.equal(recovered.grip.grabbed, false);
 });
+test('beater size stays fixed through changing palm size, release and long tracking loss', () => {
+  const layout = createJangguLayout(1280, 720);
+  for (const side of ['left', 'right']) {
+    const tracker = createStickTracker();
+    let expected;
+    for (const [timestamp, scale, folded] of [[0, 1, true], [70, 1, true], [100, 1.8, true], [200, .6, false], [500, .6, false], [600, 1.4, true], [670, 1.4, true], [1400, .5, true]]) {
+      const points = hand(folded).map(p => ({x: .5 + (p.x - .5) * scale, y: .6 + (p.y - .6) * scale, z: p.z}));
+      const sample = trackStick(tracker, points, side, timestamp, .95, 1280 / 720);
+      const projected = projectStick(sample, 1280, 720, layout);
+      expected ??= projected.width;
+      near(projected.width, expected);
+    }
+  }
+});
+
+test('short misses preserve the grabbed stick, fade before expiry, and cannot trigger hits', () => {
+  const tracker = createStickTracker();
+  trackStick(tracker, hand(true), 'right', 0, .95, 1);
+  trackStick(tracker, hand(true), 'right', 70, .95, 1);
+  tracker.missing = true;
+  const early = sampleStick(tracker, 200), late = sampleStick(tracker, 520);
+  assert.equal(early.grip.grabbed, true);
+  assert.equal(early.opacity, 1);
+  assert.ok(late.opacity > 0 && late.opacity < 1);
+  const layout = createJangguLayout(1280, 720), engine = createStickHitEngine(), hits = [];
+  const z = layout.zones.right;
+  engine.update(layout, {right: {...early, stale: false, timestamp: 70, tipX: z.x, tipY: z.y - z.radiusY * 2}}, h => hits.push(h));
+  engine.update(layout, {right: {...early, timestamp: 200, tipX: z.x, tipY: z.y}}, h => hits.push(h));
+  assert.equal(hits.length, 0);
+  tracker.missing = false;
+  const recovered = trackStick(tracker, hand(true), 'right', 530, .95, 1);
+  assert.equal(recovered.grip.grabbed, true);
+  assert.equal(recovered.stale, false);
+});
+
+test('a brief open-hand misclassification does not drop a held beater', () => {
+  let state = updateGrip(createGripState(), .9, 0);
+  state = updateGrip(state, .9, 60);
+  state = updateGrip(state, .1, 100);
+  state = updateGrip(state, .1, 300);
+  assert.equal(state.grabbed, true);
+  state = updateGrip(state, .9, 320);
+  assert.equal(state.state, 'FIST');
+});
+
 test('angle crossing +/-pi does not reverse and palm degeneracy retains orientation', () => {
   const tracker = createStickTracker();
   const base = hand(true);

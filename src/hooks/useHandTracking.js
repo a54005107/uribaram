@@ -15,6 +15,10 @@ export default function useHandTracking(videoRef, enabled, onDetection, streamKe
     if (!enabled) { setResult({status: 'idle', sticks: null, detail: ''}); return undefined; }
     let disposed = false, landmarker, frameId = 0, lastVideoTime = -1, lastInference = 0, lastUi = -Infinity;
     const trackers = trackersRef.current;
+    // Reuse a smaller inference surface, keeping the original aspect ratio.
+    // Full-resolution camera pixels are unnecessary for the hand model.
+    const inferenceCanvas = document.createElement('canvas');
+    const inferenceContext = inferenceCanvas.getContext('2d');
     setResult({status: 'loading', sticks: null, detail: '손 인식 모델 준비 중'});
     const loop = () => {
       if (disposed) return;
@@ -22,7 +26,13 @@ export default function useHandTracking(videoRef, enabled, onDetection, streamKe
       if (!document.hidden && !video?.paused && landmarker && video?.readyState >= 2 && video.currentTime !== lastVideoTime && now - lastInference >= TRACKING_CONFIG.inferenceIntervalMs) {
         lastVideoTime = video.currentTime; lastInference = now;
         try {
-          const detection = landmarker.detectForVideo(video, now), nextSticks = {};
+          const inputScale = Math.min(1, TRACKING_CONFIG.inferenceMaxDimension / Math.max(video.videoWidth, video.videoHeight));
+          const inputWidth = Math.round(video.videoWidth * inputScale), inputHeight = Math.round(video.videoHeight * inputScale);
+          if (inferenceCanvas.width !== inputWidth || inferenceCanvas.height !== inputHeight) {
+            inferenceCanvas.width = inputWidth; inferenceCanvas.height = inputHeight;
+          }
+          inferenceContext.drawImage(video, 0, 0, inputWidth, inputHeight);
+          const detection = landmarker.detectForVideo(inferenceCanvas, now), nextSticks = {};
           callbackRef.current?.(detection, now, video.videoWidth / video.videoHeight);
           const seen = new Set();
           detection.landmarks?.forEach((landmarks, index) => {

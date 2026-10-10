@@ -9,7 +9,9 @@ test('single beater retains its first hand and transfers on release or tracking 
   assert.deepEqual(selector.select({left, right: null}), {left, right: null});
   assert.deepEqual(selector.select({left, right}), {left, right: null});
   assert.deepEqual(selector.select({left: {...left, grip: {grabbed: false}}, right}), {left: null, right});
-  assert.deepEqual(selector.select({left, right: {...right, stale: true}}), {left, right: null});
+  const coasted = {...right, stale: true};
+  assert.deepEqual(selector.select({left, right: coasted}), {left: null, right: coasted});
+  assert.deepEqual(selector.select({left, right: null}), {left, right: null});
   assert.deepEqual(selector.select({left: null, right: null}), {left: null, right: null});
   selector.reset();
   assert.deepEqual(selector.select({left, right}), {left: null, right});

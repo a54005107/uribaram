@@ -42,10 +42,9 @@ export function trackStick(tracker, points, side, timestamp, confidence, aspect)
     tracker.angle = tracker.angle == null ? target : tracker.angle + clamp(target - tracker.angle, -config.maxAngularSpeed * dt, config.maxAngularSpeed * dt);
   }
   const rotation = tracker.angleFilter.filter(tracker.angle ?? Math.PI / 2, timestamp);
-  const wasGrabbed = tracker.grip.grabbed;
   tracker.grip = updateGrip(tracker.grip, gripScore(points, aspect), timestamp);
-  // Fix object length at acquisition; torso scale must never stretch a held stick.
-  if (!wasGrabbed) tracker.length = clamp(acrossSize / aspect * stickConfig.palmLengthScale, stickConfig.minLength, stickConfig.maxLength);
+  // Stable across release, reacquisition, palm rotation and camera distance.
+  tracker.length = stickConfig.length;
   tracker.lastSeen = timestamp;
   tracker.output = {anchor, rawGrip: grip, wrist, palmCenter, rotation, orientation: axis, palmTilt: Math.atan2(axis.z, Math.hypot(dx, dy)),
     length: tracker.length, side, confidence, timestamp, grip: {...tracker.grip}, velocity: {...tracker.velocity}, stale: false};
@@ -59,20 +58,25 @@ export function sampleStick(tracker, now) {
   const velocity = limitVector(tracker.velocity.x, tracker.velocity.y, config.maxCoastSpeed);
   const seconds = config.coastMs / 1000 * (1 - Math.exp(-missingMs / config.coastMs));
   const delta = limitVector(velocity.x * seconds, velocity.y * seconds, config.maxCoastDistance);
-  return {...tracker.output, stale: true, missingMs, anchor: {x: tracker.output.anchor.x + delta.x, y: tracker.output.anchor.y + delta.y}};
+  const opacity = 1 - clamp((missingMs - config.fadeAfterMs) / (config.settleMs - config.fadeAfterMs), 0, 1);
+  return {...tracker.output, stale: true, missingMs, opacity, anchor: {x: tracker.output.anchor.x + delta.x, y: tracker.output.anchor.y + delta.y}};
 }
 
-export function projectStick(sample, videoWidth, videoHeight, layout) {
+export function projectStick(sample, videoWidth, videoHeight, layout, instrumentId = 'janggu') {
   if (!sample) return null;
-  const config = sample.side === 'left' ? STICK_CONFIG.gungulchae : STICK_CONFIG.yeolchae;
+  const trackedConfig = sample.side === 'left' ? STICK_CONFIG.gungulchae : STICK_CONFIG.yeolchae;
+  const config = instrumentId === 'janggu' ? trackedConfig : STICK_CONFIG.yeolchae;
+  // Only janggu's left beater uses the reversed axis. Other instruments strike
+  // with the upper end in either hand; drawing and hit testing share this tip.
+  const rotation = sample.rotation + (config.angleOffset - trackedConfig.angleOffset) * Math.PI / 180;
   const anchor = videoPointToViewport(sample.anchor, videoWidth, videoHeight, layout);
   const scale = Math.max(layout.viewportWidth / videoWidth, layout.viewportHeight / videoHeight);
-  const width = sample.length * videoWidth * scale / layout.viewportWidth;
+  const width = config.length * videoWidth * scale / layout.viewportWidth;
   const lengthPx = width * layout.viewportWidth;
   const tipDistance = lengthPx * (1 - config.gripOffset);
-  return {...sample, gripX: anchor.x, gripY: anchor.y, gripOffset: config.gripOffset, width,
+  return {...sample, rotation, gripX: anchor.x, gripY: anchor.y, gripOffset: config.gripOffset, width,
     height: lengthPx * .075 / layout.viewportHeight,
-    tipX: anchor.x + Math.cos(sample.rotation) * tipDistance / layout.viewportWidth,
-    tipY: anchor.y + Math.sin(sample.rotation) * tipDistance / layout.viewportHeight,
+    tipX: anchor.x + Math.cos(rotation) * tipDistance / layout.viewportWidth,
+    tipY: anchor.y + Math.sin(rotation) * tipDistance / layout.viewportHeight,
     debugPoints: Object.fromEntries(['wrist', 'palmCenter', 'rawGrip'].map((key) => [key, videoPointToViewport(sample[key], videoWidth, videoHeight, layout)]))};
 }

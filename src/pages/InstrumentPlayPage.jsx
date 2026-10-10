@@ -51,7 +51,7 @@ function CameraPlay({instrument}) {
   const reconnect = () => { setPlaybackError(''); void start(); };
   const hasGrip = Object.values(hands.sticks || {}).some(stick => stick.grip.grabbed && !stick.stale);
   const trackingMessage = hands.status === 'loading' ? '손 움직임을 준비하고 있어요…'
-    : hasGrip ? '채 끝으로 악기를 치면 소리가 나요'
+    : hasGrip ? (instrument.id === 'janggu' ? '양손의 채 끝으로 장구를 치면 소리가 나요' : '채 하나의 윗부분 끝으로 악기를 치면 소리가 나요')
     : hands.status === 'tracking' ? (instrument.id === 'janggu' ? '주먹을 쥐면 채가 나타나요. 손을 펴면 놓을 수 있어요' : '한 손을 쥐면 채가 나타나요. 손을 펴면 다른 손으로 잡을 수 있어요')
     : instrument.id === 'janggu' ? '양손이 보이도록 한 걸음 물러서 주세요' : '연주할 손이 카메라에 보이도록 한 걸음 물러서 주세요';
   return <main ref={pageRef} className="page camera-play-page illustrated-play-page" aria-label={`${instrument.name} 카메라 연주`}>
@@ -63,7 +63,7 @@ function CameraPlay({instrument}) {
       <button type="button" onClick={() => navigate(`/camera?instrument=${instrument.id}`)}>카메라 변경</button>
     </header>
     <CameraInstrumentStage instrument={instrument} layout={layout} videoRef={videoRef} samplesRef={hands.samplesRef}
-      enabled={ready && hands.status === 'tracking'} onHit={sound.strike} />
+      enabled={ready && (hands.status === 'tracking' || hands.status === 'searching')} onHit={sound.strike} />
     {(!ready || hands.status === 'error') && <section className="camera-play-notice" role={status === 'error' || playbackError || hands.status === 'error' ? 'alert' : 'status'}>
       <p>{error || playbackError || (hands.status === 'error' ? '손 움직임 인식을 시작하지 못했습니다.' : '카메라를 연결하고 있어요. 카메라 사용을 허용해 주세요.')}</p>
       {(status === 'error' || playbackError) && <button type="button" onClick={reconnect}>카메라 다시 연결</button>}
