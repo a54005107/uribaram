@@ -1,49 +1,51 @@
 import React, {createContext, useCallback, useContext, useEffect, useMemo, useRef, useState} from 'react';
+import {cameraErrorMessage, createCameraCapture} from './cameraCapture';
 
 const CameraContext = createContext(null);
-const errorMessages = {
-  NotAllowedError: '카메라 권한이 차단되었습니다. 브라우저 주소창에서 권한을 허용해주세요.',
-  NotFoundError: '연결된 카메라를 찾을 수 없습니다.',
-  NotReadableError: '선택한 카메라를 다른 프로그램이 사용 중입니다.',
-  OverconstrainedError: '선택한 카메라를 사용할 수 없습니다. 다른 카메라를 선택해주세요.',
-  SecurityError: '카메라는 HTTPS 또는 localhost에서만 사용할 수 있습니다.',
-};
-const stopTracks = (stream) => stream?.getTracks().forEach((track) => track.stop());
 
 export function CameraProvider({children}) {
   const streamRef = useRef(null), requestRef = useRef(0);
+  const captureRef = useRef(null);
+  if (!captureRef.current) captureRef.current = createCameraCapture(constraints => {
+    if (!navigator.mediaDevices?.getUserMedia) throw Object.assign(new Error('unsupported'), {name: 'NotSupportedError'});
+    return navigator.mediaDevices.getUserMedia(constraints);
+  });
+  const releaseTimerRef = useRef(null), pendingAcquireRef = useRef(null);
   const [stream, setStream] = useState(null), [status, setStatus] = useState('idle'), [error, setError] = useState('');
   const [devices, setDevices] = useState([]), [info, setInfo] = useState(null);
   const [deviceId, setDeviceId] = useState(() => sessionStorage.getItem('uribaram-camera-id') || '');
 
   const refreshDevices = useCallback(async () => {
     if (!navigator.mediaDevices?.enumerateDevices) return [];
-    const cameras = (await navigator.mediaDevices.enumerateDevices()).filter((device) => device.kind === 'videoinput');
+    let cameras;
+    try { cameras = (await navigator.mediaDevices.enumerateDevices()).filter((device) => device.kind === 'videoinput'); }
+    catch { return []; }
     setDevices(cameras);
     setDeviceId((current) => cameras.some((camera) => camera.deviceId === current) ? current : '');
     return cameras;
   }, []);
 
   const stop = useCallback(() => {
+    clearTimeout(releaseTimerRef.current);
+    releaseTimerRef.current = null;
+    pendingAcquireRef.current = null;
     requestRef.current += 1;
-    stopTracks(streamRef.current);
+    captureRef.current.stop();
     streamRef.current = null;
     setStream(null); setInfo(null); setStatus('idle'); setError('');
   }, []);
 
   const start = useCallback(async (requestedDeviceId = deviceId) => {
+    clearTimeout(releaseTimerRef.current);
+    releaseTimerRef.current = null;
     const requestId = ++requestRef.current;
+    streamRef.current = null;
+    setStream(null); setInfo(null);
     setStatus('loading'); setError('');
     try {
-      if (!navigator.mediaDevices?.getUserMedia) throw new Error('unsupported');
-      const constraints = requestedDeviceId
-        ? {deviceId: {exact: requestedDeviceId}, width: {ideal: 1280}, height: {ideal: 720}, frameRate: {ideal: 30}}
-        : {facingMode: {ideal: 'user'}, width: {ideal: 1280}, height: {ideal: 720}, frameRate: {ideal: 30}};
-      const nextStream = await navigator.mediaDevices.getUserMedia({video: constraints, audio: false});
-      if (requestId !== requestRef.current) { stopTracks(nextStream); return null; }
-      const previousStream = streamRef.current;
+      const nextStream = await captureRef.current.start(requestedDeviceId);
+      if (requestId !== requestRef.current || !nextStream) return null;
       streamRef.current = nextStream; setStream(nextStream);
-      if (previousStream !== nextStream) stopTracks(previousStream);
       const track = nextStream.getVideoTracks()[0], settings = track.getSettings();
       const trackInfo = {label: track.label, readyState: track.readyState, ...settings};
       setInfo(trackInfo); setStatus('ready');
@@ -56,11 +58,35 @@ export function CameraProvider({children}) {
       return nextStream;
     } catch (cause) {
       if (requestId !== requestRef.current) return null;
-      setStatus('error'); setError(errorMessages[cause.name] || `카메라를 실행하지 못했습니다. ${cause.message || ''}`);
+      setStatus('error'); setError(cameraErrorMessage(cause));
       await refreshDevices();
       return null;
     }
   }, [deviceId, refreshDevices]);
+
+  // Camera setup and performance share one capture session. Defer release until
+  // the next route has mounted; an acquiring camera page cancels that release.
+  const acquire = useCallback(() => {
+    clearTimeout(releaseTimerRef.current);
+    releaseTimerRef.current = null;
+    const current = streamRef.current;
+    if (current?.getVideoTracks().some(track => track.readyState === 'live')) {
+      setStatus('ready'); setError('');
+      return Promise.resolve(current);
+    }
+    if (pendingAcquireRef.current) return pendingAcquireRef.current;
+    const pending = start();
+    pendingAcquireRef.current = pending;
+    void pending.finally(() => {
+      if (pendingAcquireRef.current === pending) pendingAcquireRef.current = null;
+    });
+    return pending;
+  }, [start]);
+
+  const release = useCallback(() => {
+    clearTimeout(releaseTimerRef.current);
+    releaseTimerRef.current = setTimeout(stop, 0);
+  }, [stop]);
 
   const selectDevice = useCallback(async (nextDeviceId, restart = true) => {
     setDeviceId(nextDeviceId);
@@ -81,10 +107,10 @@ export function CameraProvider({children}) {
     refreshDevices();
     const mediaDevices = navigator.mediaDevices;
     mediaDevices?.addEventListener?.('devicechange', refreshDevices);
-    return () => { mediaDevices?.removeEventListener?.('devicechange', refreshDevices); stopTracks(streamRef.current); };
+    return () => { clearTimeout(releaseTimerRef.current); requestRef.current += 1; mediaDevices?.removeEventListener?.('devicechange', refreshDevices); captureRef.current.stop(); };
   }, [refreshDevices]);
 
-  const value = useMemo(() => ({stream, status, error, devices, deviceId, info, start, stop, selectDevice, refreshDevices, attach}), [stream, status, error, devices, deviceId, info, start, stop, selectDevice, refreshDevices, attach]);
+  const value = useMemo(() => ({stream, status, error, devices, deviceId, info, start, stop, acquire, release, selectDevice, refreshDevices, attach}), [stream, status, error, devices, deviceId, info, start, stop, acquire, release, selectDevice, refreshDevices, attach]);
   return <CameraContext.Provider value={value}>{children}</CameraContext.Provider>;
 }
 

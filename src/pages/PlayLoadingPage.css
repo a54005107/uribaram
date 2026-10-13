@@ -1,0 +1,15 @@
+﻿.play-loading-page { background: linear-gradient(180deg, #ffe900, #fff); color: var(--uribaram-color-brown); font-family: var(--uribaram-font-family); }
+.play-loading-stage { position: absolute; left: 50%; top: 50%; width: 2240px; height: 1260px; transform-origin: center; }
+.play-loading-pole { position: absolute; left: 1313px; top: 91px; transform: rotate(4.59deg); }
+.play-loading-cloth { position: absolute; left: 1218px; top: 359px; transform: rotate(4.59deg); }
+.play-loading-writing { position: absolute; left: 1360px; top: 466px; width: 170px; height: 540px; transform: rotate(6.91deg); }
+.play-loading-letters { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; font: 900 132px/1 'Porcini', var(--uribaram-font-family); }
+.play-loading-letters span { display: grid; place-items: center; height: 135px; flex: 0 0 135px; white-space: pre; }
+.play-loading-letters--empty { color: #d7d7e0; }
+.play-loading-letters--filled { color: var(--uribaram-color-charcoal); }
+.play-loading-caption { position: absolute; left: 468px; top: 606px; display: flex; align-items: flex-end; gap: 6px; }
+.play-loading-dots { display: flex; gap: 6px; padding-bottom: 2px; }
+@media (max-aspect-ratio: 1/1) {
+  .play-loading-stage { width: 2240px; }
+  .play-loading-page { background: linear-gradient(180deg, #ffe900 15%, #fff 90%); }
+}

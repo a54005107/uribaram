@@ -1,0 +1,12 @@
+<html><body style="margin:0;background:#fffce1"><div id="root"></div><script type="module">
+import React from 'react';
+import './src/pages/InstrumentPlayPage.css';
+import {createRoot} from 'react-dom/client';
+import InstrumentRings from './src/components/sticks/InstrumentRings.jsx';
+import geometry from './src/config/playInstrumentGeometry.json';
+import {createInstrumentLayout} from './src/motion/instrumentLayout.js';
+window.ringRefs=[];
+const children=Object.keys(geometry).map(id=>{const ref=React.createRef();window.ringRefs.push(ref);const layout=createInstrumentLayout(geometry[id],400,400);return React.createElement('div',{key:id,style:{position:'relative',width:400,height:400,display:'inline-block',overflow:'hidden'}},React.createElement('span',{},id),React.createElement(InstrumentRings,{ref,instrument:{id,name:id},layout}));});
+createRoot(document.getElementById('root')).render(React.createElement('div',{},...children));
+window.strike=()=>window.ringRefs.forEach(ref=>ref.current.strike({side:'center',point:{x:.4,y:.55},strength:'strong'}));
+</script></body></html>

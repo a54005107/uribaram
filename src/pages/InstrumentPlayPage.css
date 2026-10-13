@@ -1,0 +1,38 @@
+.camera-play-page { position: relative; background: #000; color: #481100; font-family: var(--uribaram-font-family); isolation: isolate; overflow: hidden; }
+.camera-play-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transform: scaleX(-1); opacity: 0; pointer-events: none; }
+.play-scene { position: absolute; pointer-events: none; z-index: 2; }
+.play-scene-decoration, .play-scene-decoration img { position: absolute; }
+.play-scene-decoration img { max-width: none; transform-origin: center; }
+.camera-play-instrument { position: absolute; z-index: 1; pointer-events: none; }
+.camera-play-sticks { position: absolute; inset: 0; z-index: 3; width: 100%; height: 100%; pointer-events: none; }
+.play-design-board { position: absolute; left: var(--board-left); top: var(--board-top); width: 2240px; height: 1260px; transform: scale(var(--board-scale)); transform-origin: 0 0; pointer-events: none; }
+.play-navigation { z-index: 4; }
+.camera-play-page .play-pennant { position: absolute; left: var(--pennant-left); top: 0; width: 167px; height: 207px; border: 0; border-radius: 0; padding: 0; background: transparent; color: #481100; pointer-events: auto; }
+.play-pennant img { position: absolute; top: 0; left: 0; width: 167px; height: 292px; max-width: none; pointer-events: none; }
+.play-pennant span { position: absolute; top: 29px; left: 45.45px; width: 75.43px; height: 141px; display: flex; align-items: center; justify-content: center; writing-mode: vertical-rl; text-orientation: upright; font-size: 40px; font-weight: 700; line-height: 1; letter-spacing: -9px; white-space: nowrap; }
+.play-pennant:hover { filter: brightness(1.12); }
+.play-pennant-four { transform: scaleY(.75); }
+body:has(.camera-play-page) .fullscreen-control { top: auto; bottom: 12px; }
+.camera-play-page button:focus-visible, .play-options summary:focus-visible { outline: 3px solid #ffeb36; outline-offset: 4px; }
+.camera-play-footer { z-index: 4; }
+.play-instruction { position: absolute; top: 90.41%; left: 50%; transform: translateX(-50%); margin: 0; font-size: 36px; font-weight: 700; line-height: 1.3; white-space: nowrap; }
+.play-assistive-status { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+.camera-play-notice { position: absolute; z-index: 5; left: 50%; top: 50%; transform: translate(-50%, -50%); width: min(420px, calc(100% - 40px)); padding: 24px; text-align: center; border-radius: 18px; background: #fffef2f5; box-shadow: 0 8px 30px #0003; }
+.camera-play-notice p { margin: 0 0 16px; line-height: 1.6; }
+.camera-play-notice p:last-child { margin-bottom: 0; }
+.camera-play-notice button, .play-options button { border: 1px solid #48110055; border-radius: 20px; padding: 8px 14px; background: #fff; color: #481100; }
+.play-options { position: absolute; z-index: 5; left: 16px; bottom: 12px; color: #bbb; font-size: 12px; max-width: min(350px, calc(100% - 32px)); }
+.play-options summary { cursor: pointer; }
+.play-options[open] { padding: 16px; border-radius: 12px; background: #fffef2; color: #481100; }
+.play-options button { margin: 4px; }
+.play-enable-sound { position: absolute; z-index: 5; bottom: 12px; left: 50%; transform: translateX(-50%); border: 0; padding: 6px 12px; border-radius: 20px; color: #eee; background: #333; font-size: 12px; white-space: nowrap; }
+@media (max-aspect-ratio: 3/4) {
+  .play-design-board { left: 0; top: 0; width: 100%; height: 100%; transform: none; }
+  .play-navigation { display: flex; justify-content: space-between; padding: 0 8px; }
+  .play-navigation nav { display: flex; }
+  .camera-play-page .play-pennant { position: relative; left: auto; width: 52px; height: 76px; }
+  .play-pennant img { width: 52px; height: auto; }
+  .play-pennant span { top: 9px; left: 14px; width: 24px; height: 44px; font-size: 13px; letter-spacing: -3px; }
+  .play-instruction { top: calc(50% + 28vw); font-size: 14px; }
+  .play-enable-sound { bottom: 64px; }
+}

@@ -1,0 +1,1173 @@
+{
+  "janggu": {
+    "x": 291.3687438964844,
+    "y": 234.34793090820312,
+    "viewBox": [
+      0.0,
+      0.0,
+      1480.0,
+      1285.0
+    ],
+    "parts": [
+      {
+        "id": "ring-001-yellow",
+        "file": "/assets/figma/instruments/janggu/screen/parts/ring-001-yellow.svg",
+        "ring": true,
+        "bounds": {
+          "x": 949.2107543945312,
+          "y": 293.8389587402344,
+          "width": 239.36529541015625,
+          "height": 405.4353332519531
+        }
+      },
+      {
+        "id": "ring-002-pink",
+        "file": "/assets/figma/instruments/janggu/screen/parts/ring-002-pink.svg",
+        "ring": true,
+        "bounds": {
+          "x": 844.2704467773438,
+          "y": 234.34793090820312,
+          "width": 340.77789306640625,
+          "height": 572.5213012695312
+        }
+      },
+      {
+        "id": "ring-003-red",
+        "file": "/assets/figma/instruments/janggu/screen/parts/ring-003-red.svg",
+        "ring": true,
+        "bounds": {
+          "x": 865.2263793945312,
+          "y": 324.4588623046875,
+          "width": 245.25921630859375,
+          "height": 416.0706787109375
+        }
+      },
+      {
+        "id": "ring-004-green",
+        "file": "/assets/figma/instruments/janggu/screen/parts/ring-004-green.svg",
+        "ring": true,
+        "bounds": {
+          "x": 840.6346435546875,
+          "y": 324.8559875488281,
+          "width": 250.257080078125,
+          "height": 434.8815002441406
+        }
+      },
+      {
+        "id": "ring-005-blue",
+        "file": "/assets/figma/instruments/janggu/screen/parts/ring-005-blue.svg",
+        "ring": true,
+        "bounds": {
+          "x": 872.8846435546875,
+          "y": 310.54998779296875,
+          "width": 250.257080078125,
+          "height": 434.88262939453125
+        }
+      },
+      {
+        "id": "ring-006-cyan",
+        "file": "/assets/figma/instruments/janggu/screen/parts/ring-006-cyan.svg",
+        "ring": true,
+        "bounds": {
+          "x": 805.1301879882812,
+          "y": 328.224365234375,
+          "width": 273.38177490234375,
+          "height": 450.8980712890625
+        }
+      },
+      {
+        "id": "ring-007-yellow",
+        "file": "/assets/figma/instruments/janggu/screen/parts/ring-007-yellow.svg",
+        "ring": true,
+        "bounds": {
+          "x": 796.91455078125,
+          "y": 365.0597229003906,
+          "width": 240.779541015625,
+          "height": 397.4532775878906
+        }
+      },
+      {
+        "id": "ring-008-pink",
+        "file": "/assets/figma/instruments/janggu/screen/parts/ring-008-pink.svg",
+        "ring": true,
+        "bounds": {
+          "x": 780.7030639648438,
+          "y": 383.9089050292969,
+          "width": 224.7337646484375,
+          "height": 381.3025817871094
+        }
+      },
+      {
+        "id": "ring-009-green",
+        "file": "/assets/figma/instruments/janggu/screen/parts/ring-009-green.svg",
+        "ring": true,
+        "bounds": {
+          "x": 755.0774536132812,
+          "y": 393.3081359863281,
+          "width": 227.54705810546875,
+          "height": 383.9527282714844
+        }
+      },
+      {
+        "id": "ring-010-blue",
+        "file": "/assets/figma/instruments/janggu/screen/parts/ring-010-blue.svg",
+        "ring": true,
+        "bounds": {
+          "x": 736.4596557617188,
+          "y": 407.7475891113281,
+          "width": 225.11639404296875,
+          "height": 372.6896057128906
+        }
+      },
+      {
+        "id": "ring-011-yellow",
+        "file": "/assets/figma/instruments/janggu/screen/parts/ring-011-yellow.svg",
+        "ring": true,
+        "bounds": {
+          "x": 731.7647094726562,
+          "y": 447.7181701660156,
+          "width": 185.80914306640625,
+          "height": 314.3786926269531
+        }
+      },
+      {
+        "id": "ring-012-red",
+        "file": "/assets/figma/instruments/janggu/screen/parts/ring-012-red.svg",
+        "ring": true,
+        "bounds": {
+          "x": 706.2140502929688,
+          "y": 467.00189208984375,
+          "width": 185.41485595703125,
+          "height": 298.60821533203125
+        }
+      },
+      {
+        "id": "ring-013-pink",
+        "file": "/assets/figma/instruments/janggu/screen/parts/ring-013-pink.svg",
+        "ring": true,
+        "bounds": {
+          "x": 696.4223022460938,
+          "y": 491.6564636230469,
+          "width": 168.6739501953125,
+          "height": 265.4369201660156
+        }
+      },
+      {
+        "id": "ring-014-cyan",
+        "file": "/assets/figma/instruments/janggu/screen/parts/ring-014-cyan.svg",
+        "ring": true,
+        "bounds": {
+          "x": 682.91650390625,
+          "y": 532.7783813476562,
+          "width": 136.093017578125,
+          "height": 209.615234375
+        }
+      },
+      {
+        "id": "ring-015-yellow",
+        "file": "/assets/figma/instruments/janggu/screen/parts/ring-015-yellow.svg",
+        "ring": true,
+        "bounds": {
+          "x": 681.4100341796875,
+          "y": 557.1727294921875,
+          "width": 108.5362548828125,
+          "height": 174.4022216796875
+        }
+      },
+      {
+        "id": "ring-016-yellow",
+        "file": "/assets/figma/instruments/janggu/screen/parts/ring-016-yellow.svg",
+        "ring": true,
+        "bounds": {
+          "x": 291.3687438964844,
+          "y": 585.6373291015625,
+          "width": 239.36611938476562,
+          "height": 405.43572998046875
+        }
+      },
+      {
+        "id": "ring-017-pink",
+        "file": "/assets/figma/instruments/janggu/screen/parts/ring-017-pink.svg",
+        "ring": true,
+        "bounds": {
+          "x": 294.89556884765625,
+          "y": 478.0396728515625,
+          "width": 340.781982421875,
+          "height": 572.5255126953125
+        }
+      },
+      {
+        "id": "ring-018-red",
+        "file": "/assets/figma/instruments/janggu/screen/parts/ring-018-red.svg",
+        "ring": true,
+        "bounds": {
+          "x": 369.447021484375,
+          "y": 544.37841796875,
+          "width": 245.25689697265625,
+          "height": 416.07073974609375
+        }
+      },
+      {
+        "id": "ring-019-green",
+        "file": "/assets/figma/instruments/janggu/screen/parts/ring-019-green.svg",
+        "ring": true,
+        "bounds": {
+          "x": 389.0366516113281,
+          "y": 525.1865234375,
+          "width": 250.25668334960938,
+          "height": 434.87994384765625
+        }
+      },
+      {
+        "id": "ring-020-blue",
+        "file": "/assets/figma/instruments/janggu/screen/parts/ring-020-blue.svg",
+        "ring": true,
+        "bounds": {
+          "x": 356.8046569824219,
+          "y": 539.4805297851562,
+          "width": 250.25595092773438,
+          "height": 434.88153076171875
+        }
+      },
+      {
+        "id": "ring-021-cyan",
+        "file": "/assets/figma/instruments/janggu/screen/parts/ring-021-cyan.svg",
+        "ring": true,
+        "bounds": {
+          "x": 401.4171447753906,
+          "y": 505.7795104980469,
+          "width": 273.3842468261719,
+          "height": 450.9103088378906
+        }
+      },
+      {
+        "id": "ring-022-yellow",
+        "file": "/assets/figma/instruments/janggu/screen/parts/ring-022-yellow.svg",
+        "ring": true,
+        "bounds": {
+          "x": 442.2366638183594,
+          "y": 522.39599609375,
+          "width": 240.77975463867188,
+          "height": 397.4530029296875
+        }
+      },
+      {
+        "id": "ring-023-pink",
+        "file": "/assets/figma/instruments/janggu/screen/parts/ring-023-pink.svg",
+        "ring": true,
+        "bounds": {
+          "x": 474.5095520019531,
+          "y": 519.6998901367188,
+          "width": 224.73233032226562,
+          "height": 381.302978515625
+        }
+      },
+      {
+        "id": "ring-024-green",
+        "file": "/assets/figma/instruments/janggu/screen/parts/ring-024-green.svg",
+        "ring": true,
+        "bounds": {
+          "x": 497.3200988769531,
+          "y": 507.651123046875,
+          "width": 227.54678344726562,
+          "height": 383.953369140625
+        }
+      },
+      {
+        "id": "ring-025-blue",
+        "file": "/assets/figma/instruments/janggu/screen/parts/ring-025-blue.svg",
+        "ring": true,
+        "bounds": {
+          "x": 518.3716430664062,
+          "y": 504.4730529785156,
+          "width": 225.11639404296875,
+          "height": 372.6913757324219
+        }
+      },
+      {
+        "id": "ring-026-yellow",
+        "file": "/assets/figma/instruments/janggu/screen/parts/ring-026-yellow.svg",
+        "ring": true,
+        "bounds": {
+          "x": 562.3682861328125,
+          "y": 522.8301391601562,
+          "width": 185.80938720703125,
+          "height": 314.37957763671875
+        }
+      },
+      {
+        "id": "ring-027-red",
+        "file": "/assets/figma/instruments/janggu/screen/parts/ring-027-red.svg",
+        "ring": true,
+        "bounds": {
+          "x": 588.2980346679688,
+          "y": 519.3132934570312,
+          "width": 185.41485595703125,
+          "height": 298.60845947265625
+        }
+      },
+      {
+        "id": "ring-028-pink",
+        "file": "/assets/figma/instruments/janggu/screen/parts/ring-028-pink.svg",
+        "ring": true,
+        "bounds": {
+          "x": 614.84814453125,
+          "y": 527.8184814453125,
+          "width": 168.674072265625,
+          "height": 265.43707275390625
+        }
+      },
+      {
+        "id": "ring-029-cyan",
+        "file": "/assets/figma/instruments/janggu/screen/parts/ring-029-cyan.svg",
+        "ring": true,
+        "bounds": {
+          "x": 660.9364624023438,
+          "y": 542.5238647460938,
+          "width": 136.09307861328125,
+          "height": 209.604248046875
+        }
+      },
+      {
+        "id": "ring-030-yellow",
+        "file": "/assets/figma/instruments/janggu/screen/parts/ring-030-yellow.svg",
+        "ring": true,
+        "bounds": {
+          "x": 689.9986572265625,
+          "y": 553.3370361328125,
+          "width": 108.53631591796875,
+          "height": 174.4022216796875
+        }
+      },
+      {
+        "id": "body-line-031-yellow",
+        "file": "/assets/figma/instruments/janggu/screen/parts/body-line-031-yellow.svg",
+        "ring": false,
+        "bounds": {
+          "x": 340.4700012207031,
+          "y": 451.52801513671875,
+          "width": 231.31600952148438,
+          "height": 66.677978515625
+        }
+      },
+      {
+        "id": "body-line-032-yellow",
+        "file": "/assets/figma/instruments/janggu/screen/parts/body-line-032-yellow.svg",
+        "ring": false,
+        "bounds": {
+          "x": 563.426025390625,
+          "y": 356.59698486328125,
+          "width": 471.4239501953125,
+          "height": 115.08901977539062
+        }
+      },
+      {
+        "id": "body-line-033-yellow",
+        "file": "/assets/figma/instruments/janggu/screen/parts/body-line-033-yellow.svg",
+        "ring": false,
+        "bounds": {
+          "x": 657.2239990234375,
+          "y": 602.385986328125,
+          "width": 486.68603515625,
+          "height": 79.0889892578125
+        }
+      },
+      {
+        "id": "body-line-034-yellow",
+        "file": "/assets/figma/instruments/janggu/screen/parts/body-line-034-yellow.svg",
+        "ring": false,
+        "bounds": {
+          "x": 561.5430297851562,
+          "y": 259.5719909667969,
+          "width": 340.0159912109375,
+          "height": 210.64501953125
+        }
+      },
+      {
+        "id": "body-line-035-yellow",
+        "file": "/assets/figma/instruments/janggu/screen/parts/body-line-035-yellow.svg",
+        "ring": false,
+        "bounds": {
+          "x": 567.8759765625,
+          "y": 888.4010009765625,
+          "width": 199.11102294921875,
+          "height": 152.3590087890625
+        }
+      },
+      {
+        "id": "body-line-036-yellow",
+        "file": "/assets/figma/instruments/janggu/screen/parts/body-line-036-yellow.svg",
+        "ring": false,
+        "bounds": {
+          "x": 367.9330139160156,
+          "y": 660.7050170898438,
+          "width": 298.8779602050781,
+          "height": 143.57501220703125
+        }
+      },
+      {
+        "id": "body-line-037-yellow",
+        "file": "/assets/figma/instruments/janggu/screen/parts/body-line-037-yellow.svg",
+        "ring": false,
+        "bounds": {
+          "x": 750.8660278320312,
+          "y": 609.8709716796875,
+          "width": 400.11395263671875,
+          "height": 296.404052734375
+        }
+      },
+      {
+        "id": "body-line-038-yellow",
+        "file": "/assets/figma/instruments/janggu/screen/parts/body-line-038-yellow.svg",
+        "ring": false,
+        "bounds": {
+          "x": 652.7990112304688,
+          "y": 365.39898681640625,
+          "width": 389.26104736328125,
+          "height": 313.73004150390625
+        }
+      },
+      {
+        "id": "body-line-039-yellow",
+        "file": "/assets/figma/instruments/janggu/screen/parts/body-line-039-yellow.svg",
+        "ring": false,
+        "bounds": {
+          "x": 753.656005859375,
+          "y": 774.22802734375,
+          "width": 373.093994140625,
+          "height": 133.45794677734375
+        }
+      },
+      {
+        "id": "body-line-040-green",
+        "file": "/assets/figma/instruments/janggu/screen/parts/body-line-040-green.svg",
+        "ring": false,
+        "bounds": {
+          "x": 531.4669799804688,
+          "y": 403.1839904785156,
+          "width": 112.15704345703125,
+          "height": 82.89599609375
+        }
+      },
+      {
+        "id": "body-line-041-blue",
+        "file": "/assets/figma/instruments/janggu/screen/parts/body-line-041-blue.svg",
+        "ring": false,
+        "bounds": {
+          "x": 626.0770263671875,
+          "y": 608.9559936523438,
+          "width": 114.05596923828125,
+          "height": 91.36102294921875
+        }
+      },
+      {
+        "id": "body-line-042-pink",
+        "file": "/assets/figma/instruments/janggu/screen/parts/body-line-042-pink.svg",
+        "ring": false,
+        "bounds": {
+          "x": 728.9970092773438,
+          "y": 832.4240112304688,
+          "width": 114.36798095703125,
+          "height": 100.04296875
+        }
+      }
+    ]
+  },
+  "jing": {
+    "x": 388.21820068359375,
+    "y": 62.932498931884766,
+    "viewBox": [
+      0.0,
+      0.0,
+      1156.0,
+      904.0
+    ],
+    "parts": [
+      {
+        "id": "ring-001-pink",
+        "file": "/assets/figma/instruments/jing/screen/parts/ring-001-pink.svg",
+        "ring": true,
+        "bounds": {
+          "x": 484.64520263671875,
+          "y": 118.7072982788086,
+          "width": 476.9976806640625,
+          "height": 612.2124633789062
+        }
+      },
+      {
+        "id": "ring-002-red",
+        "file": "/assets/figma/instruments/jing/screen/parts/ring-002-red.svg",
+        "ring": true,
+        "bounds": {
+          "x": 488.1633605957031,
+          "y": 129.316650390625,
+          "width": 455.5082702636719,
+          "height": 590.82470703125
+        }
+      },
+      {
+        "id": "ring-003-cyan",
+        "file": "/assets/figma/instruments/jing/screen/parts/ring-003-cyan.svg",
+        "ring": true,
+        "bounds": {
+          "x": 457.2762451171875,
+          "y": 128.00172424316406,
+          "width": 454.56646728515625,
+          "height": 593.0115966796875
+        }
+      },
+      {
+        "id": "ring-004-yellow",
+        "file": "/assets/figma/instruments/jing/screen/parts/ring-004-yellow.svg",
+        "ring": true,
+        "bounds": {
+          "x": 727.7005615234375,
+          "y": 62.932498931884766,
+          "width": 333.2977294921875,
+          "height": 428.85748291015625
+        }
+      },
+      {
+        "id": "ring-005-blue",
+        "file": "/assets/figma/instruments/jing/screen/parts/ring-005-blue.svg",
+        "ring": true,
+        "bounds": {
+          "x": 409.6097412109375,
+          "y": 110.74518585205078,
+          "width": 486.76153564453125,
+          "height": 627.0396118164062
+        }
+      },
+      {
+        "id": "ring-006-yellow",
+        "file": "/assets/figma/instruments/jing/screen/parts/ring-006-yellow.svg",
+        "ring": true,
+        "bounds": {
+          "x": 388.21820068359375,
+          "y": 126.09366607666016,
+          "width": 455.431640625,
+          "height": 595.7736206054688
+        }
+      },
+      {
+        "id": "ring-007-red",
+        "file": "/assets/figma/instruments/jing/screen/parts/ring-007-red.svg",
+        "ring": true,
+        "bounds": {
+          "x": 411.436279296875,
+          "y": 155.4222412109375,
+          "width": 408.993408203125,
+          "height": 537.154541015625
+        }
+      },
+      {
+        "id": "ring-008-cyan",
+        "file": "/assets/figma/instruments/jing/screen/parts/ring-008-cyan.svg",
+        "ring": true,
+        "bounds": {
+          "x": 434.3680114746094,
+          "y": 179.955810546875,
+          "width": 363.1319274902344,
+          "height": 488.04937744140625
+        }
+      },
+      {
+        "id": "ring-009-green",
+        "file": "/assets/figma/instruments/jing/screen/parts/ring-009-green.svg",
+        "ring": true,
+        "bounds": {
+          "x": 474.80926513671875,
+          "y": 223.2289276123047,
+          "width": 282.23040771484375,
+          "height": 401.50311279296875
+        }
+      },
+      {
+        "id": "ring-010-yellow",
+        "file": "/assets/figma/instruments/jing/screen/parts/ring-010-yellow.svg",
+        "ring": true,
+        "bounds": {
+          "x": 490.6077880859375,
+          "y": 247.0823516845703,
+          "width": 243.65435791015625,
+          "height": 353.74237060546875
+        }
+      },
+      {
+        "id": "ring-011-pink",
+        "file": "/assets/figma/instruments/jing/screen/parts/ring-011-pink.svg",
+        "ring": true,
+        "bounds": {
+          "x": 510.88623046875,
+          "y": 274.22479248046875,
+          "width": 203.09674072265625,
+          "height": 299.45623779296875
+        }
+      }
+    ]
+  },
+  "sogo": {
+    "x": 179.49191284179688,
+    "y": 81.00332641601562,
+    "viewBox": [
+      0.0,
+      0.0,
+      854.0,
+      851.0
+    ],
+    "parts": [
+      {
+        "id": "ring-001-yellow",
+        "file": "/assets/figma/instruments/sogo/screen/parts/ring-001-yellow.svg",
+        "ring": true,
+        "bounds": {
+          "x": 179.49191284179688,
+          "y": 181.0099639892578,
+          "width": 472.1720275878906,
+          "height": 442.3360595703125
+        }
+      },
+      {
+        "id": "ring-002-green",
+        "file": "/assets/figma/instruments/sogo/screen/parts/ring-002-green.svg",
+        "ring": true,
+        "bounds": {
+          "x": 191.93431091308594,
+          "y": 169.46340942382812,
+          "width": 463.2403564453125,
+          "height": 433.4341735839844
+        }
+      },
+      {
+        "id": "ring-003-pink",
+        "file": "/assets/figma/instruments/sogo/screen/parts/ring-003-pink.svg",
+        "ring": true,
+        "bounds": {
+          "x": 207.15980529785156,
+          "y": 160.10694885253906,
+          "width": 449.24139404296875,
+          "height": 419.27435302734375
+        }
+      },
+      {
+        "id": "detail-004-yellow",
+        "file": "/assets/figma/instruments/sogo/screen/parts/detail-004-yellow.svg",
+        "ring": false,
+        "bounds": {
+          "x": 208.677001953125,
+          "y": 484.1860046386719,
+          "width": 185.29498291015625,
+          "height": 295.7430114746094
+        }
+      },
+      {
+        "id": "ring-005-red",
+        "file": "/assets/figma/instruments/sogo/screen/parts/ring-005-red.svg",
+        "ring": true,
+        "bounds": {
+          "x": 211.5736083984375,
+          "y": 132.46737670898438,
+          "width": 461.76171875,
+          "height": 431.9482116699219
+        }
+      },
+      {
+        "id": "ring-006-blue",
+        "file": "/assets/figma/instruments/sogo/screen/parts/ring-006-blue.svg",
+        "ring": true,
+        "bounds": {
+          "x": 216.19309997558594,
+          "y": 95.32276153564453,
+          "width": 480.351806640625,
+          "height": 450.4866943359375
+        }
+      },
+      {
+        "id": "ring-007-cyan",
+        "file": "/assets/figma/instruments/sogo/screen/parts/ring-007-cyan.svg",
+        "ring": true,
+        "bounds": {
+          "x": 242.44482421875,
+          "y": 81.00332641601562,
+          "width": 455.04803466796875,
+          "height": 424.66864013671875
+        }
+      },
+      {
+        "id": "ring-008-yellow",
+        "file": "/assets/figma/instruments/sogo/screen/parts/ring-008-yellow.svg",
+        "ring": true,
+        "bounds": {
+          "x": 268.2510986328125,
+          "y": 105.43034362792969,
+          "width": 403.45977783203125,
+          "height": 375.8507385253906
+        }
+      },
+      {
+        "id": "ring-009-yellow",
+        "file": "/assets/figma/instruments/sogo/screen/parts/ring-009-yellow.svg",
+        "ring": true,
+        "bounds": {
+          "x": 268.2510986328125,
+          "y": 105.43034362792969,
+          "width": 403.45977783203125,
+          "height": 375.8507385253906
+        }
+      },
+      {
+        "id": "ring-010-yellow",
+        "file": "/assets/figma/instruments/sogo/screen/parts/ring-010-yellow.svg",
+        "ring": true,
+        "bounds": {
+          "x": 268.2510986328125,
+          "y": 105.43034362792969,
+          "width": 403.45977783203125,
+          "height": 375.8507385253906
+        }
+      },
+      {
+        "id": "ring-011-yellow",
+        "file": "/assets/figma/instruments/sogo/screen/parts/ring-011-yellow.svg",
+        "ring": true,
+        "bounds": {
+          "x": 268.2510986328125,
+          "y": 105.43034362792969,
+          "width": 403.45977783203125,
+          "height": 375.8507385253906
+        }
+      },
+      {
+        "id": "ring-012-green",
+        "file": "/assets/figma/instruments/sogo/screen/parts/ring-012-green.svg",
+        "ring": true,
+        "bounds": {
+          "x": 268.2510986328125,
+          "y": 105.43034362792969,
+          "width": 403.45977783203125,
+          "height": 375.8507385253906
+        }
+      },
+      {
+        "id": "ring-013-yellow",
+        "file": "/assets/figma/instruments/sogo/screen/parts/ring-013-yellow.svg",
+        "ring": true,
+        "bounds": {
+          "x": 283.3345642089844,
+          "y": 121.29898834228516,
+          "width": 373.2904357910156,
+          "height": 344.0766296386719
+        }
+      },
+      {
+        "id": "ring-014-pink",
+        "file": "/assets/figma/instruments/sogo/screen/parts/ring-014-pink.svg",
+        "ring": true,
+        "bounds": {
+          "x": 329.4915771484375,
+          "y": 167.83338928222656,
+          "width": 280.95782470703125,
+          "height": 251.0294952392578
+        }
+      }
+    ]
+  },
+  "kkwaenggwari": {
+    "x": 74.12765502929688,
+    "y": 103.48452758789062,
+    "viewBox": [
+      0.0,
+      0.0,
+      1047.0,
+      955.0
+    ],
+    "parts": [
+      {
+        "id": "ring-001-cyan",
+        "file": "/assets/figma/instruments/kkwaenggwari/screen/parts/ring-001-cyan.svg",
+        "ring": true,
+        "bounds": {
+          "x": 153.9554443359375,
+          "y": 167.3594512939453,
+          "width": 483.56353759765625,
+          "height": 654.4650268554688
+        }
+      },
+      {
+        "id": "ring-002-blue",
+        "file": "/assets/figma/instruments/kkwaenggwari/screen/parts/ring-002-blue.svg",
+        "ring": true,
+        "bounds": {
+          "x": 195.41041564941406,
+          "y": 156.91140747070312,
+          "width": 474.5977783203125,
+          "height": 645.467041015625
+        }
+      },
+      {
+        "id": "ring-003-red",
+        "file": "/assets/figma/instruments/kkwaenggwari/screen/parts/ring-003-red.svg",
+        "ring": true,
+        "bounds": {
+          "x": 74.12765502929688,
+          "y": 103.48452758789062,
+          "width": 349.1158752441406,
+          "height": 425.7497863769531
+        }
+      },
+      {
+        "id": "ring-004-pink",
+        "file": "/assets/figma/instruments/kkwaenggwari/screen/parts/ring-004-pink.svg",
+        "ring": true,
+        "bounds": {
+          "x": 231.24700927734375,
+          "y": 123.47465515136719,
+          "width": 501.49798583984375,
+          "height": 672.3965454101562
+        }
+      },
+      {
+        "id": "ring-005-yellow",
+        "file": "/assets/figma/instruments/kkwaenggwari/screen/parts/ring-005-yellow.svg",
+        "ring": true,
+        "bounds": {
+          "x": 262.4204406738281,
+          "y": 136.18202209472656,
+          "width": 470.1527404785156,
+          "height": 640.9324951171875
+        }
+      },
+      {
+        "id": "ring-006-green",
+        "file": "/assets/figma/instruments/kkwaenggwari/screen/parts/ring-006-green.svg",
+        "ring": true,
+        "bounds": {
+          "x": 305.4542236328125,
+          "y": 163.9693145751953,
+          "width": 410.33740234375,
+          "height": 568.2282104492188
+        }
+      },
+      {
+        "id": "ring-007-blue",
+        "file": "/assets/figma/instruments/kkwaenggwari/screen/parts/ring-007-blue.svg",
+        "ring": true,
+        "bounds": {
+          "x": 366.6826477050781,
+          "y": 206.74349975585938,
+          "width": 326.1966857910156,
+          "height": 467.1766662597656
+        }
+      },
+      {
+        "id": "ring-008-red",
+        "file": "/assets/figma/instruments/kkwaenggwari/screen/parts/ring-008-red.svg",
+        "ring": true,
+        "bounds": {
+          "x": 396.998046875,
+          "y": 219.24911499023438,
+          "width": 299.22235107421875,
+          "height": 428.5367736816406
+        }
+      },
+      {
+        "id": "ring-009-yellow",
+        "file": "/assets/figma/instruments/kkwaenggwari/screen/parts/ring-009-yellow.svg",
+        "ring": true,
+        "bounds": {
+          "x": 417.2335510253906,
+          "y": 241.13937377929688,
+          "width": 264.9274597167969,
+          "height": 382.2691955566406
+        }
+      },
+      {
+        "id": "ring-010-pink",
+        "file": "/assets/figma/instruments/kkwaenggwari/screen/parts/ring-010-pink.svg",
+        "ring": true,
+        "bounds": {
+          "x": 463.65850830078125,
+          "y": 281.0834655761719,
+          "width": 187.83294677734375,
+          "height": 296.0085144042969
+        }
+      }
+    ]
+  },
+  "buk": {
+    "x": 180.8693389892578,
+    "y": 211.78909301757812,
+    "viewBox": [
+      0.0,
+      0.0,
+      1227.0,
+      1193.0
+    ],
+    "parts": [
+      {
+        "id": "ring-001-yellow",
+        "file": "/assets/figma/instruments/buk/screen/parts/ring-001-yellow.svg",
+        "ring": true,
+        "bounds": {
+          "x": 429.29827880859375,
+          "y": 543.4492797851562,
+          "width": 578.9547119140625,
+          "height": 424.69244384765625
+        }
+      },
+      {
+        "id": "ring-002-blue",
+        "file": "/assets/figma/instruments/buk/screen/parts/ring-002-blue.svg",
+        "ring": true,
+        "bounds": {
+          "x": 391.1533508300781,
+          "y": 490.6417236328125,
+          "width": 634.778564453125,
+          "height": 464.99658203125
+        }
+      },
+      {
+        "id": "ring-003-red",
+        "file": "/assets/figma/instruments/buk/screen/parts/ring-003-red.svg",
+        "ring": true,
+        "bounds": {
+          "x": 375.0565490722656,
+          "y": 457.8258361816406,
+          "width": 651.7225341796875,
+          "height": 482.0023498535156
+        }
+      },
+      {
+        "id": "ring-004-green",
+        "file": "/assets/figma/instruments/buk/screen/parts/ring-004-green.svg",
+        "ring": true,
+        "bounds": {
+          "x": 353.44232177734375,
+          "y": 415.69189453125,
+          "width": 671.9299926757812,
+          "height": 492.88323974609375
+        }
+      },
+      {
+        "id": "ring-005-yellow",
+        "file": "/assets/figma/instruments/buk/screen/parts/ring-005-yellow.svg",
+        "ring": true,
+        "bounds": {
+          "x": 180.8693389892578,
+          "y": 551.1463623046875,
+          "width": 285.1433410644531,
+          "height": 265.49835205078125
+        }
+      },
+      {
+        "id": "ring-006-cyan",
+        "file": "/assets/figma/instruments/buk/screen/parts/ring-006-cyan.svg",
+        "ring": true,
+        "bounds": {
+          "x": 329.96942138671875,
+          "y": 364.1480712890625,
+          "width": 693.2769775390625,
+          "height": 514.2788696289062
+        }
+      },
+      {
+        "id": "ring-007-yellow",
+        "file": "/assets/figma/instruments/buk/screen/parts/ring-007-yellow.svg",
+        "ring": true,
+        "bounds": {
+          "x": 287.97674560546875,
+          "y": 287.300048828125,
+          "width": 737.4912719726562,
+          "height": 541.0214233398438
+        }
+      },
+      {
+        "id": "ring-008-pink",
+        "file": "/assets/figma/instruments/buk/screen/parts/ring-008-pink.svg",
+        "ring": true,
+        "bounds": {
+          "x": 302.8904113769531,
+          "y": 277.6580505371094,
+          "width": 693.2781982421875,
+          "height": 514.2999877929688
+        }
+      },
+      {
+        "id": "ring-009-yellow",
+        "file": "/assets/figma/instruments/buk/screen/parts/ring-009-yellow.svg",
+        "ring": true,
+        "bounds": {
+          "x": 299.6863098144531,
+          "y": 244.08790588378906,
+          "width": 671.9300537109375,
+          "height": 492.8829345703125
+        }
+      },
+      {
+        "id": "ring-010-green",
+        "file": "/assets/figma/instruments/buk/screen/parts/ring-010-green.svg",
+        "ring": true,
+        "bounds": {
+          "x": 300.74017333984375,
+          "y": 220.55783081054688,
+          "width": 651.7236328125,
+          "height": 482.0023498535156
+        }
+      },
+      {
+        "id": "ring-011-blue",
+        "file": "/assets/figma/instruments/buk/screen/parts/ring-011-blue.svg",
+        "ring": true,
+        "bounds": {
+          "x": 309.5854797363281,
+          "y": 211.78909301757812,
+          "width": 619.6876831054688,
+          "height": 453.9132385253906
+        }
+      },
+      {
+        "id": "detail-012-yellow",
+        "file": "/assets/figma/instruments/buk/screen/parts/detail-012-yellow.svg",
+        "ring": false,
+        "bounds": {
+          "x": 676.5070190429688,
+          "y": 665.7899780273438,
+          "width": 159.126953125,
+          "height": 255
+        }
+      },
+      {
+        "id": "detail-013-yellow",
+        "file": "/assets/figma/instruments/buk/screen/parts/detail-013-yellow.svg",
+        "ring": false,
+        "bounds": {
+          "x": 868.4229736328125,
+          "y": 558.56201171875,
+          "width": 157.0169677734375,
+          "height": 184.656005859375
+        }
+      },
+      {
+        "id": "detail-014-yellow",
+        "file": "/assets/figma/instruments/buk/screen/parts/detail-014-yellow.svg",
+        "ring": false,
+        "bounds": {
+          "x": 923.718994140625,
+          "y": 476.53399658203125,
+          "width": 98.11102294921875,
+          "height": 63.42498779296875
+        }
+      },
+      {
+        "id": "detail-015-yellow",
+        "file": "/assets/figma/instruments/buk/screen/parts/detail-015-yellow.svg",
+        "ring": false,
+        "bounds": {
+          "x": 946.4199829101562,
+          "y": 388.8320007324219,
+          "width": 48.4620361328125,
+          "height": 33.02301025390625
+        }
+      },
+      {
+        "id": "detail-016-yellow",
+        "file": "/assets/figma/instruments/buk/screen/parts/detail-016-yellow.svg",
+        "ring": false,
+        "bounds": {
+          "x": 513.3800048828125,
+          "y": 690.9749755859375,
+          "width": 141.7669677734375,
+          "height": 244.9010009765625
+        }
+      },
+      {
+        "id": "detail-017-yellow",
+        "file": "/assets/figma/instruments/buk/screen/parts/detail-017-yellow.svg",
+        "ring": false,
+        "bounds": {
+          "x": 403.5830078125,
+          "y": 690.5479736328125,
+          "width": 83.64599609375,
+          "height": 214.96600341796875
+        }
+      },
+      {
+        "id": "detail-018-yellow",
+        "file": "/assets/figma/instruments/buk/screen/parts/detail-018-yellow.svg",
+        "ring": false,
+        "bounds": {
+          "x": 332.4179992675781,
+          "y": 651.8610229492188,
+          "width": 62.9530029296875,
+          "height": 87.84295654296875
+        }
+      },
+      {
+        "id": "detail-019-yellow",
+        "file": "/assets/figma/instruments/buk/screen/parts/detail-019-yellow.svg",
+        "ring": false,
+        "bounds": {
+          "x": 288.1409912109375,
+          "y": 590.344970703125,
+          "width": 39.45599365234375,
+          "height": 40.5360107421875
+        }
+      },
+      {
+        "id": "ring-020-red",
+        "file": "/assets/figma/instruments/buk/screen/parts/ring-020-red.svg",
+        "ring": true,
+        "bounds": {
+          "x": 331.6953125,
+          "y": 230.73072814941406,
+          "width": 574.0023803710938,
+          "height": 411.3565673828125
+        }
+      },
+      {
+        "id": "ring-021-yellow",
+        "file": "/assets/figma/instruments/buk/screen/parts/ring-021-yellow.svg",
+        "ring": true,
+        "bounds": {
+          "x": 350.778564453125,
+          "y": 235.46530151367188,
+          "width": 526.5662841796875,
+          "height": 372.1612243652344
+        }
+      },
+      {
+        "id": "ring-022-cyan",
+        "file": "/assets/figma/instruments/buk/screen/parts/ring-022-cyan.svg",
+        "ring": true,
+        "bounds": {
+          "x": 369.89910888671875,
+          "y": 255.8090057373047,
+          "width": 488.51080322265625,
+          "height": 332.19122314453125
+        }
+      },
+      {
+        "id": "ring-023-pink",
+        "file": "/assets/figma/instruments/buk/screen/parts/ring-023-pink.svg",
+        "ring": true,
+        "bounds": {
+          "x": 430.4625549316406,
+          "y": 303.14215087890625,
+          "width": 361.6931457519531,
+          "height": 219.3411865234375
+        }
+      },
+      {
+        "id": "detail-024-yellow",
+        "file": "/assets/figma/instruments/buk/screen/parts/detail-024-yellow.svg",
+        "ring": false,
+        "bounds": {
+          "x": 776.6909790039062,
+          "y": 621.3389892578125,
+          "width": 194.12200927734375,
+          "height": 238.717041015625
+        }
+      }
+    ]
+  }
+}

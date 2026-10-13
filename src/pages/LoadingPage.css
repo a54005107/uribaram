@@ -1,0 +1,19 @@
+.loading-page {
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background: linear-gradient(180deg, var(--uribaram-color-cyan) 13.63%, #fff 100%);
+  color: var(--uribaram-color-brown);
+  font-family: var(--uribaram-font-family);
+}
+
+.loading-message {
+  margin: 0;
+  transform: translateX(.245536vw);
+  font-size: clamp(18px, 2.142857vw, var(--uribaram-type-h1-size));
+  font-weight: var(--uribaram-type-h1-weight);
+  line-height: var(--uribaram-type-h1-line-height);
+  letter-spacing: var(--uribaram-type-h1-letter-spacing);
+  text-align: center;
+  word-break: keep-all;
+}

@@ -26,7 +26,7 @@ export function createStickHitEngine() {
         const stick = sticks[side];
         if (!stick || !stick.grip.grabbed || stick.stale) { delete hands[side]; continue; }
         const current = {x: stick.tipX, y: stick.tipY, timestamp: stick.timestamp};
-        const state = hands[side] || {previous: null, lastHit: -Infinity};
+        const state = hands[side] || {previous: null, lastHit: -Infinity, rebounds: {}};
         const previous = state.previous;
         if (previous && current.timestamp <= previous.timestamp) continue;
         if (previous && current.timestamp > previous.timestamp) {
@@ -36,12 +36,49 @@ export function createStickHitEngine() {
             const oldZone = state.zones[target];
             const relativePrevious = {x: zone.x + (previous.x - oldZone.x) * zone.radiusX / oldZone.radiusX,
               y: zone.y + (previous.y - oldZone.y) * zone.radiusY / oldZone.radiusY};
-            return {target, t: segmentEntry(relativePrevious, current, forgivingHitZone(zone))};
+            const padded = forgivingHitZone(zone);
+            const radius = point => Math.hypot((point.x - zone.x) / padded.radiusX, (point.y - zone.y) / padded.radiusY);
+            const before = radius(relativePrevious), after = radius(current);
+            const rebound = state.rebounds[target] || {low: before, peak: before, armed: false,
+              travel: 0, direction: null, struck: false};
+            const dx = (current.x - relativePrevious.x) / padded.radiusX;
+            const dy = (current.y - relativePrevious.y) / padded.radiusY;
+            const distance = Math.hypot(dx, dy);
+            if (distance > .008) {
+              const direction = {x: dx / distance, y: dy / distance};
+              if (rebound.direction && direction.x * rebound.direction.x + direction.y * rebound.direction.y < -.25) {
+                rebound.travel = 0;
+                rebound.struck = false;
+              }
+              rebound.direction = direction;
+              rebound.travel += distance;
+            }
+            // Center strokes need neither a rim crossing nor radial retreat:
+            // allow one hit per deliberate stroke, rearmed by a reversal.
+            const central = after <= .55 && rebound.travel >= .14 && !rebound.struck;
+            rebound.low = Math.min(rebound.low, after);
+            if (after > before) {
+              rebound.peak = Math.max(rebound.peak, after);
+              if (after - rebound.low >= HIT_CONFIG.reboundRetreat) rebound.armed = true;
+            } else if (!rebound.armed) rebound.peak = after;
+            const repeated = rebound.armed && after <= 1
+              && rebound.peak - after >= HIT_CONFIG.reboundApproach;
+            const entry = segmentEntry(relativePrevious, current, padded);
+            // A short lift and return can strike again without leaving the
+            // padded surface. Stationary jitter cannot arm this path.
+            if (repeated || entry !== null || central) {
+              rebound.low = after; rebound.peak = after; rebound.armed = false;
+              rebound.struck = true; rebound.travel = 0;
+            }
+            state.rebounds[target] = rebound;
+            return {target, t: central ? 1 : entry ?? (repeated ? 1 : null)};
           })
             .filter(({t}) => t !== null).sort((a, b) => a.t - b.t);
           if (entries.length && speed >= HIT_CONFIG.impactVelocity && current.timestamp - state.lastHit >= HIT_CONFIG.cooldownMs) {
             state.lastHit = current.timestamp;
             onHit({side: entries[0].target, hand: side, velocity: speed, downwardVelocity: vy,
+              point: {x: previous.x + (current.x - previous.x) * entries[0].t,
+                y: previous.y + (current.y - previous.y) * entries[0].t},
               strength: speed >= HIT_CONFIG.strength.strong ? 'strong' : speed >= HIT_CONFIG.strength.normal ? 'normal' : 'weak'});
           }
         }

@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='utf-8'?>
+<svg xmlns="http://www.w3.org/2000/svg" width="580" height="1062" viewBox="0 0 580 1062" fill="none">
+<path d="M143.572 65.77L470.489 79.9179L436.42 914.49L109.503 900.342L143.572 65.77Z" fill="white" data-part-id="cloth-001-white" id="cloth-001-white" />
+<path d="M578.13 126.378L467.083 163.375L470.49 79.9174L578.13 126.378Z" fill="#3373ED" data-part-id="trim-002-blue" id="trim-002-blue" />
+<path d="M1.70348 853.874L112.91 816.884L109.503 900.341L1.70348 853.874Z" fill="#3373ED" data-part-id="trim-003-blue" id="trim-003-blue" />
+<path d="M574.722 209.835L463.676 246.832L467.083 163.374L574.722 209.835Z" fill="#3373ED" data-part-id="trim-004-blue" id="trim-004-blue" />
+<path d="M5.1107 770.415L116.317 733.426L112.91 816.883L5.1107 770.415Z" fill="#3373ED" data-part-id="trim-005-blue" id="trim-005-blue" />
+<path d="M571.314 293.292L460.267 330.289L463.674 246.831L571.314 293.292Z" fill="#3373ED" data-part-id="trim-006-blue" id="trim-006-blue" />
+<path d="M8.51793 686.96L119.725 649.971L116.318 733.428L8.51793 686.96Z" fill="#3373ED" data-part-id="trim-007-blue" id="trim-007-blue" />
+<path d="M567.908 376.751L456.861 413.747L460.268 330.29L567.908 376.751Z" fill="#3373ED" data-part-id="trim-008-blue" id="trim-008-blue" />
+<path d="M11.9242 603.502L123.131 566.513L119.724 649.97L11.9242 603.502Z" fill="#3373ED" data-part-id="trim-009-blue" id="trim-009-blue" />
+<path d="M564.502 460.207L453.455 497.204L456.862 413.747L564.502 460.207Z" fill="#3373ED" data-part-id="trim-010-blue" id="trim-010-blue" />
+<path d="M15.3314 520.044L126.538 483.054L123.131 566.511L15.3314 520.044Z" fill="#3373ED" data-part-id="trim-011-blue" id="trim-011-blue" />
+<path d="M561.094 543.666L450.048 580.662L453.455 497.205L561.094 543.666Z" fill="#3373ED" data-part-id="trim-012-blue" id="trim-012-blue" />
+<path d="M18.7386 436.587L129.945 399.598L126.538 483.055L18.7386 436.587Z" fill="#3373ED" data-part-id="trim-013-blue" id="trim-013-blue" />
+<path d="M557.687 627.122L446.64 664.119L450.047 580.662L557.687 627.122Z" fill="#3373ED" data-part-id="trim-014-blue" id="trim-014-blue" />
+<path d="M22.1449 353.131L133.352 316.141L129.945 399.598L22.1449 353.131Z" fill="#3373ED" data-part-id="trim-015-blue" id="trim-015-blue" />
+<path d="M554.281 710.579L443.234 747.576L446.641 664.119L554.281 710.579Z" fill="#3373ED" data-part-id="trim-016-blue" id="trim-016-blue" />
+<path d="M307.841 1055.82L272.962 907.417L354.691 910.954L307.841 1055.82Z" fill="#3373ED" data-part-id="trim-017-blue" id="trim-017-blue" />
+<path d="M389.57 1059.35L354.691 910.952L436.42 914.489L389.57 1059.35Z" fill="#3373ED" data-part-id="trim-018-blue" id="trim-018-blue" />
+<path d="M25.5521 269.673L136.759 232.683L133.352 316.141L25.5521 269.673Z" fill="#3373ED" data-part-id="trim-019-blue" id="trim-019-blue" />
+<path d="M550.873 794.036L439.826 831.032L443.233 747.575L550.873 794.036Z" fill="#3373ED" data-part-id="trim-020-blue" id="trim-020-blue" />
+<path d="M226.112 1052.28L191.233 903.88L272.962 907.417L226.112 1052.28Z" fill="#3373ED" data-part-id="trim-021-blue" id="trim-021-blue" />
+<path d="M28.9593 186.217L140.166 149.227L136.759 232.684L28.9593 186.217Z" fill="#3373ED" data-part-id="trim-022-blue" id="trim-022-blue" />
+<path d="M547.466 877.492L436.42 914.489L439.827 831.032L547.466 877.492Z" fill="#3373ED" data-part-id="trim-023-blue" id="trim-023-blue" />
+<path d="M144.382 1048.74L109.503 900.342L191.232 903.879L144.382 1048.74Z" fill="#3373ED" data-part-id="trim-024-blue" id="trim-024-blue" />
+<path d="M32.3656 102.759L143.572 65.7689L140.165 149.226L32.3656 102.759Z" fill="#3373ED" data-part-id="trim-025-blue" id="trim-025-blue" />
+<path d="M143.572 65.77L470.489 79.9179L469.147 112.803L142.23 98.6552L143.572 65.77Z" fill="#3373ED" data-part-id="top-band-026-blue" id="top-band-026-blue" />
+<path d="M144.915 32.8843L471.832 47.0321L470.489 79.9173L143.573 65.7695L144.915 32.8843Z" fill="#FFEB36" data-part-id="top-band-027-yellow" id="top-band-027-yellow" />
+<path d="M146.258 0L473.175 14.1479L471.832 47.0331L144.915 32.8852L146.258 0Z" fill="#FF3364" data-part-id="top-band-028-red" id="top-band-028-red" />
+</svg>

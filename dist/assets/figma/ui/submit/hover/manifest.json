@@ -1,0 +1,31 @@
+{
+  "source": "ui/submit/hover/original.svg",
+  "sourceNodeId": "2199:2133",
+  "sourcePageId": "1878:783",
+  "sourceName": "Property 1=호버",
+  "sourceSha256": "492a3250a10eb3a6119e8bf0aad01edca9162d5b4310c31f7f3c25a3cabc84ac",
+  "viewBox": "0 0 194 58",
+  "parts": [
+    {
+      "id": "ui-shape-001-brown",
+      "file": "parts/ui-shape-001-brown.svg",
+      "category": "ui-shape",
+      "zIndex": 0,
+      "svgElementIndex": 0,
+      "fill": "#481100",
+      "stroke": null,
+      "transform": null,
+      "viewBox": "0 0 194 58",
+      "bounds": {
+        "x": 3.0239999294281006,
+        "y": 8.680000305175781,
+        "width": 186.13699340820312,
+        "height": 42
+      },
+      "pivot": {
+        "x": 96.09249663352966,
+        "y": 29.68000030517578
+      }
+    }
+  ]
+}

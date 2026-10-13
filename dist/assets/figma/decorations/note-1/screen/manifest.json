@@ -1,0 +1,52 @@
+{
+  "source": "decorations/note-1/screen/original.svg",
+  "sourceNodeId": "2028:570",
+  "sourcePageId": "1823:2",
+  "sourceName": "음표1",
+  "sourceSha256": "cca6a0ea0360dbc04d23842317bfcf5dac3e63e53ea7b44437ff8efc22c82aa8",
+  "viewBox": "0 0 314 329",
+  "parts": [
+    {
+      "id": "decoration-001-blue",
+      "file": "parts/decoration-001-blue.svg",
+      "category": "decoration",
+      "zIndex": 0,
+      "svgElementIndex": 0,
+      "fill": null,
+      "stroke": "#3373ED",
+      "transform": null,
+      "viewBox": "0 0 314 329",
+      "bounds": {
+        "x": 119.77749633789062,
+        "y": 34.375186920166016,
+        "width": 100.91751098632812,
+        "height": 181.4578094482422
+      },
+      "pivot": {
+        "x": 170.2362518310547,
+        "y": 125.10409164428711
+      }
+    },
+    {
+      "id": "decoration-002-yellow",
+      "file": "parts/decoration-002-yellow.svg",
+      "category": "decoration",
+      "zIndex": 1,
+      "svgElementIndex": 1,
+      "fill": "#FFEB36",
+      "stroke": null,
+      "transform": null,
+      "viewBox": "0 0 314 329",
+      "bounds": {
+        "x": 71.48609924316406,
+        "y": 165.79299926757812,
+        "width": 141.54690551757812,
+        "height": 141.79501342773438
+      },
+      "pivot": {
+        "x": 142.25955200195312,
+        "y": 236.6905059814453
+      }
+    }
+  ]
+}

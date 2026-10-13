@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="ko">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>우리바람 에셋 라이브러리</title>
+<style>
+body{margin:24px;font:15px/1.6 system-ui,sans-serif;background:#f5f5f5;color:#222}h1{margin-bottom:4px}button,select,input{font:inherit;padding:8px}button{cursor:pointer}.filters,.actions{display:flex;gap:10px;flex-wrap:wrap;margin:16px 0}.filters select{max-width:100%}.compare{display:grid;grid-template-columns:1fr 1fr;gap:16px}figure{margin:0}figcaption{font-weight:bold;margin-bottom:6px}.stage{position:relative;height:340px;overflow:hidden;background:repeating-conic-gradient(#ddd 0% 25%,white 0% 50%) 0 0/20px 20px}.stage img{position:absolute;width:100%;height:100%;object-fit:contain}#parts{display:grid;grid-template-columns:repeat(auto-fill,minmax(175px,1fr));gap:12px}.part{background:white;border:1px solid #ccc;padding:10px;overflow-wrap:anywhere}.part img{display:block;width:100%;height:140px;object-fit:contain;background:#eee}.part button{padding:2px 8px;margin-left:8px;font-size:12px}a{color:#174a8b}small{color:#555}#info{overflow-wrap:anywhere}@media(max-width:650px){body{margin:16px}.compare{grid-template-columns:1fr}.stage{height:260px}}
+</style>
+<h1>우리바람 에셋 라이브러리</h1>
+<p>원본과 부품을 한곳에서 확인하세요. <a href="README.md">폴더·사용 안내</a> · <a href="styles/index.html">폰트·색상</a></p>
+<div class="filters">
+<select id="category" aria-label="종류"><option value="">전체 종류</option></select>
+<input id="search" type="search" placeholder="이름·버전 검색" aria-label="이름·버전 검색">
+<select id="asset" aria-label="에셋 버전"></select>
+</div>
+<p id="info"></p>
+<div class="compare"><figure><figcaption>원본</figcaption><div id="original" class="stage"></div></figure><figure><figcaption>부품 조립 — 체크를 끄면 해당 부품만 숨깁니다</figcaption><div id="assembled" class="stage"></div></figure></div>
+<div class="actions"><button id="all">모두 표시</button><button id="none">모두 숨김</button><span id="visible-count"></span></div>
+<div id="parts"></div>
+<script>
+const assets=__ASSETS__;
+const labels={flag:'깃발·깃대',instruments:'악기',headwear:'상모·고깔',brand:'로고·글자',decorations:'음표·장식',ui:'버튼'};
+const category=document.querySelector('#category'),search=document.querySelector('#search'),select=document.querySelector('#asset'),original=document.querySelector('#original'),assembled=document.querySelector('#assembled'),parts=document.querySelector('#parts');
+for(const key of [...new Set(assets.map(a=>a.folder.split('/')[0]))])category.add(new Option(labels[key]||key,key));
+let checks=[];
+function updateCount(){document.querySelector('#visible-count').textContent=`${checks.filter(c=>c.checked).length} / ${checks.length} 부품 표시`;}
+function show(){
+ original.replaceChildren();assembled.replaceChildren();parts.replaceChildren();checks=[];
+ const a=assets.find(a=>a.folder===select.value);if(!a){document.querySelector('#info').textContent='검색 결과가 없습니다.';updateCount();return;}
+ const info=document.querySelector('#info');info.replaceChildren(document.createTextNode(`${a.folder} · ${a.name} · ${a.pageNodeId==='1878:783'?'graphic 원본':'화면 배치본'} · ${a.parts.length}개 부품 `));
+ for(const [name,file]of [['원본 SVG',a.path],['조립 SVG',a.folder+'/assembled.svg'],['좌표 JSON',a.folder+'/manifest.json']]){const link=document.createElement('a');link.textContent=name;link.href=file;info.append(link,document.createTextNode(' / '));}
+ const source=new Image();source.src=a.path;source.alt=a.name;original.append(source);
+ for(const p of a.parts){const src=a.folder+'/'+p.file,layer=new Image();layer.src=src;layer.alt=p.id;assembled.append(layer);
+ const card=document.createElement('div');card.className='part';const label=document.createElement('label'),check=document.createElement('input');check.type='checkbox';check.checked=true;check.onchange=()=>{layer.hidden=!check.checked;updateCount()};checks.push(check);label.append(check,document.createTextNode(p.id));
+ const thumb=new Image();thumb.src=src;thumb.alt=p.id;const solo=document.createElement('button');solo.textContent='단독';solo.onclick=()=>checks.forEach(c=>{c.checked=c===check;c.onchange()});const download=document.createElement('a');download.href=src;download.download=p.file.split('/').pop();download.textContent='SVG 저장';card.append(label,thumb,download,solo);parts.append(card);}
+ updateCount();
+}
+function filter(){const before=select.value;select.replaceChildren();const term=search.value.trim().toLowerCase();for(const a of assets){if(category.value&&!a.folder.startsWith(category.value+'/'))continue;if(term&&!`${a.folder} ${a.name}`.toLowerCase().includes(term))continue;select.add(new Option(`${a.folder} (${a.parts.length})`,a.folder));}if([...select.options].some(o=>o.value===before))select.value=before;show();}
+category.onchange=filter;search.oninput=filter;select.onchange=show;document.querySelector('#all').onclick=()=>checks.forEach(c=>{c.checked=true;c.onchange()});document.querySelector('#none').onclick=()=>checks.forEach(c=>{c.checked=false;c.onchange()});filter();
+</script>
+</html>

@@ -1,0 +1,31 @@
+{
+  "source": "ui/submit/default/original.svg",
+  "sourceNodeId": "2199:2131",
+  "sourcePageId": "1878:783",
+  "sourceName": "Property 1=기본",
+  "sourceSha256": "a9c54578a2f6ed45342db6433f58e7a9426b9dd0652c0f0235835bde91ea3962",
+  "viewBox": "0 0 194 57",
+  "parts": [
+    {
+      "id": "ui-shape-001-f9f9f9",
+      "file": "parts/ui-shape-001-f9f9f9.svg",
+      "category": "ui-shape",
+      "zIndex": 0,
+      "svgElementIndex": 0,
+      "fill": "#F9F9F9",
+      "stroke": null,
+      "transform": null,
+      "viewBox": "0 0 194 57",
+      "bounds": {
+        "x": 3.0239999294281006,
+        "y": 8.680000305175781,
+        "width": 186.13699340820312,
+        "height": 42
+      },
+      "pivot": {
+        "x": 96.09249663352966,
+        "y": 29.68000030517578
+      }
+    }
+  ]
+}

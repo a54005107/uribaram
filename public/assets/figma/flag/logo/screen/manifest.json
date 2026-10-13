@@ -1,0 +1,619 @@
+{
+  "source": "flag/logo/screen/original.svg",
+  "sourceNodeId": "2028:167",
+  "sourcePageId": "1823:2",
+  "sourceName": "농기_blue",
+  "sourceSha256": "707f7980474f001187d6969b9cc8589e6911c7ada0f5f4174a0d35312486d065",
+  "viewBox": "0 0 615 1226",
+  "parts": [
+    {
+      "id": "cloth-001-white",
+      "file": "parts/cloth-001-white.svg",
+      "category": "cloth",
+      "zIndex": 0,
+      "svgElementIndex": 0,
+      "fill": "white",
+      "stroke": null,
+      "transform": null,
+      "viewBox": "0 0 615 1226",
+      "bounds": {
+        "x": 112.81400299072266,
+        "y": 132.0260009765625,
+        "width": 380.7870178222656,
+        "height": 909.6240234375
+      },
+      "pivot": {
+        "x": 303.20751190185547,
+        "y": 586.8380126953125
+      }
+    },
+    {
+      "id": "lettering-002-brown",
+      "file": "parts/lettering-002-brown.svg",
+      "category": "lettering",
+      "zIndex": 1,
+      "svgElementIndex": 1,
+      "fill": "#4F0A00",
+      "stroke": null,
+      "transform": null,
+      "viewBox": "0 0 615 1226",
+      "bounds": {
+        "x": 192.76980590820312,
+        "y": 184.64312744140625,
+        "width": 106.33343505859375,
+        "height": 90.52728271484375
+      },
+      "pivot": {
+        "x": 245.9365234375,
+        "y": 229.90676879882812
+      }
+    },
+    {
+      "id": "lettering-003-brown",
+      "file": "parts/lettering-003-brown.svg",
+      "category": "lettering",
+      "zIndex": 2,
+      "svgElementIndex": 2,
+      "fill": "#4F0A00",
+      "stroke": null,
+      "transform": null,
+      "viewBox": "0 0 615 1226",
+      "bounds": {
+        "x": 178.78317260742188,
+        "y": 251.32501220703125,
+        "width": 142.11557006835938,
+        "height": 131.10275268554688
+      },
+      "pivot": {
+        "x": 249.84095764160156,
+        "y": 316.8763885498047
+      }
+    },
+    {
+      "id": "lettering-004-brown",
+      "file": "parts/lettering-004-brown.svg",
+      "category": "lettering",
+      "zIndex": 3,
+      "svgElementIndex": 3,
+      "fill": "#4F0A00",
+      "stroke": null,
+      "transform": null,
+      "viewBox": "0 0 615 1226",
+      "bounds": {
+        "x": 212.18910217285156,
+        "y": 380.3362731933594,
+        "width": 141.8240203857422,
+        "height": 197.16744995117188
+      },
+      "pivot": {
+        "x": 283.10111236572266,
+        "y": 478.9199981689453
+      }
+    },
+    {
+      "id": "lettering-005-brown",
+      "file": "parts/lettering-005-brown.svg",
+      "category": "lettering",
+      "zIndex": 4,
+      "svgElementIndex": 4,
+      "fill": "#4F0A00",
+      "stroke": null,
+      "transform": null,
+      "viewBox": "0 0 615 1226",
+      "bounds": {
+        "x": 326.95623779296875,
+        "y": 578.8882446289062,
+        "width": 62.29876708984375,
+        "height": 195.76043701171875
+      },
+      "pivot": {
+        "x": 358.1056213378906,
+        "y": 676.7684631347656
+      }
+    },
+    {
+      "id": "lettering-006-brown",
+      "file": "parts/lettering-006-brown.svg",
+      "category": "lettering",
+      "zIndex": 5,
+      "svgElementIndex": 5,
+      "fill": "#4F0A00",
+      "stroke": null,
+      "transform": null,
+      "viewBox": "0 0 615 1226",
+      "bounds": {
+        "x": 241.48501586914062,
+        "y": 590.1484375,
+        "width": 90.90127563476562,
+        "height": 176.41259765625
+      },
+      "pivot": {
+        "x": 286.93565368652344,
+        "y": 678.354736328125
+      }
+    },
+    {
+      "id": "lettering-007-brown",
+      "file": "parts/lettering-007-brown.svg",
+      "category": "lettering",
+      "zIndex": 6,
+      "svgElementIndex": 6,
+      "fill": "#4F0A00",
+      "stroke": null,
+      "transform": null,
+      "viewBox": "0 0 615 1226",
+      "bounds": {
+        "x": 270.0865478515625,
+        "y": 775.6929931640625,
+        "width": 158.11773681640625,
+        "height": 203.25482177734375
+      },
+      "pivot": {
+        "x": 349.1454162597656,
+        "y": 877.3204040527344
+      }
+    },
+    {
+      "id": "top-band-008-blue",
+      "file": "parts/top-band-008-blue.svg",
+      "category": "top-band",
+      "zIndex": 7,
+      "svgElementIndex": 7,
+      "fill": "#0775F4",
+      "stroke": null,
+      "transform": null,
+      "viewBox": "0 0 615 1226",
+      "bounds": {
+        "x": 106.60099792480469,
+        "y": 93.01339721679688,
+        "width": 248.27699279785156,
+        "height": 77.56260681152344
+      },
+      "pivot": {
+        "x": 230.73949432373047,
+        "y": 131.7947006225586
+      }
+    },
+    {
+      "id": "top-band-009-yellow",
+      "file": "parts/top-band-009-yellow.svg",
+      "category": "top-band",
+      "zIndex": 8,
+      "svgElementIndex": 8,
+      "fill": "#FFE900",
+      "stroke": null,
+      "transform": null,
+      "viewBox": "0 0 615 1226",
+      "bounds": {
+        "x": 100.38899993896484,
+        "y": 54.01089859008789,
+        "width": 248.27798461914062,
+        "height": 77.5631103515625
+      },
+      "pivot": {
+        "x": 224.52799224853516,
+        "y": 92.79245376586914
+      }
+    },
+    {
+      "id": "top-band-010-red",
+      "file": "parts/top-band-010-red.svg",
+      "category": "top-band",
+      "zIndex": 9,
+      "svgElementIndex": 9,
+      "fill": "#FF0060",
+      "stroke": null,
+      "transform": null,
+      "viewBox": "0 0 615 1226",
+      "bounds": {
+        "x": 94.17649841308594,
+        "y": 14.998200416564941,
+        "width": 248.2775115966797,
+        "height": 77.56300354003906
+      },
+      "pivot": {
+        "x": 218.31525421142578,
+        "y": 53.77970218658447
+      }
+    },
+    {
+      "id": "red-trim-011-red",
+      "file": "parts/red-trim-011-red.svg",
+      "category": "red-trim",
+      "zIndex": 10,
+      "svgElementIndex": 10,
+      "fill": "#FF3364",
+      "stroke": null,
+      "transform": null,
+      "viewBox": "0 0 615 1226",
+      "bounds": {
+        "x": 27.306100845336914,
+        "y": 170.57699584960938,
+        "width": 102.8469009399414,
+        "height": 108.875
+      },
+      "pivot": {
+        "x": 78.72955131530762,
+        "y": 225.01449584960938
+      }
+    },
+    {
+      "id": "red-trim-012-red",
+      "file": "parts/red-trim-012-red.svg",
+      "category": "red-trim",
+      "zIndex": 11,
+      "svgElementIndex": 11,
+      "fill": "#FF3364",
+      "stroke": null,
+      "transform": null,
+      "viewBox": "0 0 615 1226",
+      "bounds": {
+        "x": 44.64659881591797,
+        "y": 279.45098876953125,
+        "width": 102.84639739990234,
+        "height": 108.885009765625
+      },
+      "pivot": {
+        "x": 96.06979751586914,
+        "y": 333.89349365234375
+      }
+    },
+    {
+      "id": "red-trim-013-red",
+      "file": "parts/red-trim-013-red.svg",
+      "category": "red-trim",
+      "zIndex": 12,
+      "svgElementIndex": 12,
+      "fill": "#FF3364",
+      "stroke": null,
+      "transform": null,
+      "viewBox": "0 0 615 1226",
+      "bounds": {
+        "x": 61.98720169067383,
+        "y": 388.33599853515625,
+        "width": 102.8468017578125,
+        "height": 108.885009765625
+      },
+      "pivot": {
+        "x": 113.41060256958008,
+        "y": 442.77850341796875
+      }
+    },
+    {
+      "id": "red-trim-014-red",
+      "file": "parts/red-trim-014-red.svg",
+      "category": "red-trim",
+      "zIndex": 13,
+      "svgElementIndex": 13,
+      "fill": "#FF3364",
+      "stroke": null,
+      "transform": null,
+      "viewBox": "0 0 615 1226",
+      "bounds": {
+        "x": 79.32779693603516,
+        "y": 497.22100830078125,
+        "width": 102.84619903564453,
+        "height": 108.885009765625
+      },
+      "pivot": {
+        "x": 130.75089645385742,
+        "y": 551.6635131835938
+      }
+    },
+    {
+      "id": "red-trim-015-red",
+      "file": "parts/red-trim-015-red.svg",
+      "category": "red-trim",
+      "zIndex": 14,
+      "svgElementIndex": 14,
+      "fill": "#FF3364",
+      "stroke": null,
+      "transform": null,
+      "viewBox": "0 0 615 1226",
+      "bounds": {
+        "x": 96.66829681396484,
+        "y": 606.1060180664062,
+        "width": 102.8467025756836,
+        "height": 108.885009765625
+      },
+      "pivot": {
+        "x": 148.09164810180664,
+        "y": 660.5485229492188
+      }
+    },
+    {
+      "id": "red-trim-016-red",
+      "file": "parts/red-trim-016-red.svg",
+      "category": "red-trim",
+      "zIndex": 15,
+      "svgElementIndex": 15,
+      "fill": "#FF3364",
+      "stroke": null,
+      "transform": null,
+      "viewBox": "0 0 615 1226",
+      "bounds": {
+        "x": 114.00900268554688,
+        "y": 714.9910278320312,
+        "width": 102.84500122070312,
+        "height": 108.875
+      },
+      "pivot": {
+        "x": 165.43150329589844,
+        "y": 769.4285278320312
+      }
+    },
+    {
+      "id": "red-trim-017-red",
+      "file": "parts/red-trim-017-red.svg",
+      "category": "red-trim",
+      "zIndex": 16,
+      "svgElementIndex": 16,
+      "fill": "#FF3364",
+      "stroke": null,
+      "transform": null,
+      "viewBox": "0 0 615 1226",
+      "bounds": {
+        "x": 131.34800720214844,
+        "y": 823.8660278320312,
+        "width": 102.84700012207031,
+        "height": 108.88494873046875
+      },
+      "pivot": {
+        "x": 182.7715072631836,
+        "y": 878.3085021972656
+      }
+    },
+    {
+      "id": "red-trim-018-red",
+      "file": "parts/red-trim-018-red.svg",
+      "category": "red-trim",
+      "zIndex": 17,
+      "svgElementIndex": 17,
+      "fill": "#FF3364",
+      "stroke": null,
+      "transform": null,
+      "viewBox": "0 0 615 1226",
+      "bounds": {
+        "x": 148.68899536132812,
+        "y": 932.7509765625,
+        "width": 102.84600830078125,
+        "height": 108.8890380859375
+      },
+      "pivot": {
+        "x": 200.11199951171875,
+        "y": 987.1954956054688
+      }
+    },
+    {
+      "id": "red-trim-019-red",
+      "file": "parts/red-trim-019-red.svg",
+      "category": "red-trim",
+      "zIndex": 18,
+      "svgElementIndex": 18,
+      "fill": "#FF3364",
+      "stroke": null,
+      "transform": null,
+      "viewBox": "0 0 615 1226",
+      "bounds": {
+        "x": 476.2590026855469,
+        "y": 894.2009887695312,
+        "width": 102.84701538085938,
+        "height": 108.8890380859375
+      },
+      "pivot": {
+        "x": 527.6825103759766,
+        "y": 948.6455078125
+      }
+    },
+    {
+      "id": "red-trim-020-red",
+      "file": "parts/red-trim-020-red.svg",
+      "category": "red-trim",
+      "zIndex": 19,
+      "svgElementIndex": 19,
+      "fill": "#FF3364",
+      "stroke": null,
+      "transform": null,
+      "viewBox": "0 0 615 1226",
+      "bounds": {
+        "x": 251.53500366210938,
+        "y": 1028.9200439453125,
+        "width": 79.84298706054688,
+        "height": 175.679931640625
+      },
+      "pivot": {
+        "x": 291.4564971923828,
+        "y": 1116.760009765625
+      }
+    },
+    {
+      "id": "red-trim-021-red",
+      "file": "parts/red-trim-021-red.svg",
+      "category": "red-trim",
+      "zIndex": 20,
+      "svgElementIndex": 20,
+      "fill": "#FF3364",
+      "stroke": null,
+      "transform": null,
+      "viewBox": "0 0 615 1226",
+      "bounds": {
+        "x": 332.656005859375,
+        "y": 1016,
+        "width": 79.8330078125,
+        "height": 175.68994140625
+      },
+      "pivot": {
+        "x": 372.572509765625,
+        "y": 1103.844970703125
+      }
+    },
+    {
+      "id": "red-trim-022-red",
+      "file": "parts/red-trim-022-red.svg",
+      "category": "red-trim",
+      "zIndex": 21,
+      "svgElementIndex": 21,
+      "fill": "#FF3364",
+      "stroke": null,
+      "transform": null,
+      "viewBox": "0 0 615 1226",
+      "bounds": {
+        "x": 413.7669982910156,
+        "y": 1003.0900268554688,
+        "width": 79.8330078125,
+        "height": 175.67999267578125
+      },
+      "pivot": {
+        "x": 453.6835021972656,
+        "y": 1090.9300231933594
+      }
+    },
+    {
+      "id": "red-trim-023-red",
+      "file": "parts/red-trim-023-red.svg",
+      "category": "red-trim",
+      "zIndex": 22,
+      "svgElementIndex": 22,
+      "fill": "#FF3364",
+      "stroke": null,
+      "transform": null,
+      "viewBox": "0 0 615 1226",
+      "bounds": {
+        "x": 458.9179992675781,
+        "y": 785.3159790039062,
+        "width": 102.84701538085938,
+        "height": 108.885009765625
+      },
+      "pivot": {
+        "x": 510.3415069580078,
+        "y": 839.7584838867188
+      }
+    },
+    {
+      "id": "red-trim-024-red",
+      "file": "parts/red-trim-024-red.svg",
+      "category": "red-trim",
+      "zIndex": 23,
+      "svgElementIndex": 23,
+      "fill": "#FF3364",
+      "stroke": null,
+      "transform": null,
+      "viewBox": "0 0 615 1226",
+      "bounds": {
+        "x": 441.5799865722656,
+        "y": 676.4409790039062,
+        "width": 102.84603881835938,
+        "height": 108.875
+      },
+      "pivot": {
+        "x": 493.0030059814453,
+        "y": 730.8784790039062
+      }
+    },
+    {
+      "id": "red-trim-025-red",
+      "file": "parts/red-trim-025-red.svg",
+      "category": "red-trim",
+      "zIndex": 24,
+      "svgElementIndex": 24,
+      "fill": "#FF3364",
+      "stroke": null,
+      "transform": null,
+      "viewBox": "0 0 615 1226",
+      "bounds": {
+        "x": 424.239013671875,
+        "y": 567.5560302734375,
+        "width": 102.84698486328125,
+        "height": 108.88494873046875
+      },
+      "pivot": {
+        "x": 475.6625061035156,
+        "y": 621.9985046386719
+      }
+    },
+    {
+      "id": "red-trim-026-red",
+      "file": "parts/red-trim-026-red.svg",
+      "category": "red-trim",
+      "zIndex": 25,
+      "svgElementIndex": 25,
+      "fill": "#FF3364",
+      "stroke": null,
+      "transform": null,
+      "viewBox": "0 0 615 1226",
+      "bounds": {
+        "x": 406.89801025390625,
+        "y": 458.6709899902344,
+        "width": 102.84698486328125,
+        "height": 108.88504028320312
+      },
+      "pivot": {
+        "x": 458.3215026855469,
+        "y": 513.1135101318359
+      }
+    },
+    {
+      "id": "red-trim-027-red",
+      "file": "parts/red-trim-027-red.svg",
+      "category": "red-trim",
+      "zIndex": 26,
+      "svgElementIndex": 26,
+      "fill": "#FF3364",
+      "stroke": null,
+      "transform": null,
+      "viewBox": "0 0 615 1226",
+      "bounds": {
+        "x": 389.5580139160156,
+        "y": 349.7860107421875,
+        "width": 102.84698486328125,
+        "height": 108.88497924804688
+      },
+      "pivot": {
+        "x": 440.98150634765625,
+        "y": 404.22850036621094
+      }
+    },
+    {
+      "id": "red-trim-028-red",
+      "file": "parts/red-trim-028-red.svg",
+      "category": "red-trim",
+      "zIndex": 27,
+      "svgElementIndex": 27,
+      "fill": "#FF3364",
+      "stroke": null,
+      "transform": null,
+      "viewBox": "0 0 615 1226",
+      "bounds": {
+        "x": 372.2170104980469,
+        "y": 240.9010009765625,
+        "width": 102.84698486328125,
+        "height": 108.885009765625
+      },
+      "pivot": {
+        "x": 423.6405029296875,
+        "y": 295.343505859375
+      }
+    },
+    {
+      "id": "red-trim-029-red",
+      "file": "parts/red-trim-029-red.svg",
+      "category": "red-trim",
+      "zIndex": 28,
+      "svgElementIndex": 28,
+      "fill": "#FF3364",
+      "stroke": null,
+      "transform": null,
+      "viewBox": "0 0 615 1226",
+      "bounds": {
+        "x": 354.87799072265625,
+        "y": 132.0260009765625,
+        "width": 102.84500122070312,
+        "height": 108.875
+      },
+      "pivot": {
+        "x": 406.3004913330078,
+        "y": 186.4635009765625
+      }
+    }
+  ]
+}

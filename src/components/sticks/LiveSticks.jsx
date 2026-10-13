@@ -10,6 +10,8 @@ export default function LiveSticks({samplesRef, videoRef, layout: viewport, tors
   useEffect(() => {
     let frame, lastText = -Infinity;
     const loop = (now) => {
+      // Route changes can detach DOM refs before the effect cleanup runs.
+      if (!leftRef.current || !rightRef.current) return;
       const video = videoRef.current;
       const active = enabled && !document.hidden && video?.readyState >= 2 && !video.paused;
       const bodyLayout = active ? torsoTracker.layout(now, video.videoWidth, video.videoHeight, viewport.viewportWidth, viewport.viewportHeight) : null;

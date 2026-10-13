@@ -1,0 +1,110 @@
+﻿.instruments-page {
+  --scene-height: 56.25vw;
+  --scene-center: 50%;
+  --gradient-start: calc(var(--scene-center) - var(--scene-height) * .4);
+  --gradient-end: calc(var(--scene-center) + var(--scene-height) * .1);
+  background: linear-gradient(180deg, var(--instrument-color) var(--gradient-start), #fff var(--gradient-end));
+  color: var(--uribaram-color-brown);
+  font-family: var(--uribaram-font-family);
+  touch-action: pan-x pinch-zoom;
+}
+.instruments-page--buk {
+  background: linear-gradient(180deg, #0dc653 calc(var(--scene-center) - var(--scene-height) * .5), #a2e9bd calc(var(--scene-center) - var(--scene-height) * .39423), #fff calc(var(--scene-center) - var(--scene-height) * .27404));
+}
+.instrument-artwork { position: absolute; inset: 0; pointer-events: none; }
+.instrument-artwork > img {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: var(--art-width);
+  height: auto;
+  transform: translateY(-50%);
+  opacity: 0;
+  transition: opacity 300ms ease;
+}
+.instrument-artwork > img.is-active { opacity: 1; }
+.instrument-copy {
+  position: absolute;
+  left: 65.714286%;
+  top: calc(50% - 5.848214vw);
+}
+.instrument-question {
+  margin: 0 0 1.830357vw;
+  font-size: 1.607143vw;
+  font-weight: var(--uribaram-type-h2-weight);
+  line-height: var(--uribaram-type-h2-line-height);
+}
+.instrument-copy h1 {
+  margin: 0 0 .892857vw;
+  font-size: 2.857143vw;
+  font-weight: var(--uribaram-type-t-weight);
+  line-height: var(--uribaram-type-t-line-height);
+  letter-spacing: var(--uribaram-type-t-letter-spacing);
+}
+.instrument-description {
+  margin: 0;
+  font-size: 1.25vw;
+  font-weight: var(--uribaram-type-b1-weight);
+  line-height: var(--uribaram-type-b1-line-height);
+}
+.instrument-navigation {
+  position: absolute;
+  right: 4.8%;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+}
+.instrument-navigation button {
+  display: grid;
+  place-items: center;
+  width: max(44px, 3.392857vw);
+  height: max(32px, 2.65625vw);
+  border: 0;
+  padding: 0;
+  background: transparent;
+}
+.instrument-navigation span { width: 38px; height: 36px; transform: scale(clamp(.45, calc(100vw / 2240px), 1)); }
+.instrument-navigation img { display: block; transform: rotate(180deg); opacity: .2; transition: opacity 180ms ease; }
+.instrument-navigation button[aria-current] img,
+.instrument-navigation button:hover img { opacity: 1; }
+.instrument-navigation button:focus-visible { outline: 2px solid var(--uribaram-color-brown); outline-offset: 2px; border-radius: 4px; }
+.instrument-help { position: absolute; bottom: 20px; right: 6%; margin: 0; font-size: 12px; opacity: .7; }
+.instrument-sr-only { position: absolute; width: 1px; height: 1px; padding: 0; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+@media (max-aspect-ratio: 1/1) {
+  .instruments-page { --scene-height: 81.5625vw; --scene-center: 36.5%; }
+  .instrument-artwork { top: 3%; bottom: 30%; overflow: hidden; }
+  .instrument-artwork > img { width: calc(var(--art-width) * 1.45); }
+  .instrument-copy { left: 8%; top: auto; bottom: 14%; }
+  .instrument-question { font-size: clamp(16px, 3.5vw, 24px); margin-bottom: 18px; }
+  .instrument-copy h1 { font-size: clamp(30px, 6vw, 44px); margin-bottom: 12px; }
+  .instrument-description { font-size: clamp(14px, 3vw, 20px); }
+  .instrument-navigation { right: 4%; top: auto; bottom: 13%; transform: none; }
+  .instrument-navigation button { height: 36px; }
+  .instrument-help { left: 8%; right: 8%; bottom: 5%; font-size: 11px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .instrument-artwork > img, .instrument-navigation img { transition: none; }
+}
+
+
+
+/* A shared pivot keeps all five instruments on one rotary dial. */
+.instrument-dial { pointer-events: auto; overflow: hidden; width: 64%; touch-action: none; user-select: none; cursor: grab; }
+.instrument-dial.is-dragging, .instrument-dial.is-dragging button { cursor: grabbing; }
+.instrument-wheel { position: absolute; width: 80vw; height: 80vw; left: -40vw; top: calc(50% - 40vw); transform: rotate(var(--wheel-angle)); transition: transform 720ms cubic-bezier(.22, .85, .25, 1.08); }
+.instrument-slot { position: absolute; left: 50%; top: 50%; transform: rotate(var(--slot-angle)) translateX(40vw); }
+.instrument-pick { position: absolute; width: 54vw; height: 52vw; padding: 0; border: 0; background: none; transform: translate(-50%, -50%) rotate(calc(0deg - var(--slot-angle) - var(--wheel-angle))); transition: transform 720ms cubic-bezier(.22, .85, .25, 1.08); cursor: grab; }
+.instrument-pick img { width: 100%; height: 100%; object-fit: contain; pointer-events: none; }
+.instrument-pick:focus-visible { outline: 3px dashed var(--uribaram-color-brown); outline-offset: 8px; border-radius: 50%; }
+.instrument-dial.is-dragging .instrument-wheel, .instrument-dial.is-dragging .instrument-pick { transition: none; }
+@media (max-aspect-ratio: 1/1) {
+  .instrument-dial { width: 100%; }
+  .instrument-wheel { width: 160vw; height: 160vw; left: -110vw; top: calc(50% - 80vw); }
+  .instrument-slot { transform: rotate(var(--slot-angle)) translateX(80vw); }
+  .instrument-pick { width: 76vw; height: 76vw; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .instrument-wheel, .instrument-pick { transition: none; }
+}
+

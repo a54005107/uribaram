@@ -1,0 +1,52 @@
+{
+  "source": "decorations/note-1/default/original.svg",
+  "sourceNodeId": "2028:473",
+  "sourcePageId": "1878:783",
+  "sourceName": "Property 1=Default",
+  "sourceSha256": "2735b2009c79ff1572bd93c3deac5d2f9ce6e26b0e93ccbb072c148a3e243a95",
+  "viewBox": "0 0 158 180",
+  "parts": [
+    {
+      "id": "decoration-001-blue",
+      "file": "parts/decoration-001-blue.svg",
+      "category": "decoration",
+      "zIndex": 0,
+      "svgElementIndex": 0,
+      "fill": null,
+      "stroke": "#3373ED",
+      "transform": null,
+      "viewBox": "0 0 158 180",
+      "bounds": {
+        "x": 63.394996643066406,
+        "y": 7.9990386962890625,
+        "width": 86.56501007080078,
+        "height": 116.10095977783203
+      },
+      "pivot": {
+        "x": 106.6775016784668,
+        "y": 66.04951858520508
+      }
+    },
+    {
+      "id": "decoration-002-yellow",
+      "file": "parts/decoration-002-yellow.svg",
+      "category": "decoration",
+      "zIndex": 1,
+      "svgElementIndex": 1,
+      "fill": "#FFEB36",
+      "stroke": null,
+      "transform": null,
+      "viewBox": "0 0 158 180",
+      "bounds": {
+        "x": 0,
+        "y": 82.94999694824219,
+        "width": 96.87000274658203,
+        "height": 96.87001037597656
+      },
+      "pivot": {
+        "x": 48.435001373291016,
+        "y": 131.38500213623047
+      }
+    }
+  ]
+}
