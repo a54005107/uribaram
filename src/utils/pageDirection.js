@@ -1,5 +1,5 @@
 const routeOrder = ['/', '/title', '/trumpet', '/flag', '/loading', '/instruments',
-  '/play-loading', '/camera', '/experience', '/ending'];
+  '/camera', '/play-loading', '/experience', '/ending', '/story'];
 
 export function pageDirection(from, to, navigationType, previousIndex, nextIndex) {
   // POP includes both browser Back and Forward; compare history positions.

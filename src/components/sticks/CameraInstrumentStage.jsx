@@ -39,7 +39,7 @@ export default function CameraInstrumentStage({instrument, layout, videoRef, sam
         const samples = samplesRef.current.sample(now);
         const sticks = selection.select(Object.fromEntries(['left', 'right'].map(side => [side,
           projectStick(samples[side], video.videoWidth, video.videoHeight, layout, instrument.id)])));
-        // Drawing interpolates for 12 ms; collision still consumes each accepted
+        // Drawing interpolates between frames; collision still consumes each accepted
         // measurement once, not the interpolation frames or recovery movement.
         const hitSamples = samplesRef.current.sampleForHit(now);
         const hitSticks = Object.fromEntries(['left', 'right'].map(side => [side, sticks[side]

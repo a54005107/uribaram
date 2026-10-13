@@ -22,6 +22,7 @@ export default function useHandTracking(videoRef, enabled, onDetection, streamKe
     let disposed = false, landmarker, frameId = 0, videoFrameId, lastVideoTime = -1, lastInference = 0, lastUi = -Infinity;
     let videoFrameSerial = 0, processedVideoFrame = -1, captureTime = 0;
     let cameraWindow = null, cameraFrames = 0, inferenceWindow = performance.now(), inferenceFrames = 0;
+    let inferenceCost = 0;
     const videoElement = videoRef.current;
     const recordCameraFrames = (now, frames) => {
       diagnosticsRef.current.cameraFrameAt = now;
@@ -55,7 +56,8 @@ export default function useHandTracking(videoRef, enabled, onDetection, streamKe
       // currentTime may advance between camera frames. Prefer actual presented
       // frame numbers so the same pixels cannot produce multiple measurements.
       const freshFrame = usesVideoFrames ? videoFrameSerial > 0 && videoFrameSerial !== processedVideoFrame : video?.currentTime !== lastVideoTime;
-      if (!document.hidden && !video?.paused && landmarker && video?.readyState >= 2 && freshFrame && now - lastInference >= TRACKING_CONFIG.inferenceIntervalMs) {
+      const interval = Math.max(TRACKING_CONFIG.inferenceIntervalMs, Math.min(60, inferenceCost * 1.6));
+      if (!document.hidden && !video?.paused && landmarker && video?.readyState >= 2 && freshFrame && now - lastInference >= interval) {
         lastVideoTime = video.currentTime; lastInference = now;
         processedVideoFrame = videoFrameSerial;
         const timestamp = usesVideoFrames ? captureTime : now;
@@ -68,6 +70,7 @@ export default function useHandTracking(videoRef, enabled, onDetection, streamKe
           inferenceContext.drawImage(video, 0, 0, inputWidth, inputHeight);
           const detection = landmarker.detectForVideo(inferenceCanvas, timestamp), nextSticks = {};
           const receivedAt = performance.now();
+          inferenceCost = inferenceCost ? inferenceCost * .8 + (receivedAt - now) * .2 : receivedAt - now;
           callbackRef.current?.(detection, timestamp, video.videoWidth / video.videoHeight);
           const association = associateHands(detection, trackers, timestamp, video.videoWidth / video.videoHeight);
           for (const side of ['left', 'right']) {

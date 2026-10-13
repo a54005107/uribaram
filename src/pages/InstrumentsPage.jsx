@@ -32,7 +32,7 @@ export default function InstrumentsPage() {
   const choose = id => {
     if (suppressClick.current) return;
     sessionStorage.setItem('uribaram-instrument', id);
-    navigate(`/play-loading?instrument=${id}`);
+    navigate(`/camera?instrument=${id}`);
   };
 
   useEffect(() => {

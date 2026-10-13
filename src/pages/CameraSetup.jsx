@@ -68,7 +68,7 @@ export default function CameraSetup() {
           <button type="button" disabled={status === 'loading'} onClick={() => void connect(deviceId)}>다시 연결</button>
         </div>
         <p className="camera-setup-help">차단 그림이 보이면 다른 카메라를 선택하거나 카메라 덮개와 프라이버시 모드를 확인해 주세요.</p>
-        <button type="button" className="camera-play-sound camera-setup-start" disabled={!ready} onClick={() => navigate(`/experience?instrument=${instrument.id}`)}>이 카메라로 연주하기 →</button>
+        <button type="button" className="camera-play-sound camera-setup-start" disabled={!ready} onClick={() => navigate(`/play-loading?instrument=${instrument.id}`)}>이 카메라로 연주하기 →</button>
       </div>
     </section>
   </main>;

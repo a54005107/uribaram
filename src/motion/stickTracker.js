@@ -80,6 +80,9 @@ export function trackStick(tracker, points, side, timestamp, confidence, aspect,
   // One filter per axis, in fixed video-height units. Never overwrite its
   // filtered state with the unfiltered measurement to force a smaller lag.
   const units = config.filterReferenceHeight;
+  const fastBlend = clamp((speed - .4) / 1.6, 0, 1);
+  tracker.gripFilter.x.beta = tracker.gripFilter.y.beta = FILTER_CONFIG.grip.beta
+    + (FILTER_CONFIG.fastGripBeta - FILTER_CONFIG.grip.beta) * fastBlend;
   const anchor = {
     x: tracker.gripFilter.x.filter(grip.x * aspect * units, timestamp) / (aspect * units),
     y: tracker.gripFilter.y.filter(grip.y * units, timestamp) / units,
@@ -133,7 +136,7 @@ export function sampleStick(tracker, now, interpolate = true) {
   if (lost) {
     // No dead reckoning while occluded: retain the last visible pose.
     const pose = tracker.held || tracker.rendered || tracker.output;
-    const opacity = 1 - clamp((age - config.lostTrackingGraceMs) / (config.settleMs - config.lostTrackingGraceMs), 0, 1);
+    const opacity = 1 - clamp((age - config.visualHoldMs) / (config.settleMs - config.visualHoldMs), 0, 1);
     return {...tracker.output, anchor: pose.anchor, rotation: pose.rotation, stale: true, missingMs: age, opacity};
   }
   const recovering = now < tracker.recoveryEnd;
@@ -145,8 +148,7 @@ export function sampleStick(tracker, now, interpolate = true) {
     pose = {...pose, anchor: {
       x: from.anchor.x + (pose.anchor.x - from.anchor.x) * progress,
       y: from.anchor.y + (pose.anchor.y - from.anchor.y) * progress,
-    }, rotation: from.rotation + (unwrapAngle(from.rotation, pose.rotation) - from.rotation) * progress,
-    opacity: (from.opacity ?? 1) + (1 - (from.opacity ?? 1)) * progress};
+    }, rotation: from.rotation + (unwrapAngle(from.rotation, pose.rotation) - from.rotation) * progress};
   }
   if (interpolate) tracker.rendered = pose;
   return pose;

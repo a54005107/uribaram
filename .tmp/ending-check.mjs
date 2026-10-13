@@ -1,0 +1,38 @@
+import fs from 'node:fs/promises';
+import assert from 'node:assert/strict';
+const tabs = await (await fetch('http://127.0.0.1:9338/json')).json();
+const ws = new WebSocket(tabs.find(t => t.type === 'page').webSocketDebuggerUrl);
+await new Promise(resolve => ws.addEventListener('open', resolve, {once:true}));
+let id = 0; const pending = new Map(), errors = [];
+ws.addEventListener('message', e => { const m = JSON.parse(e.data); if (m.id) { const p = pending.get(m.id); pending.delete(m.id); m.error ? p.reject(m.error) : p.resolve(m.result); } if (m.method === 'Runtime.exceptionThrown') errors.push(m.params.exceptionDetails.text); });
+const call = (method, params = {}) => new Promise((resolve, reject) => { const next = ++id; pending.set(next, {resolve,reject}); ws.send(JSON.stringify({id:next,method,params})); });
+const evaluate = async expression => { const r = await call('Runtime.evaluate',{expression,awaitPromise:true,returnByValue:true}); if(r.exceptionDetails) throw new Error(JSON.stringify(r.exceptionDetails)); return r.result.value; };
+const wait = ms => new Promise(r => setTimeout(r,ms));
+await call('Runtime.enable'); await call('Page.enable');
+await call('Emulation.setDeviceMetricsOverride',{width:1280,height:720,deviceScaleFactor:1,mobile:false});
+await call('Page.navigate',{url:'http://127.0.0.1:5182/ending'}); await wait(1600);
+await evaluate('document.fonts.ready');
+assert.equal(await evaluate('Array.from(document.querySelectorAll(".ending-board img")).every(i => i.complete && i.naturalWidth > 0)'),true);
+const shot = await call('Page.captureScreenshot'); await fs.writeFile('.tmp/ending-desktop.png',Buffer.from(shot.data,'base64'));
+await evaluate('document.querySelector(".ending-story-link").click()');
+assert.equal(await evaluate('document.querySelector("dialog").open'),true);
+await evaluate('document.querySelector("dialog").close()');
+await call('Page.navigate',{url:'http://127.0.0.1:5182/experience?instrument=jing'}); await wait(2500);
+const pose = () => evaluate('Array.from(document.querySelectorAll(".play-scene-decoration")).map(n => new DOMMatrix(getComputedStyle(n).transform).m42)');
+const floor = await pose();
+for(let hit=0; hit<3; hit++) {
+  await evaluate(`(() => { const n = document.querySelector('.camera-play-sticks'); let f = n[Object.keys(n).find(k => k.startsWith('__reactFiber$'))]; while(f && !f.memoizedProps?.onHit) f = f.return; if(!f) throw Error('hit callback missing'); f.memoizedProps.onHit({strength:'normal',side:'center',point:{x:.5,y:.5},velocity:1}); })()`);
+  await wait(220); const air = await pose();
+  assert.ok(air.every((y,i) => y < floor[i] - 60), 'every star rises from floor');
+  assert.ok(await evaluate('Array.from(document.querySelectorAll(".play-scene-decoration")).some(n => Math.abs(new DOMMatrix(getComputedStyle(n).transform).m41) > 5)'), 'horizontal travel');
+  await wait(2400); const landed = await pose();
+  assert.ok(landed.every((y,i)=>Math.abs(y-floor[i])<1), 'every star returns to floor');
+}
+await evaluate('Array.from(document.querySelectorAll("button")).find(b => b.textContent === "마치기").click()'); await wait(1000);
+assert.equal(await evaluate('location.pathname'),'/ending');
+assert.equal(await evaluate('document.querySelectorAll(".ending-navigation button").length'),2);
+await call('Emulation.setDeviceMetricsOverride',{width:390,height:844,deviceScaleFactor:1,mobile:false}); await wait(300);
+const mobile = await call('Page.captureScreenshot'); await fs.writeFile('.tmp/ending-mobile.png',Buffer.from(mobile.data,'base64'));
+assert.deepEqual(errors, []);
+console.log('PASS: all ending assets, story dialog, 3 hit callbacks -> all 12 decorations rise, travel sideways and land, finish route, no runtime exceptions. Virtual camera only.');
+await call('Browser.close'); ws.close();

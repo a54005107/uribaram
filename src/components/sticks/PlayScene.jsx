@@ -1,5 +1,6 @@
-import React from 'react';
+import React, {forwardRef, useEffect, useImperativeHandle, useRef} from 'react';
 import {playArtboard} from '../../motion/figmaPlayLayout';
+import {launchStar, stepStar} from '../../motion/starBounce';
 
 // Original decoration slots from Figma play frame 2305:824 (2240 × 1260).
 const decorations = [
@@ -16,12 +17,48 @@ const decorations = [
   ['fb544', 28.395, 17.46, 70, 70, 0],
   ['8f95b', 5.47, 89.245, 143, 143, 0],
 ];
-export default function PlayScene({width, height}) {
+export default forwardRef(function PlayScene({width, height}, ref) {
   const {scale, left, top} = playArtboard(width, height);
+  const nodes = useRef([]), particles = useRef([]), kick = useRef(() => {});
+  useImperativeHandle(ref, () => ({strike: hit => kick.current(hit)}), []);
+  useEffect(() => {
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const floor = (height - top) / scale;
+    particles.current = decorations.map(([, x, y, w, h], index) => {
+      const radius = Math.hypot(w, h) / 2;
+      return {x: 0, vx: 0, y: 0, velocity: 0, angle: 0, spin: 0,
+        floor: floor - y * 12.6 - radius - 12, index,
+        minX: -left / scale + radius - x * 22.4,
+        maxX: (width - left) / scale - radius - x * 22.4};
+    });
+    let frame, previous;
+    const draw = p => {
+      if (nodes.current[p.index]) nodes.current[p.index].style.transform = `translate3d(${p.x}px, ${p.y}px, 0) rotate(${p.angle}deg)`;
+    };
+    const loop = now => {
+      const dt = Math.min((now - (previous ?? now)) / 1000, .04);
+      previous = now;
+      let moving = false;
+      for (const p of particles.current) {
+        if (stepStar(p, dt)) moving = true;
+        draw(p);
+      }
+      frame = moving ? requestAnimationFrame(loop) : null;
+    };
+    kick.current = hit => {
+      if (reduced) return;
+      const strength = {weak: .7, normal: 1, strong: 1.2}[hit.strength] || 1;
+      for (const p of particles.current) launchStar(p, strength);
+      if (frame == null) { previous = undefined; frame = requestAnimationFrame(loop); }
+    };
+    if (reduced) particles.current.forEach(p => { p.y = p.floor; draw(p); });
+    else frame = requestAnimationFrame(loop);
+    return () => { cancelAnimationFrame(frame); kick.current = () => {}; };
+  }, [height, top, scale]);
   return <div className="play-scene" aria-hidden="true" style={{left, top, width: 2240, height: 1260, transform: `scale(${scale})`, transformOrigin: '0 0'}}>
-    {decorations.map(([asset, x, y, w, h, rotation], index) => <div key={index} className="play-scene-decoration" style={{left: `${x}%`, top: `${y}%`}}>
+    {decorations.map(([asset, x, y, w, h, rotation], index) => <div key={index} ref={node => { nodes.current[index] = node; }} className="play-scene-decoration" style={{left: `${x}%`, top: `${y}%`}}>
       <img src={`/assets/figma/play-scene/${asset}.svg`} width={w} height={h} alt="" draggable="false"
         style={{transform: `translate(-50%, -50%) rotate(${rotation}deg)`}} />
     </div>)}
   </div>;
-}
+});

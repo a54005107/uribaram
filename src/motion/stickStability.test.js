@@ -96,12 +96,13 @@ test('confirmed displaced readings recover with a bridge instead of being reject
   assert.equal(middle.stale, true);
 });
 
-test('brief loss holds exactly, fades after 100 ms, and recovery cannot create a hit', () => {
+test('brief loss stays opaque independently of hit safety, and recovery cannot create a hit', () => {
   const tracker = createStickTracker(); prime(tracker);
   const held = sampleStick(tracker, 510);
   markStickMissing(tracker, 515);
-  const early = sampleStick(tracker, 570), fading = sampleStick(tracker, 700);
+  const early = sampleStick(tracker, 700), fading = sampleStick(tracker, 800);
   assert.deepEqual(early.anchor, held.anchor); assert.equal(early.opacity, 1);
+  assert.equal(early.stale, true);
   assert.deepEqual(fading.anchor, held.anchor); assert.ok(fading.opacity > 0 && fading.opacity < 1);
   const recovered = trackStick(tracker, hand(.6, .5), 'right', 710, .95, 1);
   assert.equal(recovered.stale, true);
@@ -118,13 +119,15 @@ test('brief loss holds exactly, fades after 100 ms, and recovery cannot create a
   assert.equal(sampleStick(tracker, 750 + config.settleMs), null);
 });
 
-test('display interpolation is bounded to 12 ms and leaves collision measurements unchanged', () => {
+test('display interpolation fills render frames and leaves collision measurements unchanged', () => {
   const tracker = createStickTracker(); prime(tracker);
   const before = sampleStick(tracker, 510);
   const target = trackStick(tracker, hand(.52), 'right', 528, .95, 1, 538);
   assert.deepEqual(sampleStick(tracker, 538).anchor, before.anchor);
   assert.deepEqual(sampleStick(tracker, 538, false).anchor, target.anchor);
-  assert.deepEqual(sampleStick(tracker, 550).anchor, target.anchor);
+  const middle = sampleStick(tracker, 538 + config.renderBlendMs / 2);
+  assert.ok(middle.anchor.x < before.anchor.x && middle.anchor.x > target.anchor.x);
+  assert.deepEqual(sampleStick(tracker, 538 + config.renderBlendMs).anchor, target.anchor);
 });
 
 test('rotation crosses +/-pi smoothly, rejects a one-frame flip, and allows continuous rotation', () => {
@@ -172,10 +175,23 @@ test('a confirmed fast rotation is not repeatedly rejected because its display l
   let previous = initial;
   for (let i = 0; i < 30; i++) {
     const s = trackStick(tracker, hand(.5, .6, 1.3 + i * .4), 'right', 528 + i * 33, .95, 1);
-    assert.ok(Math.abs(s.rotation - previous) < .65);
+    assert.ok(Math.abs(s.rotation - previous) < config.maxAngularSpeed * .033 + .05);
     previous = s.rotation;
   }
   assert.ok(Math.abs(previous - initial) > 9);
+});
+
+test('large circular swings remain tracked with bounded position lag', () => {
+  const tracker = createStickTracker();
+  let maxLag = 0;
+  for (let i = 0; i < 240; i++) {
+    const angle = i / 60 * 2 * Math.PI;
+    const sample = trackStick(tracker, hand(.5 + .3 * Math.cos(angle), .5 + .3 * Math.sin(angle), angle),
+      'right', i * 1000 / 60, .95, 1);
+    assert.equal(sample.stale, false);
+    if (i > 60) maxLag = Math.max(maxLag, Math.hypot(sample.anchor.x - sample.rawGrip.x, sample.anchor.y - sample.rawGrip.y));
+  }
+  assert.ok(maxLag < .035, `circular swing lag ${maxLag}`);
 });
 
 test('a lost hand does not steal the remaining hand and a changed identity resets its filters', () => {

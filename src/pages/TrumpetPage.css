@@ -51,27 +51,23 @@
 }
 .trumpet-sparkles {
   position: absolute;
-  left: 1374px;
-  top: 510px;
+  inset: 0;
   pointer-events: none;
 }
 .trumpet-sparkle {
   position: absolute;
-  animation: trumpet-sparkle-fall 1.4s both;
+  opacity: 0;
+  animation-duration: 2470ms;
+  animation-fill-mode: both;
+  animation-timing-function: linear;
 }
 .trumpet-sparkle img { display: block; max-width: none; }
-@keyframes trumpet-sparkle-fall {
-  0% { opacity: 0; transform: translate(-50%, -50%) scale(.2); animation-timing-function: ease-out; }
-  12% { opacity: 1; }
-  40% { opacity: 1; transform: translate(var(--burst-x), var(--burst-y)) rotate(var(--spin)) scale(1); animation-timing-function: ease-in; }
-  100% { opacity: 0; transform: translate(var(--burst-x), var(--fall-y)) rotate(420deg) scale(.5); }
-}
 @media (prefers-reduced-motion: reduce) {
-  .trumpet-sparkle { animation-name: trumpet-sparkle-fade; }
+  .trumpet-page .trumpet-sparkle[data-node-id] { animation-name: trumpet-sparkle-fade; }
 }
 @keyframes trumpet-sparkle-fade {
-  0%, 100% { opacity: 0; transform: translate(var(--burst-x), var(--burst-y)); }
-  20%, 70% { opacity: 1; transform: translate(var(--burst-x), var(--burst-y)); }
+  0%, 100% { opacity: 0; }
+  20%, 70% { opacity: 1; }
 }
 .trumpet-instrument:focus-visible {
   outline: none;

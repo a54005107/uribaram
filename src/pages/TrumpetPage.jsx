@@ -2,6 +2,12 @@ import React, {useEffect, useRef, useState} from 'react';
 import {useNavigate} from 'react-router-dom';
 import '../../public/assets/figma/styles/tokens.css';
 import './TrumpetPage.css';
+import './TrumpetMotion.css';
+
+const BURST_DURATION_MS = 2470;
+const MOTION_NODE_IDS = ['2028:446', '2028:448', '2028:449', '2028:450',
+  '2028:587', '2028:555', '2028:738', '2028:489', '2028:578',
+  '2028:560', '2028:548', '2028:570', '2028:574'];
 
 // Figma 2028:241: center positions and intrinsic SVG dimensions on the 2240 x 1260 frame.
 const TRUMPET_DECORATIONS = [
@@ -38,9 +44,8 @@ export default function TrumpetPage() {
     setCount(next);
     setBurst(TRUMPET_DECORATIONS.map(([asset, x, y, width, height, rotation = 0]) => ({
       asset, width, height, rotation,
-      x: x - 1374 - width / 2,
-      y: y - 510 - height / 2,
-      fall: 500 + Math.random() * 400,
+      x: x - width / 2,
+      y: y - height / 2,
     })));
     timer.current = setTimeout(() => {
       if (next === 3) {
@@ -49,7 +54,7 @@ export default function TrumpetPage() {
         setBurst(null);
         busy.current = false;
       }
-    }, 1400);
+    }, BURST_DURATION_MS);
   };
 
   useEffect(() => {
@@ -75,9 +80,9 @@ export default function TrumpetPage() {
         <img src="/assets/figma/instruments/trumpet/screen/original.svg" width="1633" height="1572" alt="" draggable="false" />
       </button>
       {burst && <div className="trumpet-sparkles" key={count} aria-hidden="true">
-        {burst.map((particle, index) => <i key={index} className="trumpet-sparkle" style={{
-          '--burst-x': `${particle.x}px`, '--burst-y': `${particle.y}px`,
-          '--fall-y': `${particle.y + particle.fall}px`, '--spin': '0deg',
+        {burst.map((particle, index) => <i key={index} className="trumpet-sparkle"
+          data-node-id={MOTION_NODE_IDS[index]} style={{
+          left: particle.x, top: particle.y,
           width: particle.width, height: particle.height,
         }}>
           <img src={`/assets/figma/decorations/trumpet-burst/${particle.asset}.svg`}

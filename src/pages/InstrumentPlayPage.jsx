@@ -20,7 +20,8 @@ export default function InstrumentPlayPage() {
 
 function CameraPlay({instrument, debug}) {
   const navigate = useNavigate();
-  const pageRef = useRef(null), videoRef = useRef(null);
+  const pageRef = useRef(null), videoRef = useRef(null), sceneRef = useRef(null);
+  const previousInstrument = useRef(instrument.id);
   const {stream, status, error, start, acquire, release, attach} = useCamera();
   const startRef = useRef(acquire); startRef.current = acquire;
   const [playbackError, setPlaybackError] = useState('');
@@ -33,6 +34,16 @@ function CameraPlay({instrument, debug}) {
   const layout = useMemo(() => createPlayLayout(instrument.id, geometry[instrument.id], viewport.width, viewport.height), [instrument.id, viewport]);
   const board = playArtboard(viewport.width, viewport.height);
   const boardStyle = {'--board-left': `${board.left}px`, '--board-top': `${board.top}px`, '--board-scale': board.scale};
+
+  useEffect(() => {
+    if (previousInstrument.current === instrument.id) return;
+    previousInstrument.current = instrument.id;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const animations = Array.from(pageRef.current.querySelectorAll('.camera-play-instrument')).map(node =>
+      node.animate([{opacity: .3, scale: '.97'}, {opacity: 1, scale: '1'}],
+        {duration: 240, easing: 'ease-out'}));
+    return () => animations.forEach(animation => animation.cancel());
+  }, [instrument.id]);
 
   useEffect(() => {
     void startRef.current();
@@ -66,7 +77,7 @@ function CameraPlay({instrument, debug}) {
   return <main ref={pageRef} className="page camera-play-page illustrated-play-page" aria-label={`${instrument.name} 카메라 연주`}
     onPointerDown={() => { if (!sound.enabled) void sound.enable(); }}>
     <video ref={videoRef} className="camera-play-video" autoPlay muted playsInline aria-hidden="true" />
-    <PlayScene width={viewport.width} height={viewport.height}/>
+    <PlayScene ref={sceneRef} width={viewport.width} height={viewport.height}/>
     <header className="play-design-board play-navigation" style={boardStyle}>
       <nav aria-label="연주할 악기">
         {instruments.map((item, index) => <button key={item.id} type="button" className="play-pennant"
@@ -83,7 +94,8 @@ function CameraPlay({instrument, debug}) {
     </header>
     <CameraInstrumentStage instrument={instrument} layout={layout} videoRef={videoRef} samplesRef={hands.samplesRef}
       debug={debug} diagnosticsRef={hands.diagnosticsRef}
-      enabled={ready && (hands.status === 'tracking' || hands.status === 'searching')} onHit={sound.strike} />
+      enabled={ready && (hands.status === 'tracking' || hands.status === 'searching')}
+      onHit={hit => { sound.strike(hit); sceneRef.current?.strike(hit); }} />
     {(!ready || hands.status === 'error') && <section className="camera-play-notice" role={status === 'error' || playbackError || hands.status === 'error' ? 'alert' : 'status'}>
       <p>{error || playbackError || (hands.status === 'error' ? '손 움직임 인식을 시작하지 못했습니다.' : '카메라를 연결하고 있어요. 카메라 사용을 허용해 주세요.')}</p>
       {(status === 'error' || playbackError) && <button type="button" disabled={status === 'loading'} onClick={reconnect}>카메라 다시 연결</button>}

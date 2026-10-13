@@ -9,6 +9,7 @@ import LoadingPage from './pages/LoadingPage';
 import PlayLoadingPage from './pages/PlayLoadingPage';
 import InstrumentsPage from './pages/InstrumentsPage';
 import EndingPage from './pages/EndingPage';
+import StoryPage from './pages/StoryPage';
 
 import InstrumentPlayPage from './pages/InstrumentPlayPage';
 import CameraSetup from './pages/CameraSetup';
@@ -27,6 +28,7 @@ export default function App() {
     <Route path="/camera" element={<CameraSetup/>}/>
     <Route path="/experience" element={<InstrumentPlayPage/>}/>
     <Route path="/ending" element={<EndingPage/>}/>
+    <Route path="/story" element={<StoryPage/>}/>
     <Route path="*" element={<Navigate to="/" replace/>}/>
   </PageTransitions></CameraProvider>;
 }

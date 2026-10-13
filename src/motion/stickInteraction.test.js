@@ -122,6 +122,7 @@ test('short misses preserve the grabbed stick, fade before expiry, and cannot tr
   const recovered = trackStick(tracker, hand(true), 'right', 360, .95, 1);
   assert.equal(recovered.grip.grabbed, true);
   assert.equal(recovered.stale, true);
+  assert.equal(sampleStick(tracker, 360).opacity, 1);
   trackStick(tracker, hand(true), 'right', 410, .95, 1);
   assert.equal(sampleStick(tracker, 445, false).stale, false);
 });

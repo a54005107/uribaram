@@ -1,6 +1,7 @@
 ﻿import React, {useEffect, useRef, useState} from 'react';
 import {useNavigate, useSearchParams} from 'react-router-dom';
 import {instruments} from './InstrumentsPage';
+import {useCamera} from '../camera/CameraProvider';
 import '../../public/assets/figma/styles/tokens.css';
 import './PlayLoadingPage.css';
 
@@ -17,6 +18,9 @@ const DOT_EASING = ['linear', 'ease-out', 'ease-in', 'linear', 'ease-out', 'ease
 
 export default function PlayLoadingPage() {
   const navigate = useNavigate();
+  const {acquire, release} = useCamera();
+  const acquireRef = useRef(acquire);
+  acquireRef.current = acquire;
   const [params] = useSearchParams();
   const requested = params.get('instrument') || sessionStorage.getItem('uribaram-instrument');
   const instrument = instruments.find(item => item.id === requested) || instruments[1];
@@ -25,6 +29,13 @@ export default function PlayLoadingPage() {
   const fillRef = useRef(null);
   const dotsRef = useRef([]);
   const [scale, setScale] = useState(0);
+
+  // Keep the selected camera alive between setup and performance. Reuse the
+  // existing session rather than releasing and reopening the device.
+  useEffect(() => {
+    void acquireRef.current();
+    return () => release();
+  }, [release]);
 
   useEffect(() => {
     const observer = new ResizeObserver(([entry]) => {
@@ -50,7 +61,7 @@ export default function PlayLoadingPage() {
       )));
     }
     const timer = window.setTimeout(() => {
-      navigate(`/camera?instrument=${instrument.id}`, {replace: true});
+      navigate(`/experience?instrument=${instrument.id}`, {replace: true});
     }, reducedMotion ? 1500 : DURATION_MS);
     return () => { window.clearTimeout(timer); animations.forEach(animation => animation.cancel()); };
   }, [instrument.id, navigate]);
