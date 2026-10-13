@@ -5,15 +5,24 @@ export const STICK_CONFIG = {
 };
 
 export const FILTER_CONFIG = {
-  grip: {minCutoff: 4, beta: 22, dCutoff: 2},
-  rotation: {minCutoff: 2.3, beta: 1.6, dCutoff: 2},
+  // dCutoff 2 preserves rapid strike reversals better than the initial 1 Hz.
+  grip: {minCutoff: 1.2, beta: .04, dCutoff: 2},
+  rotation: {minCutoff: 1.2, beta: .8, dCutoff: 1},
 };
 
-export const TRACKING_CONFIG = {inferenceIntervalMs: 30, inferenceMaxDimension: 640, coastMs: 65, settleMs: 550, fadeAfterMs: 300, maxCoastSpeed: .65,
-  minConfidence: .5, maxCoastDistance: .025, velocitySmoothing: .55,
-  minPalmVector: .015, maxAnchorLag: .012, gripPalmWeight: .72,
-  staleAfterMs: 110, maxAngularSpeed: 16, palmAcrossWeight: .65,
-  fastSpeed: 1.2, fastAnchorLag: .003, minProjectedAxis: .2};
+export const TRACKING_CONFIG = {inferenceIntervalMs: 30, inferenceMaxDimension: 640,
+  lostTrackingGraceMs: 100, settleMs: 350, reacquireBlendMs: 80, renderBlendMs: 12,
+  // Fixed reference units make beta independent of video resolution / viewport.
+  filterReferenceHeight: 1000, velocityTimeConstantMs: 60,
+  minConfidence: .5,
+  minPalmVector: .015, gripPalmWeight: .72,
+  staleAfterMs: 100, maxAngularSpeed: 16, palmAcrossWeight: .65,
+  minProjectedAxis: .2,
+  angleOutlierRadians: 1.1, angleConfirmationRadians: .3,
+  jumpMinDistance: .16, jumpSpeed: 8, jumpAcceleration: 140, jumpInnovation: .12,
+  outlierConfirmationDistance: .08, outlierConfirmationMs: 100,
+  associationPredictionMs: 80, associationBaseDistance: .10, associationMaxSpeed: 8,
+  associationLabelPenalty: .035, associationAmbiguity: .018};
 
 export const GRIP_CONFIG = {grabThreshold: .62, releaseThreshold: .28, confirmationFrames: 2,
   grabMs: 55, releaseMs: 280, straightAngle: 165, foldedAngle: 85,

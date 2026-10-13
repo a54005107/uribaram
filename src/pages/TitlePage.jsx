@@ -1,4 +1,4 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React, {useLayoutEffect, useRef, useState} from 'react';
 import {Link} from 'react-router-dom';
 import '../../public/assets/figma/styles/tokens.css';
 import './TitlePage.css';
@@ -6,7 +6,10 @@ import './TitlePage.css';
 export default function TitlePage() {
   const pageRef = useRef(null);
   const [scale, setScale] = useState(0);
-  useEffect(() => {
+  useLayoutEffect(() => {
+    const page = pageRef.current;
+    // Size before paint so the preview-to-route handoff does not flash empty.
+    setScale(Math.min(page.clientWidth / 2240, page.clientHeight / 1260));
     const observer = new ResizeObserver(([entry]) => {
       const {width, height} = entry.contentRect;
       setScale(Math.min(width / 2240, height / 1260));

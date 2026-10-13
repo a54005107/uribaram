@@ -1,0 +1,12 @@
+.route-viewport { position: relative; width: 100%; height: 100dvh; overflow: hidden; }
+.route-current, .route-outgoing {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  /* Keep fixed-position page elements inside the moving viewport. */
+  transform: translateY(0);
+}
+.route-outgoing { pointer-events: none; }
+.route-outgoing:empty { display: none; }
+.route-outgoing * { animation-play-state: paused !important; }

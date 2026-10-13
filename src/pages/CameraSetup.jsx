@@ -10,16 +10,16 @@ export default function CameraSetup() {
   const [params] = useSearchParams();
   const requested = params.get('instrument') || sessionStorage.getItem('uribaram-instrument');
   const instrument = instruments.find(item => item.id === requested) || instruments[1];
-  const {stream, status, error, devices, deviceId, start, stop, attach, selectDevice} = useCamera();
-  const videoRef = useRef(null), startRef = useRef(start);
-  startRef.current = start;
+  const {stream, status, error, devices, deviceId, start, acquire, release, attach, selectDevice} = useCamera();
+  const videoRef = useRef(null), startRef = useRef(acquire);
+  startRef.current = acquire;
   const [playbackError, setPlaybackError] = useState('');
   const [previewReady, setPreviewReady] = useState(false);
 
   useEffect(() => {
     void startRef.current();
-    return () => stop();
-  }, [stop]);
+    return () => release();
+  }, [release]);
   useEffect(() => {
     setPreviewReady(false);
     setPlaybackError('');
@@ -36,7 +36,6 @@ export default function CameraSetup() {
   const connect = async (id) => {
     setPreviewReady(false);
     setPlaybackError('');
-    stop();
     await selectDevice(id, false);
     await start(id);
   };

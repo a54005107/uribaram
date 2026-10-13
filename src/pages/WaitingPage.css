@@ -28,6 +28,12 @@
   transform-origin: top center;
 }
 .waiting-pole { position: absolute; left: 839px; top: -187px; pointer-events: none; }
+.waiting-wind-rig {
+  position: absolute;
+  inset: 0;
+  /* Triangle apex: pole offset (839, -187) + original SVG point (217.395, 215.563). */
+  transform-origin: 1056.395px 28.563px;
+}
 .waiting-flag {
   position: absolute;
   left: 867px;
@@ -42,7 +48,15 @@
 }
 .waiting-flag img {
   display: block;
-  transform-origin: 35% 4%;
+  pointer-events: none;
+}
+.waiting-flag-wave {
+  position: absolute;
+  left: -180px;
+  top: 0;
+  width: 975px;
+  height: 1226px;
+  visibility: hidden;
   pointer-events: none;
 }
 .waiting-flag:focus-visible { outline: 6px dashed var(--uribaram-color-brown); outline-offset: 12px; }

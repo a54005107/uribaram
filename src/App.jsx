@@ -1,5 +1,6 @@
 import React from 'react';
-import {Navigate, Route, Routes} from 'react-router-dom';
+import {Navigate, Route} from 'react-router-dom';
+import PageTransitions from './components/PageTransitions';
 import Home from './pages/Home';
 import TitlePage from './pages/TitlePage';
 import TrumpetPage from './pages/TrumpetPage';
@@ -15,7 +16,7 @@ import {CameraProvider} from './camera/CameraProvider';
 import FullscreenButton from './components/FullscreenButton';
 
 export default function App() {
-  return <CameraProvider><FullscreenButton/><Routes>
+  return <CameraProvider><FullscreenButton/><PageTransitions>
     <Route path="/" element={<Home/>}/>
     <Route path="/title" element={<TitlePage/>}/>
     <Route path="/trumpet" element={<TrumpetPage/>}/>
@@ -27,5 +28,5 @@ export default function App() {
     <Route path="/experience" element={<InstrumentPlayPage/>}/>
     <Route path="/ending" element={<EndingPage/>}/>
     <Route path="*" element={<Navigate to="/" replace/>}/>
-  </Routes></CameraProvider>;
+  </PageTransitions></CameraProvider>;
 }

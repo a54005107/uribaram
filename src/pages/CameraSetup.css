@@ -1,4 +1,8 @@
-.camera-setup-page { overflow-y: auto; background: radial-gradient(ellipse at 50% 15%, #354654, #18202a 70%); }
+.camera-setup-page { overflow-y: auto; color: white; background: radial-gradient(ellipse at 50% 15%, #354654, #18202a 70%); }
+.camera-setup-page .camera-play-header { position: absolute; z-index: 3; top: 20px; left: 24px; right: 24px; display: flex; align-items: center; gap: 24px; }
+.camera-setup-page button { border: 1px solid #ffffff80; border-radius: 24px; background: #18202ac9; color: white; padding: 11px 18px; font-size: 14px; }
+.camera-setup-page button:hover { background: #354654; }
+.camera-setup-page .camera-setup-start { background: #ffeb36; color: #481100; border-color: #ffeb36; font-weight: 700; }
 .camera-setup-content { width: min(760px, calc(100% - 40px)); margin: 100px auto 36px; }
 .camera-setup-heading { text-align: center; margin-bottom: 24px; }
 .camera-setup-heading h1 { font-size: clamp(22px, 3vw, 34px); margin: 10px 0 14px; word-break: keep-all; }
