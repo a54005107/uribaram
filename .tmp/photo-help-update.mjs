@@ -1,0 +1,1 @@
+﻿import fs from 'node:fs';const p='src/pages/PhotoPage.jsx';let s=fs.readFileSync(p,'utf8');s=s.replace("<p role=\"status\">{{idle:","{transfer.localNetwork && <p>PC와 휴대폰을 같은 Wi-Fi에 연결한 뒤 QR을 스캔해 주세요.</p>}\n        <p role=\"status\">{transfer.message || {idle:");fs.writeFileSync(p,s);

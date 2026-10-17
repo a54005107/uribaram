@@ -1,0 +1,1 @@
+﻿import fs from 'node:fs';const p='src/pages/StoryPage.jsx';let s=fs.readFileSync(p,'utf8').replace('return Array.from({length:Math.ceil((end-top)/1260)},(_,j)=>Math.min(top+j*1260,12755-1260));','const count=Math.max(1,Math.round((end-top)/1260));return Array.from({length:count},(_,j)=>Math.min(top+j*(end-top)/count,12755-1260));');fs.writeFileSync(p,s);

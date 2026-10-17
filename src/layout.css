@@ -71,31 +71,3 @@ body { overflow: hidden; }
 }
 .setup-content .setup-action { align-self: center; }
 
-.fullscreen-control {
-  position: fixed;
-  z-index: 100;
-  top: max(12px, env(safe-area-inset-top));
-  right: max(12px, env(safe-area-inset-right));
-}
-.fullscreen-control button {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  padding: 9px 12px;
-  border: 1px solid #ffffff80;
-  border-radius: 6px;
-  background: #18212dcc;
-  color: #fff;
-  font: 13px/1.3 sans-serif;
-}
-.fullscreen-control button:focus-visible { outline: 3px solid #3373ed; outline-offset: 3px; }
-.fullscreen-control button:disabled { opacity: .6; }
-.fullscreen-control p {
-  position: absolute;
-  right: 0;
-  width: min(300px, calc(100vw - 24px));
-  padding: 12px;
-  background: #18212d;
-  color: #fff;
-  font-size: 14px;
-}

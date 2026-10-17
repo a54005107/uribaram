@@ -11,12 +11,12 @@ const FigmaJanggu = forwardRef(function FigmaJanggu({layout}, ref) {
     cancel();
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     const start = hit.side === 'left' ? 0 : 15;
-    const amplitude = {weak: .025, normal: .045, strong: .065}[hit.strength] || .045;
+    const amplitude = {weak: .012, normal: .022, strong: .032}[hit.strength] || .022;
     elements.current.slice(start, start + 15).forEach((element, index) => {
       animations.current.push(element.animate([
         {transform: 'scale(1)'}, {transform: `scale(${1 + amplitude})`},
-        {transform: `scale(${1 - amplitude * .4})`}, {transform: 'scale(1)'},
-      ], {duration: 560, delay: index * 7, easing: 'ease-in-out'}));
+        {transform: `scale(${1 - amplitude * .2})`}, {transform: 'scale(1)'},
+      ], {duration: 280, delay: index * 3, easing: 'ease-out'}));
     });
   }}), []);
   return <div className="camera-play-instrument figma-janggu-board" role="img" aria-label="장구"

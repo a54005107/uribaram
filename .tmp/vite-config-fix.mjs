@@ -1,0 +1,1 @@
+﻿import fs from 'node:fs';const p='vite.config.js';let s=fs.readFileSync(p,'utf8').replace("import {defineConfig} from 'vite';\n",'').replace('export default defineConfig(({command}) => {','export default ({command}) => {').replace(/\}\);\s*$/,'};\n');fs.writeFileSync(p,s);

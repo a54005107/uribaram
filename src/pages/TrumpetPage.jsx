@@ -3,6 +3,7 @@ import {useNavigate} from 'react-router-dom';
 import '../../public/assets/figma/styles/tokens.css';
 import './TrumpetPage.css';
 import './TrumpetMotion.css';
+import TrumpetArtwork from '../components/TrumpetArtwork';
 
 const BURST_DURATION_MS = 2470;
 const MOTION_NODE_IDS = ['2028:446', '2028:448', '2028:449', '2028:450',
@@ -71,13 +72,14 @@ export default function TrumpetPage() {
     <p className="trumpet-progress" role="status">{count} / 3{count === 3 ? ' · 다음 화면으로 이동합니다' : ''}</p>
     <div className="trumpet-artwork" style={{transform: `scale(${scale})`}}>
       <button
-        className="trumpet-instrument"
+        className={`trumpet-instrument${count ? ' trumpet-instrument--prototype' : ''}`}
         aria-label={`나발 불기 (${count} / 3)`}
         aria-disabled={burst !== null || count === 3}
         title="나발을 세 번 눌러주세요"
         onClick={blow}
       >
-        <img src="/assets/figma/instruments/trumpet/screen/original.svg" width="1633" height="1572" alt="" draggable="false" />
+        {count ? <div key={count} className={`trumpet-prototype-art${burst ? ' trumpet-rings-active' : ''}`} aria-hidden="true"><TrumpetArtwork/></div>
+          : <img src="/assets/figma/instruments/trumpet/screen/original.svg" width="1633" height="1572" alt="" draggable="false" />}
       </button>
       {burst && <div className="trumpet-sparkles" key={count} aria-hidden="true">
         {burst.map((particle, index) => <i key={index} className="trumpet-sparkle"

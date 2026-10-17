@@ -1,0 +1,3 @@
+﻿import fs from 'node:fs';
+const source=fs.readFileSync('.tmp/story-new-source.txt','utf8');const classes=[...new Set([...source.matchAll(/className="([^"]*)"/g)].map(m=>m[1]))];let css='\n';for(const [suffix,weight] of [['bRg',400],['cBd',700],['dEb',900]])css+=`@font-face {font-family:'Story NanumSquare Neo';src:url('/assets/fonts/NanumSquareNeoTTF-${suffix}.woff2') format('woff2');font-weight:${weight};font-display:swap;}\n`;
+classes.forEach((c,i)=>{if(c.includes('NanumSquare'))css+=`.story-artwork .story-current-${i} { font-family:'Story NanumSquare Neo',sans-serif; }\n`;});fs.appendFileSync('src/pages/StoryPage.css',css);
