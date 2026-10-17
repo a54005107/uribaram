@@ -1,0 +1,418 @@
+const assetPathPrefix = "https://www.figma.com/api/mcp/asset/5cf093f0-f8ef-458a-9d64-9286d266aa99";
+const imgSky = `${assetPathPrefix}/b1da9.svg`;
+const img = `${assetPathPrefix}/b9168.svg`;
+const imgProperty1Default = `${assetPathPrefix}/409e1.svg`;
+const imgProperty1Variant2 = `${assetPathPrefix}/cf26e.svg`;
+const imgProperty1Default1 = `${assetPathPrefix}/98fe7.svg`;
+const img1 = `${assetPathPrefix}/9d376.svg`;
+const imgGroup = `${assetPathPrefix}/7f751.svg`;
+const img2 = `${assetPathPrefix}/b1156.svg`;
+const img3 = `${assetPathPrefix}/becaa.svg`;
+const img4 = `${assetPathPrefix}/9e4b6.svg`;
+const img5 = `${assetPathPrefix}/496c3.svg`;
+const img6 = `${assetPathPrefix}/0f5f2.svg`;
+const img7 = `${assetPathPrefix}/d120c.svg`;
+const imgStar1 = `${assetPathPrefix}/cc63e.svg`;
+const imgPolygon43 = `${assetPathPrefix}/7741e.svg`;
+const img8 = `${assetPathPrefix}/53d17.svg`;
+const img9 = `${assetPathPrefix}/ac14a.svg`;
+const img10 = `${assetPathPrefix}/57d7a.svg`;
+const img11 = `${assetPathPrefix}/64dcc.svg`;
+const imgRectangle22 = `${assetPathPrefix}/b3a7c.svg`;
+const imgVector = `${assetPathPrefix}/95859.svg`;
+const imgVector1 = `${assetPathPrefix}/b81e3.svg`;
+const imgVector2 = `${assetPathPrefix}/f847e.svg`;
+const imgVector3 = `${assetPathPrefix}/1c8b5.svg`;
+const imgVector4 = `${assetPathPrefix}/7a9c1.svg`;
+const imgVector5 = `${assetPathPrefix}/9f13c.svg`;
+const imgVector6 = `${assetPathPrefix}/7d292.svg`;
+const imgVector7 = `${assetPathPrefix}/a4e3b.svg`;
+const img12 = `${assetPathPrefix}/84e0b.svg`;
+
+type ComponentProps = {
+  className?: string;
+  propValue?: "sky";
+};
+
+function Component({ className, propValue = "sky" }: ComponentProps) {
+  return (
+    <div className={className || "h-[267px] relative w-[2240px]"} data-node-id="2625:4700">
+      <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgSky} />
+    </div>
+  );
+}
+
+function Component1({ className }: { className?: string }) {
+  return (
+    <div className={className || "h-[235px] relative w-[703px]"} data-node-id="2271:3229" data-name="로고_원형">
+      <img alt="" className="absolute block inset-0 max-w-none size-full" src={img} />
+    </div>
+  );
+}
+
+type Component2Props = {
+  className?: string;
+  property1?: "Default" | "Variant2";
+};
+
+function Component2({ className, property1 = "Default" }: Component2Props) {
+  const isVariant2 = property1 === "Variant2";
+  return (
+    <div className={className || "h-[179.82px] relative w-[157.38px]"} id={isVariant2 ? "node-2028_475" : "node-2028_473"}>
+      <img alt="" className="absolute block inset-0 max-w-none size-full" src={isVariant2 ? imgProperty1Variant2 : imgProperty1Default} />
+    </div>
+  );
+}
+
+type Component3Props = {
+  className?: string;
+  property1?: "Default";
+};
+
+function Component3({ className, property1 = "Default" }: Component3Props) {
+  return (
+    <div className={className || "h-[187.51px] relative w-[98.58px]"} data-node-id="2028:465">
+      <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgProperty1Default1} />
+    </div>
+  );
+}
+
+type Component4Props = {
+  className?: string;
+  property1?: "Default";
+};
+
+function Component4({ className, property1 = "Default" }: Component4Props) {
+  return (
+    <div className={className || "h-[1096px] relative w-[1207px]"} data-node-id="2632:4771">
+      <div className="absolute flex inset-[0_42.94%_0.02%_32.2%] items-center justify-center" data-node-id="2632:4729" style={{ containerType: "size" }}>
+        <div className="-scale-x-100 flex-none h-[100cqh] w-[100cqw]">
+          <div className="relative size-full" data-name="깃대">
+            <img alt="" className="absolute block inset-0 max-w-none size-full" src={img1} />
+          </div>
+        </div>
+      </div>
+      <div className="absolute flex inset-[23.91%_26.66%_5.7%_37.42%] items-center justify-center" data-node-id="2632:4738" style={{ containerType: "size" }}>
+        <div className="flex-none h-[hypot(-3.25467cqw,98.9955cqh)] rotate-[1.06deg] w-[hypot(96.7453cqw,1.00451cqh)]">
+          <div className="relative size-full" data-name="Group">
+            <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgGroup} />
+          </div>
+        </div>
+      </div>
+      <div className="absolute flex h-[37.76px] items-center justify-center left-[1120px] top-[548px] w-[25.836px]" data-node-id="2653:2022">
+        <div className="flex-none rotate-180">
+          <button className="block cursor-pointer h-[37.76px] relative w-[25.836px]" data-name="다음 농기 보기">
+            <img alt="" className="absolute block inset-0 max-w-none size-full" src={img2} />
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default function Component5() {
+  return (
+    <div className="bg-white relative size-full" data-node-id="2271:3227" data-name="풍물 이야기">
+      <Component4 className="absolute h-[1096px] left-[calc(33.33%+129.33px)] top-[1679.97px] w-[1207px]" />
+      <div className="absolute bg-[#bbb] h-[1315px] left-0 top-0 w-[2240px]" data-node-id="2625:4643" />
+      <div className="absolute bg-[#bbb] h-[1315px] left-0 top-[4534.79px] w-[2240px]" data-node-id="2658:3437" />
+      <p className="-translate-x-1/2 [word-break:break-word] absolute font-['Chai_Hwaljjak:Heavy'] leading-[1.3] left-[calc(50%+0.5px)] not-italic text-[#481100] text-[72px] text-center top-[512.01px] tracking-[0.72px] whitespace-nowrap" data-node-id="2469:2694">
+        방금 함께한 놀이,
+        <br aria-hidden />
+        풍물놀이에서 시작됐어요
+      </p>
+      <p className="[word-break:break-word] absolute font-['Chai_Hwaljjak:Bold'] leading-[1.2] left-[calc(16.67%-245.33px)] not-italic text-[#481100] text-[64px] top-[2068.97px] tracking-[-0.64px] whitespace-nowrap" data-node-id="2615:4630">
+        바람을 적었던 깃발
+      </p>
+      <div className="-translate-x-1/2 [word-break:break-word] absolute font-['NanumSquare_Neo_OTF:Bold'] leading-[0] left-1/2 not-italic text-[32px] text-[color:var(--brown,#481100)] text-center top-[750.01px] tracking-[-0.96px] whitespace-nowrap" data-node-id="2566:977">
+        <p className="leading-[1.5] mb-0">사람들이 모여 악기를 연주하고 춤추는 풍물놀이는 ‘농악’이라고도 불러요</p>
+        <p className="leading-[1.5] mb-0">농사가 잘되고 마을이 평안하기를 바라며 함께했지요</p>
+        <p className="leading-[1.5]">이렇게 사람들이 모여 어울리는 자리를 ‘판’이라고 해요</p>
+      </div>
+      <div className="[word-break:break-word] absolute font-['NanumSquare_Neo_OTF:Bold'] leading-[0] left-[calc(16.67%-245.33px)] not-italic text-[32px] text-[color:var(--brown,#481100)] top-[2193.97px] tracking-[-0.96px] whitespace-nowrap" data-node-id="2627:4728">
+        <p className="leading-[1.5] mb-0 whitespace-pre">풍물놀이에서 볼 수 있는 깃발 중 하나예요</p>
+        <p className="mb-0 whitespace-pre">
+          <span className="[word-break:break-word] font-['NanumSquare_Neo_OTF:ExtraBold'] leading-[1.5] not-italic">[농기]</span>
+          <span className="leading-[1.5]">라고 부르는 이것은, 농사를 소중히 여기는 글귀나</span>
+        </p>
+        <p className="leading-[1.5] mb-0 whitespace-pre">마을을 나타내는 표시를 담았어요</p>
+        <p className="leading-[1.5] mb-0 whitespace-pre">​</p>
+        <p className="leading-[1.5] whitespace-pre">우리바람에서는 이 농기에 우리들의 바람을 담아 봤어요</p>
+      </div>
+      <div className="absolute flex h-[39px] items-center justify-center left-[calc(44.44%+95.94px)] top-[1170.49px] w-[57px]" data-node-id="2620:4633">
+        <div className="-rotate-90 flex-none">
+          <div className="h-[57px] relative w-[39px]" data-name="<">
+            <img alt="" className="absolute block inset-0 max-w-none size-full" src={img3} />
+          </div>
+        </div>
+      </div>
+      <div className="absolute bg-gradient-to-b from-[#ffe900] h-[1260px] left-0 to-white top-[2771.73px] w-[2240px]" data-node-id="2654:2362" />
+      <p className="[word-break:break-word] absolute font-['Chai_Hwaljjak:Bold'] leading-[1.2] left-[calc(50%-228.5px)] not-italic text-[#481100] text-[64px] top-[3431.19px] tracking-[-0.64px] whitespace-nowrap" data-node-id="2654:2378">
+        함께 하는 사람들
+      </p>
+      <div className="[word-break:break-word] absolute font-['Chai_Hwaljjak:Bold'] leading-[0] left-[calc(5.56%+0.7px)] not-italic text-[#481100] text-[64px] top-[5033.25px] tracking-[-0.64px] whitespace-nowrap" data-node-id="2658:3328">
+        <p className="leading-[1.2] mb-0">길에서도,</p>
+        <p className="leading-[1.2] mb-0">논에서도,</p>
+        <p className="leading-[1.2]">마당에서도</p>
+      </div>
+      <p className="[word-break:break-word] absolute font-['Chai_Hwaljjak:Bold'] leading-[1.2] left-[calc(50%-318.5px)] not-italic text-[#481100] text-[64px] top-[6314.34px] tracking-[-0.64px] whitespace-nowrap" data-node-id="2658:3331">
+        지역마다 다양한 소리들
+      </p>
+      <div className="-translate-x-1/2 [word-break:break-word] absolute font-['Chai_Hwaljjak:Bold'] leading-[0] left-1/2 not-italic text-[#481100] text-[48px] text-center top-[10980.67px] tracking-[-0.48px] whitespace-nowrap" data-node-id="2658:3343">
+        <p className="leading-[1.2] mb-0">서로의 안녕을 빌던 마음을</p>
+        <p className="leading-[1.2]">화면 속으로</p>
+      </div>
+      <div className="-translate-x-1/2 [word-break:break-word] absolute font-['NanumSquare_Neo_OTF:Bold'] leading-[0] left-[calc(50%+0.5px)] not-italic text-[32px] text-[color:var(--brown,#481100)] text-center top-[3556.88px] tracking-[-0.96px] whitespace-nowrap" data-node-id="2654:2379">
+        <p className="mb-0 whitespace-pre">
+          <span className="leading-[1.5]">{`풍물놀이를 하는 무리를 `}</span>
+          <span className="[word-break:break-word] font-['NanumSquare_Neo_OTF:ExtraBold'] leading-[1.5] not-italic">‘풍물패’</span>
+          <span className="leading-[1.5]">{`, 그 구성원을 `}</span>
+          <span className="[word-break:break-word] font-['NanumSquare_Neo_OTF:ExtraBold'] leading-[1.5] not-italic">‘치배’</span>
+          <span className="leading-[1.5]">{` 라고 해요`}</span>
+        </p>
+        <p className="leading-[1.5] mb-0 whitespace-pre">악기를 치는 사람뿐 아니라 깃발을 들거나 여러 인물로 분장해 노는 사람도 함께 해요</p>
+        <p className="leading-[1.5] mb-0 whitespace-pre">​</p>
+        <p className="whitespace-pre">
+          <span className="leading-[1.5]">{`또한, 관람하는 사람들 또한 `}</span>
+          <span className="[word-break:break-word] font-['NanumSquare_Neo_OTF:ExtraBold'] leading-[1.5] not-italic">함께 즐기는 것</span>
+          <span className="leading-[1.5]">이 풍물놀이의 매력이에요</span>
+        </p>
+      </div>
+      <div className="[word-break:break-word] absolute font-['NanumSquare_Neo_OTF:Bold'] leading-[0] left-[calc(16.67%-248.18px)] not-italic text-[32px] text-[color:var(--brown,#481100)] top-[5313.73px] tracking-[-0.96px] whitespace-nowrap" data-node-id="2658:3329">
+        <p className="leading-[1.5] mb-0">풍물놀이는 하는 장소와 목적에 따라</p>
+        <p className="leading-[1.5] mb-0">모습과 이름이 달라요. 풍물에서 ‘굿’은</p>
+        <p className="leading-[1.5] mb-0">복을 비는 의식뿐 아니라</p>
+        <p className="leading-[1.5]">연주와 놀이를 가리키기도 해요</p>
+      </div>
+      <div className="-translate-x-1/2 [word-break:break-word] absolute font-['NanumSquare_Neo_OTF:Bold'] leading-[0] left-1/2 not-italic text-[32px] text-[color:var(--brown,#481100)] text-center top-[6430.04px] tracking-[-0.96px] whitespace-nowrap" data-node-id="2658:3332">
+        <p className="leading-[1.5] mb-0">여러 지역에서 저마다의 모습으로 이어져 왔어요</p>
+        <p>
+          <span className="leading-[1.5]">{`연주하는 리듬인 `}</span>
+          <span className="[word-break:break-word] font-['NanumSquare_Neo_OTF:ExtraBold'] leading-[1.5] not-italic">’가락’</span>
+          <span className="leading-[1.5]">도, 옷차림과 춤도 조금씩 달라요</span>
+        </p>
+      </div>
+      <div className="-translate-x-1/2 [word-break:break-word] absolute font-['NanumSquare_Neo_OTF:Bold'] leading-[0] left-1/2 not-italic text-[32px] text-[color:var(--brown,#481100)] text-center top-[11367.66px] tracking-[-0.96px] whitespace-nowrap" data-node-id="2658:3350">
+        <p className="leading-[1.5] mb-0">농기에 소원을 쓰고, 악기를 고르고, 몸을 움직여 소리를 내는 과정을</p>
+        <p className="leading-[1.5]">누구나 쉽게 참여할 수 있도록 새롭게 구성했어요</p>
+      </div>
+      <p className="[word-break:break-word] absolute font-['NanumSquare_Neo_OTF:Bold'] leading-[1.5] left-[calc(50%-323px)] not-italic text-[32px] text-[color:var(--brown,#481100)] top-[8692.97px] tracking-[-0.96px] whitespace-nowrap" data-node-id="2658:3333">
+        우리바람은 임실필봉농악을 바탕으로 하고 있어요
+      </p>
+      <div className="absolute flex h-[743.107px] items-center justify-center left-[calc(22.22%+61.98px)] top-[3820px] w-[741.878px]" data-node-id="2654:2491">
+        <div className="flex-none rotate-[23.53deg]">
+          <div className="h-[565.361px] relative w-[562.988px]" data-name="소고">
+            <div className="absolute contents inset-[0.18%_0.25%_0.21%_0.21%]" data-node-id="I2654:2491;2199:2886" data-name="소고 그룹">
+              <div className="absolute flex inset-[10.13%_0.25%_0.21%_0.21%] items-center justify-center" data-node-id="I2654:2491;2142:3723" style={{ containerType: "size" }}>
+                <div className="flex-none h-[hypot(99.6167cqw,0.468978cqh)] rotate-[-89.76deg] w-[hypot(0.383335cqw,-99.531cqh)]">
+                  <div className="relative size-full" data-name="소고">
+                    <img alt="" className="absolute block inset-0 max-w-none size-full" src={img4} />
+                  </div>
+                </div>
+              </div>
+              <div className="absolute flex inset-[0.18%_4.57%_95.59%_46.57%] items-center justify-center" data-node-id="I2654:2491;2142:3738" style={{ containerType: "size" }}>
+                <div className="flex-none h-[hypot(99.9648cqw,4.89639cqh)] rotate-[-89.76deg] w-[hypot(0.0352053cqw,-95.1036cqh)]">
+                  <div className="relative size-full" data-name="소고채">
+                    <div className="absolute inset-[0_0_0_-165.78%]">
+                      <img alt="" className="block max-w-none size-full" src={img5} />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="absolute flex h-[1012.59px] items-center justify-center left-[calc(66.67%+1.48px)] top-[2672.2px] w-[945.662px]" data-node-id="2654:2693">
+        <div className="flex-none rotate-[-31.05deg]">
+          <div className="h-[811.557px] relative w-[615.193px]" data-name="장구">
+            <div className="absolute inset-[4.31%_4.32%_4.36%_4.34%]" data-node-id="I2654:2693;2199:3035" data-name="장구 그룹">
+              <img alt="" className="absolute block inset-0 max-w-none size-full" src={img6} />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="absolute flex h-[534.701px] items-center justify-center left-[-71.41px] top-[3109.3px] w-[592.407px]" data-node-id="2658:2802">
+        <div className="flex-none rotate-[-0.42deg]">
+          <div className="h-[530.359px] overflow-clip relative w-[588.497px]" data-name="꽹과리">
+            <div className="absolute contents left-[35.59px] top-[32.04px]" data-node-id="I2658:2802;2658:3236">
+              <div className="absolute h-[466.289px] left-[21.12px] top-[19px] w-[517.308px]" data-node-id="I2658:2802;2658:3151" data-name="소고">
+                <img alt="" className="absolute block inset-0 max-w-none size-full" src={img7} />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="absolute flex h-[617.261px] items-center justify-center left-[calc(11.11%+129.85px)] top-[6918.6px] w-[690.279px]" data-node-id="2658:3335">
+        <div className="flex-none rotate-[13.37deg]">
+          <div className="bg-[#d9d9d9] h-[493.682px] relative rounded-[67px] w-[592.145px]" />
+        </div>
+      </div>
+      <div className="absolute flex h-[625.387px] items-center justify-center left-[calc(66.67%-2.99px)] top-[7669.24px] w-[696.282px]" data-node-id="2658:3336">
+        <div className="flex-none rotate-[14.39deg]">
+          <div className="bg-[#d9d9d9] h-[493.682px] relative rounded-[245px] w-[592.145px]" />
+        </div>
+      </div>
+      <div className="absolute flex items-center justify-center left-[calc(44.44%+171.17px)] size-[892.67px] top-[6759.2px]" data-node-id="2658:3338">
+        <div className="flex-none rotate-[-25.96deg]">
+          <div className="relative size-[667.756px]">
+            <div className="absolute inset-[2.65%_4.7%_10.64%_4.7%]">
+              <img alt="" className="block max-w-none size-full" src={imgStar1} />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="absolute flex h-[723.493px] items-center justify-center left-[95.75px] top-[7700.9px] w-[762.014px]" data-node-id="2658:3340">
+        <div className="flex-none rotate-[149.69deg]">
+          <div className="bg-[#d9d9d9] h-[489.245px] relative rounded-bl-[65px] rounded-br-[65px] rounded-tl-[318.183px] rounded-tr-[318.183px] w-[596.66px]" />
+        </div>
+      </div>
+      <div className="absolute flex h-[725.459px] items-center justify-center left-[calc(33.33%+44.74px)] top-[7359.59px] w-[795.022px]" data-node-id="2658:3342">
+        <div className="flex-none rotate-[12.49deg]">
+          <div className="h-[591.672px] relative w-[683.204px]">
+            <div className="absolute inset-[5.92%_3.74%_0_3.74%]">
+              <img alt="" className="block max-w-none size-full" src={imgPolygon43} />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="-translate-x-1/2 [word-break:break-word] absolute font-['NanumSquare_Neo_OTF:Bold'] leading-[0] left-1/2 not-italic text-[32px] text-[color:var(--brown,#481100)] text-center top-[11169.4px] tracking-[-0.96px] whitespace-nowrap" data-node-id="2658:3346">
+        <p className="leading-[1.5] mb-0">우리바람은 임실필봉농악의 ‘마당밟이’를 참고해 만들었어요</p>
+        <p className="leading-[1.5] mb-0">집집마다 찾아가 평안을 빌던 마음을,</p>
+        <p className="leading-[1.5]">각자의 소원을 담고 함께 연주하는 경험으로 옮겼어요</p>
+      </div>
+      <Component3 className="absolute flex h-[209.073px] items-center justify-center left-[241.49px] top-[10696.1px] w-[175.861px]" />
+      <div className="absolute flex h-[229.72px] items-center justify-center left-[calc(11.11%+80.53px)] top-[11403.04px] w-[247.33px]" data-node-id="2658:3375">
+        <div className="flex-none rotate-[51.77deg]">
+          <div className="h-[222.644px] relative w-[117.051px]" data-name="음표2">
+            <img alt="" className="absolute block inset-0 max-w-none size-full" src={img8} />
+          </div>
+        </div>
+      </div>
+      <div className="absolute flex h-[248.025px] items-center justify-center left-[calc(88.89%-71.11px)] top-[11907.8px] w-[180.567px]" data-node-id="2658:3697">
+        <div className="flex-none rotate-[-18.15deg]">
+          <div className="h-[222.644px] relative w-[117.051px]" data-name="음표2">
+            <img alt="" className="absolute block inset-0 max-w-none size-full" src={img9} />
+          </div>
+        </div>
+      </div>
+      <div className="absolute flex h-[117.907px] items-center justify-center left-[calc(66.67%+38.19px)] top-[11580.97px] w-[182.676px]" data-node-id="2658:3387">
+        <div className="flex-none rotate-[-100.27deg]">
+          <div className="h-[169.504px] relative w-[89.114px]" data-name="음표3">
+            <img alt="" className="absolute block inset-0 max-w-none size-full" src={img10} />
+          </div>
+        </div>
+      </div>
+      <div className="absolute flex h-[208.743px] items-center justify-center left-[calc(44.44%+98.33px)] top-[12138.43px] w-[241.504px]" data-node-id="2658:3706">
+        <div className="flex-none rotate-[-58.17deg]">
+          <div className="h-[214.31px] relative w-[112.669px]" data-name="음표3">
+            <img alt="" className="absolute block inset-0 max-w-none size-full" src={img11} />
+          </div>
+        </div>
+      </div>
+      <Component2 className="absolute flex h-[220.491px] items-center justify-center left-[calc(66.67%+143.67px)] top-[10870.15px] w-[206.339px]" />
+      <Component2 className="absolute flex h-[233.453px] items-center justify-center left-[287.95px] top-[12138.18px] w-[238.155px]" property1="Variant2" />
+      <div className="absolute contents left-0 top-[12415.24px]" data-node-id="2658:3674">
+        <div className="absolute flex inset-[97.34%_0_0_0] items-center justify-center" data-node-id="2658:3434" style={{ containerType: "size" }}>
+          <div className="flex-none h-[100cqh] rotate-180 w-[100cqw]">
+            <div className="relative size-full">
+              <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgRectangle22} />
+            </div>
+          </div>
+        </div>
+        <div className="[word-break:break-word] absolute font-['NanumSquare_Neo_OTF:Regular'] leading-[0] left-[128px] not-italic text-[#351c18] text-[22px] top-[12581.51px] tracking-[-0.66px] whitespace-nowrap" data-node-id="2658:3416">
+          <p className="mb-0 whitespace-pre">
+            <span className="[word-break:break-word] font-['NanumSquare_Neo_OTF:Bold'] leading-[1.45] not-italic">{`참고   `}</span>
+            <span className="leading-[1.45]">{`한국민족문화대백과사전 「농악」·  국립국악원 국악사전 「임실필봉농악」·  필봉문화촌`}</span>
+          </p>
+          <p className="whitespace-pre">
+            <span className="[word-break:break-word] font-['NanumSquare_Neo_OTF:Bold'] leading-[1.45] not-italic">사진 출처</span>
+            <span className="leading-[1.45]">{`   국가유산청 · 고창농악보존회`}</span>
+          </p>
+        </div>
+        <p className="[word-break:break-word] absolute font-['NanumSquare_Neo_OTF:ExtraBold'] leading-[1.45] left-[128px] not-italic text-[#351c18] text-[22px] top-[12527.09px] tracking-[-0.66px] whitespace-pre" data-node-id="2658:3419">{`우리바람  ·  Our Wind, Our Wish`}</p>
+        <p className="[word-break:break-word] absolute font-['NanumSquare_Neo_OTF:Regular'] leading-[1.45] left-[128px] not-italic text-[#351c18] text-[22px] top-[12653.64px] tracking-[-0.66px] whitespace-nowrap" data-node-id="2658:3417">
+          © 2026 Choi Soo Myeong
+        </p>
+        <div className="[word-break:break-word] absolute font-['NanumSquare_Neo_OTF:Regular'] leading-[0] left-[calc(66.67%-21.33px)] not-italic text-[#351c18] text-[22px] top-[12581.51px] tracking-[-0.66px] whitespace-nowrap" data-node-id="2658:3418">
+          <p className="mb-0 whitespace-pre">
+            <span className="[word-break:break-word] font-['NanumSquare_Neo_OTF:Bold'] leading-[1.45] not-italic">기획 및 디자인</span>
+            <span className="leading-[1.45]">{`   Choi Soo Myeong`}</span>
+          </p>
+          <p className="whitespace-pre">
+            <span className="[word-break:break-word] font-['NanumSquare_Neo_OTF:Bold'] leading-[1.45] not-italic">개발</span>
+            <span className="leading-[1.45]">{` Choi Ji Sun`}</span>
+          </p>
+        </div>
+      </div>
+      <div className="absolute flex inset-[85.77%_64.29%_13.46%_31.3%] items-center justify-center" data-node-id="2658:3402" style={{ containerType: "size" }}>
+        <div className="flex-none h-[hypot(-57.7269cqw,42.2781cqh)] rotate-[53.78deg] w-[hypot(42.2731cqw,57.7219cqh)]">
+          <div className="relative size-full" data-name="Vector">
+            <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgVector} />
+          </div>
+        </div>
+      </div>
+      <div className="absolute flex inset-[87.05%_92.47%_11.25%_-2.16%] items-center justify-center" data-node-id="2658:3404" style={{ containerType: "size" }}>
+        <div className="flex-none h-[hypot(-54.5938cqw,45.4113cqh)] rotate-[50.25deg] w-[hypot(45.4062cqw,54.5887cqh)]">
+          <div className="relative size-full" data-name="Vector">
+            <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgVector1} />
+          </div>
+        </div>
+      </div>
+      <div className="absolute flex inset-[89.24%_9.72%_9.29%_81.86%] items-center justify-center" data-node-id="2658:3405" style={{ containerType: "size" }}>
+        <div className="flex-none h-[hypot(-58.5435cqw,43.099cqh)] rotate-[53.78deg] w-[hypot(41.4565cqw,56.901cqh)]">
+          <div className="relative size-full" data-name="Vector">
+            <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgVector2} />
+          </div>
+        </div>
+      </div>
+      <div className="absolute flex inset-[92.14%_56.29%_6.82%_37.71%] items-center justify-center" data-node-id="2658:3684" style={{ containerType: "size" }}>
+        <div className="flex-none h-[hypot(-58.5435cqw,43.099cqh)] rotate-[53.78deg] w-[hypot(41.4565cqw,56.901cqh)]">
+          <div className="relative size-full" data-name="Vector">
+            <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgVector3} />
+          </div>
+        </div>
+      </div>
+      <div className="absolute flex inset-[93.1%_89.64%_5.56%_2.7%] items-center justify-center" data-node-id="2658:3685" style={{ containerType: "size" }}>
+        <div className="flex-none h-[hypot(-58.5435cqw,43.099cqh)] rotate-[53.78deg] w-[hypot(41.4565cqw,56.901cqh)]">
+          <div className="relative size-full" data-name="Vector">
+            <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgVector4} />
+          </div>
+        </div>
+      </div>
+      <div className="absolute flex inset-[97.19%_65.46%_2.02%_29.95%] items-center justify-center" data-node-id="2658:3686" style={{ containerType: "size" }}>
+        <div className="flex-none h-[hypot(-77.3652cqw,23.8352cqh)] rotate-[73.16deg] w-[hypot(22.6348cqw,76.1648cqh)]">
+          <div className="relative size-full" data-name="Vector">
+            <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgVector5} />
+          </div>
+        </div>
+      </div>
+      <div className="absolute flex inset-[94.13%_30.56%_5.08%_64.9%] items-center justify-center" data-node-id="2658:3687" style={{ containerType: "size" }}>
+        <div className="flex-none h-[hypot(-58.5435cqw,43.099cqh)] rotate-[53.78deg] w-[hypot(41.4565cqw,56.901cqh)]">
+          <div className="relative size-full" data-name="Vector">
+            <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgVector6} />
+          </div>
+        </div>
+      </div>
+      <div className="absolute flex inset-[83.6%_5.5%_15.25%_87.98%] items-center justify-center" data-node-id="2658:3406" style={{ containerType: "size" }}>
+        <div className="flex-none h-[hypot(-57.7269cqw,42.2781cqh)] rotate-[53.78deg] w-[hypot(42.2731cqw,57.7219cqh)]">
+          <div className="relative size-full" data-name="Vector">
+            <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgVector7} />
+          </div>
+        </div>
+      </div>
+      <p className="-translate-x-1/2 [word-break:break-word] absolute font-['Chai_Hwaljjak:Bold'] leading-[1.3] left-1/2 not-italic text-[40px] text-[color:var(--brown,#481100)] text-center top-[9509px] whitespace-nowrap" data-node-id="2658:3435">
+        바람을 싣고, 소리 따라 저 멀리
+      </p>
+      <Component1 className="absolute h-[505px] left-[calc(11.11%+115.11px)] top-[9642px] w-[1512px]" />
+      <Component className="absolute h-[267px] left-0 top-0 w-[2240px]" />
+      <div className="-translate-x-1/2 absolute contents left-[calc(5.56%+99.56px)] top-[81px]" data-node-id="2571:935">
+        <div className="absolute bottom-0 h-[-18px] left-[calc(5.56%+99.56px)] pointer-events-none top-[81px]" data-node-id="2571:937">
+          <div className="-translate-x-1/2 h-[63px] pointer-events-auto sticky top-0 w-[192px]" data-name="로고_원형">
+            <img alt="" className="absolute block inset-0 max-w-none size-full" src={img12} />
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}

@@ -7,6 +7,8 @@
 .play-loading-letters span { display: grid; place-items: center; height: 135px; flex: 0 0 135px; white-space: pre; }
 .play-loading-letters--empty { color: #d7d7e0; }
 .play-loading-letters--filled { color: var(--uribaram-color-charcoal); }
+.play-loading-letters img { flex: none; max-width: none; transform: scale(.765); transform-origin: top center; }
+.play-loading-letters--empty img { opacity: .18; }
 .play-loading-caption { position: absolute; left: 468px; top: 606px; display: flex; align-items: flex-end; gap: 6px; }
 .play-loading-dots { display: flex; gap: 6px; padding-bottom: 2px; }
 @media (max-aspect-ratio: 1/1) {

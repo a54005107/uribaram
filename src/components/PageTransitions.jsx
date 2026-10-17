@@ -56,7 +56,8 @@ export default function PageTransitions({children}) {
     const leavePlayLoading = displayed.pathname === '/play-loading' && location.pathname === '/experience';
     const enterPlay = displayed.pathname === '/camera' && location.pathname === '/experience';
     const switchingInstrument = displayed.pathname === '/experience' && location.pathname === '/experience';
-    transitionStyle.current = leavePlayLoading ? 'play-loading' : enterPlay ? 'play-entry' : revealInstruments ? 'blur' : 'slide';
+    const sharedBackground = [displayed.pathname, location.pathname].every(path => ['/', '/title'].includes(path));
+    transitionStyle.current = sharedBackground ? 'content-slide' : leavePlayLoading ? 'play-loading' : enterPlay ? 'play-entry' : revealInstruments ? 'blur' : 'slide';
     shouldAnimate.current = !switchingInstrument && !reduced && !document.hidden
       && (leavePlayLoading || enterPlay || revealInstruments || (!loadingPaths.has(location.pathname) && !loadingPaths.has(displayed.pathname)))
       && typeof currentRef.current.animate === 'function';
@@ -72,10 +73,25 @@ export default function PageTransitions({children}) {
     const blur = transitionStyle.current === 'blur';
     const playLoading = transitionStyle.current === 'play-loading';
     const playEntry = transitionStyle.current === 'play-entry';
+    const contentSlide = transitionStyle.current === 'content-slide';
     const options = {duration: blur ? 1400 : playLoading || playEntry ? 1000 : 780, easing: 'cubic-bezier(.45, 0, .2, 1)', fill: 'both'};
     // The selection page is already beneath the loading snapshot. Only the
     // Text softens first; the background then fades to reveal the next page.
-    const animations = playLoading || playEntry
+    // Keep the gradient in viewport coordinates; slide only page contents.
+    const contentLayers = [];
+    if (contentSlide) {
+      [current, outgoing].forEach((container, index) => {
+        const page = container.querySelector('main');
+        if (!page) return;
+        Array.from(page.children).forEach(layer => contentLayers.push({layer, index}));
+      });
+      outgoing.querySelector('main').style.background = 'transparent';
+    }
+    const animations = contentSlide
+      ? contentLayers.map(({layer, index}) => layer.animate(index === 0
+        ? [{translate: `0 ${direction.current * current.clientHeight}px`}, {translate: '0 0'}]
+        : [{translate: '0 0'}, {translate: `0 ${-direction.current * current.clientHeight}px`}], options))
+      : playLoading || playEntry
       ? [outgoing.animate([
         {opacity: 1}, {opacity: 1, offset: .15}, {opacity: 0},
       ], options)]
@@ -129,7 +145,10 @@ export default function PageTransitions({children}) {
       animations.forEach(animation => animation.cancel());
       setMoving(false);
     }).catch(() => {});
-    return () => { cancelled = true; animations.forEach(animation => animation.cancel()); };
+    return () => {
+      cancelled = true;
+      animations.forEach(animation => animation.cancel());
+    };
   }, [displayed]);
 
   return <div className="route-viewport" aria-busy={moving || undefined}>

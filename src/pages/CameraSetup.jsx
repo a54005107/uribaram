@@ -1,8 +1,7 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React, {useEffect, useLayoutEffect, useRef, useState} from 'react';
 import {useNavigate, useSearchParams} from 'react-router-dom';
 import {useCamera} from '../camera/CameraProvider';
 import {instruments} from './InstrumentsPage';
-import './InstrumentPlayPage.css';
 import './CameraSetup.css';
 
 export default function CameraSetup() {
@@ -15,6 +14,16 @@ export default function CameraSetup() {
   startRef.current = acquire;
   const [playbackError, setPlaybackError] = useState('');
   const [previewReady, setPreviewReady] = useState(false);
+  const pageRef = useRef(null);
+  const [scale, setScale] = useState(1);
+  useLayoutEffect(() => {
+    const page = pageRef.current;
+    const resize = () => setScale(Math.min(page.clientWidth / 2240, page.clientHeight / 1260));
+    resize();
+    const observer = new ResizeObserver(resize);
+    observer.observe(page);
+    return () => observer.disconnect();
+  }, []);
 
   useEffect(() => {
     void startRef.current();
@@ -40,14 +49,10 @@ export default function CameraSetup() {
     await start(id);
   };
   const ready = status === 'ready' && previewReady && !playbackError;
-  return <main className="page camera-play-page camera-setup-page" aria-label="연주 카메라 선택">
-    <header className="camera-play-header">
-      <button type="button" onClick={() => navigate('/instruments')}>← 악기 고르기</button>
-      <span>{instrument.name} 연주 준비</span>
-    </header>
-    <section className="camera-setup-content">
+  return <main ref={pageRef} className="page camera-setup-page" aria-label="연주 카메라 선택">
+    <button className="camera-setup-back" type="button" onClick={() => navigate('/instruments')}>← 악기 고르기</button>
+    <section className="camera-setup-content" style={{'--camera-scale': scale}}>
       <div className="camera-setup-heading">
-        <p>연주 준비</p>
         <h1>나를 비추는 카메라를 골라 주세요</h1>
         <p>화면에 얼굴과 양손이 보이면 준비 완료!</p>
       </div>
@@ -56,7 +61,6 @@ export default function CameraSetup() {
         {!ready && <div className="camera-setup-status" role={error || playbackError ? 'alert' : 'status'}>
           {error || playbackError || '카메라를 연결하고 있어요. 카메라 사용을 허용해 주세요.'}
         </div>}
-        {ready && <span className="camera-setup-live">● 미리보기</span>}
       </div>
       <div className="camera-setup-controls">
         <label htmlFor="play-camera">사용할 카메라</label>
@@ -67,9 +71,9 @@ export default function CameraSetup() {
           </select>
           <button type="button" disabled={status === 'loading'} onClick={() => void connect(deviceId)}>다시 연결</button>
         </div>
-        <p className="camera-setup-help">차단 그림이 보이면 다른 카메라를 선택하거나 카메라 덮개와 프라이버시 모드를 확인해 주세요.</p>
-        <button type="button" className="camera-play-sound camera-setup-start" disabled={!ready} onClick={() => navigate(`/play-loading?instrument=${instrument.id}`)}>이 카메라로 연주하기 →</button>
+        {(error || playbackError) && <p className="camera-setup-help">다른 카메라를 선택하거나 카메라 덮개와 프라이버시 모드를 확인해 주세요.</p>}
       </div>
+      <button type="button" className="camera-setup-start" disabled={!ready} onClick={() => navigate(`/play-loading?instrument=${instrument.id}`)}>연주하기&gt;</button>
     </section>
   </main>;
 }

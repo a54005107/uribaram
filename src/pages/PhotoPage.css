@@ -1,0 +1,29 @@
+.photo-page { position: relative; height: 100dvh; overflow: hidden; background: #7e7e7e; color: white; font-family: var(--uribaram-font-family); }
+.photo-source { position: absolute; width: 1px; height: 1px; opacity: 0; pointer-events: none; }
+.photo-preview { position: absolute; width: 100%; height: 100%; object-fit: contain; }
+.photo-help { position: absolute; left: 5.7%; top: 5%; text-shadow: 0 1px 6px #000; pointer-events: none; }
+.photo-help h1 { font-size: clamp(18px, 2vw, 32px); margin: 0; }
+.photo-help p { font-size: 14px; }
+.photo-hat-choice, .photo-shutter { position: absolute; background: none; border: 0; cursor: pointer; padding: 0; }
+.photo-hat-choice { left: 5.7%; top: 54%; width: clamp(70px, 9.1vw, 150px); }
+.photo-hat-choice img { width: 100%; height: auto; }
+.photo-shutter { bottom: 4%; left: 50%; transform: translateX(-50%); width: clamp(60px, 7vw, 120px); }
+.photo-shutter img { width: 100%; height: auto; }
+.photo-shutter:disabled { opacity: .4; cursor: default; }
+.photo-camera-controls { position: absolute; bottom: 12px; left: 16px; max-width: 35%; font-size: 12px; }
+.photo-camera-controls select { max-width: 180px; }
+.photo-result { position: absolute; inset: 0; background: #fffef2; color: #481100; display: flex; align-items: center; justify-content: center; gap: 32px; padding: 100px 5% 24px; overflow: auto; }
+.photo-result-image { max-width: 58%; max-height: 80%; object-fit: contain; }
+.photo-result > div { max-width: 360px; }
+.photo-result button, .photo-result a, .photo-receive a { display: inline-block; padding: 12px 18px; margin: 4px; border: 1px solid #481100; border-radius: 24px; background: #ffeb36; color: #481100; text-decoration: none; cursor: pointer; font: inherit; }
+.photo-qr { display: block; margin: 16px auto; max-width: 100%; }
+.photo-receive { min-height: 100dvh; padding: 32px 20px; text-align: center; color: #481100; background: #fffef2; }
+.photo-receive > img { display: block; max-width: 100%; max-height: 70dvh; margin: 20px auto; }
+.photo-page button:focus-visible { outline: 3px solid #ffeb36; outline-offset: 4px; }
+@media(max-width:700px) {
+  .photo-result { flex-direction: column; justify-content: flex-start; padding-top: 110px; }
+  .photo-result-image { max-width: 100%; max-height: 40dvh; }
+  .photo-help { top: 14%; }
+  .photo-camera-controls { max-width: 40%; }
+  .photo-camera-controls select { max-width: 120px; }
+}

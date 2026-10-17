@@ -4,6 +4,7 @@ import {instruments} from './InstrumentsPage';
 import {useCamera} from '../camera/CameraProvider';
 import '../../public/assets/figma/styles/tokens.css';
 import './PlayLoadingPage.css';
+import FlagWord from '../components/FlagWord';
 
 const DURATION_MS = 6933;
 const ASSETS = '/assets/figma/play-loading';
@@ -24,7 +25,6 @@ export default function PlayLoadingPage() {
   const [params] = useSearchParams();
   const requested = params.get('instrument') || sessionStorage.getItem('uribaram-instrument');
   const instrument = instruments.find(item => item.id === requested) || instruments[1];
-  const [message] = useState(() => Array.from((sessionStorage.getItem('uribaram-flag-message') || '우리바람').replace(/[\r\n]/g, '').normalize('NFC')).slice(0, 4).join(''));
   const pageRef = useRef(null);
   const fillRef = useRef(null);
   const dotsRef = useRef([]);
@@ -66,12 +66,12 @@ export default function PlayLoadingPage() {
     return () => { window.clearTimeout(timer); animations.forEach(animation => animation.cancel()); };
   }, [instrument.id, navigate]);
 
-  const letters = Array.from(message).map((letter, index) => <span key={index}>{letter}</span>);
+  const letters = <FlagWord/>;
   return <main className="page play-loading-page" ref={pageRef} aria-label={`${instrument.name} 연주 준비`}>
     <div className="play-loading-stage" style={{transform: `translate(-50%, -50%) scale(${scale})`}}>
       <img className="play-loading-pole" src={`${ASSETS}/pole.svg`} width="327.557" height="1172.18" alt="" />
       <img className="play-loading-cloth" src={`${ASSETS}/cloth.svg`} width="446.059" height="816.306" alt="" />
-      <div className="play-loading-writing" role="img" aria-label={`깃발에 담긴 바람: ${message}`}>
+      <div className="play-loading-writing" role="img" aria-label="우리바람">
         <div className="play-loading-letters play-loading-letters--empty" aria-hidden="true">{letters}</div>
         <div ref={fillRef} className="play-loading-letters play-loading-letters--filled" aria-hidden="true">{letters}</div>
       </div>

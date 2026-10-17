@@ -15,6 +15,11 @@
 }
 .flag-input-pole { position: absolute; left: 976px; top: -190px; }
 .flag-input-cloth { position: absolute; left: 863px; top: 149px; }
+.flag-word-art { position: absolute; left: 1045.048px; top: 285.929px; max-width: none; }
+.flag-controls p { margin: 0; }
+@media (max-width: 700px) {
+  .flag-page .flag-controls { top: 148px; font-size: 14px; }
+}
 .flag-writing {
   padding: 0;
   border: 0;

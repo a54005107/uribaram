@@ -96,6 +96,14 @@
 .instrument-slot { position: absolute; left: 50%; top: 50%; transform: rotate(var(--slot-angle)) translateX(40vw); }
 .instrument-pick { position: absolute; width: 54vw; height: 52vw; padding: 0; border: 0; background: none; transform: translate(-50%, -50%) rotate(calc(0deg - var(--slot-angle) - var(--wheel-angle))); transition: transform 720ms cubic-bezier(.22, .85, .25, 1.08); cursor: grab; }
 .instrument-pick img { width: 100%; height: 100%; object-fit: contain; pointer-events: none; }
+.instrument-pick img { transition: transform 260ms ease-out; transform-origin: center; }
+@media (hover: hover) {
+  .instrument-dial:not(.is-dragging) .instrument-pick:hover img { transform: scale(1.08); }
+}
+.instrument-pick:focus-visible img { transform: scale(1.08); }
+@media (prefers-reduced-motion: reduce) {
+  .instrument-pick img { transition: none; }
+}
 .instrument-pick:focus-visible { outline: 3px dashed var(--uribaram-color-brown); outline-offset: 8px; border-radius: 50%; }
 .instrument-dial.is-dragging .instrument-wheel, .instrument-dial.is-dragging .instrument-pick { transition: none; }
 @media (max-aspect-ratio: 1/1) {
