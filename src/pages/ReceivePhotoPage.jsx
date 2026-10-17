@@ -21,6 +21,7 @@ export default function ReceivePhotoPage() {
     <h1>우리바람 사진</h1>
     {url ? <><img src={url} alt="상모 체험 사진"/><a href={url} download="우리바람.jpg">사진 저장하기</a>
       <p>저장 후 이 화면을 닫아 주세요.</p></>
-      : <p role="status">{state.status === 'error' ? '사진을 연결하지 못했어요. QR이 만료되었거나 네트워크에서 연결을 막고 있어요. 촬영 화면에서 QR을 다시 만들어 주세요.' : '사진을 받고 있어요. 촬영한 컴퓨터의 화면을 열어 두세요.'}</p>}
+      : <><p role="status">{state.status === 'error' ? state.message || 'QR 주소가 올바르지 않아요. 촬영 화면에서 새 QR을 만들어 주세요.' : '사진을 받고 있어요. 촬영한 컴퓨터의 화면을 열어 두세요.'}</p>
+        {state.code && <p>오류 코드: {state.code}</p>}</>}
   </main>;
 }

@@ -64,3 +64,16 @@ test('receiver rejects malformed payload and closes connection', () => {
   peer.conn.emit('data', {type: 'photo', mime: 'text/html', bytes: new ArrayBuffer(5)});
   assert.equal(states.at(-1).status, 'error'); assert.ok(peer.destroyed);
 });
+
+test('default TURN configuration is not overwritten and errors keep a distinct cause', () => {
+  class OptionsPeer extends FakePeer { constructor(id, options) { super(); this.options = options; } }
+  const states=[];
+  const stop=offerPhoto(new Blob(['test']),state=>states.push(state),OptionsPeer);
+  const peer=FakePeer.instances.at(-1);
+  assert.equal(peer.options.config,undefined);
+  assert.equal(peer.options.secure,true);
+  peer.emit('error',{type:'peer-unavailable'});
+  assert.equal(states.at(-1).code,'peer-unavailable');
+  assert.ok(states.at(-1).message.includes('촬영 화면'));
+  assert.ok(peer.destroyed);stop();
+});

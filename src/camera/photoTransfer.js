@@ -4,8 +4,25 @@ import {photoReceiverUrl} from './photoUrl.js';
 export const PHOTO_TTL = 5 * 60 * 1000;
 export const MAX_PHOTO_BYTES = 8 * 1024 * 1024;
 // PeerServer exchanges connection metadata only. Photos use the WebRTC data channel.
-// STUN-only: restricted networks may require a separately configured TURN service.
-const peerOptions = {config: {iceServers: [{urls: 'stun:stun.l.google.com:19302'}]}};
+// Preserve the installed PeerJS defaults, including its TURN relay fallback.
+// Supplying a STUN-only config here disables that fallback on mobile networks.
+const peerOptions = {secure: true};
+
+export function photoConnectionError(error, phase = 'connection') {
+  const code = error?.type || (phase === 'signaling' ? 'signaling-timeout' : 'transfer-timeout');
+  const messages = {
+    'peer-unavailable': '촬영 화면과 연결할 수 없어요. PC에서 촬영 화면을 열어 두고 새 QR을 만들어 주세요.',
+    'network': '사진 연결 서버에 접속하지 못했어요. 인터넷 연결을 확인하고 새 QR로 시도해 주세요.',
+    'server-error': '사진 연결 서버가 응답하지 않아요. 잠시 후 새 QR로 시도해 주세요.',
+    'socket-error': '사진 연결 서버와 통신이 끊겼어요. 새 QR을 만들어 주세요.',
+    'socket-closed': '사진 연결 서버와 연결이 종료됐어요. 새 QR을 만들어 주세요.',
+    'browser-incompatible': '이 브라우저에서 사진 연결을 지원하지 않아요. Safari 또는 Chrome에서 QR 주소를 열어 주세요.',
+    'signaling-timeout': '사진 연결 서버의 응답이 늦어지고 있어요. 잠시 후 새 QR로 시도해 주세요.',
+    'transfer-timeout': '사진 전송 연결 시간이 초과됐어요. 촬영 화면을 열어 두고 새 QR로 시도해 주세요.',
+    'webrtc': '기기 간 사진 전송 연결에 실패했어요. Safari 또는 Chrome에서 새 QR로 시도해 주세요.',
+  };
+  return {status: 'error', code, message: messages[code] || '사진 전송 중 오류가 발생했어요. 촬영 화면에서 새 QR을 만들어 주세요.'};
+}
 
 export function offerPhoto(blob, onState, PeerClass = Peer) {
   let receiver;
@@ -23,7 +40,7 @@ export function offerPhoto(blob, onState, PeerClass = Peer) {
     connection?.close(); peer.destroy(); blob = null;
   };
   later(() => { onState({status: 'expired'}); stop(); }, PHOTO_TTL);
-  const opening = later(() => { onState({status: 'error'}); stop(); }, 15000);
+  const opening = later(() => { onState(photoConnectionError(null, 'signaling')); stop(); }, 20000);
   peer.on('open', id => {
     if (ended) return;
     clearTimeout(opening);
@@ -35,6 +52,7 @@ export function offerPhoto(blob, onState, PeerClass = Peer) {
     if (ended || claimed || conn.metadata?.token !== token) { conn.close(); return; }
     claimed = true; connection = conn;
     onState({status: 'sending'});
+    const sending = later(() => { onState(photoConnectionError()); stop(); }, 45000);
     conn.on('open', async () => {
       try {
         const bytes = await blob.arrayBuffer();
@@ -44,14 +62,15 @@ export function offerPhoto(blob, onState, PeerClass = Peer) {
     conn.on('data', data => {
       if (data?.type === 'received' && !ended) {
         delivered = true;
+        clearTimeout(sending);
         onState({status: 'sent'});
         later(stop, 300);
       }
     });
-    conn.on('error', () => { if (!ended) { onState({status: 'error'}); stop(); } });
+    conn.on('error', error => { if (!ended) { onState(photoConnectionError(error)); stop(); } });
     conn.on('close', () => { if (!ended) { if (!delivered) onState({status: 'closed'}); stop(); } });
   });
-  peer.on('error', () => { if (!ended) { onState({status: 'error'}); stop(); } });
+  peer.on('error', error => { if (!ended) { onState(photoConnectionError(error)); stop(); } });
   return stop;
 }
 
@@ -59,8 +78,8 @@ export function receivePhoto(id, token, onState, PeerClass = Peer) {
   const peer = new PeerClass(undefined, peerOptions);
   let connection, ended = false, received = false;
   const stop = () => { ended = true; clearTimeout(timer); connection?.close(); peer.destroy(); };
-  const fail = () => { if (!ended && !received) { onState({status: 'error'}); stop(); } };
-  const timer = setTimeout(fail, 25000);
+  const fail = error => { if (!ended && !received) { onState(photoConnectionError(error)); stop(); } };
+  const timer = setTimeout(fail, 45000);
   peer.on('open', () => {
     if (ended) return;
     connection = peer.connect(id, {reliable: true, metadata: {token}, serialization: 'binary'});
