@@ -1,0 +1,2 @@
+import fs from 'node:fs';
+let p='src/components/SiteMenu.jsx',s=fs.readFileSync(p,'utf8');s=s.replace('export default function SiteMenu()', 'function MenuPhoto(){return <img src="/assets/figma/oct23/menu-photo.svg" width="167" height="292" alt=""/>;}\n\nexport default function SiteMenu()');s=s.replace("[MenuStory, '풍물이야기', () => navigate('/story')]", "[MenuStory, '풍물이야기', () => navigate('/story')], [MenuPhoto, '얼쑤 한컷', () => navigate('/photo')]");s=s.replace('[-133.56, -104.11, -100]','[-133.56, -104.11, -100, -85.82]');fs.writeFileSync(p,s);

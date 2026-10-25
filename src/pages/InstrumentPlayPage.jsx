@@ -73,7 +73,8 @@ function CameraPlay({instrument, debug}) {
     sessionStorage.setItem('uribaram-instrument', id);
     navigate(`/experience?instrument=${id}${debug ? '&debug=tracking' : ''}`, {replace: true});
   };
-  const flags = ['734c1', '23616', '2e689', '6f838', 'af236'];
+  const flags = ['71e01', 'd416f', '16c15', '32fcf', '4d7ec'];
+  const hoverFlags = ['2546-1091','2546-1318','2546-1163','2546-1208','2546-1296'];
   return <main ref={pageRef} className="page camera-play-page illustrated-play-page" aria-label={`${instrument.name} 카메라 연주`}
     onPointerDown={() => { if (!sound.enabled) void sound.enable(); }}>
     <video ref={videoRef} className="camera-play-video" autoPlay muted playsInline aria-hidden="true" />
@@ -83,13 +84,13 @@ function CameraPlay({instrument, debug}) {
         {instruments.map((item, index) => <button key={item.id} type="button" className="play-pennant"
           style={{'--pennant-left': `${2240 * [.0482, .1147, .1813, .2478, .3143][index]}px`}}
           aria-label={`${item.name} 연주`} aria-pressed={item.id === instrument.id} onClick={() => choose(item.id)}>
-          <img src={`/assets/figma/play-instrument/${flags[index]}-blank.svg`} alt="" draggable="false"/>
-          <span className={item.role.length === 4 ? 'play-pennant-four' : undefined}>{item.role}</span>
+          <img className="play-pennant-rest" src={`/assets/figma/oct23/${flags[index]}.svg`} alt="" draggable="false"/>
+          <img className="play-pennant-hover" src={`/assets/figma/oct23/${hoverFlags[index]}.svg`} alt="" draggable="false"/>
         </button>)}
       </nav>
-      <button type="button" className="play-pennant" style={{'--pennant-left': `${2240 * .8799}px`}} onClick={() => navigate('/ending')}>
-        <img src="/assets/figma/play-instrument/46c49-blank.svg" alt="" draggable="false"/>
-        <span>마치기</span>
+      <button type="button" className="play-pennant" aria-label="마치기" style={{'--pennant-left': `${2240 * .8799}px`}} onClick={() => navigate('/ending')}>
+        <img className="play-pennant-rest" src="/assets/figma/oct23/3b2f6.svg" alt="" draggable="false"/>
+        <img className="play-pennant-hover" src="/assets/figma/oct23/2497-4349.svg" alt="" draggable="false"/>
       </button>
     </header>
     <CameraInstrumentStage instrument={instrument} layout={layout} videoRef={videoRef} samplesRef={hands.samplesRef}

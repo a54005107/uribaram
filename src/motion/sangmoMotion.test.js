@@ -35,3 +35,28 @@ test('render cadence does not change direction or cause unstable ribbon values',
  const a=simulate(1,30).state,b=simulate(1,120).state;
  assert.ok(a.spin>1&&b.spin>1);assert.ok(Math.abs(a.spin-b.spin)<1.5);
 });
+
+test('ribbon completes circular orbits in the direction of head travel',()=>{
+ for(const direction of [-1,1]) {
+  const motion=createSangmoMotion();const tips=[];
+  for(let i=0;i<360;i++){
+   const t=i/60,angle=direction*t*3;
+   if(i%2===0)motion.observe({x:480+45*Math.cos(angle),y:300+45*Math.sin(angle),w:150,angle:0},t*1000);
+   const s=motion.step(t*1000,1/60);if(i>180)tips.push({...s.ribbon.at(-1)});
+  }
+  let winding=0;
+  for(let i=1;i<tips.length;i++)winding+=Math.atan2(tips[i-1].x*tips[i].y-tips[i-1].y*tips[i].x,tips[i-1].x*tips[i].x+tips[i-1].y*tips[i].y);
+  assert.ok(winding*direction>Math.PI*2,'at least one full orbit');
+  const span=key=>Math.max(...tips.map(p=>p[key]))-Math.min(...tips.map(p=>p[key]));
+  assert.ok(span('y')/span('x')>.85 && span('y')/span('x')<1.15,'round rather than flattened orbit');
+ }
+});
+
+test('side-to-side movement and head roll alone do not create circular spin',()=>{
+ const motion=createSangmoMotion();let max=0;
+ for(let i=0;i<240;i++){
+  const t=i/60;motion.observe({x:480+30*Math.sin(t*4),y:300,w:150,angle:.3*Math.sin(t*4)},t*1000);
+  max=Math.max(max,Math.abs(motion.step(t*1000,1/60).spin));
+ }
+ assert.equal(max,0);
+});

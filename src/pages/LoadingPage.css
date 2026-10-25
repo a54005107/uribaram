@@ -2,7 +2,7 @@
   display: grid;
   place-items: center;
   padding: 24px;
-  background: linear-gradient(180deg, var(--uribaram-color-cyan) 13.63%, #fff 100%);
+  background: linear-gradient(180deg,#50e6ff 19.231%,#85eeff 45.673%,#fff 85.096%);
   color: var(--uribaram-color-brown);
   font-family: var(--uribaram-font-family);
 }

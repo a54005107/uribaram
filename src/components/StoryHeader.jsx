@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 
-const colors = ['pink', 'sky', 'yellow', 'green', 'blue', 'pink'];
+const colors = ['pink', 'sky', 'yellow', 'pink', 'green', 'sky', 'pink'];
 const assets = ['pink', 'sky', 'yellow', 'blue'];
 
 export default function StoryHeader({scrollRef}) {
@@ -13,7 +13,7 @@ export default function StoryHeader({scrollRef}) {
       frame = 0;
       const top = root.getBoundingClientRect().top;
       // Switch when the next section reaches the area beneath the header.
-      const boundary = top + Math.min(root.clientHeight * .2, root.clientWidth * 267 / 2240);
+      const boundary = top + Math.min(root.clientHeight * .2, root.clientWidth * 267 / 2560);
       let index = 0;
       sections.forEach((section, i) => { if (section.getBoundingClientRect().top <= boundary + 1) index = i; });
       setActive(index);

@@ -3,6 +3,8 @@ import {useLocation, useNavigate} from 'react-router-dom';
 import './SiteMenu.css';
 import {MenuHome, MenuShare, MenuStory} from './MenuArtwork';
 
+function MenuPhoto(){return <img src="/assets/figma/oct23/menu-photo.svg" width="167" height="292" alt=""/>;}
+
 export default function SiteMenu() {
   const {pathname} = useLocation();
   const navigate = useNavigate();
@@ -18,7 +20,7 @@ export default function SiteMenu() {
     document.addEventListener('keydown', close);
     return () => { document.removeEventListener('pointerdown', close); document.removeEventListener('keydown', close); };
   }, [open]);
-  if (['/', '/title', '/experience', '/receive-photo'].includes(pathname)) return null;
+  if (['/', '/title', '/experience', '/ending', '/receive-photo'].includes(pathname)) return null;
   const share = async () => {
     const url = new URL('/', location.href).href;
     try {
@@ -26,10 +28,10 @@ export default function SiteMenu() {
       else { await navigator.clipboard.writeText(url); setNotice('링크를 복사했어요.'); }
     } catch (error) { if (error.name !== 'AbortError') setNotice('주소창의 링크를 공유해 주세요.'); }
   };
-  return <nav ref={root} className="site-menu" aria-label="전체 메뉴">
+  return <nav ref={root} className={`site-menu${pathname === "/story" ? " site-menu--story" : ""}`} aria-label="전체 메뉴">
     <div className="site-menu-clip" id="site-menu-flags" inert={!open || undefined}>
-      {[[MenuHome, '처음으로', () => navigate('/')], [MenuShare, '소문내기', share], [MenuStory, '풍물이야기', () => navigate('/story')]].map(([Artwork, label, action], index) =>
-        <button key={label} className={open ? 'is-open' : ''} style={{'--hide-distance': [-133.56, -104.11, -100][index] + '%'}}
+      {[[MenuHome, '처음으로', () => navigate('/')], [MenuShare, '소문내기', share], [MenuStory, '풍물이야기', () => navigate('/story')], [MenuPhoto, '얼쑤 한컷', () => navigate('/photo')]].map(([Artwork, label, action], index) =>
+        <button key={label} className={open ? 'is-open' : ''} style={{'--hide-distance': [-133.56, -104.11, -100, -85.82][index] + '%'}}
           aria-label={label} onClick={() => { setOpen(false); action(); }}>
           <Artwork/>
         </button>)}
