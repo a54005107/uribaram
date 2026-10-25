@@ -21,3 +21,13 @@
 ## 검증 범위
 
 자격증명 미설정, 잘못된 STUN 전용 응답, 컴포넌트 종료 시 연결 정리, 사진 토큰 검증과 만료는 자동 테스트로 확인합니다. 실제 TURN 자격증명을 사용한 휴대폰 전송은 아직 검증하지 않았습니다.
+
+## Metered dashboard credential option
+
+Set these server-side Vercel environment variables for Production and Preview:
+- `METERED_TURN_USERNAME`: the dashboard credential username.
+- `METERED_TURN_PASSWORD`: the dashboard `credential` value, without quotation marks.
+
+Deploy the updated `api/photo-ice.js` and redeploy after saving variables. If either Metered variable exists, both are required; this option takes precedence over Cloudflare. These reusable TURN credentials are delivered to WebRTC clients at runtime, but are not embedded in the frontend build or repository. They do not expire after the photo link's five-minute lifetime. Rotate/delete the credential in Metered when needed and update Vercel. Never put the account Secret Key into these fields.
+
+Test from the public deployment: take a photo, keep the sender page open, scan the new QR on a phone and download. Allow up to two minutes after creating a Metered credential. Automated checks do not establish real relay connectivity; that requires actual configured credentials and two devices.

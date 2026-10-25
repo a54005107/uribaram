@@ -1,8 +1,24 @@
-// Vercel server function: issues temporary TURN credentials, never receives photos.
+// Vercel server function: supplies TURN credentials, never receives photos.
 export default async function handler(req, res) {
   res.setHeader('Cache-Control', 'no-store');
   if (req.method !== 'POST') return res.status(405).json({code:'method-not-allowed'});
   if (req.headers['sec-fetch-site'] === 'cross-site') return res.status(403).json({code:'forbidden'});
+  // Metered dashboard credentials are reusable (not Cloudflare's expiring tokens).
+  // Keep them out of source/bundles; WebRTC clients necessarily receive them.
+  const username = process.env.METERED_TURN_USERNAME?.trim();
+  const credential = process.env.METERED_TURN_PASSWORD?.trim();
+  if (username || credential) {
+    if (!username || !credential) return res.status(503).json({code:'relay-not-configured'});
+    return res.status(200).json({iceServers:[
+      {urls:'stun:stun.relay.metered.ca:80'},
+      {urls:[
+        'turn:global.relay.metered.ca:80',
+        'turn:global.relay.metered.ca:80?transport=tcp',
+        'turn:global.relay.metered.ca:443',
+        'turns:global.relay.metered.ca:443?transport=tcp',
+      ],username,credential},
+    ]});
+  }
   const key = process.env.CLOUDFLARE_TURN_KEY_ID;
   const token = process.env.CLOUDFLARE_TURN_API_TOKEN;
   if (!key || !token) return res.status(503).json({code:'relay-not-configured'});
