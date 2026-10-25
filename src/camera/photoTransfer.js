@@ -4,6 +4,7 @@ import {startPhotoRelay} from './photoRelay.js';
 
 export const PHOTO_TTL = 5 * 60 * 1000;
 export const MAX_PHOTO_BYTES = 8 * 1024 * 1024;
+export const PHOTO_CHUNK_BYTES = 8 * 1024;
 // PeerServer exchanges connection metadata only. Photos use the WebRTC data channel.
 // Real connections receive short-lived TURN credentials from photoRelay.
 // This fallback is used by injected peers in transport unit tests.
@@ -22,8 +23,9 @@ export function photoConnectionError(error, phase = 'connection') {
     'browser-incompatible': '이 브라우저에서 사진 연결을 지원하지 않아요. Safari 또는 Chrome에서 QR 주소를 열어 주세요.',
     'signaling-timeout': '사진 연결 서버의 응답이 늦어지고 있어요. 잠시 후 새 QR로 시도해 주세요.',
     'transfer-timeout': '사진 전송 연결 시간이 초과됐어요. 촬영 화면을 열어 두고 새 QR로 시도해 주세요.',
-    'relay-connect-timeout': '?? ? ??? ???? ????. TURN ??? ???????? ?? ?? ??? ??? ???. ?????? ??? ???? ?? ???.',
-    'transfer-closed': '??? ?? ?? ??? ????. ?? ??? ?? ?? ? QR? ?? ??? ???.',
+    'relay-connect-timeout': '기기 간 연결을 완료하지 못했어요. TURN 설정과 네트워크 연결을 확인해 주세요.',
+    'transfer-closed': '사진 수신이 끝나기 전에 연결이 끊겼어요. 촬영 화면을 열어 두고 새 QR로 다시 시도해 주세요.',
+    'invalid-photo': '전송된 사진 데이터가 올바르지 않아요. 새 QR로 다시 시도해 주세요.',
     'webrtc': '기기 간 사진 전송 연결에 실패했어요. Safari 또는 Chrome에서 새 QR로 시도해 주세요.',
   };
   return {status: 'error', code, message: messages[code] || '사진 전송 중 오류가 발생했어요. 촬영 화면에서 새 QR을 만들어 주세요.'};
@@ -58,18 +60,35 @@ export function offerPhoto(blob, onState, PeerClass = Peer, options) {
   peer.on('connection', conn => {
     if (ended || claimed || conn.metadata?.token !== token) { conn.close(); return; }
     claimed = true; connection = conn;
-    let channelOpened = false;
+    let channelOpened = false, bytes, started = false, nextIndex = 0, waitingIndex = -1;
+    const sendNext = () => {
+      if (ended || !bytes || nextIndex * PHOTO_CHUNK_BYTES >= bytes.byteLength) return;
+      clearTimeout(sending);
+      sending = later(() => { onState(photoConnectionError()); stop(); }, 45000);
+      const index = nextIndex++;
+      waitingIndex = index;
+      conn.send({type:'photo-chunk', index, bytes:bytes.slice(index * PHOTO_CHUNK_BYTES, nextIndex * PHOTO_CHUNK_BYTES)});
+    };
     onState({status: 'sending'});
-    const sending = later(() => { onState(photoConnectionError(channelOpened ? null : {type:'relay-connect-timeout'})); stop(); }, 45000);
-    conn.on('open', async () => {
-      channelOpened = true;
-      try {
-        const bytes = await blob.arrayBuffer();
-        if (!ended) conn.send({type: 'photo', bytes, mime: 'image/jpeg'});
-      } catch { if (!ended) { onState({status: 'error'}); stop(); } }
-    });
-    conn.on('data', data => {
-      if (data?.type === 'received' && !ended) {
+    let sending = later(() => { onState(photoConnectionError(channelOpened ? null : {type:'relay-connect-timeout'})); stop(); }, 45000);
+    conn.on('open', () => { channelOpened = true; });
+    conn.on('data', async data => {
+      if (ended) return;
+      if (data?.type === 'ready' && !started) {
+        started = true;
+        try {
+          bytes = await blob.arrayBuffer();
+          if (ended) return;
+          if (!bytes.byteLength || bytes.byteLength > MAX_PHOTO_BYTES) throw new Error('invalid-photo');
+          conn.send({type:'photo-start', size:bytes.byteLength, mime:'image/jpeg'});
+          sendNext();
+        } catch { if (!ended) { onState(photoConnectionError({type:'invalid-photo'})); stop(); } }
+      }
+      if (data?.type === 'chunk-received' && data.index === waitingIndex && waitingIndex >= 0) {
+        waitingIndex = -1;
+        sendNext();
+      }
+      if (data?.type === 'received' && bytes && nextIndex * PHOTO_CHUNK_BYTES >= bytes.byteLength && !ended) {
         delivered = true;
         clearTimeout(sending);
         onState({status: 'sent'});
@@ -88,16 +107,36 @@ export function receivePhoto(id, token, onState, PeerClass = Peer, options) {
     config => receivePhoto(id, token, onState, PeerClass, config), error => onState(photoConnectionError(error)));
   const peer = new PeerClass(undefined, options || peerOptions);
   let connection, ended = false, received = false, channelOpened = false, signalingOpened = false;
-  const stop = () => { ended = true; clearTimeout(timer); connection?.close(); peer.destroy(); };
+  let chunks = [], expectedSize = 0, receivedSize = 0;
+  const stop = () => { ended = true; chunks = []; clearTimeout(timer); connection?.close(); peer.destroy(); };
   const fail = error => { if (!ended && !received) { onState(photoConnectionError(error)); stop(); } };
-  const timer = setTimeout(() => fail({type: !signalingOpened ? 'signaling-timeout' : !channelOpened ? 'relay-connect-timeout' : 'transfer-timeout'}), 45000);
+  let timer = setTimeout(() => fail({type: !signalingOpened ? 'signaling-timeout' : !channelOpened ? 'relay-connect-timeout' : 'transfer-timeout'}), 45000);
   peer.on('open', () => {
     if (ended) return;
     signalingOpened = true;
     connection = peer.connect(id, {reliable: true, metadata: {token}, serialization: 'binary'});
-    connection.on('open', () => { channelOpened = true; });
+    connection.on('open', () => { channelOpened = true; connection.send({type:'ready'}); });
     connection.on('data', data => {
-      if (ended || received || data?.type !== 'photo') return;
+      if (ended || received) return;
+      if (data?.type === 'photo-start') {
+        if (expectedSize || !Number.isInteger(data.size) || data.size <= 0 || data.size > MAX_PHOTO_BYTES || data.mime !== 'image/jpeg') { fail({type:'invalid-photo'}); return; }
+        expectedSize = data.size;
+        return;
+      }
+      if (data?.type === 'photo-chunk') {
+        if (!expectedSize || data.index !== chunks.length || !(data.bytes instanceof ArrayBuffer) || data.bytes.byteLength !== Math.min(PHOTO_CHUNK_BYTES, expectedSize-receivedSize)) { fail({type:'invalid-photo'}); return; }
+        chunks.push(data.bytes); receivedSize += data.bytes.byteLength;
+        clearTimeout(timer);
+        timer = setTimeout(() => fail({type:'transfer-timeout'}),45000);
+        if (receivedSize === expectedSize) {
+          received = true; clearTimeout(timer);
+          const photo = new Blob(chunks, {type:'image/jpeg'}); chunks = [];
+          connection.send({type:'received'});
+          onState({status:'received',blob:photo});
+        } else connection.send({type:'chunk-received',index:data.index});
+        return;
+      }
+      if (data?.type !== 'photo') return;
       if (!(data.bytes instanceof ArrayBuffer) || !data.bytes.byteLength || data.bytes.byteLength > MAX_PHOTO_BYTES || data.mime !== 'image/jpeg') { fail(); return; }
       received = true; clearTimeout(timer);
       onState({status: 'received', blob: new Blob([data.bytes], {type: 'image/jpeg'})});
