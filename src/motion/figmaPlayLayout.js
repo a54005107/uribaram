@@ -10,11 +10,11 @@ export function playArtboard(width, height) {
 
 // Figma 2305:829: retain the nested rotation, rather than stretching its bounds.
 export const JANGGU = {
-  width: Math.hypot(1359.008 * .683249, 1373.022 * -.305009),
-  height: Math.hypot(1359.008 * .316751, 1373.022 * .694991),
-  cx: 2240 * .51715,
-  cy: 1260 * .49965,
-  rotation: -24.28,
+  width: 951.6397705078125,
+  height: 978.0828857421875,
+  cx: 1130.1862038364,
+  cy: 668.6098520348,
+  rotation: -53.96989332786222,
 };
 
 export function jangguPoint(x, y) {

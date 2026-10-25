@@ -13,8 +13,6 @@
 .ending-story-link:hover { text-decoration: underline; text-underline-offset: 6px; }
 .ending-navigation { position: absolute; left: 1804px; top: 0; display: flex; }
 .ending-navigation[hidden] { display: none; }
-.ending-photo-link { position: absolute; left: 1196px; top: 70px; padding: 18px 28px; border: 2px solid #481100; border-radius: 50px; background: #ffeb36; color: #481100; font: 700 28px var(--uribaram-font-family); cursor: pointer; }
-@media(max-aspect-ratio:3/4) { .ending-photo-link { left: 18px; top: 105px; padding: 10px 14px; font-size: 14px; } }
 .ending-navigation button { position: relative; width: 167px; height: 216px; border: 0; padding: 0; background: transparent; cursor: pointer; color: #2c2c2e; }
 .ending-navigation img { top: 0; left: 0; }
 .ending-navigation span { position: absolute; top: 32px; left: 62px; width: 40px; font: 900 40px/36px 'Porcini', var(--uribaram-font-family); }
@@ -37,3 +35,6 @@
   .ending-navigation img { transform: scale(.38); transform-origin: 0 0; }
   .ending-navigation span { left: 23.56px; top: 12.16px; width: 15.2px; font-size: 15.2px; line-height: 13.68px; }
 }
+
+.ending-back { position:absolute; z-index:2; left:103px; top:70px; width:25px; height:37px; padding:0; border:0; background:transparent; cursor:pointer; }
+.ending-back img { inset:0; }

@@ -69,7 +69,6 @@ export default function TrumpetPage() {
 
   return <main ref={pageRef} className="trumpet-page" aria-label="나발 체험">
     <p className="trumpet-instruction">나발을 세 번 불어<br />풍물패를 불러봐요</p>
-    <p className="trumpet-progress" role="status">{count} / 3{count === 3 ? ' · 다음 화면으로 이동합니다' : ''}</p>
     <div className="trumpet-artwork" style={{transform: `scale(${scale})`}}>
       <button
         className={`trumpet-instrument${count ? ' trumpet-instrument--prototype' : ''}`}

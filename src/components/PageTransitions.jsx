@@ -53,13 +53,14 @@ export default function PageTransitions({children}) {
     const outgoing = outgoingRef.current;
     const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const revealInstruments = displayed.pathname === '/loading' && location.pathname === '/instruments';
+    const enterFlagLoading = displayed.pathname === '/flag' && location.pathname === '/loading';
     const leavePlayLoading = displayed.pathname === '/play-loading' && location.pathname === '/experience';
     const enterPlay = displayed.pathname === '/camera' && location.pathname === '/experience';
     const switchingInstrument = displayed.pathname === '/experience' && location.pathname === '/experience';
     const sharedBackground = [displayed.pathname, location.pathname].every(path => ['/', '/title'].includes(path));
-    transitionStyle.current = sharedBackground ? 'content-slide' : leavePlayLoading ? 'play-loading' : enterPlay ? 'play-entry' : revealInstruments ? 'blur' : 'slide';
+    transitionStyle.current = enterFlagLoading ? 'flag-loading' : sharedBackground ? 'content-slide' : leavePlayLoading ? 'play-loading' : enterPlay ? 'play-entry' : revealInstruments ? 'blur' : 'slide';
     shouldAnimate.current = !switchingInstrument && !reduced && !document.hidden
-      && (leavePlayLoading || enterPlay || revealInstruments || (!loadingPaths.has(location.pathname) && !loadingPaths.has(displayed.pathname)))
+      && (enterFlagLoading || leavePlayLoading || enterPlay || revealInstruments || (!loadingPaths.has(location.pathname) && !loadingPaths.has(displayed.pathname)))
       && typeof currentRef.current.animate === 'function';
     outgoing.replaceChildren();
     if (shouldAnimate.current) outgoing.append(snapshot(currentRef.current));
@@ -74,6 +75,7 @@ export default function PageTransitions({children}) {
     const playLoading = transitionStyle.current === 'play-loading';
     const playEntry = transitionStyle.current === 'play-entry';
     const contentSlide = transitionStyle.current === 'content-slide';
+    const flagLoading = transitionStyle.current === 'flag-loading';
     const options = {duration: blur ? 1400 : playLoading || playEntry ? 1000 : 780, easing: 'cubic-bezier(.45, 0, .2, 1)', fill: 'both'};
     // The selection page is already beneath the loading snapshot. Only the
     // Text softens first; the background then fades to reveal the next page.
@@ -87,7 +89,7 @@ export default function PageTransitions({children}) {
       });
       outgoing.querySelector('main').style.background = 'transparent';
     }
-    const animations = contentSlide
+    const animations = flagLoading ? [] : contentSlide
       ? contentLayers.map(({layer, index}) => layer.animate(index === 0
         ? [{translate: `0 ${direction.current * current.clientHeight}px`}, {translate: '0 0'}]
         : [{translate: '0 0'}, {translate: `0 ${-direction.current * current.clientHeight}px`}], options))
@@ -106,6 +108,25 @@ export default function PageTransitions({children}) {
         current.animate([{transform: `translateY(${direction.current * 100}%)`}, {transform: 'translateY(0)'}], options),
         outgoing.animate([{transform: 'translateY(0)'}, {transform: `translateY(${-direction.current * 100}%)`}], options),
       ];
+    if (flagLoading) {
+      const flagOptions = {duration: 2000, easing: 'cubic-bezier(.7,-.4,.477257669,1.449079514)', fill: 'both'};
+      const page = outgoing.querySelector('.flag-page');
+      if (page) page.style.background = 'transparent';
+      const move = (selector, x, y) => {
+        outgoing.querySelectorAll(selector).forEach(node => animations.push(node.animate([
+          {translate:'0 0'}, {translate:`${x}px ${y}px`},
+        ], flagOptions)));
+      };
+      // Figma 2028:168 -> 2028:3066; these are artboard-local distances.
+      move('.flag-input-pole, .flag-input-cloth, .flag-wish-art', -113.667, 1498);
+      move('.flag-prompt, .flag-wishes, .flag-colors', 0, 2190.141);
+      move('.flag-submit', 0, 2090);
+      const scale = Math.min(current.clientWidth / 2240, current.clientHeight / 1260);
+      const message = current.querySelector('.loading-message');
+      if (message) animations.push(message.animate([
+        {translate:`0 ${-1680 * scale}px`}, {translate:'0 0'},
+      ], flagOptions));
+    }
     if (playLoading) {
       const stage = outgoing.querySelector('.play-loading-stage');
       // Animate the unscaled viewport wrapper so the flag, pole and text move

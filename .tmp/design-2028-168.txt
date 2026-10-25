@@ -1,0 +1,599 @@
+const assetPathPrefix = "https://www.figma.com/api/mcp/asset/433454dd-679d-453e-82c0-a4f92b32f020";
+const img = `${assetPathPrefix}/f5892.svg`;
+const imgProperty1Default = `${assetPathPrefix}/e6db4.svg`;
+const imgProperty1 = `${assetPathPrefix}/b7252.svg`;
+const imgPolygon28 = `${assetPathPrefix}/91001.svg`;
+const imgPolygon33 = `${assetPathPrefix}/1d033.svg`;
+const imgPolygon29 = `${assetPathPrefix}/94534.svg`;
+const imgPolygon34 = `${assetPathPrefix}/95c58.svg`;
+const imgPolygon38 = `${assetPathPrefix}/9c30f.svg`;
+const imgPolygon39 = `${assetPathPrefix}/7307a.svg`;
+const imgVector = `${assetPathPrefix}/ddcb8.svg`;
+const imgVector1 = `${assetPathPrefix}/0b4a7.svg`;
+const imgVector2 = `${assetPathPrefix}/1466b.svg`;
+const imgVector3 = `${assetPathPrefix}/d2f97.svg`;
+const imgPolygon30 = `${assetPathPrefix}/5d10a.svg`;
+const imgPolygon35 = `${assetPathPrefix}/a9c83.svg`;
+const imgPolygon31 = `${assetPathPrefix}/968fa.svg`;
+const imgPolygon36 = `${assetPathPrefix}/f288a.svg`;
+const imgPolygon40 = `${assetPathPrefix}/4217d.svg`;
+const imgPolygon41 = `${assetPathPrefix}/9188c.svg`;
+const imgVector4 = `${assetPathPrefix}/ec9c3.svg`;
+const imgVector5 = `${assetPathPrefix}/a0670.svg`;
+const imgVector6 = `${assetPathPrefix}/a23e9.svg`;
+const imgVector7 = `${assetPathPrefix}/2ec98.svg`;
+const imgVector8 = `${assetPathPrefix}/294bd.svg`;
+const imgPolygon32 = `${assetPathPrefix}/1a703.svg`;
+const imgPolygon37 = `${assetPathPrefix}/e75d1.svg`;
+const imgPolygon42 = `${assetPathPrefix}/3a72b.svg`;
+const imgPolygon43 = `${assetPathPrefix}/ba7c6.svg`;
+const imgPolygon44 = `${assetPathPrefix}/ea4d7.svg`;
+const imgPolygon45 = `${assetPathPrefix}/21430.svg`;
+const imgVector9 = `${assetPathPrefix}/d56e4.svg`;
+const imgVector10 = `${assetPathPrefix}/73152.svg`;
+const imgVector11 = `${assetPathPrefix}/0889a.svg`;
+const imgVector12 = `${assetPathPrefix}/c4491.svg`;
+const imgGroup7 = `${assetPathPrefix}/fb960.svg`;
+const imgVector13 = `${assetPathPrefix}/aa337.svg`;
+const imgVector14 = `${assetPathPrefix}/ca77c.svg`;
+const imgVector15 = `${assetPathPrefix}/0743d.svg`;
+const imgVector16 = `${assetPathPrefix}/20ebc.svg`;
+const img1 = `${assetPathPrefix}/9c9c3.svg`;
+const img2 = `${assetPathPrefix}/68a52.svg`;
+const imgPolygon25 = `${assetPathPrefix}/bd92d.svg`;
+const imgPolygon26 = `${assetPathPrefix}/8e920.svg`;
+const imgPolygon27 = `${assetPathPrefix}/e49b9.svg`;
+
+function Component({ className }: { className?: string }) {
+  return (
+    <div className={className || "h-[37px] relative w-[25px]"} data-node-id="2620:4634" data-name="<">
+      <img alt="" className="absolute block inset-0 max-w-none size-full" src={img} />
+    </div>
+  );
+}
+
+type Component1Props = {
+  className?: string;
+  property1?: "Default";
+};
+
+function Component1({ className, property1 = "Default" }: Component1Props) {
+  return (
+    <div className={className || "h-[724.838px] relative w-[231.709px]"} data-node-id="2791:2861">
+      <div className="absolute flex inset-0 items-center justify-center" data-node-id="2791:2860" style={{ containerType: "size" }}>
+        <div className="flex-none h-[hypot(-16.5717cqw,98.5666cqh)] rotate-[3.08deg] w-[hypot(83.4283cqw,1.43336cqh)]">
+          <p className="[word-break:break-word] font-['Porcini:Regular'] leading-[1.051] not-italic relative size-full text-[170px] text-[color:var(--black,#2c2c2e)]">우리바람</p>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+type Component2Props = {
+  className?: string;
+  property1?: "Default" | "클릭";
+};
+
+function Component2({ className, property1 = "Default" }: Component2Props) {
+  const is = property1 === "클릭";
+  return (
+    <div className={className || "relative size-[73.957px]"} id={is ? "node-2575_1287" : "node-2575_1283"}>
+      <img alt="" className="absolute block inset-0 max-w-none size-full" src={is ? imgProperty1 : imgProperty1Default} />
+    </div>
+  );
+}
+
+type Component3Props = {
+  className?: string;
+  property1?: "Default";
+};
+
+function Component3({ className, property1 = "Default" }: Component3Props) {
+  return (
+    <div className={className || "drop-shadow-[0px_0px_3.15px_rgba(0,0,0,0.23)] h-[292px] relative w-[167px]"} data-node-id="2551:2124">
+      <div className="absolute contents left-[24px] top-[0.1px]" data-node-id="2551:2904">
+        <div className="absolute bg-white inset-[7.88%_27.54%_35.62%_26.95%]" data-node-id="2551:2125" />
+        <div className="absolute bg-[var(--blue,#3373ed)] inset-[5.14%_27.54%_92.12%_26.95%]" data-node-id="2551:2126" />
+        <div className="absolute bg-[var(--yellow,#ffeb36)] inset-[2.77%_27.54%_94.83%_26.95%]" data-node-id="2551:2127" />
+        <div className="absolute bg-[var(--red,#ff3364)] inset-[0.03%_27.54%_97.23%_26.95%]" data-node-id="2551:2128" />
+        <div className="absolute flex inset-[7.88%_14.97%_80.82%_72.46%] items-center justify-center" data-node-id="2551:2133" style={{ containerType: "size" }}>
+          <div className="flex-none h-[100cqw] rotate-90 w-[100cqh]">
+            <div className="relative size-full">
+              <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgPolygon28} />
+            </div>
+          </div>
+        </div>
+        <div className="absolute flex inset-[53.08%_73.05%_35.62%_14.37%] items-center justify-center" data-node-id="2551:2134" style={{ containerType: "size" }}>
+          <div className="-rotate-90 flex-none h-[100cqw] w-[100cqh]">
+            <div className="relative size-full">
+              <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgPolygon33} />
+            </div>
+          </div>
+        </div>
+        <div className="absolute flex inset-[19.18%_14.97%_69.52%_72.46%] items-center justify-center" data-node-id="2551:2135" style={{ containerType: "size" }}>
+          <div className="flex-none h-[100cqw] rotate-90 w-[100cqh]">
+            <div className="relative size-full">
+              <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgPolygon29} />
+            </div>
+          </div>
+        </div>
+        <div className="absolute flex inset-[41.78%_73.05%_46.92%_14.37%] items-center justify-center" data-node-id="2551:2136" style={{ containerType: "size" }}>
+          <div className="-rotate-90 flex-none h-[100cqw] w-[100cqh]">
+            <div className="relative size-full">
+              <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgPolygon34} />
+            </div>
+          </div>
+        </div>
+        <div className="absolute flex inset-[30.48%_14.97%_58.22%_72.46%] items-center justify-center" data-node-id="2551:2137" style={{ containerType: "size" }}>
+          <div className="flex-none h-[100cqw] rotate-90 w-[100cqh]">
+            <div className="relative size-full">
+              <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgPolygon29} />
+            </div>
+          </div>
+        </div>
+        <div className="absolute flex inset-[64.38%_27.54%_26.03%_57.49%] items-center justify-center" data-node-id="2551:2138" style={{ containerType: "size" }}>
+          <div className="flex-none h-[100cqh] rotate-180 w-[100cqw]">
+            <div className="relative size-full">
+              <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgPolygon38} />
+            </div>
+          </div>
+        </div>
+        <div className="absolute flex inset-[30.48%_73.05%_58.22%_14.37%] items-center justify-center" data-node-id="2551:2139" style={{ containerType: "size" }}>
+          <div className="-rotate-90 flex-none h-[100cqw] w-[100cqh]">
+            <div className="relative size-full">
+              <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgPolygon34} />
+            </div>
+          </div>
+        </div>
+        <div className="absolute flex inset-[41.78%_14.97%_46.92%_72.46%] items-center justify-center" data-node-id="2551:2140" style={{ containerType: "size" }}>
+          <div className="flex-none h-[100cqw] rotate-90 w-[100cqh]">
+            <div className="relative size-full">
+              <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgPolygon29} />
+            </div>
+          </div>
+        </div>
+        <div className="absolute flex inset-[64.38%_42.51%_26.03%_41.92%] items-center justify-center" data-node-id="2551:2141" style={{ containerType: "size" }}>
+          <div className="flex-none h-[100cqh] rotate-180 w-[100cqw]">
+            <div className="relative size-full">
+              <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgPolygon39} />
+            </div>
+          </div>
+        </div>
+        <div className="absolute flex inset-[19.18%_73.05%_69.52%_14.37%] items-center justify-center" data-node-id="2551:2142" style={{ containerType: "size" }}>
+          <div className="-rotate-90 flex-none h-[100cqw] w-[100cqh]">
+            <div className="relative size-full">
+              <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgPolygon34} />
+            </div>
+          </div>
+        </div>
+        <div className="absolute flex inset-[53.08%_14.97%_35.62%_72.46%] items-center justify-center" data-node-id="2551:2143" style={{ containerType: "size" }}>
+          <div className="flex-none h-[100cqw] rotate-90 w-[100cqh]">
+            <div className="relative size-full">
+              <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgPolygon29} />
+            </div>
+          </div>
+        </div>
+        <div className="absolute flex inset-[64.38%_58.08%_26.03%_26.95%] items-center justify-center" data-node-id="2551:2144" style={{ containerType: "size" }}>
+          <div className="flex-none h-[100cqh] rotate-180 w-[100cqw]">
+            <div className="relative size-full">
+              <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgPolygon38} />
+            </div>
+          </div>
+        </div>
+        <div className="absolute flex inset-[7.88%_73.05%_80.82%_14.37%] items-center justify-center" data-node-id="2551:2145" style={{ containerType: "size" }}>
+          <div className="-rotate-90 flex-none h-[100cqw] w-[100cqh]">
+            <div className="relative size-full">
+              <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgPolygon34} />
+            </div>
+          </div>
+        </div>
+        <div className="absolute contents left-[62.36px] top-[32.36px]" data-node-id="2551:2852" data-name="처 음 으 로">
+          <div className="absolute h-[33.598px] left-[63.08px] top-[141.37px] w-[38.88px]" data-node-id="2551:2853" data-name="Vector">
+            <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgVector} />
+          </div>
+          <div className="absolute h-[33.704px] left-[63.08px] top-[105.26px] w-[38.88px]" data-node-id="2551:2854" data-name="Vector">
+            <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgVector1} />
+          </div>
+          <div className="absolute h-[34.38px] left-[63.08px] top-[69.05px] w-[38.88px]" data-node-id="2551:2855" data-name="Vector">
+            <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgVector2} />
+          </div>
+          <div className="absolute h-[34.832px] left-[62.36px] top-[32.36px] w-[38.448px]" data-node-id="2551:2856" data-name="Vector">
+            <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgVector3} />
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+type Component4Props = {
+  className?: string;
+  property1?: "Default";
+};
+
+function Component4({ className, property1 = "Default" }: Component4Props) {
+  return (
+    <div className={className || "drop-shadow-[0px_0px_3.15px_rgba(0,0,0,0.23)] h-[292px] relative w-[167px]"} data-node-id="2551:2730">
+      <div className="absolute contents left-[24px] top-[0.1px]" data-node-id="2551:2791">
+        <div className="absolute bg-white inset-[7.88%_27.54%_22.26%_26.95%]" data-node-id="2551:2731" />
+        <div className="absolute bg-[var(--blue,#3373ed)] inset-[5.14%_27.54%_92.12%_26.95%]" data-node-id="2551:2732" />
+        <div className="absolute bg-[var(--yellow,#ffeb36)] inset-[2.77%_27.54%_94.83%_26.95%]" data-node-id="2551:2733" />
+        <div className="absolute bg-[var(--red,#ff3364)] inset-[0.03%_27.54%_97.23%_26.95%]" data-node-id="2551:2734" />
+        <div className="absolute flex inset-[7.88%_14.97%_80.48%_72.46%] items-center justify-center" data-node-id="2551:2735" style={{ containerType: "size" }}>
+          <div className="flex-none h-[100cqw] rotate-90 w-[100cqh]">
+            <div className="relative size-full">
+              <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgPolygon30} />
+            </div>
+          </div>
+        </div>
+        <div className="absolute flex inset-[54.45%_73.05%_33.9%_14.37%] items-center justify-center" data-node-id="2551:2736" style={{ containerType: "size" }}>
+          <div className="-rotate-90 flex-none h-[100cqw] w-[100cqh]">
+            <div className="relative size-full">
+              <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgPolygon35} />
+            </div>
+          </div>
+        </div>
+        <div className="absolute flex inset-[66.1%_73.05%_22.26%_14.37%] items-center justify-center" data-node-id="2551:2757" style={{ containerType: "size" }}>
+          <div className="-rotate-90 flex-none h-[100cqw] w-[100cqh]">
+            <div className="relative size-full">
+              <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgPolygon35} />
+            </div>
+          </div>
+        </div>
+        <div className="absolute flex inset-[19.52%_14.97%_68.84%_72.46%] items-center justify-center" data-node-id="2551:2737" style={{ containerType: "size" }}>
+          <div className="flex-none h-[100cqw] rotate-90 w-[100cqh]">
+            <div className="relative size-full">
+              <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgPolygon31} />
+            </div>
+          </div>
+        </div>
+        <div className="absolute flex inset-[42.81%_73.05%_45.55%_14.37%] items-center justify-center" data-node-id="2551:2738" style={{ containerType: "size" }}>
+          <div className="-rotate-90 flex-none h-[100cqw] w-[100cqh]">
+            <div className="relative size-full">
+              <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgPolygon36} />
+            </div>
+          </div>
+        </div>
+        <div className="absolute flex inset-[31.16%_14.97%_57.19%_72.46%] items-center justify-center" data-node-id="2551:2739" style={{ containerType: "size" }}>
+          <div className="flex-none h-[100cqw] rotate-90 w-[100cqh]">
+            <div className="relative size-full">
+              <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgPolygon31} />
+            </div>
+          </div>
+        </div>
+        <div className="absolute flex inset-[77.74%_27.54%_12.67%_57.49%] items-center justify-center" data-node-id="2551:2740" style={{ containerType: "size" }}>
+          <div className="flex-none h-[100cqh] rotate-180 w-[100cqw]">
+            <div className="relative size-full">
+              <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgPolygon40} />
+            </div>
+          </div>
+        </div>
+        <div className="absolute flex inset-[31.16%_73.05%_57.19%_14.37%] items-center justify-center" data-node-id="2551:2741" style={{ containerType: "size" }}>
+          <div className="-rotate-90 flex-none h-[100cqw] w-[100cqh]">
+            <div className="relative size-full">
+              <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgPolygon36} />
+            </div>
+          </div>
+        </div>
+        <div className="absolute flex inset-[42.81%_14.97%_45.55%_72.46%] items-center justify-center" data-node-id="2551:2742" style={{ containerType: "size" }}>
+          <div className="flex-none h-[100cqw] rotate-90 w-[100cqh]">
+            <div className="relative size-full">
+              <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgPolygon31} />
+            </div>
+          </div>
+        </div>
+        <div className="absolute flex inset-[77.74%_42.51%_12.67%_41.92%] items-center justify-center" data-node-id="2551:2743" style={{ containerType: "size" }}>
+          <div className="flex-none h-[100cqh] rotate-180 w-[100cqw]">
+            <div className="relative size-full">
+              <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgPolygon41} />
+            </div>
+          </div>
+        </div>
+        <div className="absolute flex inset-[19.52%_73.05%_68.84%_14.37%] items-center justify-center" data-node-id="2551:2744" style={{ containerType: "size" }}>
+          <div className="-rotate-90 flex-none h-[100cqw] w-[100cqh]">
+            <div className="relative size-full">
+              <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgPolygon36} />
+            </div>
+          </div>
+        </div>
+        <div className="absolute flex inset-[54.45%_14.97%_33.9%_72.46%] items-center justify-center" data-node-id="2551:2745" style={{ containerType: "size" }}>
+          <div className="flex-none h-[100cqw] rotate-90 w-[100cqh]">
+            <div className="relative size-full">
+              <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgPolygon31} />
+            </div>
+          </div>
+        </div>
+        <div className="absolute flex inset-[66.1%_14.97%_22.26%_72.46%] items-center justify-center" data-node-id="2551:2756" style={{ containerType: "size" }}>
+          <div className="flex-none h-[100cqw] rotate-90 w-[100cqh]">
+            <div className="relative size-full">
+              <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgPolygon31} />
+            </div>
+          </div>
+        </div>
+        <div className="absolute flex inset-[77.74%_58.08%_12.67%_26.95%] items-center justify-center" data-node-id="2551:2746" style={{ containerType: "size" }}>
+          <div className="flex-none h-[100cqh] rotate-180 w-[100cqw]">
+            <div className="relative size-full">
+              <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgPolygon40} />
+            </div>
+          </div>
+        </div>
+        <div className="absolute flex inset-[7.88%_73.05%_80.48%_14.37%] items-center justify-center" data-node-id="2551:2747" style={{ containerType: "size" }}>
+          <div className="-rotate-90 flex-none h-[100cqw] w-[100cqh]">
+            <div className="relative size-full">
+              <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgPolygon36} />
+            </div>
+          </div>
+        </div>
+        <div className="absolute contents left-[63.08px] top-[33.23px]" data-node-id="2551:2750" data-name="풍 물 이 야 기">
+          <div className="absolute h-[34.316px] left-[63.69px] top-[182.87px] w-[35.676px]" data-node-id="2551:2751" data-name="Vector">
+            <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgVector4} />
+          </div>
+          <div className="absolute h-[34.328px] left-[63.3px] top-[146.87px] w-[40.464px]" data-node-id="2551:2752" data-name="Vector">
+            <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgVector5} />
+          </div>
+          <div className="absolute h-[34.316px] left-[63.48px] top-[110.87px] w-[36.612px]" data-node-id="2551:2753" data-name="Vector">
+            <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgVector6} />
+          </div>
+          <div className="absolute h-[34.596px] left-[63.08px] top-[69.05px] w-[38.88px]" data-node-id="2551:2754" data-name="Vector">
+            <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgVector7} />
+          </div>
+          <div className="absolute h-[34.452px] left-[63.08px] top-[33.23px] w-[38.88px]" data-node-id="2551:2755" data-name="Vector">
+            <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgVector8} />
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+type Component5Props = {
+  className?: string;
+  property1?: "Default";
+};
+
+function Component5({ className, property1 = "Default" }: Component5Props) {
+  return (
+    <div className={className || "drop-shadow-[0px_0px_3.15px_rgba(0,0,0,0.23)] h-[292px] relative w-[167px]"} data-node-id="2551:2710">
+      <div className="absolute contents left-[24px] top-[0.1px]" data-node-id="2551:2790">
+        <div className="absolute bg-white inset-[7.88%_27.54%_35.62%_26.95%]" data-node-id="2551:2711" />
+        <div className="absolute bg-[var(--blue,#3373ed)] inset-[5.14%_27.54%_92.12%_26.95%]" data-node-id="2551:2712" />
+        <div className="absolute bg-[var(--yellow,#ffeb36)] inset-[2.77%_27.54%_94.83%_26.95%]" data-node-id="2551:2713" />
+        <div className="absolute bg-[var(--red,#ff3364)] inset-[0.03%_27.54%_97.23%_26.95%]" data-node-id="2551:2714" />
+        <div className="absolute flex inset-[7.88%_14.97%_80.82%_72.46%] items-center justify-center" data-node-id="2551:2715" style={{ containerType: "size" }}>
+          <div className="flex-none h-[100cqw] rotate-90 w-[100cqh]">
+            <div className="relative size-full">
+              <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgPolygon32} />
+            </div>
+          </div>
+        </div>
+        <div className="absolute flex inset-[53.08%_73.05%_35.62%_14.37%] items-center justify-center" data-node-id="2551:2716" style={{ containerType: "size" }}>
+          <div className="-rotate-90 flex-none h-[100cqw] w-[100cqh]">
+            <div className="relative size-full">
+              <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgPolygon37} />
+            </div>
+          </div>
+        </div>
+        <div className="absolute flex inset-[19.18%_14.97%_69.52%_72.46%] items-center justify-center" data-node-id="2551:2717" style={{ containerType: "size" }}>
+          <div className="flex-none h-[100cqw] rotate-90 w-[100cqh]">
+            <div className="relative size-full">
+              <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgPolygon42} />
+            </div>
+          </div>
+        </div>
+        <div className="absolute flex inset-[41.78%_73.05%_46.92%_14.37%] items-center justify-center" data-node-id="2551:2718" style={{ containerType: "size" }}>
+          <div className="-rotate-90 flex-none h-[100cqw] w-[100cqh]">
+            <div className="relative size-full">
+              <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgPolygon43} />
+            </div>
+          </div>
+        </div>
+        <div className="absolute flex inset-[30.48%_14.97%_58.22%_72.46%] items-center justify-center" data-node-id="2551:2719" style={{ containerType: "size" }}>
+          <div className="flex-none h-[100cqw] rotate-90 w-[100cqh]">
+            <div className="relative size-full">
+              <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgPolygon42} />
+            </div>
+          </div>
+        </div>
+        <div className="absolute flex inset-[64.38%_27.54%_26.03%_57.49%] items-center justify-center" data-node-id="2551:2720" style={{ containerType: "size" }}>
+          <div className="flex-none h-[100cqh] rotate-180 w-[100cqw]">
+            <div className="relative size-full">
+              <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgPolygon44} />
+            </div>
+          </div>
+        </div>
+        <div className="absolute flex inset-[30.48%_73.05%_58.22%_14.37%] items-center justify-center" data-node-id="2551:2721" style={{ containerType: "size" }}>
+          <div className="-rotate-90 flex-none h-[100cqw] w-[100cqh]">
+            <div className="relative size-full">
+              <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgPolygon43} />
+            </div>
+          </div>
+        </div>
+        <div className="absolute flex inset-[41.78%_14.97%_46.92%_72.46%] items-center justify-center" data-node-id="2551:2722" style={{ containerType: "size" }}>
+          <div className="flex-none h-[100cqw] rotate-90 w-[100cqh]">
+            <div className="relative size-full">
+              <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgPolygon42} />
+            </div>
+          </div>
+        </div>
+        <div className="absolute flex inset-[64.38%_42.51%_26.03%_41.92%] items-center justify-center" data-node-id="2551:2723" style={{ containerType: "size" }}>
+          <div className="flex-none h-[100cqh] rotate-180 w-[100cqw]">
+            <div className="relative size-full">
+              <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgPolygon45} />
+            </div>
+          </div>
+        </div>
+        <div className="absolute flex inset-[19.18%_73.05%_69.52%_14.37%] items-center justify-center" data-node-id="2551:2724" style={{ containerType: "size" }}>
+          <div className="-rotate-90 flex-none h-[100cqw] w-[100cqh]">
+            <div className="relative size-full">
+              <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgPolygon43} />
+            </div>
+          </div>
+        </div>
+        <div className="absolute flex inset-[53.08%_14.97%_35.62%_72.46%] items-center justify-center" data-node-id="2551:2725" style={{ containerType: "size" }}>
+          <div className="flex-none h-[100cqw] rotate-90 w-[100cqh]">
+            <div className="relative size-full">
+              <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgPolygon42} />
+            </div>
+          </div>
+        </div>
+        <div className="absolute flex inset-[64.38%_58.08%_26.03%_26.95%] items-center justify-center" data-node-id="2551:2726" style={{ containerType: "size" }}>
+          <div className="flex-none h-[100cqh] rotate-180 w-[100cqw]">
+            <div className="relative size-full">
+              <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgPolygon44} />
+            </div>
+          </div>
+        </div>
+        <div className="absolute flex inset-[7.88%_73.05%_80.82%_14.37%] items-center justify-center" data-node-id="2551:2727" style={{ containerType: "size" }}>
+          <div className="-rotate-90 flex-none h-[100cqw] w-[100cqh]">
+            <div className="relative size-full">
+              <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgPolygon43} />
+            </div>
+          </div>
+        </div>
+        <div className="absolute contents left-[62.58px] top-[33.12px]" data-node-id="2551:2784" data-name="소 문 내 기">
+          <div className="absolute h-[34.316px] left-[63.69px] top-[140.87px] w-[35.676px]" data-node-id="2551:2785" data-name="Vector">
+            <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgVector9} />
+          </div>
+          <div className="absolute h-[34.352px] left-[62.58px] top-[104.87px] w-[39.312px]" data-node-id="2551:2786" data-name="Vector">
+            <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgVector10} />
+          </div>
+          <div className="absolute h-[34.2px] left-[63.08px] top-[69.23px] w-[38.88px]" data-node-id="2551:2787" data-name="Vector">
+            <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgVector11} />
+          </div>
+          <div className="absolute h-[33.848px] left-[63.08px] top-[33.12px] w-[38.88px]" data-node-id="2551:2788" data-name="Vector">
+            <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgVector12} />
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+type Component6Props = {
+  className?: string;
+  property1?: "Default";
+};
+
+function Component6({ className, property1 = "Default" }: Component6Props) {
+  return (
+    <div className={className || "h-[623px] overflow-clip relative w-[881px]"} data-node-id="2575:1301">
+      <div className="absolute h-[282px] left-0 overflow-clip top-[341px] w-[701px]" data-node-id="2579:1224" data-name="깃발 표시 영역">
+        <Component5 className="absolute drop-shadow-[0px_0px_3.15px_rgba(0,0,0,0.23)] inset-[-119.5%_52.35%_115.96%_23.82%]" />
+        <Component4 className="absolute drop-shadow-[0px_0px_3.15px_rgba(0,0,0,0.23)] inset-[-107.12%_28.53%_103.58%_47.65%]" />
+        <Component3 className="absolute drop-shadow-[0px_0px_3.15px_rgba(0,0,0,0.23)] inset-[-152.48%_76.18%_148.94%_0]" />
+        <div className="absolute drop-shadow-[0px_0px_3.15px_rgba(0,0,0,0.23)] inset-[-85.82%_4.71%_82.27%_71.47%]" data-node-id="2755:4413" data-name="얼쑤한컷">
+          <div className="absolute inset-[0.03%_14.97%_26.03%_14.37%]" data-node-id="I2755:4413;2755:2420">
+            <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgGroup7} />
+          </div>
+          <div className="absolute contents left-[62.37px] top-[32.91px]" data-node-id="I2755:4413;2755:2496" data-name="얼 쑤 한 컷">
+            <div className="absolute h-[34.542px] left-[64.09px] top-[140.91px] w-[38.016px]" data-node-id="I2755:4413;2755:2497" data-name="Vector">
+              <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgVector13} />
+            </div>
+            <div className="absolute h-[35.064px] left-[62.37px] top-[104.41px] w-[42.12px]" data-node-id="I2755:4413;2755:2498" data-name="Vector">
+              <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgVector14} />
+            </div>
+            <div className="absolute h-[34.2px] left-[64.07px] top-[69.31px] w-[38.88px]" data-node-id="I2755:4413;2755:2499" data-name="Vector">
+              <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgVector15} />
+            </div>
+            <div className="absolute h-[34.776px] left-[63.16px] top-[32.91px] w-[39.312px]" data-node-id="I2755:4413;2755:2500" data-name="Vector">
+              <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgVector16} />
+            </div>
+          </div>
+        </div>
+      </div>
+      <Component2 className="absolute block cursor-pointer inset-[64.2%_7.27%_23.93%_84.34%]" />
+    </div>
+  );
+}
+
+type Component7Props = {
+  className?: string;
+  property1?: "기본";
+};
+
+function Component7({ className, property1 = "기본" }: Component7Props) {
+  return (
+    <div className={className || "h-[57px] relative w-[194px]"} data-node-id="2199:2131">
+      <p className="[word-break:break-word] absolute font-['Chai_Hwaljjak:Bold'] inset-[0_-12.79%_-23.4%_0] leading-[1.2] not-italic text-[#f9f9f9] text-[48px] tracking-[-0.48px]" data-node-id="2199:2128">
+        바람 담기
+      </p>
+    </div>
+  );
+}
+
+export default function Component8() {
+  return (
+    <div className="relative size-full" data-node-id="2028:168" style={{ backgroundImage: "linear-gradient(180deg, rgb(80, 230, 255) 0%, var(--sky-blue,rgb(80, 230, 255)) 19.231%, rgb(133, 238, 255) 45.673%, rgb(255, 255, 255) 85.096%)" }} data-name="농기입력">
+      <div className="absolute h-[1523.716px] left-[calc(44.44%+94.1px)] top-[-190px] w-[425.792px]" data-node-id="2177:1226" data-name="깃대">
+        <img alt="" className="absolute block inset-0 max-w-none size-full" src={img1} />
+      </div>
+      <div className="absolute h-[1061.119px] left-[calc(33.33%+230px)] top-[calc(50%-481px)] w-[579.833px]" data-node-id="2177:1384" data-name="바람 입력 농기">
+        <img alt="" className="absolute block inset-0 max-w-none size-full" src={img2} />
+      </div>
+      <p className="-translate-x-1/2 [word-break:break-word] absolute font-['Chai_Hwaljjak:Bold'] leading-[1.2] left-[calc(50%+5.5px)] not-italic text-[48px] text-[color:var(--brown,#481100)] text-center top-[-1108px] tracking-[-0.48px] whitespace-nowrap" data-node-id="2063:3426">
+        당신의 바람이 농기에 담겼어요
+        <br aria-hidden />
+        이제 소리로 울려볼 차례예요
+      </p>
+      <div className="[word-break:break-word] absolute font-['Chai_Hwaljjak:Bold'] leading-[0] left-[128px] not-italic text-[36px] text-[color:var(--brown,#481100)] top-[calc(50%-180.14px)] whitespace-nowrap" data-node-id="2028:169">
+        <p className="leading-[1.3] mb-0">어떤 바람을 이루고 싶나요?</p>
+        <p className="leading-[1.3]">한 가지 바람을 선택해주세요</p>
+      </div>
+      <div className="absolute flex h-[52px] items-center justify-center left-[128px] top-[calc(50%+221.69px)] w-[54px]" data-node-id="2199:1429">
+        <div className="flex-none rotate-180">
+          <button className="block cursor-pointer h-[52px] relative w-[54px]">
+            <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgPolygon25} />
+          </button>
+        </div>
+      </div>
+      <div className="absolute flex h-[52px] items-center justify-center left-[197px] top-[calc(50%+221.69px)] w-[54px]" data-node-id="2199:1430">
+        <div className="flex-none rotate-180">
+          <button className="block cursor-pointer h-[52px] relative w-[54px]">
+            <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgPolygon26} />
+          </button>
+        </div>
+      </div>
+      <div className="absolute flex h-[52px] items-center justify-center left-[266px] top-[calc(50%+221.69px)] w-[54px]" data-node-id="2199:1431">
+        <div className="flex-none rotate-180">
+          <button className="block cursor-pointer h-[52px] relative w-[54px]">
+            <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgPolygon27} />
+          </button>
+        </div>
+      </div>
+      <Component7 className="-translate-y-1/2 absolute block cursor-pointer h-[56px] left-[calc(88.89%-73.11px)] top-1/2 w-[194px]" />
+      <Component6 className="absolute h-[623px] left-[calc(55.56%+110.56px)] overflow-clip top-[-341px] w-[881px]" />
+      <Component1 className="absolute h-[724.838px] left-[calc(44.44%+157.53px)] top-[calc(50%-346.21px)] w-[231.709px]" />
+      <Component className="absolute h-[37px] left-[103px] top-[70px] w-[25px]" />
+      <p className="[word-break:break-word] absolute font-['Chai_Hwaljjak:Bold'] inset-[48.95%_92.56%_39.38%_5.71%] leading-[1.03] not-italic text-[32px] text-[color:var(--brown,#481100)]" data-node-id="2791:2841">
+        우리바람
+      </p>
+      <p className="[word-break:break-word] absolute font-['Chai_Hwaljjak:Bold'] inset-[48.95%_89.09%_39.38%_9.19%] leading-[1.03] not-italic text-[32px] text-[color:var(--brown,#481100)]" data-node-id="2791:2842">
+        만사형통
+      </p>
+      <p className="[word-break:break-word] absolute font-['Chai_Hwaljjak:Bold'] inset-[48.95%_85.61%_39.38%_12.66%] leading-[1.03] not-italic text-[32px] text-[color:var(--brown,#481100)]" data-node-id="2791:2843">
+        무병장수
+      </p>
+      <p className="[word-break:break-word] absolute font-['Chai_Hwaljjak:Bold'] inset-[48.95%_82.14%_39.38%_16.13%] leading-[1.03] not-italic text-[32px] text-[color:var(--brown,#481100)]" data-node-id="2791:2849">
+        취업성공
+      </p>
+      <p className="[word-break:break-word] absolute font-['Chai_Hwaljjak:Bold'] inset-[48.95%_78.67%_39.38%_19.6%] leading-[1.03] not-italic text-[32px] text-[color:var(--brown,#481100)]" data-node-id="2796:2928">
+        백년해로
+      </p>
+      <p className="[word-break:break-word] absolute font-['Chai_Hwaljjak:Bold'] inset-[48.95%_75.2%_39.38%_23.07%] leading-[1.03] not-italic text-[32px] text-[color:var(--brown,#481100)]" data-node-id="2791:2844">
+        무사졸업
+      </p>
+      <p className="[word-break:break-word] absolute font-['Chai_Hwaljjak:Bold'] inset-[48.95%_71.73%_39.38%_26.54%] leading-[1.03] not-italic text-[32px] text-[color:var(--brown,#481100)]" data-node-id="2791:2845">
+        부귀영화
+      </p>
+      <p className="[word-break:break-word] absolute font-['Chai_Hwaljjak:Bold'] inset-[48.95%_68.26%_39.38%_30.01%] leading-[1.03] not-italic text-[32px] text-[color:var(--brown,#481100)]" data-node-id="2791:2846">
+        운수대통
+      </p>
+      <p className="[word-break:break-word] absolute font-['Chai_Hwaljjak:Bold'] inset-[48.95%_64.79%_39.38%_33.48%] leading-[1.03] not-italic text-[32px] text-[color:var(--brown,#481100)]" data-node-id="2791:2847">
+        시험합격
+      </p>
+      <p className="[word-break:break-word] absolute font-['Chai_Hwaljjak:Bold'] inset-[48.95%_61.32%_39.38%_36.95%] leading-[1.03] not-italic text-[32px] text-[color:var(--brown,#481100)]" data-node-id="2796:2929">
+        연애성공
+      </p>
+    </div>
+  );
+}

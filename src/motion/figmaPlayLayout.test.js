@@ -9,7 +9,7 @@ const geometry = JSON.parse(readFileSync(new URL('../config/playInstrumentGeomet
 test('Figma drumhead centers and hit regions share the artwork rotation and responsive scale', () => {
   for (const [width, height] of [[2240, 1260], [1440, 810], [390, 844]]) {
     const layout = createPlayLayout('janggu', geometry.janggu, width, height);
-    const angle = -24.28 * Math.PI / 180;
+    const angle = -53.96989332786222 * Math.PI / 180;
     for (const [side, x, y] of [['left', .29295, .2355], ['right', .70705, .7645]]) {
       const dx = (x - .5) * JANGGU.width, dy = (y - .5) * JANGGU.height;
       const expectedX = layout.left + (JANGGU.cx + dx * Math.cos(angle) - dy * Math.sin(angle)) * layout.scale;

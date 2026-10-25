@@ -1,0 +1,10 @@
+import fs from 'node:fs';
+let p='src/pages/StoryPage.css',s=fs.readFileSync(p,'utf8');
+s=s.replace(/calc\(([^)]+)\)/g,(_,v)=>'calc('+v.replace(/([\d%a-z)])([+-])(?=[\d.])/g,'$1 $2 ')+')');
+s+='\n.story-artwork [data-node-id="2728:2453"]{left:1px;}\n.story-artwork .story-current-117{left:calc(50% + .5px);}\n';
+fs.writeFileSync(p,s);
+p='src/pages/StoryPage.jsx';s=fs.readFileSync(p,'utf8').replace('flag-photo-1.png','d16c4.png').replace('flag-photo-2.png','623b8.png');
+const cards={'2772:6997':['2772-6999','임실필봉농악'],'2772:6966':['2772-6968','평택농악'],'2772:7029':['2772-7031','이리농악'],'2772:7057':['2772-7069','진주삼천포농악']};
+for(const [id,[file,label]] of Object.entries(cards))s=s.replace(`data-node-id="${id}">`,`data-node-id="${id}" role="button" tabIndex={0} aria-label="${label} 소개" onClick={e=>e.currentTarget.classList.toggle('is-revealed')}>\n<div className="story-region-hover"><ArtworkImage src="/assets/figma/oct23/${file}.svg"/></div>`);
+s=s.replace('data-name="강릉">','data-name="강릉" role="button" tabIndex={0} aria-label="강릉농악 소개" onClick={e=>e.currentTarget.classList.toggle(\'is-revealed\')}>\n<div className="story-region-hover"><ArtworkImage src="/assets/figma/oct23/2772-6973.svg"/></div>');
+fs.writeFileSync(p,s);

@@ -1,5 +1,6 @@
 import {useEffect, useRef, useState} from 'react';
 import {createSangmoMotion} from '../motion/sangmoMotion';
+import {drawHeadwear, loadHeadwearArtwork} from '../camera/drawHeadwear';
 import {FilesetResolver, PoseLandmarker} from '@mediapipe/tasks-vision';
 
 export default function usePhotoHeadwear(videoRef, canvasRef, enabled, kind) {
@@ -10,9 +11,7 @@ export default function usePhotoHeadwear(videoRef, canvasRef, enabled, kind) {
     setStatus('loading');
     let disposed = false, model, frame, lastVideo = -1, lastInference = 0, previous = 0;
     const motion = createSangmoMotion();
-    const hat = new Image(), sangmo = new Image();
-    hat.src = '/assets/figma/feedback/gokkal.svg';
-    sangmo.src = '/assets/figma/feedback/sangmo.svg';
+    const headwearArtwork = loadHeadwearArtwork();
     const canvas = canvasRef.current, context = canvas.getContext('2d');
     const input = document.createElement('canvas'), inputContext = input.getContext('2d');
     const loop = now => {
@@ -44,23 +43,7 @@ export default function usePhotoHeadwear(videoRef, canvasRef, enabled, kind) {
         context.drawImage(video, 0, 0, width, height); context.restore();
         const head = motion.step(now,dt);
         if (head && head.opacity > 0) {
-          context.save(); context.globalAlpha = head.opacity; context.translate(head.x, head.y - head.w * .4); context.rotate(head.angle);
-          const image = kindRef.current === 'gokkal' ? hat : sangmo;
-          if (image.complete && image.naturalWidth) {
-            const w = head.w * 1.2, h = w * image.naturalHeight / image.naturalWidth;
-            context.drawImage(image, -w / 2, -h * .85, w, h);
-            if (kindRef.current === 'sangmo') {
-              context.save(); context.translate(0, -h * .85);
-              context.beginPath(); context.moveTo(0, 0);
-              for (let i=1;i<head.ribbon.length-1;i++) {
-                const p=head.ribbon[i], next=head.ribbon[i+1];
-                context.quadraticCurveTo(p.x*head.w,p.y*head.w,(p.x+next.x)*head.w/2,(p.y+next.y)*head.w/2);
-              }
-              context.strokeStyle = '#fff'; context.lineWidth = head.w * .035; context.lineCap = 'round'; context.lineJoin = 'round';
-              context.shadowColor = '#0003'; context.shadowBlur = 2; context.stroke(); context.restore();
-            }
-          }
-          context.restore();
+          drawHeadwear(context, video, head, kindRef.current, headwearArtwork, width, height);
         }
       }
       frame = requestAnimationFrame(loop);

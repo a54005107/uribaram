@@ -1,0 +1,19 @@
+import fs from 'node:fs';
+fs.writeFileSync('src/camera/PHOTO_TRANSFER.md',`# 상모 촬영과 일회성 QR
+
+카메라는 CameraProvider와 로컬 MediaPipe Pose 모델을 재사용합니다. 미리보기와 촬영은 동일한 canvas를 사용합니다. JPEG는 촬영 브라우저 메모리와 object URL에만 존재하며 다시 찍기/페이지 종료 시 해제합니다.
+
+QR 전송은 서버가 발급한 단기 TURN 자격증명을 사용합니다. PeerServer는 연결 메타데이터만 교환하고 사진 바이트는 WebRTC DataChannel로 전달합니다. QR은 5분 후 만료되고 첫 인증된 수신자만 허용합니다. 촬영 화면을 열어 두어야 합니다.
+
+현재 TURN 서비스 계정은 연결되지 않았습니다. 설정 전에는 QR을 발급하지 않고 촬영 기기의 사진 다운로드를 안내합니다. [설정 방법](../../docs/PHOTO_RELAY_SETUP.md)을 참고하세요. 새 코드는 배포 이후 공개 사이트에 반영됩니다.
+
+자동 검증은 토큰·만료·중복 수신·정리와 TURN 응답 검증을 포함합니다. 실제 웹캠 추적과 휴대폰 Safari/Chrome의 사진 수신·저장은 별도 실기기 확인이 필요합니다.
+`);
+// Preserve exact static skew from the design (independent rotate property).
+const raw=fs.readFileSync('.tmp/design-2271-3227.txt','utf8'),jsx=fs.readFileSync('src/pages/StoryPage.jsx','utf8');let css='';
+for(const m of raw.matchAll(/<div className="([^"\n]*skew-x-\[([^\]]+)\][^"\n]*)">/g)){
+ const h=m[1].match(/h-\[([^\]]+)\]/)?.[1];if(!h)continue;
+ const current=fs.readFileSync('src/pages/StoryPage.css','utf8');
+ for(const line of current.split('\n'))if(line.includes('height:'+h+';')){const selector=line.slice(0,line.indexOf('{'));css+=selector+'{transform:skewX('+m[2]+');}\n';}
+}
+fs.appendFileSync('src/pages/StoryPage.css',css);

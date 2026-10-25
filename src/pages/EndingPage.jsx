@@ -17,6 +17,7 @@ export default function EndingPage() {
   }, []);
   return <main ref={pageRef} className="page ending-page" aria-label="우리바람 연주 마무리">
     <div className="ending-board" style={{'--ending-scale': scale}}>
+      <button className="ending-back" aria-label="?? ???? ????" onClick={() => navigate('/experience')}><img src="/assets/figma/ending/back.svg" width="25" height="37" alt=""/></button>
       <div className="ending-flag">
       <img className="ending-pole" src="/assets/figma/ending/pole.svg" width="425.793" height="1523.72" alt=""/>
       <img className="ending-cloth" src="/assets/figma/ending/cloth.svg" width="579.833" height="1061.12" alt=""/>
@@ -26,7 +27,6 @@ export default function EndingPage() {
         <h1>우리 바람,소리 타고 저 멀리.<br/>한바탕 함께 울려보았나요?</h1>
         <button className="ending-story-link" onClick={() => navigate('/story')}>이제 이 소리에 담긴 이야기를 알아 볼까요? &gt;</button>
       </section>
-      <button className="ending-photo-link" onClick={() => navigate('/photo')}>상모 쓰고 사진 찍기 ↗</button>
     </div>
   </main>;
 }

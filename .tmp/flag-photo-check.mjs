@@ -1,0 +1,17 @@
+import fs from 'node:fs/promises';
+const tabs=await(await fetch('http://127.0.0.1:9338/json')).json();
+const ws=new WebSocket(tabs.find(t=>t.type==='page').webSocketDebuggerUrl);await new Promise(r=>ws.addEventListener('open',r,{once:true}));
+let id=0;const pending=new Map();ws.addEventListener('message',e=>{const m=JSON.parse(e.data);if(m.id){const p=pending.get(m.id);pending.delete(m.id);m.error?p.reject(m.error):p.resolve(m.result);}});
+const call=(method,params={})=>new Promise((resolve,reject)=>{const next=++id;pending.set(next,{resolve,reject});ws.send(JSON.stringify({id:next,method,params}));});
+const evaluate=async expression=>{const r=await call('Runtime.evaluate',{expression,awaitPromise:true,returnByValue:true});if(r.exceptionDetails)throw Error(JSON.stringify(r.exceptionDetails));return r.result.value;};
+const wait=ms=>new Promise(r=>setTimeout(r,ms));
+await call('Page.enable');await call('Runtime.enable');await call('Emulation.setFocusEmulationEnabled',{enabled:true});await call('Emulation.setDeviceMetricsOverride',{width:1280,height:720,deviceScaleFactor:1,mobile:false});
+await call('Page.navigate',{url:'http://127.0.0.1:5182/flag'});await wait(1000);
+await evaluate("document.querySelector('.flag-submit').click()");await wait(100);
+console.log('flag transition',await evaluate("({path:location.pathname,animations:document.getAnimations().map(a=>({duration:a.effect.getTiming().duration,easing:a.effect.getTiming().easing,target:a.effect.target.className})),outgoing:!!document.querySelector('.route-outgoing .flag-form')})"));
+await wait(2100);console.log('settled',await evaluate("({path:location.pathname,outgoing:document.querySelector('.route-outgoing').childElementCount,busy:document.querySelector('.route-viewport').getAttribute('aria-busy')})"));
+await call('Page.navigate',{url:'http://127.0.0.1:5182/photo'});await wait(2200);
+console.log('photo UI',await evaluate("({hats:document.querySelectorAll('.photo-hat-choice').length,shutterDisabled:document.querySelector('.photo-shutter').disabled,title:!!document.querySelector('.photo-help'),broken:[...document.images].filter(i=>!i.naturalWidth).map(i=>i.src)})"));
+const shot=await call('Page.captureScreenshot');await fs.writeFile('.tmp/photo-ui-final.png',Buffer.from(shot.data,'base64'));
+await evaluate("document.querySelector('.photo-gokkal').click()");await wait(80);console.log('gokkal',await evaluate("document.querySelector('.photo-gokkal').getAttribute('aria-pressed')"));
+await evaluate("document.querySelector('.photo-shutter').click()");await wait(300);console.log('capture',await evaluate("({result:!!document.querySelector('.photo-result-image'),download:document.querySelector('.photo-result a')?.download})"));ws.close();
