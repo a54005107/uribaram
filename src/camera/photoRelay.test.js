@@ -7,7 +7,7 @@ test('missing relay never produces an unusable QR connection',async()=>{
 test('credential endpoint must provide TURN, not only STUN',async()=>{
  await assert.rejects(loadPhotoRelay(undefined,async()=>({ok:true,json:async()=>({iceServers:[{urls:'stun:example.com'}]})})),{type:'relay-unavailable'});
  const result=await loadPhotoRelay(undefined,async()=>({ok:true,json:async()=>({iceServers:[{urls:'turns:example.com:443',username:'temporary',credential:'short-lived'}]})}));
- assert.equal(result.config.iceTransportPolicy,'relay');assert.equal(result.config.iceServers.length,1);
+ assert.equal(result.config.iceTransportPolicy,'all');assert.equal(result.config.iceServers.length,1);
 });
 test('unmount while credentials load does not create a peer',async()=>{
  let resolve,started=false;const stop=startPhotoRelay(()=>{started=true;},()=>{},()=>new Promise(r=>{resolve=r;}));stop();resolve({});await Promise.resolve();assert.equal(started,false);

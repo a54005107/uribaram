@@ -77,3 +77,26 @@ test('default TURN configuration is not overwritten and errors keep a distinct c
   assert.ok(states.at(-1).message.includes('촬영 화면'));
   assert.ok(peer.destroyed);stop();
 });
+
+test('receiver distinguishes signaling, connection and data transfer timeouts', t => {
+  t.mock.timers.enable({apis:['setTimeout']});
+  for (const phase of ['signaling','connection','data']) {
+    const states=[];
+    const stop=receivePhoto('sender','token',s=>states.push(s),FakePeer);
+    const peer=FakePeer.instances.at(-1);
+    if(phase!=='signaling')peer.emit('open');
+    if(phase==='data')peer.conn.emit('open');
+    t.mock.timers.tick(45000);
+    assert.equal(states.at(-1).code,{signaling:'signaling-timeout',connection:'relay-connect-timeout',data:'transfer-timeout'}[phase]);
+    assert.ok(peer.destroyed);stop();
+  }
+});
+
+test('sender reports connection-stage failure instead of an unexplained closure', () => {
+  const states=[];
+  const stop=offerPhoto(new Blob(['test']),s=>states.push(s),FakePeer);
+  const peer=FakePeer.instances.at(-1);peer.emit('open','sender');
+  const token=new URLSearchParams(new URL(states.at(-1).url).hash.slice(1)).get('token');
+  const conn=new FakeConnection({token});peer.emit('connection',conn);conn.emit('close');
+  assert.equal(states.at(-1).code,'relay-connect-timeout');assert.ok(peer.destroyed);stop();
+});

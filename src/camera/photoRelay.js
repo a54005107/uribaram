@@ -8,7 +8,7 @@ export async function loadPhotoRelay(signal, request = fetch) {
   if (!data.iceServers.some(server => server.credential && [server.urls].flat().some(url => /^turns?:/.test(url)))) {
     throw Object.assign(new Error('Invalid relay response'), {type:'relay-unavailable'});
   }
-  return {secure:true,config:{iceServers:data.iceServers,iceTransportPolicy:'relay'}};
+  return {secure:true,config:{iceServers:data.iceServers,iceTransportPolicy:'all'}};
 }
 
 // Keep React's synchronous cleanup contract while credentials load asynchronously.
