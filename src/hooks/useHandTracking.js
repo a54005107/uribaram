@@ -4,6 +4,7 @@ import {FilesetResolver, HandLandmarker} from '@mediapipe/tasks-vision';
 import {TRACKING_CONFIG} from '../config/stickInteractionConfig';
 import {createStickTracker, trackStick, sampleStick, markStickMissing} from '../motion/stickTracker';
 import {associateHands} from '../motion/handAssociation';
+import {createMotionActivity} from '../motion/idleActivity';
 
 export default function useHandTracking(videoRef, enabled, onDetection, streamKey, debug = false) {
   const [result, setResult] = useState({status: 'idle', sticks: null, detail: ''});
@@ -44,6 +45,7 @@ export default function useHandTracking(videoRef, enabled, onDetection, streamKe
       videoFrameId = videoElement.requestVideoFrameCallback(onFrame);
     }
     const trackers = trackersRef.current;
+    const reportMotion=createMotionActivity('hands');
     // Reuse a smaller inference surface, keeping the original aspect ratio.
     // Full-resolution camera pixels are unnecessary for the hand model.
     const inferenceCanvas = document.createElement('canvas');
@@ -78,6 +80,7 @@ export default function useHandTracking(videoRef, enabled, onDetection, streamKe
             if (match) {
               const sample = trackStick(trackers[side], match.points, side, timestamp, match.confidence, video.videoWidth / video.videoHeight, receivedAt);
               if (sample) nextSticks[side] = sample;
+              if(sample&&!sample.stale)reportMotion(side,{...sample.anchor,angle:sample.rotation},receivedAt);
             } else {
               trackers[side].debug.outlier = association.rejected;
               markStickMissing(trackers[side], receivedAt, association.ambiguous ? 'identity-ambiguous' : association.rejected ? 'identity-rejected' : 'unmatched');
@@ -104,16 +107,18 @@ export default function useHandTracking(videoRef, enabled, onDetection, streamKe
               detail: count ? `손 ${count}개 추적 중${staleCount ? ` · ${staleCount}개 보간` : ''}` : '주먹 쥔 양손을 카메라에 보여주세요'});
           }
         } catch (error) {
+          if (disposed) return;
           trackersRef.current = {left: createStickTracker(), right: createStickTracker()};
           landmarker?.close(); landmarker = null;
           console.error('Hand tracking failed:', error); setResult({status: 'error', sticks: null, detail: error?.message || '손 인식 실패'}); return;
         }
       }
-      frameId = requestAnimationFrame(loop);
+      if (!disposed) frameId = requestAnimationFrame(loop);
     };
     (async () => {
       try {
-        const base = import.meta.env.BASE_URL, vision = await FilesetResolver.forVisionTasks(`${base}mediapipe/wasm`);
+        const base = new URL(import.meta.env.BASE_URL, location.href).href;
+        const vision = await FilesetResolver.forVisionTasks(base + 'mediapipe/wasm');
         if (disposed) return;
         const options = {baseOptions: {modelAssetPath: `${base}mediapipe/hand_landmarker.task`, delegate: 'GPU'}, runningMode: 'VIDEO', numHands: 2, minHandDetectionConfidence: .4, minHandPresenceConfidence: .4, minTrackingConfidence: .4};
         try { landmarker = await HandLandmarker.createFromOptions(vision, options); }

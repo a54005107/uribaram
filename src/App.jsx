@@ -1,4 +1,5 @@
-import React, {lazy, Suspense} from 'react';
+import React, {lazy, Suspense, useEffect} from 'react';
+import {unlockAudio} from './audio/percussion';
 import {Navigate, Route, useLocation} from 'react-router-dom';
 import PageTransitions from './components/PageTransitions';
 import Home from './pages/Home';
@@ -15,6 +16,8 @@ import InstrumentPlayPage from './pages/InstrumentPlayPage';
 import CameraSetup from './pages/CameraSetup';
 import {CameraProvider} from './camera/CameraProvider';
 import SiteMenu from './components/SiteMenu';
+import ExperienceCursor from './components/ExperienceCursor';
+import useIdleReturn from './hooks/useIdleReturn';
 const PhotoPage = lazy(() => import('./pages/PhotoPage'));
 const ReceivePhotoPage = lazy(() => import('./pages/ReceivePhotoPage'));
 
@@ -24,7 +27,14 @@ function HomeEntry() {
 }
 
 export default function App() {
-  return <CameraProvider><SiteMenu/><PageTransitions>
+  useIdleReturn();
+  useEffect(() => {
+    const unlock = () => { void unlockAudio().catch(() => {}); };
+    window.addEventListener('pointerdown', unlock, {once: true});
+    window.addEventListener('keydown', unlock, {once: true});
+    return () => { window.removeEventListener('pointerdown', unlock); window.removeEventListener('keydown', unlock); };
+  }, []);
+  return <CameraProvider><ExperienceCursor/><SiteMenu/><PageTransitions>
     <Route path="/" element={<HomeEntry/>}/>
     <Route path="/title" element={<TitlePage/>}/>
     <Route path="/trumpet" element={<TrumpetPage/>}/>

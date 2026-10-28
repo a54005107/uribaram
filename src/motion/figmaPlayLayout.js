@@ -1,7 +1,7 @@
 import {createInstrumentLayout} from './instrumentLayout.js';
 
-export const PLAY_WIDTH = 2240;
-export const PLAY_HEIGHT = 1260;
+export const PLAY_WIDTH = 2560;
+export const PLAY_HEIGHT = 1440;
 
 export function playArtboard(width, height) {
   const scale = Math.min(width / PLAY_WIDTH, height / PLAY_HEIGHT);
@@ -10,10 +10,10 @@ export function playArtboard(width, height) {
 
 // Figma 2305:829: retain the nested rotation, rather than stretching its bounds.
 export const JANGGU = {
-  width: 951.6397705078125,
-  height: 978.0828857421875,
-  cx: 1130.1862038364,
-  cy: 668.6098520348,
+  width: 1021.9511362154,
+  height: 1050.4167914948,
+  cx: 1299.584,
+  cy: 810.504,
   rotation: -53.96989332786222,
 };
 
@@ -28,16 +28,19 @@ export function createPlayLayout(id, geometry, width, height) {
   const board = playArtboard(width, height);
   if (id !== 'janggu') {
     const layout = createInstrumentLayout(geometry, width, height);
-    const scale = Math.min(1180 / geometry.width, 920 / geometry.height) * board.scale;
+    const vertical = id === 'buk';
+    const scale = Math.min(1180 / (vertical ? geometry.height : geometry.width), 920 / (vertical ? geometry.width : geometry.height)) * board.scale;
+    layout.rotation = vertical ? 90 : 0;
+    layout.mirrorX = id === 'jing';
     layout.width = geometry.width * scale;
     layout.height = geometry.height * scale;
     layout.left = width / 2 - layout.width / 2;
     layout.top = height / 2 - layout.height / 2;
     layout.zones = Object.fromEntries(Object.entries(geometry.zones).map(([name, zone]) => [name, {
-      x: (layout.left + zone.x * layout.width) / width,
-      y: (layout.top + zone.y * layout.height) / height,
-      radiusX: zone.radiusX * layout.width / width,
-      radiusY: zone.radiusY * layout.height / height,
+      x: vertical ? (width/2 - (zone.y-.5)*layout.height)/width : (layout.left + (layout.mirrorX ? 1-zone.x : zone.x) * layout.width) / width,
+      y: vertical ? (height/2 + (zone.x-.5)*layout.width)/height : (layout.top + zone.y * layout.height) / height,
+      radiusX: vertical ? zone.radiusY * layout.height / width : zone.radiusX * layout.width / width,
+      radiusY: vertical ? zone.radiusX * layout.width / height : zone.radiusY * layout.height / height,
     }]));
     return layout;
   }

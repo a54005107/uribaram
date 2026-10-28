@@ -110,6 +110,11 @@ export function trackStick(tracker, points, side, timestamp, confidence, aspect,
       tracker.angleCandidate = null;
     } else tracker.angleCandidate = target;
   }
+  const angularSpeed = dt > 0 && tracker.output
+    ? Math.abs(unwrapAngle(tracker.output.rotation, tracker.angle ?? tracker.output.rotation) - tracker.output.rotation) / dt : 0;
+  const rotationBlend = clamp((angularSpeed - 1) / 7, 0, 1);
+  tracker.angleFilter.beta = FILTER_CONFIG.rotation.beta
+    + (FILTER_CONFIG.fastRotationBeta - FILTER_CONFIG.rotation.beta) * rotationBlend;
   const rotation = tracker.angleFilter.filter(tracker.angle ?? Math.PI / 2, timestamp);
   tracker.grip = updateGrip(tracker.grip, gripScore(points, aspect), timestamp);
   tracker.length = stickConfig.length;
@@ -121,7 +126,8 @@ export function trackStick(tracker, points, side, timestamp, confidence, aspect,
   tracker.recoveryEnd = recoveryEnd;
   tracker.transition = {from: oldPose, start: receivedAt,
     duration: recovering ? config.reacquireBlendMs
-      : recoveryEnd > receivedAt ? recoveryEnd - receivedAt : config.renderBlendMs};
+      : recoveryEnd > receivedAt ? recoveryEnd - receivedAt
+        : config.renderBlendMs + (config.fastRenderBlendMs - config.renderBlendMs) * Math.max(fastBlend, rotationBlend)};
   tracker.output = {anchor, rawGrip: grip, wrist, palmCenter, rotation, orientation: axis, palmTilt: Math.atan2(axis.z, Math.hypot(dx, dy)),
     length: tracker.length, side, confidence, timestamp, grip: {...tracker.grip}, velocity: {...tracker.velocity}, stale: false};
   tracker.debug = {raw: grip, filtered: anchor, speed: recovering ? 0 : speed, lost: false, outlier: false,

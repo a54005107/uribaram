@@ -5,7 +5,7 @@
 .play-scene-decoration img { max-width: none; transform-origin: center; }
 .camera-play-instrument { position: absolute; z-index: 1; pointer-events: none; }
 .camera-play-sticks { position: absolute; inset: 0; z-index: 3; width: 100%; height: 100%; pointer-events: none; }
-.play-design-board { position: absolute; left: var(--board-left); top: var(--board-top); width: 2240px; height: 1260px; transform: scale(var(--board-scale)); transform-origin: 0 0; pointer-events: none; }
+.play-design-board { position: absolute; left: var(--board-left); top: var(--board-top); width: 2560px; height: 1440px; transform: scale(var(--board-scale)); transform-origin: 0 0; pointer-events: none; }
 .play-navigation { z-index: 4; }
 .camera-play-page .play-pennant { position: absolute; left: var(--pennant-left); top: 0; width: 167px; height: 207px; border: 0; border-radius: 0; padding: 0; background: transparent; color: #481100; pointer-events: auto; }
 .play-pennant img { position: absolute; top: 0; left: 0; width: 167px; height: 292px; max-width: none; pointer-events: none; }

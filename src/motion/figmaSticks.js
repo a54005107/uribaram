@@ -14,8 +14,20 @@ export const figmaSticks = {
   sogo: {left: sogo, right: sogo}, buk: {left: buk, right: buk},
 };
 
+// Rasterize the static SVG layers once per loaded image set, not every frame.
+// Weak keys release the surface when the stage/instrument is unmounted.
+const surfaces = new WeakMap();
 export function drawFigmaStick(context, artwork, images, stick, width, height) {
   if (!images.every(image => image.complete && image.naturalWidth)) return;
+  let surface = surfaces.get(images);
+  if (!surface) {
+    surface = document.createElement('canvas');
+    surface.width = Math.max(...images.map(image => image.naturalWidth));
+    surface.height = Math.max(...images.map(image => image.naturalHeight));
+    const raster = surface.getContext('2d');
+    images.forEach(image => raster.drawImage(image, 0, 0));
+    surfaces.set(images, surface);
+  }
   const [rx, ry] = artwork.rear, [tx, ty] = artwork.tip;
   const length = Math.hypot(tx - rx, ty - ry);
   const gripX = rx + (tx - rx) * stick.gripOffset;
@@ -26,6 +38,6 @@ export function drawFigmaStick(context, artwork, images, stick, width, height) {
   const scale = stick.width * width / length;
   context.scale(scale, scale);
   context.translate(-gripX, -gripY);
-  images.forEach(image => context.drawImage(image, 0, 0));
+  context.drawImage(surface, 0, 0);
   context.restore();
 }

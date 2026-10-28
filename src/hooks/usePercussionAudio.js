@@ -1,71 +1,56 @@
-﻿import {useCallback, useEffect, useRef, useState} from 'react';
-
-const VOICES = {
-  kkwaenggwari: {pitch: 640, decay: 1.1, metal: true},
-  jing: {pitch: 130, decay: 3.2, metal: true},
-  sogo: {pitch: 230, decay: .22},
-  buk: {pitch: 95, decay: .65},
-  janggu: {pitch: 150, decay: .45},
-};
+import {useCallback, useEffect, useRef, useState} from 'react';
+import {audioContext, unlockAudio, loadInstrument, loadSample, chooseSample, playSample} from '../audio/percussion';
 
 export default function usePercussionAudio(instrumentId) {
-  const contextRef = useRef(null);
-  const outputRef = useRef(null);
-  const voicesRef = useRef(new Set());
+  const buffers = useRef(new Map());
+  const voices = useRef(new Set());
   const [enabled, setEnabled] = useState(false);
   const [error, setError] = useState('');
   const enable = useCallback(async () => {
-    try {
-      const AudioContext = window.AudioContext || window.webkitAudioContext;
-      if (!AudioContext) throw new Error('unsupported');
-      let context = contextRef.current;
-      if (!context || context.state === 'closed') {
-        context = new AudioContext();
-        contextRef.current = context;
-        const compressor = context.createDynamicsCompressor();
-        compressor.connect(context.destination);
-        outputRef.current = compressor;
-        context.onstatechange = () => { if (contextRef.current === context) setEnabled(context.state === 'running'); };
-      }
-      await context.resume();
-      if (contextRef.current !== context) return;
-      setEnabled(context.state === 'running');
-      setError('');
-    } catch { setError('소리를 켜지 못했습니다. 다시 눌러 주세요.'); }
+    try { setEnabled(await unlockAudio()); setError(''); }
+    catch { setError('소리를 켜지 못했습니다. 다시 눌러 주세요.'); }
+  }, []);
+  useEffect(() => {
+    let active = true;
+    buffers.current = new Map();
+    loadInstrument(instrumentId).then(value => { if (active) buffers.current = value; })
+      .catch(() => { if (active) setError('악기 음원을 불러오지 못했습니다.'); });
+    return () => { active = false; };
+  }, [instrumentId]);
+  useEffect(() => {
+    const ctx = audioContext();
+    let active = true;
+    let backing;
+    let backingBuffer;
+    const update = () => {
+      if (!active) return;
+      setEnabled(ctx.state === 'running');
+      if (ctx.state === 'running' && backingBuffer && !backing) backing = playSample(backingBuffer, .38, true);
+    };
+    ctx.addEventListener('statechange', update);
+    loadSample('backing').then(value => { backingBuffer = value; update(); })
+      .catch(() => { if (active) setError('배경 음원을 불러오지 못했습니다.'); });
+    update();
+    return () => {
+      active = false;
+      ctx.removeEventListener('statechange', update);
+      backing?.stop();
+      for (const source of voices.current) source.stop();
+      voices.current.clear();
+    };
   }, []);
   const strike = useCallback(hit => {
-    const context = contextRef.current;
-    if (!context || context.state !== 'running') return;
-    // Do not queue blocked hits; camera gestures are not browser user activation.
-    const voice = VOICES[instrumentId];
-    const pitch = voice.pitch * (instrumentId === 'janggu' && hit.side === 'right' ? 1.65 : 1);
-    const volume = {weak: .11, normal: .19, strong: .27}[hit.strength] || .19;
-    const now = context.currentTime;
-    while (voicesRef.current.size >= 12) {
-      const oldest = voicesRef.current.values().next().value;
-      oldest.forEach(node => node.stop());
-      voicesRef.current.delete(oldest);
+    const buffer = buffers.current.get(chooseSample(instrumentId));
+    if (!buffer) return; // Never replay late hits after asynchronous decoding.
+    while (voices.current.size >= 24) {
+      const oldest = voices.current.values().next().value;
+      oldest.stop(); voices.current.delete(oldest);
     }
-    const group = [];
-    voicesRef.current.add(group);
-    (voice.metal ? [1, 1.47, 2.09, 2.56, 3.8] : [1, 1.6, 2.2]).forEach((ratio, index) => {
-      const oscillator = context.createOscillator(), gain = context.createGain();
-      group.push(oscillator);
-      oscillator.frequency.setValueAtTime(pitch * ratio * (voice.metal ? 1 : 1.8), now);
-      if (!voice.metal) oscillator.frequency.exponentialRampToValueAtTime(pitch * ratio, now + .07);
-      gain.gain.setValueAtTime(0, now);
-      gain.gain.linearRampToValueAtTime(volume / (index + 1), now + .004);
-      gain.gain.exponentialRampToValueAtTime(.0001, now + voice.decay);
-      oscillator.connect(gain); gain.connect(outputRef.current);
-      oscillator.start(now); oscillator.stop(now + voice.decay);
-      oscillator.onended = () => { oscillator.disconnect(); gain.disconnect(); voicesRef.current.delete(group); };
-    });
+    const source = playSample(buffer, {weak: .45, normal: .7, strong: .95}[hit.strength] ?? .7);
+    if (source) {
+      voices.current.add(source);
+      source.addEventListener('ended', () => voices.current.delete(source), {once: true});
+    }
   }, [instrumentId]);
-  useEffect(() => () => {
-    const context = contextRef.current;
-    contextRef.current = null;
-    voicesRef.current.clear();
-    if (context) { context.onstatechange = null; if (context.state !== 'closed') void context.close(); }
-  }, []);
   return {enable, enabled, error, strike};
 }

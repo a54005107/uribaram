@@ -1,4 +1,4 @@
-.site-menu { position: fixed; z-index: 40; top: 0; right: 3.17vw; width: 777px; height: 292px; transform: scale(clamp(.4, calc(100vw / 2240px), 1)); transform-origin: top right; pointer-events: none; }
+.site-menu { --scene-fit:min(calc(100vw / 2560px),calc(100dvh / 1440px)); position: fixed; z-index: 40; top:calc((100dvh - 1440px * var(--scene-fit)) / 2); right:calc((100vw - 2560px * var(--scene-fit)) / 2 + 82px * var(--scene-fit)); width: 777px; height: 292px; transform: scale(var(--scene-fit)); transform-origin: top right; pointer-events: none; }
 .site-menu-clip { position: absolute; inset: 0 auto 0 0; width: 668px; overflow: hidden; display: flex; }
 .site-menu-clip button { width: 167px; height: 292px; flex: none; border: 0; background: transparent; padding: 0; transform: translateY(var(--hide-distance)); transition: transform 400ms ease-out; pointer-events: auto; cursor: pointer; }
 .site-menu-clip button.is-open { transform: translateY(0); }

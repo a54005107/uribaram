@@ -39,7 +39,7 @@ export default function PlayLoadingPage() {
 
   useEffect(() => {
     const observer = new ResizeObserver(([entry]) => {
-      setScale(Math.min(entry.contentRect.width / 2240, entry.contentRect.height / 1260));
+      setScale(Math.min(entry.contentRect.width / 2560, entry.contentRect.height / 1440));
     });
     observer.observe(pageRef.current);
     return () => observer.disconnect();
@@ -69,8 +69,9 @@ export default function PlayLoadingPage() {
   const letters = <FlagWord/>;
   return <main className="page play-loading-page" ref={pageRef} aria-label={`${instrument.name} 연주 준비`}>
     <div className="play-loading-stage" style={{transform: `translate(-50%, -50%) scale(${scale})`}}>
-      <img className="play-loading-pole" src={`${ASSETS}/pole.svg`} width="327.557" height="1172.18" alt="" />
-      <img className="play-loading-cloth" src={`${ASSETS}/cloth.svg`} width="446.059" height="816.306" alt="" />
+      <button type="button" className="play-loading-back" aria-label="카메라 선택으로 돌아가기" onClick={() => navigate(`/camera?instrument=${instrument.id}`)}><img src="/assets/figma/ending/back.svg" width="25" height="37" alt=""/></button>
+      <img className="play-loading-pole" src="/assets/figma/oct28/bed13.svg" width="327.557" height="1172.18" alt="" />
+      <img className="play-loading-cloth" src="/assets/figma/oct28/4300d.svg" width="446.059" height="816.306" alt="" />
       <div className="play-loading-writing" role="img" aria-label="우리바람">
         <div className="play-loading-letters play-loading-letters--empty" aria-hidden="true">{letters}</div>
         <div ref={fillRef} className="play-loading-letters play-loading-letters--filled" aria-hidden="true">{letters}</div>

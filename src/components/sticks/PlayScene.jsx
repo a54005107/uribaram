@@ -2,7 +2,7 @@ import React, {forwardRef, useEffect, useImperativeHandle, useRef} from 'react';
 import {playArtboard} from '../../motion/figmaPlayLayout';
 import {launchStar, stepStar} from '../../motion/starBounce';
 
-// Original decoration slots from Figma play frame 2305:824 (2240 × 1260).
+// Original decoration slots from Figma play frame 2305:824 (2560 × 1440).
 const decorations = [
   ['babdb', 16.655, 36.43, 138.005, 262.501, -35.26],
   ['de68f', 80.495, 84.685, 138.005, 262.501, -35.26],
@@ -27,9 +27,9 @@ export default forwardRef(function PlayScene({width, height}, ref) {
     particles.current = decorations.map(([, x, y, w, h], index) => {
       const radius = Math.hypot(w, h) / 2;
       return {x: 0, vx: 0, y: 0, velocity: 0, angle: 0, spin: 0,
-        floor: floor - y * 12.6 - radius - 12, index,
-        minX: -left / scale + radius - x * 22.4,
-        maxX: (width - left) / scale - radius - x * 22.4};
+        floor: floor - y * 14.4 - radius - 12, index,
+        minX: -left / scale + radius - x * 25.6,
+        maxX: (width - left) / scale - radius - x * 25.6};
     });
     let frame, previous;
     const draw = p => {
@@ -55,7 +55,7 @@ export default forwardRef(function PlayScene({width, height}, ref) {
     else frame = requestAnimationFrame(loop);
     return () => { cancelAnimationFrame(frame); kick.current = () => {}; };
   }, [height, top, scale]);
-  return <div className="play-scene" aria-hidden="true" style={{left, top, width: 2240, height: 1260, transform: `scale(${scale})`, transformOrigin: '0 0'}}>
+  return <div className="play-scene" aria-hidden="true" style={{left, top, width: 2560, height: 1440, transform: `scale(${scale})`, transformOrigin: '0 0'}}>
     {decorations.map(([asset, x, y, w, h, rotation], index) => <div key={index} ref={node => { nodes.current[index] = node; }} className="play-scene-decoration" style={{left: `${x}%`, top: `${y}%`}}>
       <img src={`/assets/figma/play-scene/${asset}.svg`} width={w} height={h} alt="" draggable="false"
         style={{transform: `translate(-50%, -50%) rotate(${rotation}deg)`}} />

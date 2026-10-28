@@ -20,7 +20,7 @@ export default function SiteMenu() {
     document.addEventListener('keydown', close);
     return () => { document.removeEventListener('pointerdown', close); document.removeEventListener('keydown', close); };
   }, [open]);
-  if (['/', '/title', '/experience', '/ending', '/receive-photo'].includes(pathname)) return null;
+  if (['/', '/title', '/experience', '/play-loading', '/receive-photo'].includes(pathname)) return null;
   const share = async () => {
     const url = new URL('/', location.href).href;
     try {
@@ -30,8 +30,8 @@ export default function SiteMenu() {
   };
   return <nav ref={root} className={`site-menu${pathname === "/story" ? " site-menu--story" : ""}`} aria-label="전체 메뉴">
     <div className="site-menu-clip" id="site-menu-flags" inert={!open || undefined}>
-      {[[MenuHome, '처음으로', () => navigate('/')], [MenuShare, '소문내기', share], [MenuStory, '풍물이야기', () => navigate('/story')], [MenuPhoto, '얼쑤 한컷', () => navigate('/photo')]].map(([Artwork, label, action], index) =>
-        <button key={label} className={open ? 'is-open' : ''} style={{'--hide-distance': [-133.56, -104.11, -100, -85.82][index] + '%'}}
+      {[[MenuHome, '처음으로', () => navigate('/')], [MenuStory, '풍물이야기', () => navigate('/story')], [MenuShare, '소문내기', share], [MenuPhoto, '얼쑤 한컷', () => navigate('/photo')]].map(([Artwork, label, action], index) =>
+        <button key={label} className={open ? 'is-open' : ''} style={{'--hide-distance': [-133.56, -104.11, -85.82, -100][index] + '%'}}
           aria-label={label} onClick={() => { setOpen(false); action(); }}>
           <Artwork/>
         </button>)}

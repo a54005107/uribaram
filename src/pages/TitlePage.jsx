@@ -9,10 +9,10 @@ export default function TitlePage() {
   useLayoutEffect(() => {
     const page = pageRef.current;
     // Size before paint so the preview-to-route handoff does not flash empty.
-    setScale(Math.min(page.clientWidth / 2240, page.clientHeight / 1260));
+    setScale(Math.min(page.clientWidth / 2560, page.clientHeight / 1440));
     const observer = new ResizeObserver(([entry]) => {
       const {width, height} = entry.contentRect;
-      setScale(Math.min(width / 2240, height / 1260));
+      setScale(Math.min(width / 2560, height / 1440));
     });
     observer.observe(pageRef.current);
     return () => observer.disconnect();

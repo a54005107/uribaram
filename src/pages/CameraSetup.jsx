@@ -18,7 +18,7 @@ export default function CameraSetup() {
   const [scale, setScale] = useState(1);
   useLayoutEffect(() => {
     const page = pageRef.current;
-    const resize = () => setScale(Math.min(page.clientWidth / 2240, page.clientHeight / 1260));
+    const resize = () => setScale(Math.min(page.clientWidth / 2560, page.clientHeight / 1440));
     resize();
     const observer = new ResizeObserver(resize);
     observer.observe(page);
@@ -50,7 +50,7 @@ export default function CameraSetup() {
   };
   const ready = status === 'ready' && previewReady && !playbackError;
   return <main ref={pageRef} className="page camera-setup-page" aria-label="연주 카메라 선택">
-    <button className="camera-setup-back" type="button" onClick={() => navigate('/instruments')}>← 악기 고르기</button>
+    <button className="camera-setup-back" type="button" onClick={() => navigate('/instruments')} aria-label="악기 고르기로"><span aria-hidden="true">〈</span></button>
     <section className="camera-setup-content" style={{'--camera-scale': scale}}>
       <div className="camera-setup-heading">
         <h1>나를 비추는 카메라를 골라 주세요</h1>
