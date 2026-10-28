@@ -21,7 +21,6 @@ export default function TrackingDebug({diagnosticsRef, samplesRef}) {
     <summary>손 추적 디버그 · 개발 전용</summary>
     <div>카메라 {number(snapshot.now - snapshot.cameraFrameAt > 1000 ? 0 : snapshot.cameraFps)} / 렌더 {number(snapshot.renderFps)} FPS</div>
     <div>추론 {number(snapshot.inferenceFps)} FPS · {number(snapshot.inferenceMs)} ms</div>
-    <div>실행: {snapshot.backend === 'worker' ? '별도 스레드' : '호환 모드'}</div>
     {['left', 'right'].map(side => {
       const hand = snapshot.hands[side] || {}, sample = snapshot.samples[side];
       const lost = hand.lost || snapshot.now - hand.lastSeen > TRACKING_CONFIG.staleAfterMs;

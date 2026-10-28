@@ -286,6 +286,8 @@
 .story-region-slot .story-region-hover{inset:-5.5px;}
 .story-region-photo{position:absolute;inset:0;mask-size:100% 100%;mask-position:0 0;mask-repeat:no-repeat;mask-mode:alpha;}
 .story-region-photo img{display:block;width:100%;height:100%;object-fit:cover;}
+.story-region-photo{transition:opacity 300ms ease-in-out}
+.story-region-slot [role=button]:hover>.story-region-photo,.story-region-slot [role=button]:focus>.story-region-photo,.story-region-slot .is-revealed>.story-region-photo{opacity:0}
 .story-artwork [role=button]:hover>.story-region-hover,.story-artwork [role=button]:focus>.story-region-hover,.story-artwork .is-revealed>.story-region-hover{opacity:1;}
 .story-artwork [data-node-id="2658:3328"],.story-artwork [data-node-id="2658:3329"]{text-shadow:0 0 10.8px #000b;}
 .story-place-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 300ms ease-out;}

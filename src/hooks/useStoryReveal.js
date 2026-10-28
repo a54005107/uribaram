@@ -8,7 +8,7 @@ export default function useStoryReveal(ref) {
     if(!artwork)return;
     const reduced=matchMedia('(prefers-reduced-motion: reduce)'), animations=new Map();
     const candidates=[...artwork.children].flatMap(el=>getComputedStyle(el).display==='contents'?[...el.children]:[el])
-      .filter(el=>(el.textContent.trim()||el.querySelector('img,svg')) && el.offsetHeight>0);
+      .filter(el=>el.offsetHeight>0);
     const reveal=el=>{
       if(el.dataset.revealed==='true')return;
       el.dataset.revealed='true';

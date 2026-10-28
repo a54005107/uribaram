@@ -11,18 +11,16 @@ export default function PhotoResult({photoUrl,sharing,qr,transfer,onShare,onReta
    <aside className="photo-share-panel" id="photo-share-panel" aria-label="휴대폰으로 사진 받기" inert={!sharing||undefined} aria-hidden={!sharing}>
     <div className="photo-share-content">
      {qr?<img className="photo-share-qr" src={qr} width="280" height="280" alt="휴대폰 사진 수신 QR 코드"/>:<div className="photo-share-placeholder" aria-hidden="true"/>}
-     <p role="status">{message}</p>
-     {transfer.localNetwork&&<p>PC와 휴대폰을 같은 Wi-Fi에 연결해 주세요.</p>}
-     {transfer.code&&<small>오류 코드: {transfer.code}</small>}
-     <div className="photo-share-actions"><a href={photoUrl||undefined} download="우리바람.jpg">사진 저장</a><button onClick={onClose}>QR 닫기</button></div>
+     <span className="photo-share-status" role="status">{message}</span>
     </div>
    </aside>
    <div className="photo-memory-card">
     <img className="photo-memory-image" src={photoUrl||undefined} alt="촬영한 우리바람 사진"/>
     <img className="photo-memory-title" src={assets+'7f8e1.svg'} width="284.353" height="49.064" alt="얼씨구 좋다!"/>
-    <button className="photo-memory-qr" onClick={onShare} aria-expanded={sharing} aria-controls="photo-share-panel"><img src={assets+'d4690.svg'} width="203.453" height="31.4" alt="QR로 간직하기"/></button>
+    <button className="photo-memory-qr" onClick={sharing?onClose:onShare} aria-expanded={sharing} aria-controls="photo-share-panel"><img src={assets+'d4690.svg'} width="203.453" height="31.4" alt="QR로 간직하기"/></button>
     <button className="photo-memory-retake" onClick={onRetake}><img src={assets+'9e63b.svg'} width="163.536" height="27.887" alt="다시 찍기"/></button>
    </div>
+   {sharing&&transfer.status==='error'&&<p className="photo-share-error" role="alert">QR 연결을 준비하지 못했어요. <a href={photoUrl||undefined} download="우리바람.jpg">사진 저장</a></p>}
   </div>
  </section>;
 }

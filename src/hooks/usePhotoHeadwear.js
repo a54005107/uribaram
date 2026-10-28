@@ -2,6 +2,7 @@ import {useEffect, useRef, useState} from 'react';
 import {createHeadwearTracks} from '../motion/headwearTracks';
 import {drawHeadwear, loadHeadwearArtwork} from '../camera/drawHeadwear';
 import {FilesetResolver, PoseLandmarker} from '@mediapipe/tasks-vision';
+import {createMotionActivity} from '../motion/idleActivity';
 
 export default function usePhotoHeadwear(videoRef, canvasRef, enabled, kind) {
   const kindRef = useRef(kind); kindRef.current = kind;
@@ -11,6 +12,7 @@ export default function usePhotoHeadwear(videoRef, canvasRef, enabled, kind) {
     setStatus('loading');
     let disposed = false, model, frame, lastVideo = -1, lastInference = 0, previous = 0;
     const tracks = createHeadwearTracks(4);
+    const reportMotion=createMotionActivity('head');
     const headwearArtwork = loadHeadwearArtwork();
     const canvas = canvasRef.current, context = canvas.getContext('2d');
     const input = document.createElement('canvas'), inputContext = input.getContext('2d');
@@ -45,6 +47,7 @@ export default function usePhotoHeadwear(videoRef, canvasRef, enabled, kind) {
         context.save(); context.translate(width, 0); context.scale(-1, 1);
         context.drawImage(video, 0, 0, width, height); context.restore();
         for (const head of tracks.step(now,dt)) {
+          reportMotion(head.id,{x:head.x/width,y:head.y/height,angle:head.angle},now);
           drawHeadwear(context, video, head, kindRef.current, headwearArtwork, width, height);
         }
       }

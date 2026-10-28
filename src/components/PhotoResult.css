@@ -1,4 +1,4 @@
-.photo-result-scene{position:absolute;inset:0;background:#a3a3a3;color:#481100;overflow:hidden;font-family:var(--uribaram-font-family)}
+.photo-result-scene{position:absolute;inset:0;background:transparent;color:#481100;overflow:hidden;font-family:var(--uribaram-font-family)}
 .photo-result-stage{position:absolute;left:50%;top:50%;width:1600px;height:1000px;transform-origin:center}
 .photo-memory-card{position:absolute;left:332.478px;top:130.172px;width:935.044px;height:739.656px;background:linear-gradient(#ffe900 55.714%,#fff);transform:rotate(-6.88deg);z-index:2;transition:translate 700ms cubic-bezier(.22,1,.36,1)}
 .photo-memory-image{position:absolute;left:51.9765px;top:45px;width:831.091px;height:467.489px;object-fit:cover;background:#fff}
@@ -16,3 +16,9 @@
 .is-sharing .photo-memory-card{translate:-250px 0}.is-sharing .photo-share-panel{visibility:visible;transform:translateX(0)}
 .is-sharing .photo-share-content{opacity:1;transition-delay:250ms}
 @media(prefers-reduced-motion:reduce){.photo-memory-card,.photo-share-panel,.photo-share-content{transition:none!important}}
+.photo-share-panel{top:300px;width:380px;height:380px;min-height:0;padding:0;background:white;transform:translateX(-430px) rotate(6.5deg)}
+.is-sharing .photo-share-panel{transform:translateX(0) rotate(6.5deg)}
+.photo-share-qr,.photo-share-placeholder{width:380px;height:380px;margin:0}
+.photo-share-status{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
+.photo-share-error{position:absolute;top:925px;width:100%;text-align:center;font-size:22px;color:#481100;background:#fff9;margin:0}
+.photo-share-error a{color:inherit}

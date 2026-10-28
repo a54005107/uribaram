@@ -31,12 +31,13 @@ export function createPlayLayout(id, geometry, width, height) {
     const vertical = id === 'buk';
     const scale = Math.min(1180 / (vertical ? geometry.height : geometry.width), 920 / (vertical ? geometry.width : geometry.height)) * board.scale;
     layout.rotation = vertical ? 90 : 0;
+    layout.mirrorX = id === 'jing';
     layout.width = geometry.width * scale;
     layout.height = geometry.height * scale;
     layout.left = width / 2 - layout.width / 2;
     layout.top = height / 2 - layout.height / 2;
     layout.zones = Object.fromEntries(Object.entries(geometry.zones).map(([name, zone]) => [name, {
-      x: vertical ? (width/2 - (zone.y-.5)*layout.height)/width : (layout.left + zone.x * layout.width) / width,
+      x: vertical ? (width/2 - (zone.y-.5)*layout.height)/width : (layout.left + (layout.mirrorX ? 1-zone.x : zone.x) * layout.width) / width,
       y: vertical ? (height/2 + (zone.x-.5)*layout.width)/height : (layout.top + zone.y * layout.height) / height,
       radiusX: vertical ? zone.radiusY * layout.height / width : zone.radiusX * layout.width / width,
       radiusY: vertical ? zone.radiusX * layout.width / height : zone.radiusY * layout.height / height,

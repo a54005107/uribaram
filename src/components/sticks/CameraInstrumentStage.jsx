@@ -6,6 +6,7 @@ import {createStickSelection} from '../../motion/stickSelection';
 import InstrumentRings from './InstrumentRings';
 import FigmaJanggu from './FigmaJanggu';
 import {createInstrumentHold, isHandheld} from '../../motion/heldInstrument';
+import {createStickDisplay} from '../../motion/stickDisplay';
 
 function CameraInstrumentStage({instrument, layout, videoRef, samplesRef, enabled, onHit, debug = false, diagnosticsRef}) {
   const canvasRef = useRef(null);
@@ -16,18 +17,16 @@ function CameraInstrumentStage({instrument, layout, videoRef, samplesRef, enable
   useEffect(() => {
     const canvas = canvasRef.current, context = canvas.getContext('2d');
     const engine = createStickHitEngine();
+    const display = {left: createStickDisplay(), right: createStickDisplay()};
     const selection = createStickSelection(instrument.id === 'janggu');
     const handheld = isHandheld(instrument.id);
     const hold = createInstrumentHold(instrument.id);
-    const hitHold = createInstrumentHold(instrument.id);
     holderRef.current.style.transform = '';
     const artwork = figmaSticks[instrument.id];
     const images = Object.fromEntries(Object.entries(artwork).map(([side, item]) => [side,
       item.urls.map(url => { const image = new Image(); image.src = url; return image; })]));
     const {viewportWidth: width, viewportHeight: height} = layout;
-    // Avoid an 8K transparent canvas on high-DPI displays. Coordinates and hit
-    // regions stay in CSS pixels; only the drawing buffer has a pixel budget.
-    const ratio = Math.min(window.devicePixelRatio || 1, 2, 2560 / width, 1440 / height);
+    const ratio = Math.min(window.devicePixelRatio || 1, 2);
     canvas.width = Math.round(width * ratio); canvas.height = Math.round(height * ratio);
     context.setTransform(ratio, 0, 0, ratio, 0, 0);
     let frame, ripples = [], renderWindow = performance.now(), renderFrames = 0;
@@ -43,6 +42,7 @@ function CameraInstrumentStage({instrument, layout, videoRef, samplesRef, enable
       const video = videoRef.current;
       if (!enabled || document.hidden || video?.readyState < 2 || video?.paused || !video?.videoWidth) {
         engine.reset(); selection.reset(); ripples = [];
+        display.left.reset(); display.right.reset();
       } else {
         const samples = samplesRef.current.sample(now);
         const projected = Object.fromEntries(['left', 'right'].map(side => [side,
@@ -53,17 +53,16 @@ function CameraInstrumentStage({instrument, layout, videoRef, samplesRef, enable
         // Drawing interpolates between frames; collision still consumes each accepted
         // measurement once, not the interpolation frames or recovery movement.
         const hitSamples = samplesRef.current.sampleForHit(now);
-        const hitHeld = handheld ? hitHold.update(layout,
-          projectStick(hitSamples.left, video.videoWidth, video.videoHeight, layout, instrument.id), now) : null;
         const hitSticks = Object.fromEntries(['left', 'right'].map(side => [side, sticks[side]
           ? projectStick(hitSamples[side], video.videoWidth, video.videoHeight, layout, instrument.id) : null]));
-        if (hitHeld && !hitHeld.playable) engine.reset();
-        else engine.update(hitHeld?.layout || layout, hitSticks, hit => {
+        if (held && !held.playable) engine.reset();
+        else engine.update(held?.layout || layout, hitSticks, hit => {
           callbackRef.current(hit);
           instrumentRef.current?.strike(held ? {...hit,point:{x:hit.point.x-held.x/width,y:hit.point.y-held.y/height}} : hit);
           ripples.push({point: hit.point, start: now});
         });
-        for (const stick of Object.values(sticks)) {
+        for (const side of ['left', 'right']) {
+          const stick = display[side].sample(sticks[side]?.stale ? sticks[side] : hitSticks[side], now);
           if (debug && stick) {
             const raw = stick.debugPoints.rawGrip;
             context.strokeStyle = '#ff5ff7'; context.lineWidth = 1;

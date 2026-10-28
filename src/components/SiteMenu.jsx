@@ -1,7 +1,7 @@
 import React, {useEffect, useRef, useState} from 'react';
 import {useLocation, useNavigate} from 'react-router-dom';
 import './SiteMenu.css';
-import {MenuHome, MenuShare} from './MenuArtwork';
+import {MenuHome, MenuShare, MenuStory} from './MenuArtwork';
 
 function MenuPhoto(){return <img src="/assets/figma/oct23/menu-photo.svg" width="167" height="292" alt=""/>;}
 
@@ -30,8 +30,8 @@ export default function SiteMenu() {
   };
   return <nav ref={root} className={`site-menu${pathname === "/story" ? " site-menu--story" : ""}`} aria-label="전체 메뉴">
     <div className="site-menu-clip" id="site-menu-flags" inert={!open || undefined}>
-      {[[MenuHome, '처음으로', () => navigate('/')], [MenuShare, '소문내기', share], [MenuPhoto, '얼쑤 한컷', () => navigate('/photo')]].map(([Artwork, label, action], index) =>
-        <button key={label} className={open ? 'is-open' : ''} style={{'--hide-distance': [-133.56, -104.11, -85.82][index] + '%'}}
+      {[[MenuHome, '처음으로', () => navigate('/')], [MenuStory, '풍물이야기', () => navigate('/story')], [MenuShare, '소문내기', share], [MenuPhoto, '얼쑤 한컷', () => navigate('/photo')]].map(([Artwork, label, action], index) =>
+        <button key={label} className={open ? 'is-open' : ''} style={{'--hide-distance': [-133.56, -104.11, -85.82, -100][index] + '%'}}
           aria-label={label} onClick={() => { setOpen(false); action(); }}>
           <Artwork/>
         </button>)}
