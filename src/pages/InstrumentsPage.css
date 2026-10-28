@@ -101,6 +101,15 @@
   .instrument-dial:not(.is-dragging) .instrument-pick:hover img { transform: scale(1.08); }
 }
 .instrument-pick:focus-visible img { transform: scale(1.08); }
+.instrument-help{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);}
+@media(min-aspect-ratio:1/1){
+ .instrument-copy{left:65.82%;top:calc(50% - 4.4961vw);}
+ .instrument-question{font-size:1.40625vw;margin-bottom:1.5996vw;}
+ .instrument-copy h1{font-size:2.5vw;margin-bottom:.78125vw;}
+ .instrument-description{font-size:1.09375vw;}
+ .instrument-pick{width:43.6285vw;height:40.4299vw;}
+ .instrument-wheel{left:-39.32vw;top:calc(50% - 42.2914vw);}
+}
 @media (prefers-reduced-motion: reduce) {
   .instrument-pick img { transition: none; }
 }

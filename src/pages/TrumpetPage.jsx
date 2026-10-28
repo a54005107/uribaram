@@ -3,7 +3,9 @@ import {useNavigate} from 'react-router-dom';
 import '../../public/assets/figma/styles/tokens.css';
 import './TrumpetPage.css';
 import './TrumpetMotion.css';
-import TrumpetArtwork from '../components/TrumpetArtwork';
+import TrumpetArtwork from '../components/TrumpetArtwork27';
+import '../components/TrumpetArtwork.css';
+import {previewInstrument, stopPreview} from '../audio/percussion';
 
 const BURST_DURATION_MS = 2470;
 const MOTION_NODE_IDS = ['2028:446', '2028:448', '2028:449', '2028:450',
@@ -36,11 +38,12 @@ export default function TrumpetPage() {
   const busy = useRef(false);
   const timer = useRef(null);
 
-  useEffect(() => () => clearTimeout(timer.current), []);
+  useEffect(() => () => {clearTimeout(timer.current);stopPreview();}, []);
 
   const blow = () => {
     if (busy.current || count >= 3) return;
     busy.current = true;
+    void previewInstrument('trumpet');
     const next = count + 1;
     setCount(next);
     setBurst(TRUMPET_DECORATIONS.map(([asset, x, y, width, height, rotation = 0]) => ({
@@ -61,7 +64,7 @@ export default function TrumpetPage() {
   useEffect(() => {
     const observer = new ResizeObserver(([entry]) => {
       const {width, height} = entry.contentRect;
-      setScale(Math.min(height / 1260, width / 1260));
+      setScale(Math.min(height / 1440, width / 2560));
     });
     observer.observe(pageRef.current);
     return () => observer.disconnect();
@@ -77,8 +80,7 @@ export default function TrumpetPage() {
         title="나발을 세 번 눌러주세요"
         onClick={blow}
       >
-        {count ? <div key={count} className={`trumpet-prototype-art${burst ? ' trumpet-rings-active' : ''}`} aria-hidden="true"><TrumpetArtwork/></div>
-          : <img src="/assets/figma/instruments/trumpet/screen/original.svg" width="1633" height="1572" alt="" draggable="false" />}
+        <div key={count} className={burst ? 'trumpet-rings-active' : ''} aria-hidden="true"><TrumpetArtwork/></div>
       </button>
       {burst && <div className="trumpet-sparkles" key={count} aria-hidden="true">
         {burst.map((particle, index) => <i key={index} className="trumpet-sparkle"
@@ -92,5 +94,6 @@ export default function TrumpetPage() {
         </i>) }
       </div>}
     </div>
+    <button className="trumpet-back" aria-label="이전 페이지" onClick={()=>navigate('/title')}><img src="/assets/figma/ending/back.svg" width="25" height="37" alt=""/></button>
   </main>;
 }

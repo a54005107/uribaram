@@ -28,6 +28,11 @@
   transform-origin: top center;
 }
 .waiting-pole { position: absolute; left: 839px; top: -187px; pointer-events: none; }
+.waiting-artwork{width:2560px;height:1440px;}
+.waiting-pole{left:1004.918px;top:-164px;}
+.waiting-artwork .waiting-flag{left:1032.918px;top:169px;}
+.waiting-artwork .waiting-wind-rig{transform-origin:1222.313px 51.563px;}
+.waiting-instruction{left:5%;top:5.55556%;font-size:clamp(12px,1.944444svh,28px);}
 .waiting-wind-rig {
   position: absolute;
   inset: 0;

@@ -1,5 +1,6 @@
 import React, {useCallback, useEffect, useRef, useState} from 'react';
 import {useNavigate} from 'react-router-dom';
+import {previewInstrument, stopPreview, unlockAudio, loadInstrument} from '../audio/percussion';
 import '../../public/assets/figma/styles/tokens.css';
 import './InstrumentsPage.css';
 
@@ -24,6 +25,8 @@ export default function InstrumentsPage() {
   const gesture = useRef(null);
   const suppressClick = useRef(false);
   const instrument = instruments[index];
+  useEffect(() => { void loadInstrument(instrument.id).catch(() => {}); }, [instrument.id]);
+  useEffect(() => stopPreview, []);
   const move = useCallback(step => setPosition(current => current + step), []);
   const jumpTo = target => setPosition(current => {
     const forward = wrapIndex(target - wrapIndex(current));
@@ -31,6 +34,8 @@ export default function InstrumentsPage() {
   });
   const choose = id => {
     if (suppressClick.current) return;
+    stopPreview();
+    void unlockAudio().catch(() => {});
     sessionStorage.setItem('uribaram-instrument', id);
     navigate(`/camera?instrument=${id}`);
   };
@@ -99,6 +104,8 @@ export default function InstrumentsPage() {
         {instruments.map((item, itemIndex) => <div key={item.id} className="instrument-slot" style={{'--slot-angle': `${-itemIndex * 72}deg`}}>
           <button className="instrument-pick" type="button" aria-label={`${item.name} 선택하고 연주하기`}
             tabIndex={itemIndex === index ? 0 : -1} onClick={() => choose(item.id)}
+            onPointerEnter={() => previewInstrument(item.id)} onPointerLeave={stopPreview}
+            onFocus={() => previewInstrument(item.id)} onBlur={stopPreview}
             onKeyDown={event => { if (event.key === 'Enter' || event.key === ' ') suppressClick.current = false; }}>
             <img src={instrumentImage(item.id)} alt={item.name} draggable="false" />
           </button>

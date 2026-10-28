@@ -1,4 +1,4 @@
-﻿import React, {useEffect, useMemo, useRef, useState} from 'react';
+﻿import React, {useCallback, useEffect, useMemo, useRef, useState} from 'react';
 import {useNavigate, useSearchParams} from 'react-router-dom';
 import {useCamera} from '../camera/CameraProvider';
 import useHandTracking from '../hooks/useHandTracking';
@@ -31,6 +31,9 @@ function CameraPlay({instrument, debug}) {
   const streamKey = useMemo(() => ({stream, retry}), [stream, retry]);
   const hands = useHandTracking(videoRef, ready, undefined, streamKey, debug);
   const sound = usePercussionAudio(instrument.id);
+  const strikeRef = useRef(sound.strike);
+  strikeRef.current = sound.strike;
+  const onHit = useCallback(hit => { strikeRef.current(hit); sceneRef.current?.strike(hit); }, []);
   const layout = useMemo(() => createPlayLayout(instrument.id, geometry[instrument.id], viewport.width, viewport.height), [instrument.id, viewport]);
   const board = playArtboard(viewport.width, viewport.height);
   const boardStyle = {'--board-left': `${board.left}px`, '--board-top': `${board.top}px`, '--board-scale': board.scale};
@@ -65,6 +68,7 @@ function CameraPlay({instrument, debug}) {
   const reconnect = () => { setPlaybackError(''); void start(); };
   const hasGrip = Object.values(hands.sticks || {}).some(stick => stick.grip.grabbed && !stick.stale);
   const trackingMessage = hands.status === 'loading' ? '손 움직임을 준비하고 있어요…'
+    : ['kkwaenggwari','sogo','jing'].includes(instrument.id) ? '왼손을 쥐어 악기를 잡고 오른손의 채 끝으로 연주해 주세요'
     : hasGrip ? (instrument.id === 'janggu' ? '양손의 채 끝으로 장구를 치면 소리가 나요' : '채 하나의 윗부분 끝으로 악기를 치면 소리가 나요')
     : hands.status === 'tracking' ? (instrument.id === 'janggu' ? '주먹을 쥐면 채가 나타나요. 손을 펴면 놓을 수 있어요' : '한 손을 쥐면 채가 나타나요. 손을 펴면 다른 손으로 잡을 수 있어요')
     : instrument.id === 'janggu' ? '양손이 보이도록 한 걸음 물러서 주세요' : '연주할 손이 카메라에 보이도록 한 걸음 물러서 주세요';
@@ -82,13 +86,13 @@ function CameraPlay({instrument, debug}) {
     <header className="play-design-board play-navigation" style={boardStyle}>
       <nav aria-label="연주할 악기">
         {instruments.map((item, index) => <button key={item.id} type="button" className="play-pennant"
-          style={{'--pennant-left': `${2240 * [.0482, .1147, .1813, .2478, .3143][index]}px`}}
+          style={{'--pennant-left': `${84.21 + index * 167}px`}}
           aria-label={`${item.name} 연주`} aria-pressed={item.id === instrument.id} onClick={() => choose(item.id)}>
           <img className="play-pennant-rest" src={`/assets/figma/oct23/${flags[index]}.svg`} alt="" draggable="false"/>
           <img className="play-pennant-hover" src={`/assets/figma/oct23/${hoverFlags[index]}.svg`} alt="" draggable="false"/>
         </button>)}
       </nav>
-      <button type="button" className="play-pennant" aria-label="마치기" style={{'--pennant-left': `${2240 * .8799}px`}} onClick={() => navigate('/ending')}>
+      <button type="button" className="play-pennant" aria-label="마치기" style={{'--pennant-left': '2294.024px'}} onClick={() => navigate('/ending')}>
         <img className="play-pennant-rest" src="/assets/figma/oct23/3b2f6.svg" alt="" draggable="false"/>
         <img className="play-pennant-hover" src="/assets/figma/oct23/2497-4349.svg" alt="" draggable="false"/>
       </button>
@@ -96,7 +100,7 @@ function CameraPlay({instrument, debug}) {
     <CameraInstrumentStage instrument={instrument} layout={layout} videoRef={videoRef} samplesRef={hands.samplesRef}
       debug={debug} diagnosticsRef={hands.diagnosticsRef}
       enabled={ready && (hands.status === 'tracking' || hands.status === 'searching')}
-      onHit={hit => { sound.strike(hit); sceneRef.current?.strike(hit); }} />
+      onHit={onHit} />
     {(!ready || hands.status === 'error') && <section className="camera-play-notice" role={status === 'error' || playbackError || hands.status === 'error' ? 'alert' : 'status'}>
       <p>{error || playbackError || (hands.status === 'error' ? '손 움직임 인식을 시작하지 못했습니다.' : '카메라를 연결하고 있어요. 카메라 사용을 허용해 주세요.')}</p>
       {(status === 'error' || playbackError) && <button type="button" disabled={status === 'loading'} onClick={reconnect}>카메라 다시 연결</button>}

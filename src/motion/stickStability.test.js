@@ -21,6 +21,18 @@ const deviation = values => {
 };
 const prime = tracker => { for (let t = 0; t <= 495; t += 33) trackStick(tracker, hand(), 'right', t, .95, 1); };
 
+test('fast movement reaches the filtered pose within a display frame without shortening reacquisition', () => {
+  const tracker=createStickTracker();prime(tracker);
+  sampleStick(tracker,495);
+  trackStick(tracker,hand(.42),'right',528,.95,1);
+  const visible=sampleStick(tracker,544);
+  assert.ok(Math.abs(visible.anchor.x-tracker.output.anchor.x)<1e-10);
+  markStickMissing(tracker,550);
+  trackStick(tracker,hand(.4),'right',561,.95,1);
+  assert.equal(tracker.transition.duration,config.reacquireBlendMs);
+  assert.equal(sampleStick(tracker,577).stale,true);
+});
+
 test('One Euro uses real milliseconds converted to seconds and ignores duplicate / older frames', () => {
   const filter = new OneEuroFilter({minCutoff: 1.2, beta: 0, dCutoff: 1});
   filter.filter(0, 100);

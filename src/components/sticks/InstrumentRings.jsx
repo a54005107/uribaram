@@ -1,37 +1,28 @@
 import React, {forwardRef, useEffect, useImperativeHandle, useRef} from 'react';
 import layers from '../../config/playInstrumentLayers.json';
-import {ringWave} from '../../motion/ringWave';
+import {createRingWaveAnimator} from '../../motion/ringWaveAnimator';
 
 const InstrumentRings = forwardRef(function InstrumentRings({instrument, layout}, ref) {
-  const elements = useRef([]), animations = useRef([]);
+  const elements = useRef([]), animator = useRef(null);
   const source = layers[instrument.id];
   const [vx, vy, width, height] = source.viewBox;
   const scale = layout.width / (Math.max(...source.parts.map(p => p.bounds.x + p.bounds.width)) - source.x);
-  const cancel = () => { animations.current.forEach(animation => animation.cancel()); animations.current = []; };
-  useEffect(() => cancel, [instrument.id, layout]);
+  useEffect(() => {
+    animator.current=createRingWaveAnimator(source.parts.map((part,index)=>({...part,element:elements.current[index]})).filter(part=>part.ring),Math.max(layout.width,layout.height)/scale,scale);
+    return()=>animator.current?.dispose();
+  },[source,layout,scale]);
   useImperativeHandle(ref, () => ({strike(hit) {
-    cancel();
     const zone = layout.zones[hit.side];
     const point = hit.point || zone;
-    const origin = {x: source.x + (point.x * layout.viewportWidth - layout.left) / scale,
-      y: source.y + (point.y * layout.viewportHeight - layout.top) / scale};
-    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    source.parts.forEach((part, index) => {
-      const element = elements.current[index];
-      if (!part.ring || !element) return;
-      const wave = ringWave(part.bounds, origin, Math.max(layout.width, layout.height) / scale, hit.strength);
-      const transform = amount => `translate(${wave.x * scale * amount}px, ${wave.y * scale * amount}px) scale(${1 + (wave.scale - 1) * amount})`;
-      animations.current.push(element.animate(reduced ? [{opacity: 1}, {opacity: .7}, {opacity: 1}] : [
-        {transform: transform(0), offset: 0},
-        {transform: transform(1), offset: .22},
-        {transform: transform(-.38), offset: .5},
-        {transform: transform(.14), offset: .73},
-        {transform: transform(0), offset: 1},
-      ], {duration: reduced ? 160 : 560, delay: reduced ? 0 : wave.delay, easing: 'ease-in-out'}));
-    });
+    const px = point.x * layout.viewportWidth - layout.left - layout.width/2;
+    const py = point.y * layout.viewportHeight - layout.top - layout.height/2;
+    const angle = -(layout.rotation || 0) * Math.PI/180;
+    const origin = {x: source.x + (px*Math.cos(angle)-py*Math.sin(angle)+layout.width/2) / scale,
+      y: source.y + (px*Math.sin(angle)+py*Math.cos(angle)+layout.height/2) / scale};
+    animator.current?.strike(origin,hit.strength);
   }}), [source, layout, scale]);
   return <div className="camera-play-instrument instrument-rings" role="img" aria-label={instrument.name}
-    style={{left: layout.left, top: layout.top, width: layout.width, height: layout.height}}>
+    style={{left: layout.left, top: layout.top, width: layout.width, height: layout.height, transform:`rotate(${layout.rotation || 0}deg)`}}>
     {source.parts.map((part, index) => <img key={part.id} ref={element => { elements.current[index] = element; }}
       src={part.file} alt="" draggable="false" style={{position: 'absolute', maxWidth: 'none',
         left: (vx - source.x) * scale, top: (vy - source.y) * scale, width: width * scale, height: height * scale,

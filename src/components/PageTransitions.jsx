@@ -85,14 +85,23 @@ export default function PageTransitions({children}) {
       [current, outgoing].forEach((container, index) => {
         const page = container.querySelector('main');
         if (!page) return;
-        Array.from(page.children).forEach(layer => contentLayers.push({layer, index}));
+        Array.from(page.children).forEach(layer => {
+          // The pole extends beyond the artboard. Move its entire overflow past
+          // the viewport, rather than leaving the lower tip on the next screen.
+          let distance = current.clientHeight;
+          if (index === 1) {
+            const bounds = [layer, ...layer.querySelectorAll('img, canvas, button')].map(node => node.getBoundingClientRect());
+            distance = Math.max(distance, ...bounds.map(rect => direction.current > 0 ? rect.bottom : current.clientHeight - rect.top)) + 2;
+          }
+          contentLayers.push({layer, index, distance});
+        });
       });
       outgoing.querySelector('main').style.background = 'transparent';
     }
     const animations = flagLoading ? [] : contentSlide
-      ? contentLayers.map(({layer, index}) => layer.animate(index === 0
+      ? contentLayers.map(({layer, index, distance}) => layer.animate(index === 0
         ? [{translate: `0 ${direction.current * current.clientHeight}px`}, {translate: '0 0'}]
-        : [{translate: '0 0'}, {translate: `0 ${-direction.current * current.clientHeight}px`}], options))
+        : [{translate: '0 0'}, {translate: `0 ${-direction.current * distance}px`}], options))
       : playLoading || playEntry
       ? [outgoing.animate([
         {opacity: 1}, {opacity: 1, offset: .15}, {opacity: 0},
@@ -118,8 +127,8 @@ export default function PageTransitions({children}) {
         ], flagOptions)));
       };
       // Figma 2028:168 -> 2028:3066; these are artboard-local distances.
-      move('.flag-input-pole, .flag-input-cloth, .flag-wish-art', -113.667, 1498);
-      move('.flag-prompt, .flag-wishes, .flag-colors', 0, 2190.141);
+      move('.flag-input-pole, .flag-input-cloth, .flag-wish-art, .flag-tassel', -113.667, 1700);
+      move('.flag-prompt, .flag-wishes, .flag-hint, .flag-color-arrow', 0, 2190.141);
       move('.flag-submit', 0, 2090);
       const scale = Math.min(current.clientWidth / 2240, current.clientHeight / 1260);
       const message = current.querySelector('.loading-message');

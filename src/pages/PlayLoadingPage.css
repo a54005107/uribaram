@@ -15,3 +15,12 @@
   .play-loading-stage { width: 2240px; }
   .play-loading-page { background: linear-gradient(180deg, #ffe900 15%, #fff 90%); }
 }
+
+/* 27-inch Figma artboard, uniformly fitted at every viewport size. */
+.play-loading-stage{width:2560px;height:1440px;}
+.play-loading-pole{left:1492.80698162322px;top:-35.77164391278086px;width:422.7700367535605px;height:1611.4792878255619px;}
+.play-loading-cloth{left:1381.8742236121705px;top:278.7570457218624px;width:542.7475527756593px;height:993.6539085562753px;}
+.play-loading-writing{left:1554.593608564793px;top:422.51681217947396px;width:199.61278287041435px;height:657.8943756410522px;}
+.play-loading-writing{transform:rotate(4.59deg);}.play-loading-letters img{width:100%;height:100%;transform:none;object-fit:fill;}
+.play-loading-caption{left:524.932px;top:711.8px;}
+.play-loading-back{position:absolute;left:103px;top:70px;border:0;padding:0;background:none;cursor:pointer;}

@@ -19,15 +19,15 @@ export default function Home() {
     const observer = new ResizeObserver(([entry]) => {
       const {width, height} = entry.contentRect;
       // Scale the original artwork as one unit; leave room for it on narrow screens.
-      const scale = Math.min(height / 1260, width / 760);
-      setLayout({scale, top: height - 1260 * scale});
+      const scale = Math.min(height / 1440, width / 2560);
+      setLayout({scale, top: (height - 1440 * scale)/2});
     });
     observer.observe(pageRef.current);
     return () => observer.disconnect();
   }, []);
   return <main ref={pageRef} className="waiting-page">
     <h1 className="waiting-sr-only">우리바람</h1>
-    <p className="waiting-instruction">마우스를 좌우로 흔들어 바람을 일으켜 보세요</p>
+    <p className="waiting-instruction">마우스를 움직여 바람을 일으켜 보세요</p>
     <div className="waiting-artwork" style={{top: layout.top, transform: `translateX(-50%) scale(${layout.scale})`}}>
       {[1, 4, 5].map(part => <img key={part} className="waiting-pole"
         src={`/assets/figma/flag/pole/waiting-screen/parts/pole-segment-00${part}-brown.svg`}

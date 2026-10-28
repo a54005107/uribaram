@@ -7,12 +7,14 @@ export const STICK_CONFIG = {
 export const FILTER_CONFIG = {
   // dCutoff 2 preserves rapid strike reversals better than the initial 1 Hz.
   grip: {minCutoff: 1.2, beta: .04, dCutoff: 2},
-  fastGripBeta: .10,
+  fastGripBeta: .14,
   rotation: {minCutoff: 1.2, beta: 1.6, dCutoff: 2},
+  fastRotationBeta: 2.8,
 };
 
-export const TRACKING_CONFIG = {inferenceIntervalMs: 30, inferenceMaxDimension: 640,
+export const TRACKING_CONFIG = {inferenceIntervalMs: 30, inferenceMaxDimension: 480,
   lostTrackingGraceMs: 100, settleMs: 350, reacquireBlendMs: 80, renderBlendMs: 24,
+  fastRenderBlendMs: 8,
   // Visual persistence is independent of the stricter stale/hit cutoff.
   visualHoldMs: 250,
   // Fixed reference units make beta independent of video resolution / viewport.

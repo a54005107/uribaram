@@ -17,6 +17,14 @@
 .camera-setup-page button:disabled, .camera-setup-page select:disabled { opacity: .5; cursor: not-allowed; }
 .camera-setup-page :is(button,select):focus-visible { outline: 3px solid #481100; outline-offset: 5px; }
 .camera-setup-start:not(:disabled):hover { text-decoration: underline; text-underline-offset: 8px; }
+.camera-setup-content{width:2560px;height:1440px;}
+.camera-setup-heading h1{top:255.6px;}.camera-setup-heading p{top:329.16px;}
+.camera-setup-preview{left:900.2725px;top:459px;background:#481100;}
+.camera-setup-status{background:#481100;color:#fffef2;}
+.camera-setup-controls{left:900.2725px;top:947.98px;}
+.camera-setup-device-row{grid-template-columns:600.088px 132px;gap:27.367px;}
+.camera-setup-device-row select,.camera-setup-device-row button{border-radius:30px;background:#481100;color:#fffef2;}
+.camera-setup-start{top:1125px;}
 @media (max-width: 600px) {
   .camera-setup-page { overflow-y: auto; }
   .camera-setup-content { position: relative; left: auto; top: auto; width: calc(100% - 40px); height: auto; margin: 120px auto 40px; transform: none; }
@@ -31,3 +39,6 @@
   .camera-setup-help { font-size: 14px; }
   .camera-setup-start { position: static; display: block; transform: none; margin: 48px auto 0; font-size: 32px; }
 }
+
+.camera-setup-back{left:4.0234%;top:4.8611%;font-size:28px;padding:0;}
+.camera-setup-back .play-assistive-status{position:absolute;width:1px;height:1px;clip-path:inset(50%);overflow:hidden;white-space:nowrap;}

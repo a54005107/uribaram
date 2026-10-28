@@ -5,21 +5,21 @@
   position: absolute;
   left: 50%;
   top: 50%;
-  width: 2240px;
-  height: 1260px;
+  width: 2560px;
+  height: 1440px;
   transform-origin: center;
   pointer-events: none;
 }
 .title-content h1 {
   position: absolute;
-  left: 682px;
-  top: 453px;
+  left: 842px;
+  top: 543px;
   margin: 0;
 }
 .title-tagline {
   position: absolute;
   left: 50%;
-  top: 354px;
+  top: 444px;
   transform: translateX(-50%);
   margin: 0;
   font-family: var(--uribaram-font-family);
