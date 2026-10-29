@@ -21,7 +21,7 @@ export default function EndingPage() {
       <div className="ending-flag">
       <img className="ending-pole" src="/assets/figma/ending/pole.svg" width="425.793" height="1523.72" alt=""/>
       <img className="ending-cloth" src="/assets/figma/ending/cloth.svg" width="579.833" height="1061.12" alt=""/>
-      <FlagWord className="ending-word-art"/>
+      <FlagWord className="ending-word-art" centered/>
       </div>
       <section className="ending-copy">
         <h1>우리 바람,소리 타고 저 멀리.<br/>한바탕 함께 울려보았나요?</h1>

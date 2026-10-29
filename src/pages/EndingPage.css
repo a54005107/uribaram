@@ -41,7 +41,7 @@
 .ending-board{width:2560px;height:1440px;}
 .ending-pole{left:734.976px;top:-63.072px;}
 .ending-cloth{left:622.08px;top:276.048px;}
-.ending-word-art{left:798.5px;top:410.83px;}
+.ending-word-art{position:absolute;left:911.405px;top:782.621px;transform:translate(-50%,-50%);}
 .ending-copy{left:1425.92px;top:650.16px;}
 .ending-replay{display:block;margin-top:34px;border:0;background:none;padding:0;width:143.733px;height:24.506px;cursor:pointer;}
 .ending-replay img{position:static;display:block;}

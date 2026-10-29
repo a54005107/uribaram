@@ -18,12 +18,14 @@
 .flag-form{width:2560px;height:1440px;}
 .flag-input-pole{left:1520.296px;top:53.14px;}
 .flag-input-cloth{left:1405.696px;top:239px;}
-.flag-wish-art{left:1582.116px;top:373.79px;}
+.flag-wish-art{left:1695.021px;top:745.573px;transform:translate(-50%,-50%);}
 .flag-prompt{top:160.69px;}
-.flag-hint{position:absolute;left:128px;top:1158.89px;margin:0;font-size:22px;line-height:1.5;}
-.flag-wishes{left:131px;top:1220.32px;display:grid;grid-template-columns:repeat(5,146.137px);gap:14.45px 10px;}
+.flag-hint{position:absolute;left:138px;top:1158.890625px;margin:0;font-size:22px;font-weight:400;line-height:1.5;letter-spacing:0;white-space:nowrap;}
+.flag-wishes{left:131px;top:1220.324097px;display:grid;grid-template-columns:repeat(5,146.136719px);gap:14.445179px 10px;}
+.flag-wishes button{position:relative;}
+.flag-wish-label{position:absolute;display:block;background:currentColor;mask-repeat:no-repeat;mask-size:100% 100%;pointer-events:none;}
 .flag-wishes button{width:146.137px;height:46.615px;min-height:0;writing-mode:horizontal-tb;background:url('/assets/figma/oct28/a796e.svg') center/contain no-repeat;font-size:32px;line-height:1.03;letter-spacing:-1px;}
-.flag-wishes button[aria-pressed=true],.flag-wishes button:hover{color:#481100;background-color:#ffeb36;border-radius:30px;text-shadow:none;}
+.flag-wishes button[aria-pressed=true],.flag-wishes button:hover{color:#fff;background-color:#481100;border-radius:30px;text-shadow:none;}
 .flag-color-arrow{position:absolute;top:731.12px;width:52px;height:54px;border:0;padding:0;background:none;display:grid;place-items:center;}
 .flag-color-arrow img{max-width:none;}
 .flag-color-prev{left:1300.974px;}.flag-color-prev img{transform:rotate(-90deg);}

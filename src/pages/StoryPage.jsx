@@ -668,7 +668,7 @@ function Component16({className}) {
  return <div className={className} data-node-id="2728:2349">
   {files.map((file,i)=><img key={file} className={'story-place-photo '+(i===slide?'is-active':'')} src={assetPathPrefix+'/'+file} alt={['마당밟이','판굿','진주삼천포농악 놀이','길놀이','성주굿'][i]}/>)}
   <div className="story-place-shade"/>
-  <div className="story-place-dots" role="group" aria-label="장소 사진">{files.map((file,i)=><button key={file} onClick={()=>setSlide(i)} aria-label={(i+1)+'번째 사진'} aria-pressed={i===slide}>✦</button>)}</div>
+  <div className="story-place-dots" role="group" aria-label="장소 사진">{files.map((file,i)=><button key={file} onClick={()=>setSlide(i)} aria-label={(i+1)+'번째 사진'} aria-pressed={i===slide}><span aria-hidden="true" className="story-pagination-star"/></button>)}</div>
   <button className="story-place-next" onClick={()=>setSlide((slide+1)%files.length)} aria-label="다음 장소 사진"><img src={img4} alt=""/></button>
  </div>;
 }

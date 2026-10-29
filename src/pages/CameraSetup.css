@@ -40,5 +40,7 @@
   .camera-setup-start { position: static; display: block; transform: none; margin: 48px auto 0; font-size: 32px; }
 }
 
-.camera-setup-back{left:4.0234%;top:4.8611%;font-size:28px;padding:0;}
+.camera-setup-back{left:103px;top:70px;width:25px;height:37px;padding:0;}
+.camera-setup-back img{display:block;width:100%;height:100%;}
+@media(max-width:600px){.camera-setup-back{left:0;top:-70px;}}
 .camera-setup-back .play-assistive-status{position:absolute;width:1px;height:1px;clip-path:inset(50%);overflow:hidden;white-space:nowrap;}

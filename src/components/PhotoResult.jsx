@@ -3,7 +3,7 @@ import './PhotoResult.css';
 const assets='/assets/figma/oct28/';
 export default function PhotoResult({photoUrl,sharing,qr,transfer,onShare,onRetake,onClose}) {
  const ref=useRef(null),[scale,setScale]=useState(1);
- useEffect(()=>{const observer=new ResizeObserver(([{contentRect:r}])=>setScale(Math.min(r.width/2200,r.height/1100)));
+ useEffect(()=>{const observer=new ResizeObserver(([{contentRect:r}])=>setScale(Math.min(r.width/2560,r.height/1440)));
   observer.observe(ref.current);return()=>observer.disconnect();},[]);
  const message=transfer.message||{connecting:'QR 연결 준비 중…',ready:'5분 안에 QR을 스캔해 주세요. 받을 때까지 이 화면을 열어 두세요.',sending:'사진을 보내고 있어요…',sent:'전송 완료! 사진을 휴대폰에 저장해 주세요.',expired:'QR이 만료됐어요. 닫은 뒤 다시 열어 주세요.',closed:'연결이 종료됐어요. 닫은 뒤 다시 열어 주세요.',error:'사진을 보내지 못했어요. 사진 저장을 이용해 주세요.'}[transfer.status]||'';
  return <section ref={ref} className="photo-result-scene" aria-label="촬영한 사진">
