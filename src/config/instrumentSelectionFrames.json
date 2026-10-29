@@ -1,0 +1,217 @@
+[
+  {
+    "id": "2854:4529",
+    "nodes": [
+      {
+        "id": "2854:4539",
+        "name": "소고",
+        "x": 0,
+        "y": 646.5933591723442,
+        "width": 268,
+        "height": 794,
+        "rotation": 137.25750866729516,
+        "src": "/assets/figma/selection-exact/2854-4539.svg"
+      },
+      {
+        "id": "2854:4540",
+        "name": "북",
+        "x": 0,
+        "y": 713.986328125,
+        "width": 1131,
+        "height": 727,
+        "rotation": -50.292564599784626,
+        "src": "/assets/figma/selection-exact/2854-4540.svg"
+      },
+      {
+        "id": "2854:4541",
+        "name": "꽹과리",
+        "x": 482.9765625,
+        "y": 143.83697605133057,
+        "width": 1117,
+        "height": 1035,
+        "rotation": 8.784172274701238,
+        "src": "/assets/figma/selection-exact/2854-4541.svg"
+      },
+      {
+        "id": "2854:4543",
+        "name": "장구",
+        "x": 0,
+        "y": 0,
+        "width": 572,
+        "height": 663,
+        "rotation": 166.1713261338231,
+        "src": "/assets/figma/selection-exact/2854-4543.svg"
+      }
+    ]
+  },
+  {
+    "id": "2854:4547",
+    "nodes": [
+      {
+        "id": "2892:5939",
+        "name": "소고",
+        "x": 0,
+        "y": 0,
+        "width": 227,
+        "height": 779,
+        "rotation": 38.20022192042228,
+        "src": "/assets/figma/selection-exact/2892-5939.svg"
+      },
+      {
+        "id": "2892:5941",
+        "name": "꽹과리",
+        "x": 0,
+        "y": 1133.2756534749642,
+        "width": 432,
+        "height": 307,
+        "rotation": -90.27311447217164,
+        "src": "/assets/figma/selection-exact/2892-5941.svg"
+      },
+      {
+        "id": "2892:5942",
+        "name": "징",
+        "x": 0,
+        "y": 0,
+        "width": 1060,
+        "height": 641,
+        "rotation": 67.11403938695022,
+        "src": "/assets/figma/selection-exact/2892-5942.svg"
+      },
+      {
+        "id": "2892:5943",
+        "name": "장구",
+        "x": 93.7421875,
+        "y": 9.413524069605046,
+        "width": 1520,
+        "height": 1359,
+        "rotation": 67.11403938695022,
+        "src": "/assets/figma/selection-exact/2892-5943.svg"
+      }
+    ]
+  },
+  {
+    "id": "2854:4581",
+    "nodes": [
+      {
+        "id": "2892:6104",
+        "name": "소고",
+        "x": 0,
+        "y": 0,
+        "width": 1019,
+        "height": 649,
+        "rotation": -24.649920399663543,
+        "src": "/assets/figma/selection-exact/2892-6104.svg"
+      },
+      {
+        "id": "2892:6105",
+        "name": "북",
+        "x": 0,
+        "y": 0,
+        "width": 237,
+        "height": 870,
+        "rotation": 147.80000633325668,
+        "src": "/assets/figma/selection-exact/2892-6105.svg"
+      },
+      {
+        "id": "2892:6107",
+        "name": "징",
+        "x": 329.015625,
+        "y": 220.9385889172554,
+        "width": 1227,
+        "height": 972,
+        "rotation": 4.263897066864405,
+        "src": "/assets/figma/selection-exact/2892-6107.svg"
+      },
+      {
+        "id": "2892:6108",
+        "name": "장구",
+        "x": 0,
+        "y": 775.0321901193965,
+        "width": 984,
+        "height": 665,
+        "rotation": 4.263897066864405,
+        "src": "/assets/figma/selection-exact/2892-6108.svg"
+      }
+    ]
+  },
+  {
+    "id": "2854:4598",
+    "nodes": [
+      {
+        "id": "2892:6236",
+        "name": "소고",
+        "x": 353.772305727005,
+        "y": 221.65625,
+        "width": 991,
+        "height": 988,
+        "rotation": -87.66414527391268,
+        "src": "/assets/figma/selection-exact/2892-6236.svg"
+      },
+      {
+        "id": "2892:6237",
+        "name": "북",
+        "x": 0,
+        "y": 0,
+        "width": 833,
+        "height": 600,
+        "rotation": 84.78578145900755,
+        "src": "/assets/figma/selection-exact/2892-6237.svg"
+      },
+      {
+        "id": "2892:6239",
+        "name": "징",
+        "x": 0,
+        "y": 793.943359375,
+        "width": 1169,
+        "height": 647,
+        "rotation": -58.75032780738474,
+        "src": "/assets/figma/selection-exact/2892-6239.svg"
+      },
+      {
+        "id": "2892:6240",
+        "name": "장구",
+        "x": 0,
+        "y": 696.705078125,
+        "width": 403,
+        "height": 744,
+        "rotation": -58.75032780738474,
+        "src": "/assets/figma/selection-exact/2892-6240.svg"
+      }
+    ]
+  },
+  {
+    "id": "2854:4615",
+    "nodes": [
+      {
+        "id": "2892:6368",
+        "name": "소고",
+        "x": 0,
+        "y": 824.0477110743523,
+        "width": 1037,
+        "height": 616,
+        "rotation": -153.65115807893645,
+        "src": "/assets/figma/selection-exact/2892-6368.svg"
+      },
+      {
+        "id": "2892:6369",
+        "name": "북",
+        "x": 153.98046875,
+        "y": 88.33872628211975,
+        "width": 1260,
+        "height": 1228,
+        "rotation": 18.798768653983778,
+        "src": "/assets/figma/selection-exact/2892-6369.svg"
+      },
+      {
+        "id": "2892:6370",
+        "name": "꽹과리",
+        "x": 0,
+        "y": 0,
+        "width": 840,
+        "height": 466,
+        "rotation": 77.87550552846965,
+        "src": "/assets/figma/selection-exact/2892-6370.svg"
+      }
+    ]
+  }
+]

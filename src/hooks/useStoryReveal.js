@@ -35,9 +35,18 @@ export default function useStoryReveal(ref) {
         el.dataset.revealed=String(visible);el.style.opacity=visible?'':'0';}
     };
     reset();candidates.forEach(el=>observer.observe(el));reduced.addEventListener('change',reset);
+    // At the end of the page, the observer's inset must not hide the footer.
+    // Use the same reveal animation, including its existing timing and easing.
+    const revealFooter=()=>{
+      if(root.scrollTop+root.clientHeight<root.scrollHeight-2)return;
+      const bounds=root.getBoundingClientRect();
+      for(const el of candidates){const rect=el.getBoundingClientRect();
+        if(rect.top<bounds.bottom&&rect.bottom>bounds.top)reveal(el);}
+    };
+    root.addEventListener('scroll',revealFooter,{passive:true});
     const focus=event=>{const el=candidates.find(el=>el.contains(event.target));if(el)reveal(el);};
     root.addEventListener('focusin',focus);
-    return()=>{observer.disconnect();reduced.removeEventListener('change',reset);root.removeEventListener('focusin',focus);
+    return()=>{observer.disconnect();reduced.removeEventListener('change',reset);root.removeEventListener('focusin',focus);root.removeEventListener('scroll',revealFooter);
       animations.forEach(list=>list.forEach(a=>a.cancel()));candidates.forEach(el=>{el.style.opacity='';delete el.dataset.revealed;});};
   },[ref]);
 }

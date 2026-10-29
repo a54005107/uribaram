@@ -6,25 +6,27 @@ export default function ExperienceCursor() {
   useEffect(() => {
     const element = ref.current;
     const media = matchMedia('(hover: hover) and (pointer: fine)');
+    const updateHover = target => {
+      const control = target instanceof Element && target.closest('button, a[href], input, select, textarea, label, summary, [role="button"], [role="link"], [contenteditable="true"], [data-cursor="pointer"]');
+      element.classList.toggle('is-interactive', Boolean(control && !control.matches(':disabled') && !control.closest('[inert], [aria-disabled="true"]')));
+    };
     const move = event => {
       if (!media.matches || event.pointerType === 'touch') return;
       document.documentElement.classList.add('experience-cursor-active');
       element.hidden = false;
+      updateHover(event.target);
       element.style.transform = `translate3d(${event.clientX}px,${event.clientY}px,0)`;
     };
-    const down = event => { move(event); element.classList.add('is-pressed'); };
-    const up = () => element.classList.remove('is-pressed');
-    const hide = () => { up(); element.hidden = true; document.documentElement.classList.remove('experience-cursor-active'); };
+    const over = event => updateHover(event.target);
+    const hide = () => { element.classList.remove('is-interactive'); element.hidden = true; document.documentElement.classList.remove('experience-cursor-active'); };
     window.addEventListener('pointermove',move);
-    window.addEventListener('pointerdown',down);
-    window.addEventListener('pointerup',up);
+    window.addEventListener('pointerover',over);
     window.addEventListener('pointercancel',hide);
     window.addEventListener('blur',hide);
     document.documentElement.addEventListener('pointerleave',hide);
     media.addEventListener('change',hide);
     return () => {
-      window.removeEventListener('pointermove',move); window.removeEventListener('pointerdown',down);
-      window.removeEventListener('pointerup',up); window.removeEventListener('pointercancel',hide);
+      window.removeEventListener('pointermove',move); window.removeEventListener('pointerover',over); window.removeEventListener('pointercancel',hide);
       window.removeEventListener('blur',hide); document.documentElement.removeEventListener('pointerleave',hide);
       media.removeEventListener('change',hide); hide();
     };

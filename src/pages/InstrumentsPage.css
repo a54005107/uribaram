@@ -94,7 +94,7 @@
 .instrument-dial.is-dragging, .instrument-dial.is-dragging button { cursor: grabbing; }
 .instrument-wheel { position: absolute; width: 80vw; height: 80vw; left: -40vw; top: calc(50% - 40vw); transform: rotate(var(--wheel-angle)); transition: transform 720ms cubic-bezier(.22, .85, .25, 1.08); }
 .instrument-slot { position: absolute; left: 50%; top: 50%; transform: rotate(var(--slot-angle)) translateX(40vw); }
-.instrument-pick { position: absolute; width: 54vw; height: 52vw; padding: 0; border: 0; background: none; transform: translate(-50%, -50%) rotate(calc(0deg - var(--slot-angle) - var(--wheel-angle))); transition: transform 720ms cubic-bezier(.22, .85, .25, 1.08); cursor: grab; }
+.instrument-pick { position: absolute; width: 54vw; height: 52vw; padding: 0; border: 0; background: none; transform: translate(-50%, -50%) rotate(calc(0deg - var(--slot-angle) - var(--wheel-angle))) translate(var(--preview-x,0px),var(--preview-y,0px)); transition: transform 720ms cubic-bezier(.22, .85, .25, 1.08); cursor: grab; }
 .instrument-pick img { width: 100%; height: 100%; object-fit: contain; pointer-events: none; }
 .instrument-pick img { transition: transform 260ms ease-out; transform-origin: center; }
 @media (hover: hover) {
@@ -103,12 +103,19 @@
 .instrument-pick:focus-visible img { transform: scale(1.08); }
 .instrument-help{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);}
 @media(min-aspect-ratio:1/1){
- .instrument-copy{left:65.82%;top:calc(50% - 4.4961vw);}
- .instrument-question{font-size:1.40625vw;margin-bottom:1.5996vw;}
- .instrument-copy h1{font-size:2.5vw;margin-bottom:.78125vw;}
- .instrument-description{font-size:1.09375vw;}
- .instrument-pick{width:43.6285vw;height:40.4299vw;}
- .instrument-wheel{left:-39.32vw;top:calc(50% - 42.2914vw);}
+ .instrument-copy{left:65.82%;top:calc(50% - (4.4961 * var(--instrument-unit)));}
+ .instrument-question{font-size:calc(1.40625 * var(--instrument-unit));margin-bottom:calc(1.5996 * var(--instrument-unit));}
+ .instrument-copy h1{font-size:calc(2.5 * var(--instrument-unit));margin-bottom:calc(.78125 * var(--instrument-unit));}
+ .instrument-description{font-size:calc(1.09375 * var(--instrument-unit));}
+ .instrument-pick{width:calc(38.3931 * var(--instrument-unit));height:calc(35.5783 * var(--instrument-unit));}
+ /* Reference: active artwork centered at 30% of the frame; adjacent slots remain visible. */
+ .instrument-wheel{width:calc(64 * var(--instrument-unit));height:calc(64 * var(--instrument-unit));left:calc(-34 * var(--instrument-unit));top:calc(50% - (33 * var(--instrument-unit)));}
+ .instrument-slot{transform:rotate(var(--slot-angle)) translateX(calc(32 * var(--instrument-unit)));}
+ .instrument-pick.is-below{--preview-x:calc(10 * var(--instrument-unit));--preview-y:calc(2 * var(--instrument-unit));}
+ /* Tall beaters must also clear the selected instrument, not just the drum body. */
+ .instrument-pick--buk.is-below{--preview-y:calc(8 * var(--instrument-unit));}
+ .instrument-pick--kkwaenggwari.is-below{--preview-y:calc(6 * var(--instrument-unit));}
+ .instrument-pick--jing.is-below{--preview-y:calc(4 * var(--instrument-unit));}
 }
 @media (prefers-reduced-motion: reduce) {
   .instrument-pick img { transition: none; }
@@ -125,3 +132,52 @@
   .instrument-wheel, .instrument-pick { transition: none; }
 }
 
+
+/* Use individual selection-frame sizes without changing the artwork proportions. */
+.instrument-pick--janggu{width:calc(54vw * 1.29);height:calc(52vw * 1.39);}
+.instrument-pick--jing{width:calc(54vw * 1.20);height:calc(52vw * 1.10);}
+.instrument-pick--buk{width:calc(54vw * 1.23);height:calc(52vw * 1.34);}
+@media(min-aspect-ratio:1/1){
+ .instrument-pick--janggu{width:calc(49.5 * var(--instrument-unit));height:calc(49.485 * var(--instrument-unit));}
+ .instrument-pick--jing{width:calc(46.1406 * var(--instrument-unit));height:calc(39.1706 * var(--instrument-unit));}
+ .instrument-pick--buk{width:calc(47.326 * var(--instrument-unit));height:calc(47.5504 * var(--instrument-unit));}
+ .instrument-pick--sogo{width:calc(35.3217 * var(--instrument-unit));height:calc(32.732 * var(--instrument-unit));}
+}
+@media(max-aspect-ratio:1/1){
+ .instrument-pick--janggu{width:98.04vw;height:105.64vw;}
+ .instrument-pick--jing{width:91.2vw;height:83.6vw;}
+ .instrument-pick--buk{width:93.48vw;height:101.84vw;}
+}
+
+.instrument-stage{display:contents;}
+@media(min-aspect-ratio:1/1){
+ .instruments-page{--instrument-unit:min(1vw,1.7777778dvh);--scene-height:calc(56.25 * var(--instrument-unit));}
+ /* Let artwork extend through the fitted frame's margins to the viewport edge. */
+ .instrument-dial{overflow:visible;}
+ .instrument-stage{display:block;position:absolute;left:50%;top:50%;width:calc(100 * var(--instrument-unit));height:calc(56.25 * var(--instrument-unit));transform:translate(-50%,-50%);}
+ .instrument-navigation button{width:calc(3.392857 * var(--instrument-unit));height:calc(2.65625 * var(--instrument-unit));}
+ .instrument-navigation span{transform:scale(calc(100 * var(--instrument-unit) / 2240px));}
+}
+
+/* Figma frames 12?16: original exported layers, in artboard coordinates. */
+.instrument-exact-board,.instrument-back{display:none;}
+@media(min-aspect-ratio:1/1){
+ .instrument-wheel{display:none;}
+ .instrument-exact-board{display:block;position:absolute;left:0;top:0;width:2560px;height:1440px;transform:scale(calc(100 * var(--instrument-unit) / 2560px));transform-origin:0 0;}
+ .instrument-orbit{position:absolute;left:-600px;top:720px;width:0;height:0;transition:transform 720ms cubic-bezier(.22,.85,.25,1.08);}
+ .instrument-exact-pick{position:absolute;left:0;top:0;display:block;padding:0;border:0;background:none;pointer-events:auto;transform-origin:center;transition:transform 720ms cubic-bezier(.22,.85,.25,1.08);}
+ .instrument-exact-pick img{display:block;width:100%;height:100%;max-width:none;pointer-events:none;transition:transform 260ms ease-out;transform-origin:center;}
+ .instrument-dial.is-dragging .instrument-orbit,.instrument-dial.is-dragging .instrument-exact-pick{transition:none;}
+ .instrument-exact-pick:focus-visible{outline:3px dashed #481100;outline-offset:4px;}
+ .instrument-exact-pick:focus-visible img{transform:scale(1.08);}
+ .instrument-back{display:block;position:absolute;left:calc(4.0234375 * var(--instrument-unit));top:calc(2.734375 * var(--instrument-unit));width:calc(.9765625 * var(--instrument-unit));height:calc(1.4453125 * var(--instrument-unit));border:0;background:none;padding:0;}
+ .instrument-back img{display:block;width:100%;height:100%;}
+ .instrument-navigation{right:calc(4.2 * var(--instrument-unit));top:51.2%;}
+ .instrument-navigation span{transform:scale(calc(100 * var(--instrument-unit) / 2240px));}
+}
+@media(prefers-reduced-motion:reduce){.instrument-exact-scene{transition:none;}}
+
+@media(min-aspect-ratio:1/1){body:has(.instruments-page) .site-menu-toggle{top:44px;}}
+
+@media(hover:hover){.instrument-dial:not(.is-dragging) .instrument-exact-pick:hover img{transform:scale(1.08);}}
+@media(prefers-reduced-motion:reduce){.instrument-orbit,.instrument-exact-pick,.instrument-exact-pick img{transition:none;}}

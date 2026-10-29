@@ -294,8 +294,8 @@
 .story-place-photo.is-active{opacity:1;}
 .story-place-shade{position:absolute;inset:0;background:linear-gradient(90deg,#0005 13%,transparent 55%);}
 .story-place-dots{position:absolute;left:50%;bottom:86px;transform:translateX(-50%);display:flex;gap:28px;}
-.story-artwork .story-place-dots button{color:#fff;font-size:30px;cursor:pointer;}
-.story-place-dots button[aria-pressed=true]{scale:1.5;}
+.story-artwork .story-place-dots button{color:var(--pink,#ff6cf1);opacity:.5;width:44px;height:44px;display:grid;place-items:center;cursor:pointer;}
+.story-artwork .story-place-dots button[aria-pressed=true]{scale:1.5;opacity:1;}
 .story-artwork .story-place-next{position:absolute;left:2347px;top:754px;width:37px;height:55px;cursor:pointer;}
 .story-place-next img{width:100%;height:100%;}
 .story-footer-art{position:relative;width:167px;height:292px;}
@@ -470,3 +470,5 @@
 .story-artwork .story-oct28-100{transform:skewX(-4.25deg)}
 .story-artwork .story-oct28-103{transform:skewX(-7.28deg)}
 .story-artwork .story-oct28-105{transform:skewX(-7.28deg)}
+
+.story-pagination-star{display:block;width:38px;height:38px;background:currentColor;mask:url("/assets/figma/feedback/menu.svg") center/contain no-repeat;}

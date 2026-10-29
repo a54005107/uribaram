@@ -3,6 +3,7 @@ import {useNavigate} from 'react-router-dom';
 import {previewInstrument, stopPreview, unlockAudio, loadInstrument} from '../audio/percussion';
 import '../../public/assets/figma/styles/tokens.css';
 import './InstrumentsPage.css';
+import selectionFrames from '../config/instrumentSelectionTransforms.json';
 
 export const instruments = [
   {id: 'kkwaenggwari', name: '꽹과리', role: '쇠치배', lines: ['판을 이끄는 우두머리,', '날카롭게 가락을 맺고 풉니다'], color: '#ff5ff7'},
@@ -80,6 +81,7 @@ export default function InstrumentsPage() {
 
   return <main ref={pageRef} className={`page instruments-page instruments-page--${instrument.id}`}
     style={{'--instrument-color': instrument.color}} aria-label="악기 둘러보기" aria-describedby="instrument-help">
+    <div className="instrument-stage">
     <div className={`instrument-artwork instrument-dial${dragging ? ' is-dragging' : ''}`}
       onPointerDown={event => {
         if (!event.isPrimary || event.button !== 0) return;
@@ -100,9 +102,37 @@ export default function InstrumentsPage() {
       }}
       onPointerUp={event => finishDrag(event)} onPointerCancel={event => finishDrag(event, true)}
       onLostPointerCapture={event => finishDrag(event, true)}>
+      <div className="instrument-exact-board">
+        {instruments.map((item, itemIndex) => {
+          const node = selectionFrames[index].nodes.find(node => node.name === item.name);
+          const initial = selectionFrames[0].nodes.find(node => node.name === item.name);
+          const pose = n => {
+            const [[a,c,e],[b,d,f]] = n.matrix;
+            const x = e + a*n.width/2 + c*n.height/2;
+            const y = f + b*n.width/2 + d*n.height/2;
+            return {angle:Math.atan2(y-720,x+600)*180/Math.PI, radius:Math.hypot(x+600,y-720), rotation:Math.atan2(b,a)*180/Math.PI};
+          };
+          const target = pose(node), start = pose(initial);
+          const unwrap = (angle, reference) => angle + 360*Math.round((reference-angle)/360);
+          const angle = unwrap(target.angle,start.angle+position*72);
+          const rotation = unwrap(target.rotation,start.rotation+position*72);
+          return <div className="instrument-orbit" key={item.id}
+            style={{transform:`rotate(${angle+dragAngle}deg) translateX(${target.radius}px)`}}>
+            <button type="button" className="instrument-exact-pick"
+              style={{width:node.width,height:node.height,transform:`translate(-50%,-50%) rotate(${rotation-angle}deg)`}}
+              tabIndex={itemIndex === index ? 0 : -1}
+              aria-label={`${item.name} 선택하고 연주하기`} onClick={() => choose(item.id)}
+              onPointerEnter={() => previewInstrument(item.id)} onPointerLeave={stopPreview}
+              onFocus={() => previewInstrument(item.id)} onBlur={stopPreview}
+              onKeyDown={event => { if (event.key === 'Enter' || event.key === ' ') suppressClick.current = false; }}>
+              <img src={`/assets/figma/selection-exact/component-${node.componentId.replace(':','-')}.svg`} alt={item.name} draggable="false"/>
+            </button>
+          </div>;
+        })}
+      </div>
       <div className="instrument-wheel" style={{'--wheel-angle': `${position * 72 + dragAngle}deg`}}>
         {instruments.map((item, itemIndex) => <div key={item.id} className="instrument-slot" style={{'--slot-angle': `${-itemIndex * 72}deg`}}>
-          <button className="instrument-pick" type="button" aria-label={`${item.name} 선택하고 연주하기`}
+          <button className={`instrument-pick instrument-pick--${item.id}${wrapIndex(index - itemIndex) === 1 ? ' is-below' : ''}`} type="button" aria-label={`${item.name} 선택하고 연주하기`}
             tabIndex={itemIndex === index ? 0 : -1} onClick={() => choose(item.id)}
             onPointerEnter={() => previewInstrument(item.id)} onPointerLeave={stopPreview}
             onFocus={() => previewInstrument(item.id)} onBlur={stopPreview}
@@ -112,6 +142,7 @@ export default function InstrumentsPage() {
         </div>)}
       </div>
     </div>
+    <button className="instrument-back" type="button" aria-label="이전 페이지" onClick={() => navigate('/flag')}><img src="/assets/figma/ending/back.svg" width="25" height="37" alt=""/></button>
     <section className="instrument-copy" aria-live="polite" aria-atomic="true">
       <p className="instrument-question">어떤 역할로 연주해 볼까요?</p>
       <h1>{instrument.role}<span className="instrument-sr-only"> — {instrument.name}</span></h1>
@@ -125,5 +156,6 @@ export default function InstrumentsPage() {
       </button>)}
     </nav>
     <p id="instrument-help" className="instrument-help">스크롤 · ↑ ↓ · 위아래 드래그로 전환 / 악기를 클릭해 연주하기</p>
+    </div>
   </main>;
 }
