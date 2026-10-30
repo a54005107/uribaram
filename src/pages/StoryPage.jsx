@@ -3,6 +3,7 @@ import {useNavigate} from 'react-router-dom';
 import StoryHeader from '../components/StoryHeader';
 import useStoryScroll from '../hooks/useStoryScroll';
 import useStoryReveal from '../hooks/useStoryReveal';
+import {useOriginalImage} from '../utils/imageFallback';
 import './StoryPage.css';
 function ArtworkImage({src}) {
  const ref=useRef(null);
@@ -1118,7 +1119,7 @@ export default function StoryPage(){
   previousScale.current=scale;
  },[scale]);
  const snapStops=storyStops.slice(0,-1).flatMap((top,i)=>{const end=storyStops[i+1];const count=Math.max(1,Math.ceil((end-top)/1440));return Array.from({length:count},(_,j)=>Math.min(top+j*(end-top)/count,15807-1440));});
- return <div ref={shellRef} className="story-shell"><main ref={ref} className="story-page" aria-label="풍물 이야기" tabIndex={0} style={{width:2560*scale,height:1440*scale,'--story-scale':scale}}>
+ return <div ref={shellRef} className="story-shell"><main ref={ref} className="story-page" aria-label="풍물 이야기" tabIndex={0} onErrorCapture={useOriginalImage} style={{width:2560*scale,height:viewport.height,'--story-scale':scale}}>
   <StoryHeader scrollRef={ref}/>
   <div className="story-brand-anchor"><button className="story-brand" onClick={()=>navigate('/')} aria-label="우리바람 처음으로"><img src="/assets/figma/story/oct23/d4a08.svg" alt="우리바람"/></button></div>
   <div className="story-document" style={{height:15807*scale}}>
