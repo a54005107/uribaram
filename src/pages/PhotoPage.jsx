@@ -1,6 +1,7 @@
 import React, {useEffect, useRef, useState} from 'react';
 import {useNavigate} from 'react-router-dom';
 import QRCode from 'qrcode';
+import {photoIdlePolicy} from '../utils/photoIdlePolicy';
 import {useCamera} from '../camera/CameraProvider';
 import usePhotoHeadwear from '../hooks/usePhotoHeadwear';
 import {offerPhoto} from '../camera/photoTransfer';
@@ -20,6 +21,11 @@ export default function PhotoPage() {
   const [notice, setNotice] = useState(''), [photo, setPhoto] = useState(null), [photoUrl, setPhotoUrl] = useState('');
   const [transfer, setTransfer] = useState({status: 'idle'}), [sharing, setSharing] = useState(false), [qr, setQr] = useState('');
   const headStatus = usePhotoHeadwear(videoRef, canvasRef, ready && !photo, kind);
+  useEffect(() => {
+    photoIdlePolicy.set(!sharing ? 'idle' : transfer.status === 'idle' ? 'connecting'
+      : transfer.status === 'ready' && !qr ? 'preparing' : transfer.status);
+  }, [sharing, transfer.status, qr]);
+  useEffect(() => () => photoIdlePolicy.set('idle'), []);
   useEffect(() => {
     alive.current = true; void acquireRef.current();
     return () => { alive.current = false; release(); };

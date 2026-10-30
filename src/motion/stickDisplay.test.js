@@ -2,6 +2,16 @@ import {test} from 'node:test';
 import assert from 'node:assert/strict';
 import {createStickDisplay} from './stickDisplay.js';
 const pose = (timestamp, x, rotation = 0) => ({timestamp, gripX:x, gripY:.5, rotation, side:'right', grip:{grabbed:true}, tipX:x+.2});
+test('janggu display keeps moving between slower two-hand measurements without changing hits', () => {
+  const display = createStickDisplay({maxDuration:64});
+  display.sample(pose(0,.2),0);
+  const measured = Object.freeze(pose(64,.6));
+  display.sample(measured,64);
+  assert.ok(display.sample(measured,96).gripX < display.sample(measured,112).gripX);
+  assert.equal(display.sample(measured,128).gripX,.6);
+  assert.equal(measured.gripX,.6);
+  assert.equal(measured.tipX,.8);
+});
 test('display fills measurement gaps without mutating collision coordinates', () => {
   const display = createStickDisplay();
   display.sample(pose(0, .2), 0);

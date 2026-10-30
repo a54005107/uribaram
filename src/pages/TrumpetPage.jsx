@@ -80,7 +80,9 @@ export default function TrumpetPage() {
         title="나발을 세 번 눌러주세요"
         onClick={blow}
       >
-        <div key={count} className={burst ? 'trumpet-rings-active' : ''} aria-hidden="true"><TrumpetArtwork/></div>
+        {/* Keep masked artwork mounted: replacing it on every click can flash
+            while Safari rebuilds the SVG masks and measured containers. */}
+        <div className={burst ? 'trumpet-rings-active' : ''} aria-hidden="true"><TrumpetArtwork/></div>
       </button>
       {burst && <div className="trumpet-sparkles" key={count} aria-hidden="true">
         {burst.map((particle, index) => <i key={index} className="trumpet-sparkle"

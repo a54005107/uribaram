@@ -17,7 +17,10 @@ function CameraInstrumentStage({instrument, layout, videoRef, samplesRef, enable
   useEffect(() => {
     const canvas = canvasRef.current, context = canvas.getContext('2d');
     const engine = createStickHitEngine();
-    const display = {left: createStickDisplay(), right: createStickDisplay()};
+    // Two-hand tracking can deliver poses farther apart. Fill that interval
+    // visually without changing the measurements passed to the hit engine.
+    const displayOptions = {maxDuration: instrument.id === 'janggu' ? 64 : 32};
+    const display = {left: createStickDisplay(displayOptions), right: createStickDisplay(displayOptions)};
     const selection = createStickSelection(instrument.id === 'janggu');
     const handheld = isHandheld(instrument.id);
     const hold = createInstrumentHold(instrument.id);
