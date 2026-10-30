@@ -41,91 +41,91 @@ export function MenuHome() {
         <div className="menu-art-3" data-node-id="2551:2126" />
         <div className="menu-art-4" data-node-id="2551:2127" />
         <div className="menu-art-5" data-node-id="2551:2128" />
-        <div className="menu-art-6" data-node-id="2551:2133" style={{ containerType: "size" }}>
+        <div className="menu-art-6" data-node-id="2551:2133" data-art-container="" style={{ containerType: "size" }}>
           <div className="menu-art-7">
             <div className="menu-art-8">
               <img alt="" className="menu-art-9" src={imgPolygon28} />
             </div>
           </div>
         </div>
-        <div className="menu-art-10" data-node-id="2551:2134" style={{ containerType: "size" }}>
+        <div className="menu-art-10" data-node-id="2551:2134" data-art-container="" style={{ containerType: "size" }}>
           <div className="menu-art-11">
             <div className="menu-art-8">
               <img alt="" className="menu-art-9" src={imgPolygon33} />
             </div>
           </div>
         </div>
-        <div className="menu-art-12" data-node-id="2551:2135" style={{ containerType: "size" }}>
+        <div className="menu-art-12" data-node-id="2551:2135" data-art-container="" style={{ containerType: "size" }}>
           <div className="menu-art-7">
             <div className="menu-art-8">
               <img alt="" className="menu-art-9" src={imgPolygon29} />
             </div>
           </div>
         </div>
-        <div className="menu-art-13" data-node-id="2551:2136" style={{ containerType: "size" }}>
+        <div className="menu-art-13" data-node-id="2551:2136" data-art-container="" style={{ containerType: "size" }}>
           <div className="menu-art-11">
             <div className="menu-art-8">
               <img alt="" className="menu-art-9" src={imgPolygon34} />
             </div>
           </div>
         </div>
-        <div className="menu-art-14" data-node-id="2551:2137" style={{ containerType: "size" }}>
+        <div className="menu-art-14" data-node-id="2551:2137" data-art-container="" style={{ containerType: "size" }}>
           <div className="menu-art-7">
             <div className="menu-art-8">
               <img alt="" className="menu-art-9" src={imgPolygon29} />
             </div>
           </div>
         </div>
-        <div className="menu-art-15" data-node-id="2551:2138" style={{ containerType: "size" }}>
+        <div className="menu-art-15" data-node-id="2551:2138" data-art-container="" style={{ containerType: "size" }}>
           <div className="menu-art-16">
             <div className="menu-art-8">
               <img alt="" className="menu-art-9" src={imgPolygon38} />
             </div>
           </div>
         </div>
-        <div className="menu-art-17" data-node-id="2551:2139" style={{ containerType: "size" }}>
+        <div className="menu-art-17" data-node-id="2551:2139" data-art-container="" style={{ containerType: "size" }}>
           <div className="menu-art-11">
             <div className="menu-art-8">
               <img alt="" className="menu-art-9" src={imgPolygon34} />
             </div>
           </div>
         </div>
-        <div className="menu-art-18" data-node-id="2551:2140" style={{ containerType: "size" }}>
+        <div className="menu-art-18" data-node-id="2551:2140" data-art-container="" style={{ containerType: "size" }}>
           <div className="menu-art-7">
             <div className="menu-art-8">
               <img alt="" className="menu-art-9" src={imgPolygon29} />
             </div>
           </div>
         </div>
-        <div className="menu-art-19" data-node-id="2551:2141" style={{ containerType: "size" }}>
+        <div className="menu-art-19" data-node-id="2551:2141" data-art-container="" style={{ containerType: "size" }}>
           <div className="menu-art-16">
             <div className="menu-art-8">
               <img alt="" className="menu-art-9" src={imgPolygon39} />
             </div>
           </div>
         </div>
-        <div className="menu-art-20" data-node-id="2551:2142" style={{ containerType: "size" }}>
+        <div className="menu-art-20" data-node-id="2551:2142" data-art-container="" style={{ containerType: "size" }}>
           <div className="menu-art-11">
             <div className="menu-art-8">
               <img alt="" className="menu-art-9" src={imgPolygon34} />
             </div>
           </div>
         </div>
-        <div className="menu-art-21" data-node-id="2551:2143" style={{ containerType: "size" }}>
+        <div className="menu-art-21" data-node-id="2551:2143" data-art-container="" style={{ containerType: "size" }}>
           <div className="menu-art-7">
             <div className="menu-art-8">
               <img alt="" className="menu-art-9" src={imgPolygon29} />
             </div>
           </div>
         </div>
-        <div className="menu-art-22" data-node-id="2551:2144" style={{ containerType: "size" }}>
+        <div className="menu-art-22" data-node-id="2551:2144" data-art-container="" style={{ containerType: "size" }}>
           <div className="menu-art-16">
             <div className="menu-art-8">
               <img alt="" className="menu-art-9" src={imgPolygon38} />
             </div>
           </div>
         </div>
-        <div className="menu-art-23" data-node-id="2551:2145" style={{ containerType: "size" }}>
+        <div className="menu-art-23" data-node-id="2551:2145" data-art-container="" style={{ containerType: "size" }}>
           <div className="menu-art-11">
             <div className="menu-art-8">
               <img alt="" className="menu-art-9" src={imgPolygon34} />
@@ -159,105 +159,105 @@ export function MenuStory() {
         <div className="menu-art-3" data-node-id="2551:2732" />
         <div className="menu-art-4" data-node-id="2551:2733" />
         <div className="menu-art-5" data-node-id="2551:2734" />
-        <div className="menu-art-30" data-node-id="2551:2735" style={{ containerType: "size" }}>
+        <div className="menu-art-30" data-node-id="2551:2735" data-art-container="" style={{ containerType: "size" }}>
           <div className="menu-art-7">
             <div className="menu-art-8">
               <img alt="" className="menu-art-9" src={imgPolygon30} />
             </div>
           </div>
         </div>
-        <div className="menu-art-31" data-node-id="2551:2736" style={{ containerType: "size" }}>
+        <div className="menu-art-31" data-node-id="2551:2736" data-art-container="" style={{ containerType: "size" }}>
           <div className="menu-art-11">
             <div className="menu-art-8">
               <img alt="" className="menu-art-9" src={imgPolygon35} />
             </div>
           </div>
         </div>
-        <div className="menu-art-32" data-node-id="2551:2757" style={{ containerType: "size" }}>
+        <div className="menu-art-32" data-node-id="2551:2757" data-art-container="" style={{ containerType: "size" }}>
           <div className="menu-art-11">
             <div className="menu-art-8">
               <img alt="" className="menu-art-9" src={imgPolygon35} />
             </div>
           </div>
         </div>
-        <div className="menu-art-33" data-node-id="2551:2737" style={{ containerType: "size" }}>
+        <div className="menu-art-33" data-node-id="2551:2737" data-art-container="" style={{ containerType: "size" }}>
           <div className="menu-art-7">
             <div className="menu-art-8">
               <img alt="" className="menu-art-9" src={imgPolygon31} />
             </div>
           </div>
         </div>
-        <div className="menu-art-34" data-node-id="2551:2738" style={{ containerType: "size" }}>
+        <div className="menu-art-34" data-node-id="2551:2738" data-art-container="" style={{ containerType: "size" }}>
           <div className="menu-art-11">
             <div className="menu-art-8">
               <img alt="" className="menu-art-9" src={imgPolygon36} />
             </div>
           </div>
         </div>
-        <div className="menu-art-35" data-node-id="2551:2739" style={{ containerType: "size" }}>
+        <div className="menu-art-35" data-node-id="2551:2739" data-art-container="" style={{ containerType: "size" }}>
           <div className="menu-art-7">
             <div className="menu-art-8">
               <img alt="" className="menu-art-9" src={imgPolygon31} />
             </div>
           </div>
         </div>
-        <div className="menu-art-36" data-node-id="2551:2740" style={{ containerType: "size" }}>
+        <div className="menu-art-36" data-node-id="2551:2740" data-art-container="" style={{ containerType: "size" }}>
           <div className="menu-art-16">
             <div className="menu-art-8">
               <img alt="" className="menu-art-9" src={imgPolygon40} />
             </div>
           </div>
         </div>
-        <div className="menu-art-37" data-node-id="2551:2741" style={{ containerType: "size" }}>
+        <div className="menu-art-37" data-node-id="2551:2741" data-art-container="" style={{ containerType: "size" }}>
           <div className="menu-art-11">
             <div className="menu-art-8">
               <img alt="" className="menu-art-9" src={imgPolygon36} />
             </div>
           </div>
         </div>
-        <div className="menu-art-38" data-node-id="2551:2742" style={{ containerType: "size" }}>
+        <div className="menu-art-38" data-node-id="2551:2742" data-art-container="" style={{ containerType: "size" }}>
           <div className="menu-art-7">
             <div className="menu-art-8">
               <img alt="" className="menu-art-9" src={imgPolygon31} />
             </div>
           </div>
         </div>
-        <div className="menu-art-39" data-node-id="2551:2743" style={{ containerType: "size" }}>
+        <div className="menu-art-39" data-node-id="2551:2743" data-art-container="" style={{ containerType: "size" }}>
           <div className="menu-art-16">
             <div className="menu-art-8">
               <img alt="" className="menu-art-9" src={imgPolygon41} />
             </div>
           </div>
         </div>
-        <div className="menu-art-40" data-node-id="2551:2744" style={{ containerType: "size" }}>
+        <div className="menu-art-40" data-node-id="2551:2744" data-art-container="" style={{ containerType: "size" }}>
           <div className="menu-art-11">
             <div className="menu-art-8">
               <img alt="" className="menu-art-9" src={imgPolygon36} />
             </div>
           </div>
         </div>
-        <div className="menu-art-41" data-node-id="2551:2745" style={{ containerType: "size" }}>
+        <div className="menu-art-41" data-node-id="2551:2745" data-art-container="" style={{ containerType: "size" }}>
           <div className="menu-art-7">
             <div className="menu-art-8">
               <img alt="" className="menu-art-9" src={imgPolygon31} />
             </div>
           </div>
         </div>
-        <div className="menu-art-42" data-node-id="2551:2756" style={{ containerType: "size" }}>
+        <div className="menu-art-42" data-node-id="2551:2756" data-art-container="" style={{ containerType: "size" }}>
           <div className="menu-art-7">
             <div className="menu-art-8">
               <img alt="" className="menu-art-9" src={imgPolygon31} />
             </div>
           </div>
         </div>
-        <div className="menu-art-43" data-node-id="2551:2746" style={{ containerType: "size" }}>
+        <div className="menu-art-43" data-node-id="2551:2746" data-art-container="" style={{ containerType: "size" }}>
           <div className="menu-art-16">
             <div className="menu-art-8">
               <img alt="" className="menu-art-9" src={imgPolygon40} />
             </div>
           </div>
         </div>
-        <div className="menu-art-44" data-node-id="2551:2747" style={{ containerType: "size" }}>
+        <div className="menu-art-44" data-node-id="2551:2747" data-art-container="" style={{ containerType: "size" }}>
           <div className="menu-art-11">
             <div className="menu-art-8">
               <img alt="" className="menu-art-9" src={imgPolygon36} />
@@ -294,91 +294,91 @@ export function MenuShare() {
         <div className="menu-art-3" data-node-id="2551:2712" />
         <div className="menu-art-4" data-node-id="2551:2713" />
         <div className="menu-art-5" data-node-id="2551:2714" />
-        <div className="menu-art-6" data-node-id="2551:2715" style={{ containerType: "size" }}>
+        <div className="menu-art-6" data-node-id="2551:2715" data-art-container="" style={{ containerType: "size" }}>
           <div className="menu-art-7">
             <div className="menu-art-8">
               <img alt="" className="menu-art-9" src={imgPolygon32} />
             </div>
           </div>
         </div>
-        <div className="menu-art-10" data-node-id="2551:2716" style={{ containerType: "size" }}>
+        <div className="menu-art-10" data-node-id="2551:2716" data-art-container="" style={{ containerType: "size" }}>
           <div className="menu-art-11">
             <div className="menu-art-8">
               <img alt="" className="menu-art-9" src={imgPolygon37} />
             </div>
           </div>
         </div>
-        <div className="menu-art-12" data-node-id="2551:2717" style={{ containerType: "size" }}>
+        <div className="menu-art-12" data-node-id="2551:2717" data-art-container="" style={{ containerType: "size" }}>
           <div className="menu-art-7">
             <div className="menu-art-8">
               <img alt="" className="menu-art-9" src={imgPolygon42} />
             </div>
           </div>
         </div>
-        <div className="menu-art-13" data-node-id="2551:2718" style={{ containerType: "size" }}>
+        <div className="menu-art-13" data-node-id="2551:2718" data-art-container="" style={{ containerType: "size" }}>
           <div className="menu-art-11">
             <div className="menu-art-8">
               <img alt="" className="menu-art-9" src={imgPolygon43} />
             </div>
           </div>
         </div>
-        <div className="menu-art-14" data-node-id="2551:2719" style={{ containerType: "size" }}>
+        <div className="menu-art-14" data-node-id="2551:2719" data-art-container="" style={{ containerType: "size" }}>
           <div className="menu-art-7">
             <div className="menu-art-8">
               <img alt="" className="menu-art-9" src={imgPolygon42} />
             </div>
           </div>
         </div>
-        <div className="menu-art-15" data-node-id="2551:2720" style={{ containerType: "size" }}>
+        <div className="menu-art-15" data-node-id="2551:2720" data-art-container="" style={{ containerType: "size" }}>
           <div className="menu-art-16">
             <div className="menu-art-8">
               <img alt="" className="menu-art-9" src={imgPolygon44} />
             </div>
           </div>
         </div>
-        <div className="menu-art-17" data-node-id="2551:2721" style={{ containerType: "size" }}>
+        <div className="menu-art-17" data-node-id="2551:2721" data-art-container="" style={{ containerType: "size" }}>
           <div className="menu-art-11">
             <div className="menu-art-8">
               <img alt="" className="menu-art-9" src={imgPolygon43} />
             </div>
           </div>
         </div>
-        <div className="menu-art-18" data-node-id="2551:2722" style={{ containerType: "size" }}>
+        <div className="menu-art-18" data-node-id="2551:2722" data-art-container="" style={{ containerType: "size" }}>
           <div className="menu-art-7">
             <div className="menu-art-8">
               <img alt="" className="menu-art-9" src={imgPolygon42} />
             </div>
           </div>
         </div>
-        <div className="menu-art-19" data-node-id="2551:2723" style={{ containerType: "size" }}>
+        <div className="menu-art-19" data-node-id="2551:2723" data-art-container="" style={{ containerType: "size" }}>
           <div className="menu-art-16">
             <div className="menu-art-8">
               <img alt="" className="menu-art-9" src={imgPolygon45} />
             </div>
           </div>
         </div>
-        <div className="menu-art-20" data-node-id="2551:2724" style={{ containerType: "size" }}>
+        <div className="menu-art-20" data-node-id="2551:2724" data-art-container="" style={{ containerType: "size" }}>
           <div className="menu-art-11">
             <div className="menu-art-8">
               <img alt="" className="menu-art-9" src={imgPolygon43} />
             </div>
           </div>
         </div>
-        <div className="menu-art-21" data-node-id="2551:2725" style={{ containerType: "size" }}>
+        <div className="menu-art-21" data-node-id="2551:2725" data-art-container="" style={{ containerType: "size" }}>
           <div className="menu-art-7">
             <div className="menu-art-8">
               <img alt="" className="menu-art-9" src={imgPolygon42} />
             </div>
           </div>
         </div>
-        <div className="menu-art-22" data-node-id="2551:2726" style={{ containerType: "size" }}>
+        <div className="menu-art-22" data-node-id="2551:2726" data-art-container="" style={{ containerType: "size" }}>
           <div className="menu-art-16">
             <div className="menu-art-8">
               <img alt="" className="menu-art-9" src={imgPolygon44} />
             </div>
           </div>
         </div>
-        <div className="menu-art-23" data-node-id="2551:2727" style={{ containerType: "size" }}>
+        <div className="menu-art-23" data-node-id="2551:2727" data-art-container="" style={{ containerType: "size" }}>
           <div className="menu-art-11">
             <div className="menu-art-8">
               <img alt="" className="menu-art-9" src={imgPolygon43} />

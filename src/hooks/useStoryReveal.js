@@ -13,8 +13,10 @@ export default function useStoryReveal(ref) {
       if(el.dataset.revealed==='true')return;
       el.dataset.revealed='true';
       if(reduced.matches){el.style.opacity='';return;}
-      const motion=el.animate([{transform:'translateY(100px)'},{transform:'translateY(0)'}],
-        {duration:950,easing:'cubic-bezier(.16,1,.3,1)',composite:'add'});
+      const baseTransform=getComputedStyle(el).transform;
+      const base=baseTransform==='none'?'':baseTransform;
+      const motion=el.animate([{transform:`${base} translateY(100px)`},{transform:base||'none'}],
+        {duration:950,easing:'cubic-bezier(.16,1,.3,1)'});
       const fade=el.animate([{opacity:0},{opacity:1}],{duration:750,easing:'ease-out'});
       el.style.opacity='1';animations.set(el,[motion,fade]);
       motion.onfinish=()=>animations.delete(el);

@@ -62,7 +62,7 @@
 .trumpet-instrument>div{flex:none;transform:rotate(11.61deg);}
 .trumpet-instrument>div>div{width:1395.502px;height:1317.605px;}
 .trumpet-instruction{left:5%;top:85.822%;font-size:clamp(14px,2.5svh,36px);}
-.trumpet-back{position:absolute;left:4.0234%;top:4.418%;border:0;padding:0;background:none;transform:scale(calc(100vw / 2560px));transform-origin:top left;}
+.trumpet-back{position:absolute;left:4.0234%;top:4.418%;border:0;padding:0;background:none;transform:scale(var(--viewport-design-scale));transform-origin:top left;}
 @media (prefers-reduced-motion: reduce) {
   .trumpet-page .trumpet-sparkle[data-node-id] { animation-name: trumpet-sparkle-fade; }
 }

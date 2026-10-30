@@ -84,28 +84,28 @@ const img1 = `${assetPathPrefix}/57548.svg`;
 export default function TrumpetArtwork27({className}) {
   return (
     <div className={className || "trumpet-new-60"} data-node-id="2158:945" data-name="나팔1">
-      <div className="trumpet-new-0" data-node-id="2028:749" style={{ containerType: "size" }}>
+      <div className="trumpet-new-0" data-node-id="2028:749" data-art-container="" style={{ containerType: "size" }}>
         <div className="trumpet-new-1">
           <div className="trumpet-new-2" data-name="Vector (Stroke)">
             <img alt="" className="trumpet-new-3" src={imgVectorStroke} />
           </div>
         </div>
       </div>
-      <div className="trumpet-new-4" data-node-id="2028:750" style={{ containerType: "size" }}>
+      <div className="trumpet-new-4" data-node-id="2028:750" data-art-container="" style={{ containerType: "size" }}>
         <div className="trumpet-new-5">
           <div className="trumpet-new-2" data-name="Vector (Stroke)">
             <img alt="" className="trumpet-new-3" src={imgVectorStroke1} />
           </div>
         </div>
       </div>
-      <div className="trumpet-new-6" data-node-id="2028:751" style={{ containerType: "size" }}>
+      <div className="trumpet-new-6" data-node-id="2028:751" data-art-container="" style={{ containerType: "size" }}>
         <div className="trumpet-new-7">
           <div className="trumpet-new-2" data-name="Vector (Stroke)">
             <img alt="" className="trumpet-new-3" src={imgVectorStroke2} />
           </div>
         </div>
       </div>
-      <div className="trumpet-new-8" data-node-id="2028:752" style={{ containerType: "size" }}>
+      <div className="trumpet-new-8" data-node-id="2028:752" data-art-container="" style={{ containerType: "size" }}>
         <div className="trumpet-new-9">
           <div className="trumpet-new-2" data-name="Vector (Stroke)">
             <img alt="" className="trumpet-new-3" src={imgVectorStroke3} />
@@ -160,112 +160,112 @@ export default function TrumpetArtwork27({className}) {
           </div>
         </div>
       </div>
-      <div className="trumpet-new-29" data-node-id="2028:804" style={{ containerType: "size" }}>
+      <div className="trumpet-new-29" data-node-id="2028:804" data-art-container="" style={{ containerType: "size" }}>
         <div className="trumpet-new-30">
           <div className="trumpet-new-2" data-name="Vector (Stroke)">
             <img alt="" className="trumpet-new-3" src={imgVectorStroke4} />
           </div>
         </div>
       </div>
-      <div className="trumpet-new-31" data-node-id="2028:805" style={{ containerType: "size" }}>
+      <div className="trumpet-new-31" data-node-id="2028:805" data-art-container="" style={{ containerType: "size" }}>
         <div className="trumpet-new-32">
           <div className="trumpet-new-2" data-name="Vector (Stroke)">
             <img alt="" className="trumpet-new-3" src={imgVectorStroke5} />
           </div>
         </div>
       </div>
-      <div className="trumpet-new-33" data-node-id="2028:806" style={{ containerType: "size" }}>
+      <div className="trumpet-new-33" data-node-id="2028:806" data-art-container="" style={{ containerType: "size" }}>
         <div className="trumpet-new-34">
           <div className="trumpet-new-2" data-name="Vector (Stroke)">
             <img alt="" className="trumpet-new-3" src={imgVectorStroke6} />
           </div>
         </div>
       </div>
-      <div className="trumpet-new-35" data-node-id="2028:807" style={{ containerType: "size" }}>
+      <div className="trumpet-new-35" data-node-id="2028:807" data-art-container="" style={{ containerType: "size" }}>
         <div className="trumpet-new-36">
           <div className="trumpet-new-2" data-name="Vector (Stroke)">
             <img alt="" className="trumpet-new-3" src={imgVectorStroke7} />
           </div>
         </div>
       </div>
-      <div className="trumpet-new-37" data-node-id="2028:808" style={{ containerType: "size" }}>
+      <div className="trumpet-new-37" data-node-id="2028:808" data-art-container="" style={{ containerType: "size" }}>
         <div className="trumpet-new-38">
           <div className="trumpet-new-2" data-name="Vector (Stroke)">
             <img alt="" className="trumpet-new-3" src={imgVectorStroke8} />
           </div>
         </div>
       </div>
-      <div className="trumpet-new-39" data-node-id="2028:809" style={{ containerType: "size" }}>
+      <div className="trumpet-new-39" data-node-id="2028:809" data-art-container="" style={{ containerType: "size" }}>
         <div className="trumpet-new-40">
           <div className="trumpet-new-2" data-name="Vector (Stroke)">
             <img alt="" className="trumpet-new-3" src={imgVectorStroke9} />
           </div>
         </div>
       </div>
-      <div className="trumpet-new-41" data-node-id="2028:810" style={{ containerType: "size" }}>
+      <div className="trumpet-new-41" data-node-id="2028:810" data-art-container="" style={{ containerType: "size" }}>
         <div className="trumpet-new-42">
           <div className="trumpet-new-2" data-name="Vector (Stroke)">
             <img alt="" className="trumpet-new-3" src={imgVectorStroke10} />
           </div>
         </div>
       </div>
-      <div className="trumpet-new-43" data-node-id="2028:811" style={{ containerType: "size" }}>
+      <div className="trumpet-new-43" data-node-id="2028:811" data-art-container="" style={{ containerType: "size" }}>
         <div className="trumpet-new-44">
           <div className="trumpet-new-2" data-name="Vector (Stroke)">
             <img alt="" className="trumpet-new-3" src={imgVectorStroke11} />
           </div>
         </div>
       </div>
-      <div className="trumpet-new-33" data-node-id="2028:812" style={{ containerType: "size" }}>
+      <div className="trumpet-new-33" data-node-id="2028:812" data-art-container="" style={{ containerType: "size" }}>
         <div className="trumpet-new-34">
           <div className="trumpet-new-2" data-name="Vector (Stroke)">
             <img alt="" className="trumpet-new-3" src={imgVectorStroke12} />
           </div>
         </div>
       </div>
-      <div className="trumpet-new-45" data-node-id="2028:813" style={{ containerType: "size" }}>
+      <div className="trumpet-new-45" data-node-id="2028:813" data-art-container="" style={{ containerType: "size" }}>
         <div className="trumpet-new-46">
           <div className="trumpet-new-2" data-name="Vector (Stroke)">
             <img alt="" className="trumpet-new-3" src={imgVectorStroke13} />
           </div>
         </div>
       </div>
-      <div className="trumpet-new-47" data-node-id="2028:814" style={{ containerType: "size" }}>
+      <div className="trumpet-new-47" data-node-id="2028:814" data-art-container="" style={{ containerType: "size" }}>
         <div className="trumpet-new-48">
           <div className="trumpet-new-2" data-name="Vector (Stroke)">
             <img alt="" className="trumpet-new-3" src={imgVectorStroke14} />
           </div>
         </div>
       </div>
-      <div className="trumpet-new-49" data-node-id="2028:815" style={{ containerType: "size" }}>
+      <div className="trumpet-new-49" data-node-id="2028:815" data-art-container="" style={{ containerType: "size" }}>
         <div className="trumpet-new-50">
           <div className="trumpet-new-2" data-name="Vector (Stroke)">
             <img alt="" className="trumpet-new-3" src={imgVectorStroke15} />
           </div>
         </div>
       </div>
-      <div className="trumpet-new-51" data-node-id="2028:816" style={{ containerType: "size" }}>
+      <div className="trumpet-new-51" data-node-id="2028:816" data-art-container="" style={{ containerType: "size" }}>
         <div className="trumpet-new-52">
           <div className="trumpet-new-2" data-name="Vector (Stroke)">
             <img alt="" className="trumpet-new-3" src={imgVectorStroke16} />
           </div>
         </div>
       </div>
-      <div className="trumpet-new-53" data-node-id="2028:817" style={{ containerType: "size" }}>
+      <div className="trumpet-new-53" data-node-id="2028:817" data-art-container="" style={{ containerType: "size" }}>
         <div className="trumpet-new-54">
           <div className="trumpet-new-2" data-name="Vector (Stroke)">
             <img alt="" className="trumpet-new-3" src={imgVectorStroke17} />
           </div>
         </div>
       </div>
-      <div className="trumpet-new-55" data-node-id="2028:818" style={{ containerType: "size" }}>
+      <div className="trumpet-new-55" data-node-id="2028:818" data-art-container="" style={{ containerType: "size" }}>
         <div className="trumpet-new-56">
           <div className="trumpet-new-2" data-name="Vector (Stroke)">
             <img alt="" className="trumpet-new-3" src={imgVectorStroke18} />
           </div>
         </div>
       </div>
-      <div className="trumpet-new-57" data-node-id="2028:819" style={{ containerType: "size" }}>
+      <div className="trumpet-new-57" data-node-id="2028:819" data-art-container="" style={{ containerType: "size" }}>
         <div className="trumpet-new-58">
           <div className="trumpet-new-2" data-name="Vector (Stroke)">
             <img alt="" className="trumpet-new-3" src={imgVectorStroke19} />
