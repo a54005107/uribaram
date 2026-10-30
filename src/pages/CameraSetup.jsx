@@ -34,8 +34,8 @@ export default function CameraSetup() {
     setPlaybackError('');
     if (!stream) return;
     let cancelled = false;
-    attach(videoRef.current).then(() => {
-      if (!cancelled) setPreviewReady(true);
+    attach(videoRef.current).then(playing => {
+      if (!cancelled) setPreviewReady(playing);
     }).catch(() => {
       if (!cancelled) setPlaybackError('미리보기를 재생하지 못했어요. 다시 연결해 주세요.');
     });

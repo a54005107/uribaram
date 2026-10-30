@@ -1,6 +1,7 @@
 import React, {useEffect, useRef, useState} from 'react';
 import {useNavigate} from 'react-router-dom';
 import QRCode from 'qrcode';
+import {photoIdlePolicy} from '../utils/photoIdlePolicy';
 import {useCamera} from '../camera/CameraProvider';
 import usePhotoHeadwear from '../hooks/usePhotoHeadwear';
 import {offerPhoto} from '../camera/photoTransfer';
@@ -21,12 +22,17 @@ export default function PhotoPage() {
   const [transfer, setTransfer] = useState({status: 'idle'}), [sharing, setSharing] = useState(false), [qr, setQr] = useState('');
   const headStatus = usePhotoHeadwear(videoRef, canvasRef, ready && !photo, kind);
   useEffect(() => {
+    photoIdlePolicy.set(!sharing ? 'idle' : transfer.status === 'idle' ? 'connecting'
+      : transfer.status === 'ready' && !qr ? 'preparing' : transfer.status);
+  }, [sharing, transfer.status, qr]);
+  useEffect(() => () => photoIdlePolicy.set('idle'), []);
+  useEffect(() => {
     alive.current = true; void acquireRef.current();
     return () => { alive.current = false; release(); };
   }, [release]);
   useEffect(() => {
     let cancelled = false; setReady(false);
-    if (stream) attach(videoRef.current).then(() => { if (!cancelled) setReady(true); })
+    if (stream) attach(videoRef.current).then(playing => { if (!cancelled) setReady(playing); })
       .catch(() => { if (!cancelled) setNotice('영상을 재생하지 못했어요. 다시 연결해 주세요.'); });
     return () => { cancelled = true; };
   }, [stream, attach]);

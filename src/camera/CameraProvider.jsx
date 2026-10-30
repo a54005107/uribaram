@@ -1,5 +1,6 @@
 import React, {createContext, useCallback, useContext, useEffect, useMemo, useRef, useState} from 'react';
 import {cameraErrorMessage, createCameraCapture} from './cameraCapture';
+import {attachVideo} from './attachVideo';
 
 const CameraContext = createContext(null);
 
@@ -85,7 +86,7 @@ export function CameraProvider({children}) {
 
   const release = useCallback(() => {
     clearTimeout(releaseTimerRef.current);
-    releaseTimerRef.current = setTimeout(stop, 0);
+    releaseTimerRef.current = setTimeout(stop, 1000);
   }, [stop]);
 
   const selectDevice = useCallback(async (nextDeviceId, restart = true) => {
@@ -97,10 +98,8 @@ export function CameraProvider({children}) {
   }, [start]);
 
   const attach = useCallback(async (videoElement) => {
-    if (!videoElement || !streamRef.current) return false;
-    if (videoElement.srcObject !== streamRef.current) videoElement.srcObject = streamRef.current;
-    await videoElement.play();
-    return true;
+    const current = streamRef.current;
+    return attachVideo(videoElement, current, () => streamRef.current === current);
   }, []);
 
   useEffect(() => {

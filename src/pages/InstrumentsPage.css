@@ -64,7 +64,7 @@
   padding: 0;
   background: transparent;
 }
-.instrument-navigation span { width: 38px; height: 36px; transform: scale(clamp(.45, calc(100vw / 2240px), 1)); }
+.instrument-navigation span { width: 38px; height: 36px; transform: scale(var(--viewport-indicator-scale)); }
 .instrument-navigation img { display: block; transform: rotate(180deg); opacity: .2; transition: opacity 180ms ease; }
 .instrument-navigation button[aria-current] img,
 .instrument-navigation button:hover img { opacity: 1; }
@@ -151,19 +151,19 @@
 
 .instrument-stage{display:contents;}
 @media(min-aspect-ratio:1/1){
- .instruments-page{--instrument-unit:min(1vw,1.7777778dvh);--scene-height:calc(56.25 * var(--instrument-unit));}
+ .instruments-page{--instrument-unit:var(--design-unit);--scene-height:var(--design-frame-height);}
  /* Let artwork extend through the fitted frame's margins to the viewport edge. */
  .instrument-dial{overflow:visible;}
- .instrument-stage{display:block;position:absolute;left:50%;top:50%;width:calc(100 * var(--instrument-unit));height:calc(56.25 * var(--instrument-unit));transform:translate(-50%,-50%);}
+ .instrument-stage{display:block;position:absolute;left:50%;top:50%;width:var(--design-frame-width);height:var(--design-frame-height);transform:translate(-50%,-50%);}
  .instrument-navigation button{width:calc(3.392857 * var(--instrument-unit));height:calc(2.65625 * var(--instrument-unit));}
- .instrument-navigation span{transform:scale(calc(100 * var(--instrument-unit) / 2240px));}
+ .instrument-navigation span{transform:scale(var(--design-indicator-scale));}
 }
 
 /* Figma frames 12?16: original exported layers, in artboard coordinates. */
 .instrument-exact-board,.instrument-back{display:none;}
 @media(min-aspect-ratio:1/1){
  .instrument-wheel{display:none;}
- .instrument-exact-board{display:block;position:absolute;left:0;top:0;width:2560px;height:1440px;transform:scale(calc(100 * var(--instrument-unit) / 2560px));transform-origin:0 0;}
+ .instrument-exact-board{display:block;position:absolute;left:0;top:0;width:2560px;height:1440px;transform:scale(var(--design-fit));transform-origin:0 0;}
  .instrument-orbit{position:absolute;left:-600px;top:720px;width:0;height:0;transition:transform 720ms cubic-bezier(.22,.85,.25,1.08);}
  .instrument-exact-pick{position:absolute;left:0;top:0;display:block;padding:0;border:0;background:none;pointer-events:auto;transform-origin:center;transition:transform 720ms cubic-bezier(.22,.85,.25,1.08);}
  .instrument-exact-pick img{display:block;width:100%;height:100%;max-width:none;pointer-events:none;transition:transform 260ms ease-out;transform-origin:center;}
@@ -173,11 +173,9 @@
  .instrument-back{display:block;position:absolute;left:calc(4.0234375 * var(--instrument-unit));top:calc(2.734375 * var(--instrument-unit));width:calc(.9765625 * var(--instrument-unit));height:calc(1.4453125 * var(--instrument-unit));border:0;background:none;padding:0;}
  .instrument-back img{display:block;width:100%;height:100%;}
  .instrument-navigation{right:calc(4.2 * var(--instrument-unit));top:51.2%;}
- .instrument-navigation span{transform:scale(calc(100 * var(--instrument-unit) / 2240px));}
+ .instrument-navigation span{transform:scale(var(--design-indicator-scale));}
 }
 @media(prefers-reduced-motion:reduce){.instrument-exact-scene{transition:none;}}
-
-@media(min-aspect-ratio:1/1){body:has(.instruments-page) .site-menu-toggle{top:44px;}}
 
 @media(hover:hover){.instrument-dial:not(.is-dragging) .instrument-exact-pick:hover img{transform:scale(1.08);}}
 @media(prefers-reduced-motion:reduce){.instrument-orbit,.instrument-exact-pick,.instrument-exact-pick img{transition:none;}}

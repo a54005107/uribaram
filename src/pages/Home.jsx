@@ -4,9 +4,22 @@ import {useCamera} from '../camera/CameraProvider';
 import '../../public/assets/figma/styles/tokens.css';
 import './WaitingPage.css';
 import useFlagWind from '../hooks/useFlagWind';
+import {preloadImage, TITLE_LOGO} from '../utils/preloadImage';
 
 export default function Home() {
   const navigate = useNavigate();
+  const mounted = useRef(true), entering = useRef(false);
+  useEffect(() => {
+    mounted.current = true;
+    void preloadImage(TITLE_LOGO);
+    return () => { mounted.current = false; };
+  }, []);
+  const enterTitle = async () => {
+    if (entering.current) return;
+    entering.current = true;
+    await preloadImage(TITLE_LOGO);
+    if (mounted.current) navigate('/title');
+  };
   const {stop} = useCamera();
   const pageRef = useRef(null);
   const flagRef = useRef(null);
@@ -36,7 +49,7 @@ export default function Home() {
       {[2, 3].map(part => <img key={part} className="waiting-pole"
         src={`/assets/figma/flag/pole/waiting-screen/parts/pole-segment-00${part}-brown.svg`}
         width="390" height="1768" alt="" draggable="false"/>)}
-      <button className="waiting-flag" aria-label="우리바람 제목 화면으로 이동" title="깃발을 눌러 시작하기" onClick={() => navigate('/title')}>
+      <button className="waiting-flag" aria-label="우리바람 제목 화면으로 이동" title="깃발을 눌러 시작하기" onClick={enterTitle}>
         <canvas ref={canvasRef} className="waiting-flag-wave" aria-hidden="true"/>
         <img ref={flagRef} src="/assets/figma/flag/logo/screen/original.svg" width="615" height="1226" alt="" draggable="false"/>
       </button>

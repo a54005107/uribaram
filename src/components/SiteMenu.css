@@ -1,17 +1,17 @@
-.site-menu { --scene-fit:min(calc(100vw / 2560px),calc(100dvh / 1440px)); position: fixed; z-index: 40; top:calc((100dvh - 1440px * var(--scene-fit)) / 2); right:calc((100vw - 2560px * var(--scene-fit)) / 2 + 82px * var(--scene-fit)); width: 777px; height: 292px; transform: scale(var(--scene-fit)); transform-origin: top right; pointer-events: none; }
+.site-menu { --scene-fit:var(--design-fit); position: fixed; z-index: 40; top:0; right:calc((100vw - 2560px * var(--scene-fit)) / 2 + 82px * var(--scene-fit)); width: 777px; height: 292px; transform: scale(var(--scene-fit)); transform-origin: top right; pointer-events: none; }
 .site-menu-clip { position: absolute; inset: 0 auto 0 0; width: 668px; overflow: hidden; display: flex; }
 .site-menu-clip button { width: 167px; height: 292px; flex: none; border: 0; background: transparent; padding: 0; transform: translateY(var(--hide-distance)); transition: transform 400ms ease-out; pointer-events: auto; cursor: pointer; }
 .site-menu-clip button.is-open { transform: translateY(0); }
 .site-menu img { display: block; max-width: none; }
-.site-menu-toggle { position: absolute; right: 0; top: 69px; padding: 0; border: 0; background: transparent; pointer-events: auto; cursor: pointer; }
+.site-menu-toggle { position: absolute; right: 0; top: 44px; padding: 0; border: 0; background: transparent; pointer-events: auto; cursor: pointer; }
 .site-menu button:focus-visible { outline: 3px dashed #481100; outline-offset: -4px; }
 .site-menu-notice { position: absolute; right: 0; top: 292px; white-space: nowrap; color: #481100; background: white; }
 @media(prefers-reduced-motion: reduce) { .site-menu-clip button { transition: none; } }
 
-/* Keep the story menu inside the same fitted 2560 ? 1440 viewport. */
+/* Fit horizontally to the design, but keep dropdowns on the viewport top. */
 .site-menu--story {
- --story-fit: min(calc(100vw / 2560px), calc(100dvh / 1440px));
- top: calc((100dvh - 1440px * var(--story-fit)) / 2);
+ --story-fit: var(--design-fit);
+ top: 0;
  right: calc((100vw - 2560px * var(--story-fit)) / 2 + 82px * var(--story-fit));
  transform: scale(var(--story-fit));
 }

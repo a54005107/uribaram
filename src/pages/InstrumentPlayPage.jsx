@@ -56,7 +56,11 @@ function CameraPlay({instrument, debug}) {
     if (!stream) return;
     let cancelled = false;
     setPlaybackError('');
-    attach(videoRef.current).catch(() => { if (!cancelled) setPlaybackError('카메라 영상을 재생하지 못했습니다. 다시 연결해 주세요.'); });
+    attach(videoRef.current).catch(() => {
+      const video = videoRef.current;
+      if (!cancelled && (!video || video.paused || video.readyState < 2))
+        setPlaybackError('카메라 영상을 재생하지 못했습니다. 다시 연결해 주세요.');
+    });
     return () => { cancelled = true; };
   }, [stream, attach]);
   useEffect(() => {
@@ -65,7 +69,13 @@ function CameraPlay({instrument, debug}) {
     return () => observer.disconnect();
   }, []);
 
-  const reconnect = () => { setPlaybackError(''); void start(); };
+  const reconnect = () => {
+    setPlaybackError('');
+    // A user gesture can resume Safari playback without reopening the camera.
+    if (stream?.getVideoTracks().some(track => track.readyState === 'live')) {
+      void attach(videoRef.current).catch(() => setPlaybackError('카메라 영상을 재생하지 못했습니다. 다시 연결해 주세요.'));
+    } else void start();
+  };
   const hasGrip = Object.values(hands.sticks || {}).some(stick => stick.grip.grabbed && !stick.stale);
   const trackingMessage = hands.status === 'loading' ? '손 움직임을 준비하고 있어요…'
     : ['kkwaenggwari','sogo','jing'].includes(instrument.id) ? '왼손을 쥐어 악기를 잡고 오른손의 채 끝으로 연주해 주세요'
@@ -81,7 +91,8 @@ function CameraPlay({instrument, debug}) {
   const hoverFlags = ['2546-1091','2546-1318','2546-1163','2546-1208','2546-1296'];
   return <main ref={pageRef} className="page camera-play-page illustrated-play-page" aria-label={`${instrument.name} 카메라 연주`}
     onPointerDown={() => { if (!sound.enabled) void sound.enable(); }}>
-    <video ref={videoRef} className="camera-play-video" autoPlay muted playsInline aria-hidden="true" />
+    <video ref={videoRef} className="camera-play-video" autoPlay muted playsInline aria-hidden="true"
+      onPlaying={() => setPlaybackError('')} />
     <PlayScene ref={sceneRef} width={viewport.width} height={viewport.height}/>
     <header className="play-design-board play-navigation" style={boardStyle}>
       <nav aria-label="연주할 악기">

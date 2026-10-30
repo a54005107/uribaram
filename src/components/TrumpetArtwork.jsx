@@ -43,28 +43,28 @@ const imgVector1 = `/assets/figma/trumpet-motion/f33bc.svg`;
 export default function Component1() {
   return (
     <div className="trumpet-layer-0" data-node-id="2389:1457" data-name="나팔1">
-      <div className="trumpet-layer-1" data-node-id="2389:1458" style={{ containerType: "size" }}>
+      <div className="trumpet-layer-1" data-node-id="2389:1458" data-art-container="" style={{ containerType: "size" }}>
         <div className="trumpet-layer-2">
           <div className="trumpet-layer-3" data-name="Vector (Stroke)">
             <img alt="" className="trumpet-layer-4" src={imgVectorStroke} />
           </div>
         </div>
       </div>
-      <div className="trumpet-layer-5" data-node-id="2389:1459" style={{ containerType: "size" }}>
+      <div className="trumpet-layer-5" data-node-id="2389:1459" data-art-container="" style={{ containerType: "size" }}>
         <div className="trumpet-layer-6">
           <div className="trumpet-layer-3" data-name="Vector (Stroke)">
             <img alt="" className="trumpet-layer-4" src={imgVectorStroke1} />
           </div>
         </div>
       </div>
-      <div className="trumpet-layer-7" data-node-id="2389:1460" style={{ containerType: "size" }}>
+      <div className="trumpet-layer-7" data-node-id="2389:1460" data-art-container="" style={{ containerType: "size" }}>
         <div className="trumpet-layer-8">
           <div className="trumpet-layer-3" data-name="Vector (Stroke)">
             <img alt="" className="trumpet-layer-4" src={imgVectorStroke2} />
           </div>
         </div>
       </div>
-      <div className="trumpet-layer-9" data-node-id="2389:1461" style={{ containerType: "size" }}>
+      <div className="trumpet-layer-9" data-node-id="2389:1461" data-art-container="" style={{ containerType: "size" }}>
         <div className="trumpet-layer-10">
           <div className="trumpet-layer-3" data-name="Vector (Stroke)">
             <img alt="" className="trumpet-layer-4" src={imgVectorStroke3} />
@@ -119,112 +119,112 @@ export default function Component1() {
           </div>
         </div>
       </div>
-      <div className="trumpet-layer-30" data-node-id="2389:1513" style={{ containerType: "size" }} data-motion-keys="scaleX,scaleY,x,y" data-motion-wrapper-for="2389:1513">
+      <div className="trumpet-layer-30" data-node-id="2389:1513" data-art-container="" style={{ containerType: "size" }} data-motion-keys="scaleX,scaleY,x,y" data-motion-wrapper-for="2389:1513">
         <div className="trumpet-layer-31">
           <div className="trumpet-layer-3" data-name="Vector (Stroke)">
             <img alt="" className="trumpet-layer-4" src={imgVectorStroke4} />
           </div>
         </div>
       </div>
-      <div className="trumpet-layer-32" data-node-id="2389:1514" style={{ containerType: "size" }} data-motion-keys="scaleX,scaleY,x,y" data-motion-wrapper-for="2389:1514">
+      <div className="trumpet-layer-32" data-node-id="2389:1514" data-art-container="" style={{ containerType: "size" }} data-motion-keys="scaleX,scaleY,x,y" data-motion-wrapper-for="2389:1514">
         <div className="trumpet-layer-33">
           <div className="trumpet-layer-3" data-name="Vector (Stroke)">
             <img alt="" className="trumpet-layer-4" src={imgVectorStroke5} />
           </div>
         </div>
       </div>
-      <div className="trumpet-layer-34" data-node-id="2389:1515" style={{ containerType: "size" }} data-motion-keys="scaleX,scaleY,x,y" data-motion-wrapper-for="2389:1515">
+      <div className="trumpet-layer-34" data-node-id="2389:1515" data-art-container="" style={{ containerType: "size" }} data-motion-keys="scaleX,scaleY,x,y" data-motion-wrapper-for="2389:1515">
         <div className="trumpet-layer-35">
           <div className="trumpet-layer-3" data-name="Vector (Stroke)">
             <img alt="" className="trumpet-layer-4" src={imgVectorStroke6} />
           </div>
         </div>
       </div>
-      <div className="trumpet-layer-36" data-node-id="2389:1516" style={{ containerType: "size" }} data-motion-keys="scaleX,scaleY,x,y" data-motion-wrapper-for="2389:1516">
+      <div className="trumpet-layer-36" data-node-id="2389:1516" data-art-container="" style={{ containerType: "size" }} data-motion-keys="scaleX,scaleY,x,y" data-motion-wrapper-for="2389:1516">
         <div className="trumpet-layer-37">
           <div className="trumpet-layer-3" data-name="Vector (Stroke)">
             <img alt="" className="trumpet-layer-4" src={imgVectorStroke7} />
           </div>
         </div>
       </div>
-      <div className="trumpet-layer-38" data-node-id="2389:1517" style={{ containerType: "size" }} data-motion-keys="scaleX,scaleY,x,y" data-motion-wrapper-for="2389:1517">
+      <div className="trumpet-layer-38" data-node-id="2389:1517" data-art-container="" style={{ containerType: "size" }} data-motion-keys="scaleX,scaleY,x,y" data-motion-wrapper-for="2389:1517">
         <div className="trumpet-layer-39">
           <div className="trumpet-layer-3" data-name="Vector (Stroke)">
             <img alt="" className="trumpet-layer-4" src={imgVectorStroke8} />
           </div>
         </div>
       </div>
-      <div className="trumpet-layer-40" data-node-id="2389:1518" style={{ containerType: "size" }} data-motion-keys="scaleX,scaleY,x,y" data-motion-wrapper-for="2389:1518">
+      <div className="trumpet-layer-40" data-node-id="2389:1518" data-art-container="" style={{ containerType: "size" }} data-motion-keys="scaleX,scaleY,x,y" data-motion-wrapper-for="2389:1518">
         <div className="trumpet-layer-41">
           <div className="trumpet-layer-3" data-name="Vector (Stroke)">
             <img alt="" className="trumpet-layer-4" src={imgVectorStroke9} />
           </div>
         </div>
       </div>
-      <div className="trumpet-layer-42" data-node-id="2389:1519" style={{ containerType: "size" }} data-motion-keys="scaleX,scaleY,x,y" data-motion-wrapper-for="2389:1519">
+      <div className="trumpet-layer-42" data-node-id="2389:1519" data-art-container="" style={{ containerType: "size" }} data-motion-keys="scaleX,scaleY,x,y" data-motion-wrapper-for="2389:1519">
         <div className="trumpet-layer-43">
           <div className="trumpet-layer-3" data-name="Vector (Stroke)">
             <img alt="" className="trumpet-layer-4" src={imgVectorStroke10} />
           </div>
         </div>
       </div>
-      <div className="trumpet-layer-44" data-node-id="2389:1520" style={{ containerType: "size" }} data-motion-keys="scaleX,scaleY,x,y" data-motion-wrapper-for="2389:1520">
+      <div className="trumpet-layer-44" data-node-id="2389:1520" data-art-container="" style={{ containerType: "size" }} data-motion-keys="scaleX,scaleY,x,y" data-motion-wrapper-for="2389:1520">
         <div className="trumpet-layer-45">
           <div className="trumpet-layer-3" data-name="Vector (Stroke)">
             <img alt="" className="trumpet-layer-4" src={imgVectorStroke11} />
           </div>
         </div>
       </div>
-      <div className="trumpet-layer-34" data-node-id="2389:1521" style={{ containerType: "size" }} data-motion-keys="scaleX,scaleY,x,y" data-motion-wrapper-for="2389:1521">
+      <div className="trumpet-layer-34" data-node-id="2389:1521" data-art-container="" style={{ containerType: "size" }} data-motion-keys="scaleX,scaleY,x,y" data-motion-wrapper-for="2389:1521">
         <div className="trumpet-layer-35">
           <div className="trumpet-layer-3" data-name="Vector (Stroke)">
             <img alt="" className="trumpet-layer-4" src={imgVectorStroke12} />
           </div>
         </div>
       </div>
-      <div className="trumpet-layer-46" data-node-id="2389:1522" style={{ containerType: "size" }} data-motion-keys="scaleX,scaleY,x,y" data-motion-wrapper-for="2389:1522">
+      <div className="trumpet-layer-46" data-node-id="2389:1522" data-art-container="" style={{ containerType: "size" }} data-motion-keys="scaleX,scaleY,x,y" data-motion-wrapper-for="2389:1522">
         <div className="trumpet-layer-47">
           <div className="trumpet-layer-3" data-name="Vector (Stroke)">
             <img alt="" className="trumpet-layer-4" src={imgVectorStroke13} />
           </div>
         </div>
       </div>
-      <div className="trumpet-layer-48" data-node-id="2389:1523" style={{ containerType: "size" }} data-motion-keys="scaleX,scaleY,x,y" data-motion-wrapper-for="2389:1523">
+      <div className="trumpet-layer-48" data-node-id="2389:1523" data-art-container="" style={{ containerType: "size" }} data-motion-keys="scaleX,scaleY,x,y" data-motion-wrapper-for="2389:1523">
         <div className="trumpet-layer-49">
           <div className="trumpet-layer-3" data-name="Vector (Stroke)">
             <img alt="" className="trumpet-layer-4" src={imgVectorStroke14} />
           </div>
         </div>
       </div>
-      <div className="trumpet-layer-50" data-node-id="2389:1524" style={{ containerType: "size" }} data-motion-keys="scaleX,scaleY,x,y" data-motion-wrapper-for="2389:1524">
+      <div className="trumpet-layer-50" data-node-id="2389:1524" data-art-container="" style={{ containerType: "size" }} data-motion-keys="scaleX,scaleY,x,y" data-motion-wrapper-for="2389:1524">
         <div className="trumpet-layer-51">
           <div className="trumpet-layer-3" data-name="Vector (Stroke)">
             <img alt="" className="trumpet-layer-4" src={imgVectorStroke15} />
           </div>
         </div>
       </div>
-      <div className="trumpet-layer-52" data-node-id="2389:1525" style={{ containerType: "size" }} data-motion-keys="scaleX,scaleY,x,y" data-motion-wrapper-for="2389:1525">
+      <div className="trumpet-layer-52" data-node-id="2389:1525" data-art-container="" style={{ containerType: "size" }} data-motion-keys="scaleX,scaleY,x,y" data-motion-wrapper-for="2389:1525">
         <div className="trumpet-layer-53">
           <div className="trumpet-layer-3" data-name="Vector (Stroke)">
             <img alt="" className="trumpet-layer-4" src={imgVectorStroke16} />
           </div>
         </div>
       </div>
-      <div className="trumpet-layer-54" data-node-id="2389:1526" style={{ containerType: "size" }} data-motion-keys="scaleX,scaleY,x,y" data-motion-wrapper-for="2389:1526">
+      <div className="trumpet-layer-54" data-node-id="2389:1526" data-art-container="" style={{ containerType: "size" }} data-motion-keys="scaleX,scaleY,x,y" data-motion-wrapper-for="2389:1526">
         <div className="trumpet-layer-55">
           <div className="trumpet-layer-3" data-name="Vector (Stroke)">
             <img alt="" className="trumpet-layer-4" src={imgVectorStroke17} />
           </div>
         </div>
       </div>
-      <div className="trumpet-layer-56" data-node-id="2389:1527" style={{ containerType: "size" }} data-motion-keys="scaleX,scaleY,x,y" data-motion-wrapper-for="2389:1527">
+      <div className="trumpet-layer-56" data-node-id="2389:1527" data-art-container="" style={{ containerType: "size" }} data-motion-keys="scaleX,scaleY,x,y" data-motion-wrapper-for="2389:1527">
         <div className="trumpet-layer-57">
           <div className="trumpet-layer-3" data-name="Vector (Stroke)">
             <img alt="" className="trumpet-layer-4" src={imgVectorStroke18} />
           </div>
         </div>
       </div>
-      <div className="trumpet-layer-58" data-node-id="2389:1528" style={{ containerType: "size" }} data-motion-keys="scaleX,scaleY,x,y" data-motion-wrapper-for="2389:1528">
+      <div className="trumpet-layer-58" data-node-id="2389:1528" data-art-container="" style={{ containerType: "size" }} data-motion-keys="scaleX,scaleY,x,y" data-motion-wrapper-for="2389:1528">
         <div className="trumpet-layer-59">
           <div className="trumpet-layer-3" data-name="Vector (Stroke)">
             <img alt="" className="trumpet-layer-4" src={imgVectorStroke19} />

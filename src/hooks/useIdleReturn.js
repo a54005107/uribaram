@@ -1,4 +1,5 @@
-import {useEffect} from 'react';
+import {useEffect, useSyncExternalStore} from 'react';
+import {photoIdlePolicy, photoIdleDelay} from '../utils/photoIdlePolicy';
 import {useLocation,useNavigate} from 'react-router-dom';
 import {MOTION_ACTIVITY} from '../motion/idleActivity';
 
@@ -17,9 +18,10 @@ export function watchIdle(target,onIdle,{delay=IDLE_RETURN_MS,now=()=>Date.now()
 }
 export default function useIdleReturn(){
  const {pathname}=useLocation(),navigate=useNavigate();
+ const photoPhase=useSyncExternalStore(photoIdlePolicy.subscribe,photoIdlePolicy.snapshot);
  useEffect(()=>{
   // The receiving phone must keep its downloaded photo, independently of the kiosk.
   if(pathname==='/'||pathname==='/receive-photo')return;
-  return watchIdle(window,()=>navigate('/',{replace:true}),{motionSource:pathname==='/experience'?'hands':pathname==='/photo'?'head':undefined});
- },[pathname,navigate]);
+  return watchIdle(window,()=>navigate('/',{replace:true}),{delay:pathname==='/photo'?photoIdleDelay(photoPhase):IDLE_RETURN_MS,motionSource:pathname==='/experience'?'hands':pathname==='/photo'?'head':undefined});
+ },[pathname,navigate,photoPhase]);
 }

@@ -6,6 +6,7 @@ import './TrumpetMotion.css';
 import TrumpetArtwork from '../components/TrumpetArtwork27';
 import '../components/TrumpetArtwork.css';
 import {previewInstrument, stopPreview} from '../audio/percussion';
+import {preloadImage} from '../utils/preloadImage';
 
 const BURST_DURATION_MS = 2470;
 const MOTION_NODE_IDS = ['2028:446', '2028:448', '2028:449', '2028:450',
@@ -32,6 +33,8 @@ const TRUMPET_DECORATIONS = [
 export default function TrumpetPage() {
   const navigate = useNavigate();
   const pageRef = useRef(null);
+  const artworkRef = useRef(null);
+  const [artworkReady, setArtworkReady] = useState(false);
   const [scale, setScale] = useState(0);
   const [count, setCount] = useState(0);
   const [burst, setBurst] = useState(null);
@@ -40,8 +43,29 @@ export default function TrumpetPage() {
 
   useEffect(() => () => {clearTimeout(timer.current);stopPreview();}, []);
 
+  useEffect(() => {
+    let cancelled = false, frame;
+    const root = artworkRef.current;
+    const urls = new Set(Array.from(root.querySelectorAll('img'), image => image.src));
+    // CSS masks are separate image requests, so waiting for <img> alone
+    // still exposes an incomplete trumpet on a cold Safari load.
+    for (const element of root.querySelectorAll('*')) {
+      const style = getComputedStyle(element);
+      const masks = `${style.maskImage || ''} ${style.webkitMaskImage || ''}`;
+      for (const match of masks.matchAll(/url\(["']?([^"')]+)["']?\)/g)) urls.add(match[1]);
+    }
+    Promise.all([...urls].map(preloadImage)).then(() => {
+      if (cancelled) return;
+      // Allow the nested artwork ResizeObservers to settle before revealing it.
+      frame = requestAnimationFrame(() => {
+        frame = requestAnimationFrame(() => { if (!cancelled) setArtworkReady(true); });
+      });
+    });
+    return () => { cancelled = true; cancelAnimationFrame(frame); };
+  }, []);
+
   const blow = () => {
-    if (busy.current || count >= 3) return;
+    if (!artworkReady || busy.current || count >= 3) return;
     busy.current = true;
     void previewInstrument('trumpet');
     const next = count + 1;
@@ -72,7 +96,8 @@ export default function TrumpetPage() {
 
   return <main ref={pageRef} className="trumpet-page" aria-label="나발 체험">
     <p className="trumpet-instruction">나발을 세 번 불어<br />풍물패를 불러봐요</p>
-    <div className="trumpet-artwork" style={{transform: `scale(${scale})`}}>
+    {!artworkReady && <p role="status" className="trumpet-loading">나발을 준비하고 있어요…</p>}
+    <div ref={artworkRef} className="trumpet-artwork" style={{transform: `scale(${scale})`, visibility: artworkReady ? 'visible' : 'hidden'}}>
       <button
         className={`trumpet-instrument${count ? ' trumpet-instrument--prototype' : ''}`}
         aria-label={`나발 불기 (${count} / 3)`}
@@ -80,7 +105,9 @@ export default function TrumpetPage() {
         title="나발을 세 번 눌러주세요"
         onClick={blow}
       >
-        <div key={count} className={burst ? 'trumpet-rings-active' : ''} aria-hidden="true"><TrumpetArtwork/></div>
+        {/* Keep masked artwork mounted: replacing it on every click can flash
+            while Safari rebuilds the SVG masks and measured containers. */}
+        <div className={burst ? 'trumpet-rings-active' : ''} aria-hidden="true"><TrumpetArtwork/></div>
       </button>
       {burst && <div className="trumpet-sparkles" key={count} aria-hidden="true">
         {burst.map((particle, index) => <i key={index} className="trumpet-sparkle"

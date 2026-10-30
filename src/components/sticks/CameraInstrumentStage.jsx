@@ -62,7 +62,11 @@ function CameraInstrumentStage({instrument, layout, videoRef, samplesRef, enable
           ripples.push({point: hit.point, start: now});
         });
         for (const side of ['left', 'right']) {
-          const stick = display[side].sample(sticks[side]?.stale ? sticks[side] : hitSticks[side], now);
+          // Janggu already has frame interpolation in sampleStick. Use that
+          // display pose directly instead of adding another delayed transition.
+          // hitSticks above remains the unmodified collision input.
+          const stick = instrument.id === 'janggu' ? sticks[side]
+            : display[side].sample(sticks[side]?.stale ? sticks[side] : hitSticks[side], now);
           if (debug && stick) {
             const raw = stick.debugPoints.rawGrip;
             context.strokeStyle = '#ff5ff7'; context.lineWidth = 1;

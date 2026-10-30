@@ -3,10 +3,11 @@ import {useNavigate} from 'react-router-dom';
 import StoryHeader from '../components/StoryHeader';
 import useStoryScroll from '../hooks/useStoryScroll';
 import useStoryReveal from '../hooks/useStoryReveal';
+import {useOriginalImage} from '../utils/imageFallback';
 import './StoryPage.css';
 function ArtworkImage({src}) {
  const ref=useRef(null);
- useEffect(()=>{const img=ref.current, parent=img.parentElement;const fit=()=>{if(img.naturalWidth)img.style.transform=`scale(${parent.clientWidth/img.naturalWidth},${parent.clientHeight/img.naturalHeight})`;}; img.addEventListener('load',fit); const observer=new ResizeObserver(fit);observer.observe(parent);fit();return()=>{observer.disconnect();img.removeEventListener('load',fit);};},[src]);
+ useLayoutEffect(()=>{const img=ref.current, parent=img.parentElement;const fit=()=>{if(img.naturalWidth)img.style.transform=`scale(${parent.clientWidth/img.naturalWidth},${parent.clientHeight/img.naturalHeight})`;}; img.addEventListener('load',fit); const observer=new ResizeObserver(fit);observer.observe(parent);fit();return()=>{observer.disconnect();img.removeEventListener('load',fit);};},[src]);
  return <img ref={ref} className="story-art-image" src={src} alt="" draggable="false"/>;
 }
 const assetPathPrefix = "/assets/figma/story/oct23";
@@ -49,13 +50,13 @@ const imgVector14 = `/assets/figma/oct28/ca77c.svg`;
 const imgVector15 = `/assets/figma/oct28/0743d.svg`;
 const imgVector16 = `/assets/figma/oct28/20ebc.svg`;
 const imgSky = `/assets/figma/oct28/7a2dd.svg`;
-const img67034 = `/assets/figma/oct28/bd5cc.png`;
+const img67034 = `/assets/figma/oct28/bd5cc.webp`;
 const img67033 = `/assets/figma/oct28/d9b20.svg`;
-const img59264 = `/assets/figma/oct28/f5dd7.png`;
+const img59264 = `/assets/figma/oct28/f5dd7.webp`;
 const img59263 = `/assets/figma/oct28/98770.svg`;
-const img63003 = `/assets/figma/oct28/087be.png`;
+const img63003 = `/assets/figma/oct28/087be.webp`;
 const img63002 = `/assets/figma/oct28/73723.svg`;
-const img57494 = `/assets/figma/oct28/2b00f.png`;
+const img57494 = `/assets/figma/oct28/2b00f.webp`;
 const img57493 = `/assets/figma/oct28/842a1.svg`;
 const img = `/assets/figma/oct28/60231.svg`;
 const img1 = `/assets/figma/oct28/b9168.svg`;
@@ -65,12 +66,12 @@ const imgProperty1Default2 = `/assets/figma/oct28/98fe7.svg`;
 const img2 = `/assets/figma/oct28/c2780.svg`;
 const imgGroup = `/assets/figma/oct28/7f751.svg`;
 const img3 = `/assets/figma/oct28/b1156.svg`;
-const img66701 = `/assets/figma/oct28/f7bbf.png`;
+const img66701 = `/assets/figma/oct28/f7bbf.webp`;
 const imgVector17 = `/assets/figma/oct28/12ade.svg`;
 const imgVector18 = `/assets/figma/oct28/3d4b5.svg`;
 const img4 = `/assets/figma/oct28/c6ac5.svg`;
-const imgCskkkkSamulnori78460171 = `/assets/figma/oct28/4cad1.png`;
-const img65773 = `/assets/figma/oct28/4e3f7.png`;
+const imgCskkkkSamulnori78460171 = `/assets/figma/oct28/4cad1.webp`;
+const img65773 = `/assets/figma/oct28/4e3f7.webp`;
 const imgRectangle22 = `/assets/figma/oct28/0a868.svg`;
 const img5 = `/assets/figma/oct28/becaa.svg`;
 const imgVector19 = `/assets/figma/oct28/98889.svg`;
@@ -124,91 +125,91 @@ function Component1({ className, property1 = "Default" }) {
         <div className="story-current-3" data-node-id="2551:2126" />
         <div className="story-current-4" data-node-id="2551:2127" />
         <div className="story-current-5" data-node-id="2551:2128" />
-        <div className="story-current-6" data-node-id="2551:2133" style={{ containerType: "size" }}>
+        <div className="story-current-6" data-node-id="2551:2133" data-art-container="" style={{ containerType: "size" }}>
           <div className="story-current-7">
             <div className="story-current-8">
               <ArtworkImage src={imgPolygon28} />
             </div>
           </div>
         </div>
-        <div className="story-current-9" data-node-id="2551:2134" style={{ containerType: "size" }}>
+        <div className="story-current-9" data-node-id="2551:2134" data-art-container="" style={{ containerType: "size" }}>
           <div className="story-current-10">
             <div className="story-current-8">
               <ArtworkImage src={imgPolygon33} />
             </div>
           </div>
         </div>
-        <div className="story-current-11" data-node-id="2551:2135" style={{ containerType: "size" }}>
+        <div className="story-current-11" data-node-id="2551:2135" data-art-container="" style={{ containerType: "size" }}>
           <div className="story-current-7">
             <div className="story-current-8">
               <ArtworkImage src={imgPolygon29} />
             </div>
           </div>
         </div>
-        <div className="story-current-12" data-node-id="2551:2136" style={{ containerType: "size" }}>
+        <div className="story-current-12" data-node-id="2551:2136" data-art-container="" style={{ containerType: "size" }}>
           <div className="story-current-10">
             <div className="story-current-8">
               <ArtworkImage src={imgPolygon34} />
             </div>
           </div>
         </div>
-        <div className="story-current-13" data-node-id="2551:2137" style={{ containerType: "size" }}>
+        <div className="story-current-13" data-node-id="2551:2137" data-art-container="" style={{ containerType: "size" }}>
           <div className="story-current-7">
             <div className="story-current-8">
               <ArtworkImage src={imgPolygon29} />
             </div>
           </div>
         </div>
-        <div className="story-current-14" data-node-id="2551:2138" style={{ containerType: "size" }}>
+        <div className="story-current-14" data-node-id="2551:2138" data-art-container="" style={{ containerType: "size" }}>
           <div className="story-current-15">
             <div className="story-current-8">
               <ArtworkImage src={imgPolygon38} />
             </div>
           </div>
         </div>
-        <div className="story-current-16" data-node-id="2551:2139" style={{ containerType: "size" }}>
+        <div className="story-current-16" data-node-id="2551:2139" data-art-container="" style={{ containerType: "size" }}>
           <div className="story-current-10">
             <div className="story-current-8">
               <ArtworkImage src={imgPolygon34} />
             </div>
           </div>
         </div>
-        <div className="story-current-17" data-node-id="2551:2140" style={{ containerType: "size" }}>
+        <div className="story-current-17" data-node-id="2551:2140" data-art-container="" style={{ containerType: "size" }}>
           <div className="story-current-7">
             <div className="story-current-8">
               <ArtworkImage src={imgPolygon29} />
             </div>
           </div>
         </div>
-        <div className="story-current-18" data-node-id="2551:2141" style={{ containerType: "size" }}>
+        <div className="story-current-18" data-node-id="2551:2141" data-art-container="" style={{ containerType: "size" }}>
           <div className="story-current-15">
             <div className="story-current-8">
               <ArtworkImage src={imgPolygon39} />
             </div>
           </div>
         </div>
-        <div className="story-current-19" data-node-id="2551:2142" style={{ containerType: "size" }}>
+        <div className="story-current-19" data-node-id="2551:2142" data-art-container="" style={{ containerType: "size" }}>
           <div className="story-current-10">
             <div className="story-current-8">
               <ArtworkImage src={imgPolygon34} />
             </div>
           </div>
         </div>
-        <div className="story-current-20" data-node-id="2551:2143" style={{ containerType: "size" }}>
+        <div className="story-current-20" data-node-id="2551:2143" data-art-container="" style={{ containerType: "size" }}>
           <div className="story-current-7">
             <div className="story-current-8">
               <ArtworkImage src={imgPolygon29} />
             </div>
           </div>
         </div>
-        <div className="story-current-21" data-node-id="2551:2144" style={{ containerType: "size" }}>
+        <div className="story-current-21" data-node-id="2551:2144" data-art-container="" style={{ containerType: "size" }}>
           <div className="story-current-15">
             <div className="story-current-8">
               <ArtworkImage src={imgPolygon38} />
             </div>
           </div>
         </div>
-        <div className="story-current-22" data-node-id="2551:2145" style={{ containerType: "size" }}>
+        <div className="story-current-22" data-node-id="2551:2145" data-art-container="" style={{ containerType: "size" }}>
           <div className="story-current-10">
             <div className="story-current-8">
               <ArtworkImage src={imgPolygon34} />
@@ -243,105 +244,105 @@ function Component2({ className, property1 = "Default" }) {
         <div className="story-current-3" data-node-id="2551:2732" />
         <div className="story-current-4" data-node-id="2551:2733" />
         <div className="story-current-5" data-node-id="2551:2734" />
-        <div className="story-current-29" data-node-id="2551:2735" style={{ containerType: "size" }}>
+        <div className="story-current-29" data-node-id="2551:2735" data-art-container="" style={{ containerType: "size" }}>
           <div className="story-current-7">
             <div className="story-current-8">
               <ArtworkImage src={imgPolygon30} />
             </div>
           </div>
         </div>
-        <div className="story-current-30" data-node-id="2551:2736" style={{ containerType: "size" }}>
+        <div className="story-current-30" data-node-id="2551:2736" data-art-container="" style={{ containerType: "size" }}>
           <div className="story-current-10">
             <div className="story-current-8">
               <ArtworkImage src={imgPolygon35} />
             </div>
           </div>
         </div>
-        <div className="story-current-31" data-node-id="2551:2757" style={{ containerType: "size" }}>
+        <div className="story-current-31" data-node-id="2551:2757" data-art-container="" style={{ containerType: "size" }}>
           <div className="story-current-10">
             <div className="story-current-8">
               <ArtworkImage src={imgPolygon35} />
             </div>
           </div>
         </div>
-        <div className="story-current-32" data-node-id="2551:2737" style={{ containerType: "size" }}>
+        <div className="story-current-32" data-node-id="2551:2737" data-art-container="" style={{ containerType: "size" }}>
           <div className="story-current-7">
             <div className="story-current-8">
               <ArtworkImage src={imgPolygon31} />
             </div>
           </div>
         </div>
-        <div className="story-current-33" data-node-id="2551:2738" style={{ containerType: "size" }}>
+        <div className="story-current-33" data-node-id="2551:2738" data-art-container="" style={{ containerType: "size" }}>
           <div className="story-current-10">
             <div className="story-current-8">
               <ArtworkImage src={imgPolygon36} />
             </div>
           </div>
         </div>
-        <div className="story-current-34" data-node-id="2551:2739" style={{ containerType: "size" }}>
+        <div className="story-current-34" data-node-id="2551:2739" data-art-container="" style={{ containerType: "size" }}>
           <div className="story-current-7">
             <div className="story-current-8">
               <ArtworkImage src={imgPolygon31} />
             </div>
           </div>
         </div>
-        <div className="story-current-35" data-node-id="2551:2740" style={{ containerType: "size" }}>
+        <div className="story-current-35" data-node-id="2551:2740" data-art-container="" style={{ containerType: "size" }}>
           <div className="story-current-15">
             <div className="story-current-8">
               <ArtworkImage src={imgPolygon40} />
             </div>
           </div>
         </div>
-        <div className="story-current-36" data-node-id="2551:2741" style={{ containerType: "size" }}>
+        <div className="story-current-36" data-node-id="2551:2741" data-art-container="" style={{ containerType: "size" }}>
           <div className="story-current-10">
             <div className="story-current-8">
               <ArtworkImage src={imgPolygon36} />
             </div>
           </div>
         </div>
-        <div className="story-current-37" data-node-id="2551:2742" style={{ containerType: "size" }}>
+        <div className="story-current-37" data-node-id="2551:2742" data-art-container="" style={{ containerType: "size" }}>
           <div className="story-current-7">
             <div className="story-current-8">
               <ArtworkImage src={imgPolygon31} />
             </div>
           </div>
         </div>
-        <div className="story-current-38" data-node-id="2551:2743" style={{ containerType: "size" }}>
+        <div className="story-current-38" data-node-id="2551:2743" data-art-container="" style={{ containerType: "size" }}>
           <div className="story-current-15">
             <div className="story-current-8">
               <ArtworkImage src={imgPolygon41} />
             </div>
           </div>
         </div>
-        <div className="story-current-39" data-node-id="2551:2744" style={{ containerType: "size" }}>
+        <div className="story-current-39" data-node-id="2551:2744" data-art-container="" style={{ containerType: "size" }}>
           <div className="story-current-10">
             <div className="story-current-8">
               <ArtworkImage src={imgPolygon36} />
             </div>
           </div>
         </div>
-        <div className="story-current-40" data-node-id="2551:2745" style={{ containerType: "size" }}>
+        <div className="story-current-40" data-node-id="2551:2745" data-art-container="" style={{ containerType: "size" }}>
           <div className="story-current-7">
             <div className="story-current-8">
               <ArtworkImage src={imgPolygon31} />
             </div>
           </div>
         </div>
-        <div className="story-current-41" data-node-id="2551:2756" style={{ containerType: "size" }}>
+        <div className="story-current-41" data-node-id="2551:2756" data-art-container="" style={{ containerType: "size" }}>
           <div className="story-current-7">
             <div className="story-current-8">
               <ArtworkImage src={imgPolygon31} />
             </div>
           </div>
         </div>
-        <div className="story-current-42" data-node-id="2551:2746" style={{ containerType: "size" }}>
+        <div className="story-current-42" data-node-id="2551:2746" data-art-container="" style={{ containerType: "size" }}>
           <div className="story-current-15">
             <div className="story-current-8">
               <ArtworkImage src={imgPolygon40} />
             </div>
           </div>
         </div>
-        <div className="story-current-43" data-node-id="2551:2747" style={{ containerType: "size" }}>
+        <div className="story-current-43" data-node-id="2551:2747" data-art-container="" style={{ containerType: "size" }}>
           <div className="story-current-10">
             <div className="story-current-8">
               <ArtworkImage src={imgPolygon36} />
@@ -379,91 +380,91 @@ function Component3({ className, property1 = "Default" }) {
         <div className="story-current-3" data-node-id="2551:2712" />
         <div className="story-current-4" data-node-id="2551:2713" />
         <div className="story-current-5" data-node-id="2551:2714" />
-        <div className="story-current-6" data-node-id="2551:2715" style={{ containerType: "size" }}>
+        <div className="story-current-6" data-node-id="2551:2715" data-art-container="" style={{ containerType: "size" }}>
           <div className="story-current-7">
             <div className="story-current-8">
               <ArtworkImage src={imgPolygon32} />
             </div>
           </div>
         </div>
-        <div className="story-current-9" data-node-id="2551:2716" style={{ containerType: "size" }}>
+        <div className="story-current-9" data-node-id="2551:2716" data-art-container="" style={{ containerType: "size" }}>
           <div className="story-current-10">
             <div className="story-current-8">
               <ArtworkImage src={imgPolygon37} />
             </div>
           </div>
         </div>
-        <div className="story-current-11" data-node-id="2551:2717" style={{ containerType: "size" }}>
+        <div className="story-current-11" data-node-id="2551:2717" data-art-container="" style={{ containerType: "size" }}>
           <div className="story-current-7">
             <div className="story-current-8">
               <ArtworkImage src={imgPolygon42} />
             </div>
           </div>
         </div>
-        <div className="story-current-12" data-node-id="2551:2718" style={{ containerType: "size" }}>
+        <div className="story-current-12" data-node-id="2551:2718" data-art-container="" style={{ containerType: "size" }}>
           <div className="story-current-10">
             <div className="story-current-8">
               <ArtworkImage src={imgPolygon43} />
             </div>
           </div>
         </div>
-        <div className="story-current-13" data-node-id="2551:2719" style={{ containerType: "size" }}>
+        <div className="story-current-13" data-node-id="2551:2719" data-art-container="" style={{ containerType: "size" }}>
           <div className="story-current-7">
             <div className="story-current-8">
               <ArtworkImage src={imgPolygon42} />
             </div>
           </div>
         </div>
-        <div className="story-current-14" data-node-id="2551:2720" style={{ containerType: "size" }}>
+        <div className="story-current-14" data-node-id="2551:2720" data-art-container="" style={{ containerType: "size" }}>
           <div className="story-current-15">
             <div className="story-current-8">
               <ArtworkImage src={imgPolygon44} />
             </div>
           </div>
         </div>
-        <div className="story-current-16" data-node-id="2551:2721" style={{ containerType: "size" }}>
+        <div className="story-current-16" data-node-id="2551:2721" data-art-container="" style={{ containerType: "size" }}>
           <div className="story-current-10">
             <div className="story-current-8">
               <ArtworkImage src={imgPolygon43} />
             </div>
           </div>
         </div>
-        <div className="story-current-17" data-node-id="2551:2722" style={{ containerType: "size" }}>
+        <div className="story-current-17" data-node-id="2551:2722" data-art-container="" style={{ containerType: "size" }}>
           <div className="story-current-7">
             <div className="story-current-8">
               <ArtworkImage src={imgPolygon42} />
             </div>
           </div>
         </div>
-        <div className="story-current-18" data-node-id="2551:2723" style={{ containerType: "size" }}>
+        <div className="story-current-18" data-node-id="2551:2723" data-art-container="" style={{ containerType: "size" }}>
           <div className="story-current-15">
             <div className="story-current-8">
               <ArtworkImage src={imgPolygon45} />
             </div>
           </div>
         </div>
-        <div className="story-current-19" data-node-id="2551:2724" style={{ containerType: "size" }}>
+        <div className="story-current-19" data-node-id="2551:2724" data-art-container="" style={{ containerType: "size" }}>
           <div className="story-current-10">
             <div className="story-current-8">
               <ArtworkImage src={imgPolygon43} />
             </div>
           </div>
         </div>
-        <div className="story-current-20" data-node-id="2551:2725" style={{ containerType: "size" }}>
+        <div className="story-current-20" data-node-id="2551:2725" data-art-container="" style={{ containerType: "size" }}>
           <div className="story-current-7">
             <div className="story-current-8">
               <ArtworkImage src={imgPolygon42} />
             </div>
           </div>
         </div>
-        <div className="story-current-21" data-node-id="2551:2726" style={{ containerType: "size" }}>
+        <div className="story-current-21" data-node-id="2551:2726" data-art-container="" style={{ containerType: "size" }}>
           <div className="story-current-15">
             <div className="story-current-8">
               <ArtworkImage src={imgPolygon44} />
             </div>
           </div>
         </div>
-        <div className="story-current-22" data-node-id="2551:2727" style={{ containerType: "size" }}>
+        <div className="story-current-22" data-node-id="2551:2727" data-art-container="" style={{ containerType: "size" }}>
           <div className="story-current-10">
             <div className="story-current-8">
               <ArtworkImage src={imgPolygon43} />
@@ -635,15 +636,15 @@ function Component15({ className, property1 = "Default" }) {
  const [slide,setSlide]=useState(0);
   return (
     <div className={className || "story-current-243"} data-node-id="2632:4771">
- {slide>0 && <img className="story-flag-photo" src={'/assets/figma/story/current/'+['','d16c4.png','623b8.png'][slide]} alt="농기 사진"/>}
-      <div className="story-current-76" style={{visibility:slide?'hidden':'visible',containerType:'size'}} data-node-id="2632:4729">
+ {slide>0 && <img className="story-flag-photo" src={'/assets/figma/story/current/'+['','d16c4.webp','623b8.webp'][slide]} alt="농기 사진"/>}
+      <div className="story-current-76" data-art-container="" style={{visibility:slide?'hidden':'visible',containerType:'size'}} data-node-id="2632:4729">
         <div className="story-current-77">
           <div className="story-current-8" data-name="깃대">
             <ArtworkImage src={img2} />
           </div>
         </div>
       </div>
-      <div className="story-current-78" style={{visibility:slide?'hidden':'visible',containerType:'size'}} data-node-id="2632:4738">
+      <div className="story-current-78" data-art-container="" style={{visibility:slide?'hidden':'visible',containerType:'size'}} data-node-id="2632:4738">
         <div className="story-current-79">
           <div className="story-current-8" data-name="Group">
             <ArtworkImage src={imgGroup} />
@@ -664,7 +665,7 @@ function Component15({ className, property1 = "Default" }) {
 
 function Component16({className}) {
  const [slide,setSlide]=useState(0);
- const files=['f7bbf.png','f5287.png','6635d.png','181d1.png','140b8.png'];
+ const files=['f7bbf.webp','f5287.webp','6635d.webp','181d1.webp','140b8.webp'];
  return <div className={className} data-node-id="2728:2349">
   {files.map((file,i)=><img key={file} className={'story-place-photo '+(i===slide?'is-active':'')} src={assetPathPrefix+'/'+file} alt={['마당밟이','판굿','진주삼천포농악 놀이','길놀이','성주굿'][i]}/>)}
   <div className="story-place-shade"/>
@@ -679,7 +680,7 @@ function StoryArtwork({scrollDown,navigate}) {
   return (
     <div className="story-oct28-0" data-node-id="2902:7486" data-name="풍물 이야기">
       <div className="story-oct28-1" data-node-id="2902:7487">
-        <div className="story-oct28-2" data-node-id="2902:7488" style={{ containerType: "size" }}>
+        <div className="story-oct28-2" data-node-id="2902:7488" data-art-container="" style={{ containerType: "size" }}>
           <div className="story-oct28-3">
             <div className="story-oct28-4">
               <ArtworkImage src={imgRectangle22} />
@@ -761,7 +762,7 @@ function StoryArtwork({scrollDown,navigate}) {
       <p className="story-oct28-37" data-node-id="2902:7506">
         함께 하는 사람들
       </p>
-      <div className="story-oct28-38" data-node-id="2902:7507" style={{ containerType: "size" }}>
+      <div className="story-oct28-38" data-node-id="2902:7507" data-art-container="" style={{ containerType: "size" }}>
         <div className="story-oct28-39">
           <div className="story-oct28-4" data-name="Vector">
             <ArtworkImage src={imgVector19} />
@@ -832,14 +833,14 @@ function StoryArtwork({scrollDown,navigate}) {
         <div className="story-oct28-57">
           <div className="story-oct28-58" data-name="소고">
             <div className="story-oct28-59" data-node-id="I2902:7517;2199:2886" data-name="소고 그룹">
-              <div className="story-oct28-60" data-node-id="I2902:7517;2142:3723" style={{ containerType: "size" }}>
+              <div className="story-oct28-60" data-node-id="I2902:7517;2142:3723" data-art-container="" style={{ containerType: "size" }}>
                 <div className="story-oct28-61">
                   <div className="story-oct28-4" data-name="소고">
                     <ArtworkImage src={img6} />
                   </div>
                 </div>
               </div>
-              <div className="story-oct28-62" data-node-id="I2902:7517;2142:3738" style={{ containerType: "size" }}>
+              <div className="story-oct28-62" data-node-id="I2902:7517;2142:3738" data-art-container="" style={{ containerType: "size" }}>
                 <div className="story-oct28-63">
                   <div className="story-oct28-4" data-name="소고채">
                     <div className="story-oct28-64">
@@ -908,63 +909,63 @@ function StoryArtwork({scrollDown,navigate}) {
       </div>
       <Component13 className="story-oct28-88" />
       <Component13 className="story-oct28-89" property1="Variant2" />
-      <div className="story-oct28-90" data-node-id="2902:7528" style={{ containerType: "size" }}>
+      <div className="story-oct28-90" data-node-id="2902:7528" data-art-container="" style={{ containerType: "size" }}>
         <div className="story-oct28-91">
           <div className="story-oct28-4" data-name="Vector">
             <ArtworkImage src={imgVector20} />
           </div>
         </div>
       </div>
-      <div className="story-oct28-92" data-node-id="2902:7529" style={{ containerType: "size" }}>
+      <div className="story-oct28-92" data-node-id="2902:7529" data-art-container="" style={{ containerType: "size" }}>
         <div className="story-oct28-93">
           <div className="story-oct28-4" data-name="Vector">
             <ArtworkImage src={imgVector21} />
           </div>
         </div>
       </div>
-      <div className="story-oct28-94" data-node-id="2902:7530" style={{ containerType: "size" }}>
+      <div className="story-oct28-94" data-node-id="2902:7530" data-art-container="" style={{ containerType: "size" }}>
         <div className="story-oct28-95">
           <div className="story-oct28-4" data-name="Vector">
             <ArtworkImage src={imgVector22} />
           </div>
         </div>
       </div>
-      <div className="story-oct28-96" data-node-id="2902:7531" style={{ containerType: "size" }}>
+      <div className="story-oct28-96" data-node-id="2902:7531" data-art-container="" style={{ containerType: "size" }}>
         <div className="story-oct28-97">
           <div className="story-oct28-4" data-name="Vector">
             <ArtworkImage src={imgVector23} />
           </div>
         </div>
       </div>
-      <div className="story-oct28-98" data-node-id="2902:7532" style={{ containerType: "size" }}>
+      <div className="story-oct28-98" data-node-id="2902:7532" data-art-container="" style={{ containerType: "size" }}>
         <div className="story-oct28-97">
           <div className="story-oct28-4" data-name="Vector">
             <ArtworkImage src={imgVector24} />
           </div>
         </div>
       </div>
-      <div className="story-oct28-99" data-node-id="2902:7533" style={{ containerType: "size" }}>
+      <div className="story-oct28-99" data-node-id="2902:7533" data-art-container="" style={{ containerType: "size" }}>
         <div className="story-oct28-100">
           <div className="story-oct28-4" data-name="Vector">
             <ArtworkImage src={imgVector25} />
           </div>
         </div>
       </div>
-      <div className="story-oct28-101" data-node-id="2902:7534" style={{ containerType: "size" }}>
+      <div className="story-oct28-101" data-node-id="2902:7534" data-art-container="" style={{ containerType: "size" }}>
         <div className="story-oct28-97">
           <div className="story-oct28-4" data-name="Vector">
             <ArtworkImage src={imgVector26} />
           </div>
         </div>
       </div>
-      <div className="story-oct28-102" data-node-id="2902:7535" style={{ containerType: "size" }}>
+      <div className="story-oct28-102" data-node-id="2902:7535" data-art-container="" style={{ containerType: "size" }}>
         <div className="story-oct28-103">
           <div className="story-oct28-4" data-name="Vector">
             <ArtworkImage src={imgVector27} />
           </div>
         </div>
       </div>
-      <div className="story-oct28-104" data-node-id="2902:7536" style={{ containerType: "size" }}>
+      <div className="story-oct28-104" data-node-id="2902:7536" data-art-container="" style={{ containerType: "size" }}>
         <div className="story-oct28-105">
           <div className="story-oct28-4" data-name="Vector">
             <ArtworkImage src={imgVector28} />
@@ -975,91 +976,91 @@ function StoryArtwork({scrollDown,navigate}) {
         바람을 싣고, 소리 따라 저 멀리
       </p>
       <Component12 className="story-oct28-107" />
-      <div className="story-oct28-108" data-node-id="2902:7539" style={{ containerType: "size" }}>
+      <div className="story-oct28-108" data-node-id="2902:7539" data-art-container="" style={{ containerType: "size" }}>
         <div className="story-oct28-39">
           <div className="story-oct28-4" data-name="Vector">
             <ArtworkImage src={imgVector29} />
           </div>
         </div>
       </div>
-      <div className="story-oct28-109" data-node-id="2902:7540" style={{ containerType: "size" }}>
+      <div className="story-oct28-109" data-node-id="2902:7540" data-art-container="" style={{ containerType: "size" }}>
         <div className="story-oct28-39">
           <div className="story-oct28-4" data-name="Vector">
             <ArtworkImage src={imgVector29} />
           </div>
         </div>
       </div>
-      <div className="story-oct28-110" data-node-id="2902:7541" style={{ containerType: "size" }}>
+      <div className="story-oct28-110" data-node-id="2902:7541" data-art-container="" style={{ containerType: "size" }}>
         <div className="story-oct28-39">
           <div className="story-oct28-4" data-name="Vector">
             <ArtworkImage src={imgVector30} />
           </div>
         </div>
       </div>
-      <div className="story-oct28-111" data-node-id="2902:7542" style={{ containerType: "size" }}>
+      <div className="story-oct28-111" data-node-id="2902:7542" data-art-container="" style={{ containerType: "size" }}>
         <div className="story-oct28-39">
           <div className="story-oct28-4" data-name="Vector">
             <ArtworkImage src={imgVector31} />
           </div>
         </div>
       </div>
-      <div className="story-oct28-112" data-node-id="2902:7543" style={{ containerType: "size" }}>
+      <div className="story-oct28-112" data-node-id="2902:7543" data-art-container="" style={{ containerType: "size" }}>
         <div className="story-oct28-39">
           <div className="story-oct28-4" data-name="Vector">
             <ArtworkImage src={imgVector32} />
           </div>
         </div>
       </div>
-      <div className="story-oct28-113" data-node-id="2902:7544" style={{ containerType: "size" }}>
+      <div className="story-oct28-113" data-node-id="2902:7544" data-art-container="" style={{ containerType: "size" }}>
         <div className="story-oct28-114">
           <div className="story-oct28-4" data-name="Vector">
             <ArtworkImage src={imgVector33} />
           </div>
         </div>
       </div>
-      <div className="story-oct28-115" data-node-id="2902:7545" style={{ containerType: "size" }}>
+      <div className="story-oct28-115" data-node-id="2902:7545" data-art-container="" style={{ containerType: "size" }}>
         <div className="story-oct28-114">
           <div className="story-oct28-4" data-name="Vector">
             <ArtworkImage src={imgVector33} />
           </div>
         </div>
       </div>
-      <div className="story-oct28-116" data-node-id="2902:7546" style={{ containerType: "size" }}>
+      <div className="story-oct28-116" data-node-id="2902:7546" data-art-container="" style={{ containerType: "size" }}>
         <div className="story-oct28-114">
           <div className="story-oct28-4" data-name="Vector">
             <ArtworkImage src={imgVector34} />
           </div>
         </div>
       </div>
-      <div className="story-oct28-117" data-node-id="2902:7547" style={{ containerType: "size" }}>
+      <div className="story-oct28-117" data-node-id="2902:7547" data-art-container="" style={{ containerType: "size" }}>
         <div className="story-oct28-114">
           <div className="story-oct28-4" data-name="Vector">
             <ArtworkImage src={imgVector35} />
           </div>
         </div>
       </div>
-      <div className="story-oct28-118" data-node-id="2902:7548" style={{ containerType: "size" }}>
+      <div className="story-oct28-118" data-node-id="2902:7548" data-art-container="" style={{ containerType: "size" }}>
         <div className="story-oct28-114">
           <div className="story-oct28-4" data-name="Vector">
             <ArtworkImage src={imgVector36} />
           </div>
         </div>
       </div>
-      <div className="story-oct28-119" data-node-id="2902:7549" style={{ containerType: "size" }}>
+      <div className="story-oct28-119" data-node-id="2902:7549" data-art-container="" style={{ containerType: "size" }}>
         <div className="story-oct28-114">
           <div className="story-oct28-4" data-name="Vector">
             <ArtworkImage src={imgVector37} />
           </div>
         </div>
       </div>
-      <div className="story-oct28-120" data-node-id="2902:7550" style={{ containerType: "size" }}>
+      <div className="story-oct28-120" data-node-id="2902:7550" data-art-container="" style={{ containerType: "size" }}>
         <div className="story-oct28-114">
           <div className="story-oct28-4" data-name="Vector">
             <ArtworkImage src={imgVector37} />
           </div>
         </div>
       </div>
-      <div className="story-oct28-121" data-node-id="2902:7551" style={{ containerType: "size" }}>
+      <div className="story-oct28-121" data-node-id="2902:7551" data-art-container="" style={{ containerType: "size" }}>
         <div className="story-oct28-114">
           <div className="story-oct28-4" data-name="Vector">
             <ArtworkImage src={imgVector38} />
@@ -1118,7 +1119,7 @@ export default function StoryPage(){
   previousScale.current=scale;
  },[scale]);
  const snapStops=storyStops.slice(0,-1).flatMap((top,i)=>{const end=storyStops[i+1];const count=Math.max(1,Math.ceil((end-top)/1440));return Array.from({length:count},(_,j)=>Math.min(top+j*(end-top)/count,15807-1440));});
- return <div ref={shellRef} className="story-shell"><main ref={ref} className="story-page" aria-label="풍물 이야기" tabIndex={0} style={{width:2560*scale,height:1440*scale,'--story-scale':scale}}>
+ return <div ref={shellRef} className="story-shell"><main ref={ref} className="story-page" aria-label="풍물 이야기" tabIndex={0} onErrorCapture={useOriginalImage} style={{width:2560*scale,height:viewport.height,'--story-scale':scale}}>
   <StoryHeader scrollRef={ref}/>
   <div className="story-brand-anchor"><button className="story-brand" onClick={()=>navigate('/')} aria-label="우리바람 처음으로"><img src="/assets/figma/story/oct23/d4a08.svg" alt="우리바람"/></button></div>
   <div className="story-document" style={{height:15807*scale}}>
