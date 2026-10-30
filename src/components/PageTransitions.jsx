@@ -9,6 +9,17 @@ const loadingPaths = new Set(['/loading', '/play-loading']);
 // mounting two camera/tracking sessions during the transition.
 function snapshot(element) {
   const copy = element.cloneNode(true);
+  // Keep the already-painted flag in the outgoing snapshot. Safari may paint
+  // cloned external SVGs a frame later than the text during the exit animation.
+  const flagImages = copy.querySelectorAll('.flag-input-cloth, .flag-input-pole, .flag-tassel img');
+  element.querySelectorAll('.flag-input-cloth, .flag-input-pole, .flag-tassel img').forEach((image,index) => {
+    if (!image.complete || !image.naturalWidth) return;
+    const still=document.createElement('canvas');
+    still.width=image.naturalWidth; still.height=image.naturalHeight;
+    still.className=image.className; still.style.cssText=image.style.cssText;
+    still.style.width=`${image.width}px`; still.style.height=`${image.height}px`;
+    try { still.getContext('2d').drawImage(image,0,0); flagImages[index].replaceWith(still); } catch { /* Retain the image if rasterization fails. */ }
+  });
   const canvases = copy.querySelectorAll('canvas');
   element.querySelectorAll('canvas').forEach((canvas, index) => {
     if (canvas.width && canvas.height) {
@@ -122,9 +133,13 @@ export default function PageTransitions({children}) {
       const page = outgoing.querySelector('.flag-page');
       if (page) page.style.background = 'transparent';
       const move = (selector, x, y) => {
-        outgoing.querySelectorAll(selector).forEach(node => animations.push(node.animate([
-          {translate:'0 0'}, {translate:`${x}px ${y}px`},
-        ], flagOptions)));
+        outgoing.querySelectorAll(selector).forEach(node => {
+          const original=getComputedStyle(node).transform;
+          const base=original==='none'?'':original;
+          animations.push(node.animate([
+            {transform:original}, {transform:`translate(${x}px, ${y}px) ${base}`},
+          ], flagOptions));
+        });
       };
       // Figma 2028:168 -> 2028:3066; these are artboard-local distances.
       move('.flag-input-pole, .flag-input-cloth, .flag-wish-art, .flag-tassel', -113.667, 1700);

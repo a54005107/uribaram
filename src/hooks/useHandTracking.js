@@ -1,6 +1,7 @@
 import {useEffect, useRef, useState} from 'react';
 import {motionConfig} from '../motion/motionConfig';
-import {FilesetResolver, HandLandmarker} from '@mediapipe/tasks-vision';
+import {HandLandmarker} from '@mediapipe/tasks-vision';
+import {prepareHands} from '../camera/prepareHands';
 import {TRACKING_CONFIG} from '../config/stickInteractionConfig';
 import {createStickTracker, trackStick, sampleStick, markStickMissing} from '../motion/stickTracker';
 import {associateHands} from '../motion/handAssociation';
@@ -117,10 +118,9 @@ export default function useHandTracking(videoRef, enabled, onDetection, streamKe
     };
     (async () => {
       try {
-        const base = new URL(import.meta.env.BASE_URL, location.href).href;
-        const vision = await FilesetResolver.forVisionTasks(base + 'mediapipe/wasm');
+        const {vision, modelAssetBuffer} = await prepareHands();
         if (disposed) return;
-        const options = {baseOptions: {modelAssetPath: `${base}mediapipe/hand_landmarker.task`, delegate: 'GPU'}, runningMode: 'VIDEO', numHands: 2, minHandDetectionConfidence: .4, minHandPresenceConfidence: .4, minTrackingConfidence: .4};
+        const options = {baseOptions: {modelAssetBuffer, delegate: 'GPU'}, runningMode: 'VIDEO', numHands: 2, minHandDetectionConfidence: .4, minHandPresenceConfidence: .4, minTrackingConfidence: .4};
         try { landmarker = await HandLandmarker.createFromOptions(vision, options); }
         catch { if (disposed) return; landmarker = await HandLandmarker.createFromOptions(vision, {...options, baseOptions: {...options.baseOptions, delegate: 'CPU'}}); }
         if (disposed) { landmarker.close(); return; }

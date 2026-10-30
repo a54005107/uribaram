@@ -5,6 +5,7 @@ import {useCamera} from '../camera/CameraProvider';
 import '../../public/assets/figma/styles/tokens.css';
 import './PlayLoadingPage.css';
 import FlagWord from '../components/FlagWord';
+import {prepareHands} from '../camera/prepareHands';
 
 const DURATION_MS = 6933;
 const ASSETS = '/assets/figma/play-loading';
@@ -34,6 +35,7 @@ export default function PlayLoadingPage() {
   // existing session rather than releasing and reopening the device.
   useEffect(() => {
     void acquireRef.current();
+    void prepareHands().catch(() => {});
     return () => release();
   }, [release]);
 
