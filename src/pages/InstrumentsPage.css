@@ -151,10 +151,10 @@
 
 .instrument-stage{display:contents;}
 @media(min-aspect-ratio:1/1){
- .instruments-page{--instrument-unit:min(1vw,1.7777778dvh);--scene-height:calc(56.25 * var(--instrument-unit));}
+ .instruments-page{--instrument-unit:var(--design-unit);--scene-height:var(--design-frame-height);}
  /* Let artwork extend through the fitted frame's margins to the viewport edge. */
  .instrument-dial{overflow:visible;}
- .instrument-stage{display:block;position:absolute;left:50%;top:50%;width:calc(100 * var(--instrument-unit));height:calc(56.25 * var(--instrument-unit));transform:translate(-50%,-50%);}
+ .instrument-stage{display:block;position:absolute;left:50%;top:50%;width:var(--design-frame-width);height:var(--design-frame-height);transform:translate(-50%,-50%);}
  .instrument-navigation button{width:calc(3.392857 * var(--instrument-unit));height:calc(2.65625 * var(--instrument-unit));}
  .instrument-navigation span{transform:scale(var(--design-indicator-scale));}
 }
@@ -176,8 +176,6 @@
  .instrument-navigation span{transform:scale(var(--design-indicator-scale));}
 }
 @media(prefers-reduced-motion:reduce){.instrument-exact-scene{transition:none;}}
-
-@media(min-aspect-ratio:1/1){body:has(.instruments-page) .site-menu-toggle{top:44px;}}
 
 @media(hover:hover){.instrument-dial:not(.is-dragging) .instrument-exact-pick:hover img{transform:scale(1.08);}}
 @media(prefers-reduced-motion:reduce){.instrument-orbit,.instrument-exact-pick,.instrument-exact-pick img{transition:none;}}

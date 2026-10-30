@@ -1,3 +1,4 @@
+/* Single-image masks use add: Safari 15 hides their front ring with intersect. */
 .trumpet-new-0{position:absolute;display:flex;inset:56.17% -1.1% 34.26% 92.47%;align-items:center;justify-content:center}
 .trumpet-new-1{flex:none;height:hypot(calc(var(--art-cqw, 0px) * 62.9134),calc(var(--art-cqh, 0px) * 30.667));rotate:-62.95deg;width:hypot(calc(var(--art-cqw, 0px) * 37.0866),calc(var(--art-cqh, 0px) * -69.333))}
 .trumpet-new-2{position:relative;width:100%;height:100%}
@@ -12,21 +13,21 @@
 .trumpet-new-11{position:absolute;inset:26.82% 1.54% 36.58% 39.22%}
 .trumpet-new-12{position:absolute;inset:14.98% 2.75% 38.04% 17.44%}
 .trumpet-new-13{position:absolute;display:contents;inset:39.03% 31.95% 52.43% 60.24%}
-.trumpet-new-14{position:absolute;inset:38.08% 31.02% 51.48% 59.31%;mask-mode:alpha;mask-composite:intersect;mask-clip:no-clip;mask-repeat:no-repeat;mask-position:53.525550972703364% 46.52764574777184%;mask-size:81.9907350209651% 80.55717891363251%}
+.trumpet-new-14{position:absolute;inset:38.08% 31.02% 51.48% 59.31%;mask-mode:alpha;mask-composite:add;mask-clip:no-clip;mask-repeat:no-repeat;mask-position:53.525550972703364% 46.52764574777184%;mask-size:81.9907350209651% 80.55717891363251%}
 .trumpet-new-15{position:absolute;display:contents;inset:54.47% 7.42% 39.9% 87.43%}
-.trumpet-new-16{position:absolute;inset:53.95% 6.9% 39.37% 86.92%;mask-mode:alpha;mask-composite:intersect;mask-clip:no-clip;mask-repeat:no-repeat;mask-position:54.20814414446223% 45.756122961400905%;mask-size:84.6135627002026% 83.02030184308214%}
+.trumpet-new-16{position:absolute;inset:53.95% 6.9% 39.37% 86.92%;mask-mode:alpha;mask-composite:add;mask-clip:no-clip;mask-repeat:no-repeat;mask-position:54.20814414446223% 45.756122961400905%;mask-size:84.6135627002026% 83.02030184308214%}
 .trumpet-new-17{position:absolute;display:contents;inset:50.95% 13.07% 42.69% 81.43%}
-.trumpet-new-18{position:absolute;inset:50.41% 12.49% 42.14% 80.84%;mask-mode:alpha;mask-composite:intersect;mask-clip:no-clip;mask-repeat:no-repeat;mask-position:56.05263067287362% 44.394595608590585%;mask-size:84.55294124540688% 83.2944086569744%}
+.trumpet-new-18{position:absolute;inset:50.41% 12.49% 42.14% 80.84%;mask-mode:alpha;mask-composite:add;mask-clip:no-clip;mask-repeat:no-repeat;mask-position:56.05263067287362% 44.394595608590585%;mask-size:84.55294124540688% 83.2944086569744%}
 .trumpet-new-19{position:absolute;display:contents;inset:36.9% 34.71% 53.61% 56.87%}
-.trumpet-new-20{position:absolute;inset:35.9% 33.7% 52.61% 55.86%;mask-mode:alpha;mask-composite:intersect;mask-clip:no-clip;mask-repeat:no-repeat;mask-position:54.75129608949702% 45.66227641009979%;mask-size:82.32687812250373% 80.94276222759311%}
+.trumpet-new-20{position:absolute;inset:35.9% 33.7% 52.61% 55.86%;mask-mode:alpha;mask-composite:add;mask-clip:no-clip;mask-repeat:no-repeat;mask-position:54.75129608949702% 45.66227641009979%;mask-size:82.32687812250373% 80.94276222759311%}
 .trumpet-new-21{position:absolute;display:contents;inset:29.95% 48.02% 60.81% 44.02%}
-.trumpet-new-22{position:absolute;inset:28.97% 46.99% 59.83% 42.99%;mask-mode:alpha;mask-composite:intersect;mask-clip:no-clip;mask-repeat:no-repeat;mask-position:55.061535731748776% 45.187925995336954%;mask-size:81.54880491866959% 80.44273982285823%}
+.trumpet-new-22{position:absolute;inset:28.97% 46.99% 59.83% 42.99%;mask-mode:alpha;mask-composite:add;mask-clip:no-clip;mask-repeat:no-repeat;mask-position:55.061535731748776% 45.187925995336954%;mask-size:81.54880491866959% 80.44273982285823%}
 .trumpet-new-23{position:absolute;display:contents;inset:28.61% 50.52% 62.01% 41.83%}
-.trumpet-new-24{position:absolute;inset:27.63% 49.44% 61.02% 40.75%;mask-mode:alpha;mask-composite:intersect;mask-clip:no-clip;mask-repeat:no-repeat;mask-position:56.80559590457638% 43.90819124216881%;mask-size:80.8924566959093% 79.94081859916272%}
+.trumpet-new-24{position:absolute;inset:27.63% 49.44% 61.02% 40.75%;mask-mode:alpha;mask-composite:add;mask-clip:no-clip;mask-repeat:no-repeat;mask-position:56.80559590457638% 43.90819124216881%;mask-size:80.8924566959093% 79.94081859916272%}
 .trumpet-new-25{position:absolute;display:contents;inset:27.81% 51.81% 62.74% 40.28%}
-.trumpet-new-26{position:absolute;inset:26.82% 50.75% 61.75% 39.22%;mask-mode:alpha;mask-composite:intersect;mask-clip:no-clip;mask-repeat:no-repeat;mask-position:56.09456939756989% 44.42574268130429%;mask-size:81.30989902811172% 80.25812747179859%}
+.trumpet-new-26{position:absolute;inset:26.82% 50.75% 61.75% 39.22%;mask-mode:alpha;mask-composite:add;mask-clip:no-clip;mask-repeat:no-repeat;mask-position:56.09456939756989% 44.42574268130429%;mask-size:81.30989902811172% 80.25812747179859%}
 .trumpet-new-27{position:absolute;display:contents;inset:57.66% 1.97% 36.99% 93.26%}
-.trumpet-new-28{position:absolute;inset:57.25% 1.54% 36.58% 92.84%;mask-mode:alpha;mask-composite:intersect;mask-clip:no-clip;mask-repeat:no-repeat;mask-position:55.92659570649345% 44.64720539048901%;mask-size:86.64318683363541% 85.11480539274781%}
+.trumpet-new-28{position:absolute;inset:57.25% 1.54% 36.58% 92.84%;mask-mode:alpha;mask-composite:add;mask-clip:no-clip;mask-repeat:no-repeat;mask-position:55.92659570649345% 44.64720539048901%;mask-size:86.64318683363541% 85.11480539274781%}
 .trumpet-new-29{position:absolute;display:flex;inset:14.95% 73.8% 74.34% 17.05%;align-items:center;justify-content:center}
 .trumpet-new-30{flex:none;height:hypot(calc(var(--art-cqw, 0px) * 58.9231),calc(var(--art-cqh, 0px) * 27.2207));rotate:-62.95deg;width:hypot(calc(var(--art-cqw, 0px) * 41.0769),calc(var(--art-cqh, 0px) * -72.7793))}
 .trumpet-new-31{position:absolute;display:flex;inset:14.2% 75.39% 75.11% 15.82%;align-items:center;justify-content:center}

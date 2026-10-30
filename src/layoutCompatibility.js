@@ -12,6 +12,9 @@ export function installLayoutCompatibility(root) {
     const style = document.documentElement;
     set(style, '--viewport-design-scale', String(width / 2560));
     set(style, '--design-fit', String(fit));
+    set(style, '--design-frame-width', `${2560 * fit}px`);
+    set(style, '--design-frame-height', `${1440 * fit}px`);
+    set(style, '--design-unit', `${25.6 * fit}px`);
     set(style, '--design-indicator-scale', String(fit * 2560 / 2240));
     set(style, '--viewport-indicator-scale', String(Math.max(.45, Math.min(width / 2240, 1))));
   };

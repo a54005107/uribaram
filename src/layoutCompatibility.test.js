@@ -20,11 +20,14 @@ test('uses untransformed fractional container sizes, updates fitting, and releas
   try {
     const dispose=installLayoutCompatibility({contains:e=>nodes.includes(e),querySelectorAll:()=>nodes});
     assert.equal(html.style.getPropertyValue('--design-fit'),'0.5');
+    assert.equal(html.style.getPropertyValue('--design-frame-width'),'1280px');
+    assert.equal(html.style.getPropertyValue('--design-frame-height'),'720px');
     resize([{target:artwork,contentRect:{width:83.5268,height:109.4456}}]);
     assert.equal(artwork.style.getPropertyValue('--art-cqw'),`${83.5268/100}px`);
     assert.equal(artwork.style.getPropertyValue('--art-cqh'),`${109.4456/100}px`);
     html.clientWidth=1685;window.innerHeight=885;listeners.get('resize')();
     assert.equal(Number(html.style.getPropertyValue('--design-fit')),885/1440);
+    assert.equal(html.style.getPropertyValue('--design-frame-height'),'885px');
     nodes=[];mutate();assert.equal(observed.size,0);
     nodes=[artwork];mutate();assert.ok(observed.has(artwork));
     dispose();assert.equal(observed.size,0);assert.equal(listeners.size,0);assert.ok(disconnected);
