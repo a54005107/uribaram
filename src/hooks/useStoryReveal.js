@@ -15,7 +15,9 @@ export default function useStoryReveal(ref) {
       if(reduced.matches){el.style.opacity='';return;}
       const baseTransform=getComputedStyle(el).transform;
       const base=baseTransform==='none'?'':baseTransform;
-      const motion=el.animate([{transform:`${base} translateY(100px)`},{transform:base||'none'}],
+      const scale=parseFloat(getComputedStyle(root).getPropertyValue('--story-scale'))||1;
+      const distance=80/scale;
+      const motion=el.animate([{transform:`translateY(${distance}px) ${base}`},{transform:base||'none'}],
         {duration:950,easing:'cubic-bezier(.16,1,.3,1)'});
       const fade=el.animate([{opacity:0},{opacity:1}],{duration:750,easing:'ease-out'});
       el.style.opacity='1';animations.set(el,[motion,fade]);
@@ -29,9 +31,9 @@ export default function useStoryReveal(ref) {
           entry.target.dataset.revealed='false';entry.target.style.opacity=reduced.matches?'':'0';
         }
       }
-    // Start just before entry, so fast scrolling doesn't expose an empty slot
-    // while the original fade and movement are only beginning.
-    },{root,rootMargin:'0px 0px 200px 0px',threshold:0});
+    // Begin at the visible edge, not 200px below it where the animation could
+    // finish before the user sees the component.
+    },{root,rootMargin:'0px',threshold:0});
     const reset=()=>{
       animations.forEach(list=>list.forEach(a=>a.cancel()));animations.clear();
       const bottom=root.getBoundingClientRect().bottom;
@@ -50,7 +52,7 @@ export default function useStoryReveal(ref) {
         const upcoming=candidates.filter(el=>{
           if(el.dataset.revealed==='true')return false;
           const rect=el.getBoundingClientRect();
-          return rect.top<bounds.bottom+200&&rect.bottom>bounds.top;
+          return rect.top<bounds.bottom&&rect.bottom>bounds.top;
         });
         upcoming.forEach(reveal);
       });

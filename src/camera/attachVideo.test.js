@@ -1,6 +1,11 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {attachVideo} from './attachVideo.js';
+test('a rejected play promise does not report failure after playback has recovered', async () => {
+  const video={isConnected:true,paused:false,readyState:3,
+    play:async()=>{throw Object.assign(new Error(),{name:'AbortError'});}};
+  assert.equal(await attachVideo(video,{},()=>true),true);
+});
 test('retries interrupted playback without reopening capture', async () => {
   let calls=0;
   const stream={};
