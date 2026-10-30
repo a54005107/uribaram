@@ -32,7 +32,7 @@ export default function PhotoPage() {
   }, [release]);
   useEffect(() => {
     let cancelled = false; setReady(false);
-    if (stream) attach(videoRef.current).then(() => { if (!cancelled) setReady(true); })
+    if (stream) attach(videoRef.current).then(playing => { if (!cancelled) setReady(playing); })
       .catch(() => { if (!cancelled) setNotice('영상을 재생하지 못했어요. 다시 연결해 주세요.'); });
     return () => { cancelled = true; };
   }, [stream, attach]);
