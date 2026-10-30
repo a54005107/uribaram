@@ -6,7 +6,7 @@ import useStoryReveal from '../hooks/useStoryReveal';
 import './StoryPage.css';
 function ArtworkImage({src}) {
  const ref=useRef(null);
- useEffect(()=>{const img=ref.current, parent=img.parentElement;const fit=()=>{if(img.naturalWidth)img.style.transform=`scale(${parent.clientWidth/img.naturalWidth},${parent.clientHeight/img.naturalHeight})`;}; img.addEventListener('load',fit); const observer=new ResizeObserver(fit);observer.observe(parent);fit();return()=>{observer.disconnect();img.removeEventListener('load',fit);};},[src]);
+ useLayoutEffect(()=>{const img=ref.current, parent=img.parentElement;const fit=()=>{if(img.naturalWidth)img.style.transform=`scale(${parent.clientWidth/img.naturalWidth},${parent.clientHeight/img.naturalHeight})`;}; img.addEventListener('load',fit); const observer=new ResizeObserver(fit);observer.observe(parent);fit();return()=>{observer.disconnect();img.removeEventListener('load',fit);};},[src]);
  return <img ref={ref} className="story-art-image" src={src} alt="" draggable="false"/>;
 }
 const assetPathPrefix = "/assets/figma/story/oct23";
@@ -49,13 +49,13 @@ const imgVector14 = `/assets/figma/oct28/ca77c.svg`;
 const imgVector15 = `/assets/figma/oct28/0743d.svg`;
 const imgVector16 = `/assets/figma/oct28/20ebc.svg`;
 const imgSky = `/assets/figma/oct28/7a2dd.svg`;
-const img67034 = `/assets/figma/oct28/bd5cc.png`;
+const img67034 = `/assets/figma/oct28/bd5cc.webp`;
 const img67033 = `/assets/figma/oct28/d9b20.svg`;
-const img59264 = `/assets/figma/oct28/f5dd7.png`;
+const img59264 = `/assets/figma/oct28/f5dd7.webp`;
 const img59263 = `/assets/figma/oct28/98770.svg`;
-const img63003 = `/assets/figma/oct28/087be.png`;
+const img63003 = `/assets/figma/oct28/087be.webp`;
 const img63002 = `/assets/figma/oct28/73723.svg`;
-const img57494 = `/assets/figma/oct28/2b00f.png`;
+const img57494 = `/assets/figma/oct28/2b00f.webp`;
 const img57493 = `/assets/figma/oct28/842a1.svg`;
 const img = `/assets/figma/oct28/60231.svg`;
 const img1 = `/assets/figma/oct28/b9168.svg`;
@@ -65,12 +65,12 @@ const imgProperty1Default2 = `/assets/figma/oct28/98fe7.svg`;
 const img2 = `/assets/figma/oct28/c2780.svg`;
 const imgGroup = `/assets/figma/oct28/7f751.svg`;
 const img3 = `/assets/figma/oct28/b1156.svg`;
-const img66701 = `/assets/figma/oct28/f7bbf.png`;
+const img66701 = `/assets/figma/oct28/f7bbf.webp`;
 const imgVector17 = `/assets/figma/oct28/12ade.svg`;
 const imgVector18 = `/assets/figma/oct28/3d4b5.svg`;
 const img4 = `/assets/figma/oct28/c6ac5.svg`;
-const imgCskkkkSamulnori78460171 = `/assets/figma/oct28/4cad1.png`;
-const img65773 = `/assets/figma/oct28/4e3f7.png`;
+const imgCskkkkSamulnori78460171 = `/assets/figma/oct28/4cad1.webp`;
+const img65773 = `/assets/figma/oct28/4e3f7.webp`;
 const imgRectangle22 = `/assets/figma/oct28/0a868.svg`;
 const img5 = `/assets/figma/oct28/becaa.svg`;
 const imgVector19 = `/assets/figma/oct28/98889.svg`;
@@ -635,7 +635,7 @@ function Component15({ className, property1 = "Default" }) {
  const [slide,setSlide]=useState(0);
   return (
     <div className={className || "story-current-243"} data-node-id="2632:4771">
- {slide>0 && <img className="story-flag-photo" src={'/assets/figma/story/current/'+['','d16c4.png','623b8.png'][slide]} alt="농기 사진"/>}
+ {slide>0 && <img className="story-flag-photo" src={'/assets/figma/story/current/'+['','d16c4.webp','623b8.webp'][slide]} alt="농기 사진"/>}
       <div className="story-current-76" data-art-container="" style={{visibility:slide?'hidden':'visible',containerType:'size'}} data-node-id="2632:4729">
         <div className="story-current-77">
           <div className="story-current-8" data-name="깃대">
@@ -664,7 +664,7 @@ function Component15({ className, property1 = "Default" }) {
 
 function Component16({className}) {
  const [slide,setSlide]=useState(0);
- const files=['f7bbf.png','f5287.png','6635d.png','181d1.png','140b8.png'];
+ const files=['f7bbf.webp','f5287.webp','6635d.webp','181d1.webp','140b8.webp'];
  return <div className={className} data-node-id="2728:2349">
   {files.map((file,i)=><img key={file} className={'story-place-photo '+(i===slide?'is-active':'')} src={assetPathPrefix+'/'+file} alt={['마당밟이','판굿','진주삼천포농악 놀이','길놀이','성주굿'][i]}/>)}
   <div className="story-place-shade"/>

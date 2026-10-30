@@ -1,7 +1,7 @@
 import {useLayoutEffect} from 'react';
 
 // Reveal artwork independently of scrolling/layout; existing rotations and
-// horizontal centering are preserved by additive transform animations.
+// horizontal centering are preserved when composing transform animations.
 export default function useStoryReveal(ref) {
   useLayoutEffect(() => {
     const root=ref.current, artwork=root.querySelector('.story-oct28-0');
@@ -29,7 +29,9 @@ export default function useStoryReveal(ref) {
           entry.target.dataset.revealed='false';entry.target.style.opacity=reduced.matches?'':'0';
         }
       }
-    },{root,rootMargin:'0px 0px -4% 0px',threshold:0});
+    // Start just before entry, so fast scrolling doesn't expose an empty slot
+    // while the original fade and movement are only beginning.
+    },{root,rootMargin:'0px 0px 200px 0px',threshold:0});
     const reset=()=>{
       animations.forEach(list=>list.forEach(a=>a.cancel()));animations.clear();
       const bottom=root.getBoundingClientRect().bottom;
@@ -37,18 +39,26 @@ export default function useStoryReveal(ref) {
         el.dataset.revealed=String(visible);el.style.opacity=visible?'':'0';}
     };
     reset();candidates.forEach(el=>observer.observe(el));reduced.addEventListener('change',reset);
-    // At the end of the page, the observer's inset must not hide the footer.
-    // Use the same reveal animation, including its existing timing and easing.
-    const revealFooter=()=>{
-      if(root.scrollTop+root.clientHeight<root.scrollHeight-2)return;
-      const bounds=root.getBoundingClientRect();
-      for(const el of candidates){const rect=el.getBoundingClientRect();
-        if(rect.top<bounds.bottom&&rect.bottom>bounds.top)reveal(el);}
+    // Old WebKit can clip IntersectionObserver's expanded root to the viewport.
+    // Read upcoming bounds once per frame, then start the same reveal animation.
+    let frame=0;
+    const revealUpcoming=()=>{
+      if(frame)return;
+      frame=requestAnimationFrame(()=>{
+        frame=0;
+        const bounds=root.getBoundingClientRect();
+        const upcoming=candidates.filter(el=>{
+          if(el.dataset.revealed==='true')return false;
+          const rect=el.getBoundingClientRect();
+          return rect.top<bounds.bottom+200&&rect.bottom>bounds.top;
+        });
+        upcoming.forEach(reveal);
+      });
     };
-    root.addEventListener('scroll',revealFooter,{passive:true});
+    root.addEventListener('scroll',revealUpcoming,{passive:true});
     const focus=event=>{const el=candidates.find(el=>el.contains(event.target));if(el)reveal(el);};
     root.addEventListener('focusin',focus);
-    return()=>{observer.disconnect();reduced.removeEventListener('change',reset);root.removeEventListener('focusin',focus);root.removeEventListener('scroll',revealFooter);
+    return()=>{observer.disconnect();cancelAnimationFrame(frame);reduced.removeEventListener('change',reset);root.removeEventListener('focusin',focus);root.removeEventListener('scroll',revealUpcoming);
       animations.forEach(list=>list.forEach(a=>a.cancel()));candidates.forEach(el=>{el.style.opacity='';delete el.dataset.revealed;});};
   },[ref]);
 }
