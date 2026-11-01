@@ -1,6 +1,7 @@
 ﻿import React, {memo, useEffect, useRef} from 'react';
 import {projectStick} from '../../motion/stickTracker';
-import {createStickHitEngine} from '../../motion/stickHitEngine';
+import {createArtworkHitEngine} from '../../motion/artworkHitEngine';
+import {loadArtworkHitSurface} from '../../motion/artworkHitSurface';
 import {figmaSticks, drawFigmaStick} from '../../motion/figmaSticks';
 import {createStickSelection} from '../../motion/stickSelection';
 import InstrumentRings from './InstrumentRings';
@@ -16,7 +17,9 @@ function CameraInstrumentStage({instrument, layout, videoRef, samplesRef, enable
   callbackRef.current = onHit;
   useEffect(() => {
     const canvas = canvasRef.current, context = canvas.getContext('2d');
-    const engine = createStickHitEngine();
+    const engine = createArtworkHitEngine();
+    let hitSurface=null,disposed=false;
+    loadArtworkHitSurface(instrument.id).then(surface=>{if(!disposed)hitSurface=surface;}).catch(error=>console.error('Instrument hit surface failed',error));
     const display = {left: createStickDisplay(), right: createStickDisplay()};
     const selection = createStickSelection(instrument.id === 'janggu');
     const handheld = isHandheld(instrument.id);
@@ -56,7 +59,7 @@ function CameraInstrumentStage({instrument, layout, videoRef, samplesRef, enable
         const hitSticks = Object.fromEntries(['left', 'right'].map(side => [side, sticks[side]
           ? projectStick(hitSamples[side], video.videoWidth, video.videoHeight, layout, instrument.id) : null]));
         if (held && !held.playable) engine.reset();
-        else engine.update(held?.layout || layout, hitSticks, hit => {
+        else engine.update(held?.layout || layout, hitSticks, hitSurface, hit => {
           callbackRef.current(hit);
           instrumentRef.current?.strike(held ? {...hit,point:{x:hit.point.x-held.x/width,y:hit.point.y-held.y/height}} : hit);
           ripples.push({point: hit.point, start: now});
@@ -93,7 +96,7 @@ function CameraInstrumentStage({instrument, layout, videoRef, samplesRef, enable
       frame = requestAnimationFrame(loop);
     };
     frame = requestAnimationFrame(loop);
-    return () => { cancelAnimationFrame(frame); engine.reset(); };
+    return () => { disposed=true;cancelAnimationFrame(frame); engine.reset(); };
   }, [instrument.id, layout, samplesRef, videoRef, enabled, debug, diagnosticsRef]);
   return <>
     <div ref={holderRef} style={{position:'absolute',inset:0,pointerEvents:'none'}}>
