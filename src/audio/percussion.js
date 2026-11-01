@@ -74,6 +74,6 @@ export async function previewInstrument(id) {
     // Hover alone cannot unlock audio on browsers that require a prior click.
     if (!await unlockAudio() || serial !== previewSerial) return;
     const buffer = await loadSample(chooseSample(id));
-    if (serial === previewSerial) preview = playSample(buffer, .65);
+    if (serial === previewSerial) preview = playSample(buffer, id === 'trumpet' ? .65 * .56 : .65);
   } catch { /* Selection remains available if audio cannot be loaded. */ }
 }

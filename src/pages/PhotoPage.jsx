@@ -17,6 +17,8 @@ export default function PhotoPage() {
   const videoRef = useRef(null), canvasRef = useRef(null), acquireRef = useRef(acquire);
   acquireRef.current = acquire;
   const alive = useRef(true), busy = useRef(false);
+  const [countdown, setCountdown] = useState(0);
+  const countdownTimer = useRef(null);
   const [kind, setKind] = useState('sangmo'), [ready, setReady] = useState(false);
   const [notice, setNotice] = useState(''), [photo, setPhoto] = useState(null), [photoUrl, setPhotoUrl] = useState('');
   const [transfer, setTransfer] = useState({status: 'idle'}), [sharing, setSharing] = useState(false), [qr, setQr] = useState('');
@@ -28,7 +30,7 @@ export default function PhotoPage() {
   useEffect(() => () => photoIdlePolicy.set('idle'), []);
   useEffect(() => {
     alive.current = true; void acquireRef.current();
-    return () => { alive.current = false; release(); };
+    return () => { alive.current = false; clearTimeout(countdownTimer.current); release(); };
   }, [release]);
   useEffect(() => {
     let cancelled = false; setReady(false);
@@ -62,6 +64,25 @@ export default function PhotoPage() {
       else setNotice('촬영하지 못했어요. 다시 눌러 주세요.');
     }, 'image/jpeg', .9);
   };
+  useEffect(() => {
+    if (!ready || document.hidden) { clearTimeout(countdownTimer.current); countdownTimer.current=null; setCountdown(0); }
+  }, [ready]);
+  useEffect(() => {
+    const cancel = () => { if (document.hidden) {clearTimeout(countdownTimer.current);countdownTimer.current=null;setCountdown(0);} };
+    document.addEventListener('visibilitychange',cancel);
+    return () => document.removeEventListener('visibilitychange',cancel);
+  }, []);
+  const startCountdown = () => {
+    if (!ready || countdown || countdownTimer.current || busy.current) return;
+    setCountdown(3);
+    let remaining=3;
+    const tick=()=>{
+      remaining--;setCountdown(remaining);
+      if(remaining) countdownTimer.current=setTimeout(tick,1000);
+      else {countdownTimer.current=null;capture();}
+    };
+    countdownTimer.current=setTimeout(tick,1000);
+  };
   return <main ref={pageRef} className="photo-page" aria-label="상모와 고깔 사진 촬영">
     <video ref={videoRef} autoPlay playsInline muted className="photo-source" aria-hidden="true"/>
     <canvas ref={canvasRef} className="photo-preview" aria-label="상모 체험 카메라"/>
@@ -70,8 +91,9 @@ export default function PhotoPage() {
         <button className="photo-back" onClick={()=>navigate('/ending')} aria-label="이전 페이지">‹</button>
         <button className="photo-hat-choice photo-gokkal" onClick={()=>setKind('gokkal')} aria-label="고깔 선택" aria-pressed={kind==='gokkal'}><img src="/assets/figma/feedback/gokkal.svg" alt=""/></button>
         <button className="photo-hat-choice photo-sangmo" onClick={()=>setKind('sangmo')} aria-label="상모 선택" aria-pressed={kind==='sangmo'}><img src="/assets/figma/feedback/sangmo.svg" alt=""/></button>
-        <button className="photo-shutter" onClick={capture} disabled={!ready} aria-label="사진 찍기"><img src="/assets/figma/feedback/shutter.svg" alt=""/></button>
+        <button className="photo-shutter" onClick={startCountdown} disabled={!ready || countdown>0} aria-label="3초 후 사진 찍기"><img src="/assets/figma/feedback/shutter.svg" alt=""/></button>
       </div>
+      {countdown>0 && <div className="photo-countdown" role="status" aria-live="assertive">{['','하나','둘','셋'][countdown]}</div>}
       <p className="photo-tracking-status" role="status">{headStatus==='loading'?'상모를 준비하고 있어요…':headStatus==='error'?'상모 인식을 시작하지 못했어요. 사진 촬영은 할 수 있어요.':''}</p>
       <details className="photo-camera-controls" open={status==='error'||undefined}>
         <summary>카메라 설정</summary>
